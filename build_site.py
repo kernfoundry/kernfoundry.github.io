@@ -4,6 +4,7 @@
 사용: python build_site.py
 """
 import pathlib
+import re
 
 SITE = pathlib.Path(__file__).resolve().parent
 
@@ -178,7 +179,7 @@ INDEX = """
         <tr><td>김민수</td><td>18</td><td>20</td><td class="ok">90.0%</td><td><span class="tag ok">월간 안내</span></td></tr>
         <tr><td>정다움</td><td>19</td><td>20</td><td class="ok">95.0%</td><td><span class="tag ok">월간 안내</span></td></tr>
         <tr><td>한가영</td><td>5</td><td>20</td><td class="warn">25.0%</td><td><span class="tag warn">결석 안내</span></td></tr>
-        <tr><td>박철수</td><td>10</td><td>0</td><td class="dim">—</td><td><span class="tag dim">입력 확인</span></td></tr>
+        <tr><td>박철수</td><td class="dim">—</td><td>20</td><td class="dim">—</td><td><span class="tag dim">입력 확인</span></td></tr>
       </tbody>
     </table>
     <p class="cap">계산은 프로그램이, 발송 여부는 담당자가 판단합니다. 초안은 검토 대기 상태로 남습니다.</p>
@@ -681,6 +682,20 @@ PROMO_CSS = """
 """
 
 
+
+def align_numbers(html: str) -> str:
+    """결과 표에서 숫자 칸을 오른쪽 정렬로 (읽기 좋게)."""
+    def fix_block(m):
+        block = m.group(0)
+        def fix_cell(c):
+            inner = c.group(1)
+            if re.fullmatch(r"[\d,\.%——\-]+", inner.strip()):
+                return f'<td class="num">{inner}</td>'
+            return c.group(0)
+        return re.sub(r"<td>(.*?)</td>", fix_cell, block)
+    return re.sub(r'<table class="result[^"]*">.*?</table>', fix_block, html, flags=re.S)
+
+
 def main() -> None:
     css = (SITE / "assets" / "site.css").read_text(encoding="utf-8")
     if ".promo{" not in css:
@@ -689,11 +704,11 @@ def main() -> None:
 
     index_meta = dict(title="Kernfoundry | 학원 운영 자동화", crumb="Home", h1="Kernfoundry", enpage="en/index.html",
                       sub="", desc="학원 운영의 반복 업무를 프로그램으로 대체합니다. 출결 집계, 학부모 안내문 초안, 수강료 정산 자동화.")
-    (SITE / "index.html").write_text(HEAD.format(**index_meta) + INDEX + FOOT, encoding="utf-8", newline="\n")
+    (SITE / "index.html").write_text(align_numbers(HEAD.format(**index_meta) + INDEX) + FOOT, encoding="utf-8", newline="\n")
     print(f"작성: index.html ({(SITE / 'index.html').stat().st_size} bytes)")
 
     for name, (meta, body) in SUBS.items():
-        html = HEAD.format(**meta) + SUBHERO.format(**meta) + body + FOOT
+        html = align_numbers(HEAD.format(**meta) + SUBHERO.format(**meta) + body) + FOOT
         (SITE / name).write_text(html, encoding="utf-8", newline="\n")
         print(f"작성: {name} ({(SITE / name).stat().st_size} bytes)")
 

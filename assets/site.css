@@ -46,7 +46,7 @@ nav.main .sub a:hover{background:var(--bg-alt);color:var(--ink)}
 
 /* 히어로 */
 .hero{padding:92px 0 76px;border-bottom:1px solid var(--line)}
-.hero.dark{background:#08090a;color:#fff;border-bottom:0}
+.hero.dark{background:#0b1220;color:#fff;border-bottom:0}
 .hero.dark p.lead{color:#b9bcc2}
 .hero.dark .metrics{border-top-color:#242629}
 .hero.dark .metrics span{color:#8b8e94}
@@ -97,7 +97,7 @@ section.alt{background:var(--bg-alt);border-top:1px solid var(--line);border-bot
 .feature .pic img{width:100%;display:block;border-radius:10px;border:1px solid var(--line);box-shadow:0 20px 40px rgba(9,16,29,.10)}
 
 /* 결과 표 (히어로 아래) */
-.hero-table{background:var(--navy);padding:0 0 66px}
+.hero-table{background:#0b1220;padding:0 0 66px}
 .hero-table .wrap{max-width:1000px}
 table.result{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 24px 48px rgba(0,0,0,.35)}
 table.result caption{caption-side:top;text-align:left;color:#8fa3bd;font-size:13.5px;padding:0 2px 12px}
@@ -105,6 +105,7 @@ table.result th,table.result td{padding:14px 18px;text-align:left;font-size:15px
 table.result thead th{background:#f7f9fc;font-size:13px;font-weight:700;color:#8a94a6;letter-spacing:.02em}
 table.result tbody tr:last-child td{border-bottom:0}
 table.result td:first-child{font-weight:700;color:#1b2b45}
+table.result td.num{text-align:right;font-variant-numeric:tabular-nums}
 table.result td.ok{color:#0f7b4f;font-weight:700}
 table.result td.warn{color:#c2410c;font-weight:700}
 table.result td.dim{color:#8a94a6}

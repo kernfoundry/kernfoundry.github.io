@@ -3,6 +3,7 @@ Writes en/*.html using the same stylesheet as the Korean site, with a KO/EN swit
 Run: python build_en.py
 """
 import pathlib
+import re
 
 SITE = pathlib.Path(__file__).resolve().parent
 EN = SITE / "en"
@@ -72,7 +73,7 @@ HEAD = """<!DOCTYPE html>
       <div><a class="top" href="notice.html">Notes</a></div>
     </nav>
     <div class="hd-right">
-      <a class="lang" href="../{kofile}" hreflang="ko">KO</a>
+      <a class="lang" href="../{kofile}" hreflang="ko">한국어</a>
       <a class="hd-cta" href="contact.html">Contact</a>
     </div>
     <button class="menu-btn" type="button" aria-controls="gnb" aria-label="Menu"
@@ -138,7 +139,7 @@ RESULT_TABLE = """
         <tr><td>Minsu Kim</td><td>18</td><td>20</td><td class="ok">90.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
         <tr><td>Daum Jung</td><td>19</td><td>20</td><td class="ok">95.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
         <tr><td>Gayoung Han</td><td>5</td><td>20</td><td class="warn">25.0%</td><td><span class="tag warn">Absence note</span></td></tr>
-        <tr><td>Cheolsu Park</td><td>10</td><td>0</td><td class="dim">&mdash;</td><td><span class="tag dim">Needs input</span></td></tr>
+        <tr><td>Cheolsu Park</td><td class="dim">&mdash;</td><td>20</td><td class="dim">&mdash;</td><td><span class="tag dim">Needs input</span></td></tr>
       </tbody>
     </table>
     <p class="cap">The program calculates. A person decides whether to send. Drafts stay in a review state until then.</p>
@@ -507,10 +508,24 @@ PAGES = [
 ]
 
 
+
+def align_numbers(html: str) -> str:
+    """결과 표에서 숫자 칸을 오른쪽 정렬로 (읽기 좋게)."""
+    def fix_block(m):
+        block = m.group(0)
+        def fix_cell(c):
+            inner = c.group(1)
+            if re.fullmatch(r"[\d,\.%——\-]+", inner.strip()):
+                return f'<td class="num">{inner}</td>'
+            return c.group(0)
+        return re.sub(r"<td>(.*?)</td>", fix_cell, block)
+    return re.sub(r'<table class="result[^"]*">.*?</table>', fix_block, html, flags=re.S)
+
+
 def main() -> None:
     for name, title, desc, body in PAGES:
         kofile = "404.html" if name == "404.html" else name
-        html = HEAD.format(title=title, desc=desc, kofile=kofile, self=name) + body + FOOT
+        html = align_numbers(HEAD.format(title=title, desc=desc, kofile=kofile, self=name) + body) + FOOT
         (EN / name).write_text(html, encoding="utf-8", newline="\n")
         print("작성:", f"en/{name}", f"({len(html)} bytes)")
 
