@@ -247,20 +247,22 @@ PRICING = """
       <p>설치비 없음. 첫 30일은 무료로 씁니다. 약정 없이 월 단위로 시작하고 멈출 수 있습니다.</p>
     </div>
     <table class="compare">
-      <thead><tr><th>구분</th><th>기본형</th><th>성과형</th></tr></thead>
+      <thead><tr><th>구분</th><th>소규모</th><th>무제한</th></tr></thead>
       <tbody>
-        <tr><td>월 이용료</td><td><b>29,000원</b> <span class="dim">(VAT 별도)</span></td><td><b>19,000원</b> <span class="dim">(VAT 별도)</span></td></tr>
-        <tr><td>회수 연동</td><td>없음</td><td><b>회수 금액의 3~5%</b><br><span class="dim">예: 100만원 회수 시 3만~5만원</span></td></tr>
+        <tr><td>대상</td><td>학생 100명 이하</td><td>인원 제한 없음</td></tr>
+        <tr><td>월 이용료</td><td><b>39,000원</b> <span class="dim">(VAT 별도)</span></td><td><b>59,000원</b> <span class="dim">(VAT 별도)</span></td></tr>
+        <tr><td>알림톡 발송</td><td colspan="2">건당 실비 10~14원만 받습니다. <b>마진 없음</b> (학원이 쓰는 단가 그대로)</td></tr>
         <tr><td>미납 분류·단계 자동화</td><td>포함</td><td>포함</td></tr>
         <tr><td>단계별 안내 문구 초안</td><td>포함</td><td>포함</td></tr>
         <tr><td>회수율 대시보드</td><td>포함</td><td>포함</td></tr>
         <tr><td>내용증명·지급명령 초안</td><td>포함</td><td>포함</td></tr>
+        <tr><td>환불</td><td>남은 기간 일할 환불</td><td>남은 기간 일할 환불</td></tr>
         <tr><td>설치·서버</td><td>불필요</td><td>불필요</td></tr>
         <tr><td>첫 30일</td><td>무료</td><td>무료</td></tr>
         <tr><td>해지</td><td>언제든</td><td>언제든</td></tr>
       </tbody>
     </table>
-    <p class="credit">성과형은 시스템이 기록한 회수 금액만 계산합니다. 원장님이 따로 청구하지 않습니다.</p>
+    <p class="credit">월 이용료 외에 숨은 비용은 없습니다. 알림톡 발송비는 건당 실비이며 저희가 붙이는 금액은 0원입니다. 환불 규정은 <a href="terms.html">이용약관</a>을 따릅니다.</p>
 
     <div class="shead" style="margin-top:64px">
       <div class="eyebrow">Onboarding</div>
@@ -530,8 +532,8 @@ ABOUT = """
     <table class="compare">
       <thead><tr><th>구분</th><th>내용</th></tr></thead>
       <tbody>
-        <tr><td>이런 학원에 맞습니다</td><td>강사 5명 이하 소규모 학원. 출결과 수납을 원장이 직접 처리하는 곳.</td></tr>
-        <tr><td>이럴 때는 안 맞습니다</td><td>프랜차이즈 본사. 지점 통합 관리·정산 체계가 이미 있는 경우.</td></tr>
+        <tr><td>이런 곳에 맞습니다</td><td>강사 1~5명·학생 100명 이하 소규모 학원과 공부방. 출결과 수납을 원장이 직접 처리하는 곳.</td></tr>
+        <tr><td>이럴 때는 안 맞습니다</td><td>프랜차이즈 본사, 그리고 지점 통합 관리·정산 체계가 이미 있는 경우.</td></tr>
       </tbody>
     </table>
 
@@ -817,7 +819,7 @@ PRIVACY = """
     </ul>
 
     <h2>3. 보유 및 이용 기간</h2>
-    <p>문의 응답 완료 후 지체 없이 파기합니다. 관계 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관합니다.</p>
+    <p>문의 응답 완료 후 1년간 보관한 뒤 파기합니다. 삭제를 요청하시면 지체 없이 삭제합니다. 관계 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관합니다.</p>
 
     <h2>4. 제3자 제공</h2>
     <p>회사는 이용자의 개인정보를 제3자에게 제공하지 않습니다. 법령에 따라 요구되는 경우는 예외로 합니다.</p>
