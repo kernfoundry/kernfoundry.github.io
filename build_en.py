@@ -87,7 +87,7 @@ HEAD = """<!DOCTYPE html>
 
 <div class="promo">
   <div class="wrap">
-    <span><b>New</b> Upload an attendance file and get settlement plus parent drafts in one pass</span>
+    <span><b>New</b> Drop in an attendance file and get settlement plus parent drafts in one pass</span>
     <a href="notice.html">Read more &rarr;</a>
   </div>
 </div>
