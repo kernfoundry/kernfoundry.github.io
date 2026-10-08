@@ -64,8 +64,8 @@ HEAD = """<!DOCTYPE html>
 
 <div class="promo">
   <div class="wrap">
-    <span><b>새로 추가</b> 출결 파일을 넣으면 정산과 안내 초안까지 한 번에</span>
-    <a href="notice.html">자세히 →</a>
+    <span><b>새 기능</b> 출결 파일을 넣으면 정산과 안내 초안까지</span>
+    <a href="work.html#result">자세히 →</a>
   </div>
 </div>
 
@@ -103,8 +103,7 @@ HEAD = """<!DOCTYPE html>
       <a class="lang" href="{enpage}" hreflang="en">EN</a>
       <a class="hd-cta" href="contact.html">도입 문의</a>
     </div>
-    <button class="menu-btn" type="button" aria-controls="gnb" aria-label="메뉴"
-      onclick="document.getElementById('gnb').classList.toggle('open')">메뉴</button>
+    <button class="menu-btn" type="button" aria-controls="gnb" aria-label="메뉴">메뉴</button>
   </div>
 </header>
 """
@@ -129,9 +128,9 @@ FOOT = """
       <div>
         <h4>자료</h4>
         <ul>
-                    <li><a href="work.html">결과 화면</a></li>
-          <li><a href="pricing.html">요금</a>
-      <div><a class="top" href="notice.html">소식</a></div></li>
+          <li><a href="work.html">결과 화면</a></li>
+          <li><a href="pricing.html">요금</a></li>
+          <li><a href="notice.html">소식</a></li>
           <li><a href="https://github.com/kernfoundry" target="_blank" rel="noopener">소스 공개</a></li>
         </ul>
       </div>
@@ -140,9 +139,8 @@ FOOT = """
         <ul>
           <li><a href="contact.html">도입 문의</a></li>
           <li><a href="mailto:hello@kernfoundry.com">hello@kernfoundry.com</a></li>
-          <li><a href="pricing.html">요금</a></li>
-        <li><a href="terms.html">이용약관</a></li>
-        <li><a href="privacy.html">개인정보처리방침</a></li>
+          <li><a href="terms.html">이용약관</a></li>
+          <li><a href="privacy.html">개인정보처리방침</a></li>
         </ul>
       </div>
     </div>
@@ -338,7 +336,7 @@ INDEX = """
   <div class="wrap doc">
     <div class="shead">
       <div class="eyebrow">Academy operations</div>
-      <h2>출결 파일 하나로 정산과 학부모 안내문 초안까지</h2>
+      <h1>출결 파일 하나로 정산과 학부모 안내문 초안까지</h1>
       <p>학원에서 쓰던 엑셀(.xlsx)을 그대로 넣으면 끝납니다. 출석률을 세고, 수강료를 정산하고, 학부모께 보낼 안내문은 초안까지 만들어 둡니다. 발송과 결제는 학원이 합니다.</p>
     </div>
     <table class="result">
@@ -417,6 +415,21 @@ INDEX = """
   </div>
 </section>
 
+<section>
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">Getting started</div>
+      <h2>시작은 파일 하나입니다</h2>
+      <p>설치도, 서버도, 형식 변환도 없습니다.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><b>1. 출결을 셉니다</b><p>쓰던 파일을 그대로 넣으면 학생별 출석률과 결석·지각 횟수가 한 번에 정리됩니다.</p></div>
+      <div class="step"><b>2. 같이 확인합니다</b><p>직접 돌려보고, 이상한 값이 나오는 경우를 함께 정리합니다.</p></div>
+      <div class="step"><b>3. 매주 반복합니다</b><p>매주 같은 순서대로 진행합니다. 계산과 초안은 프로그램이, 판단과 발송은 사람이 합니다.</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="alt" id="faq">
   <div class="wrap doc">
     <div class="shead">
@@ -431,7 +444,7 @@ INDEX = """
       <details><summary>학부모가 앱을 깔아야 하나요?</summary><p>아닙니다. 안내문은 문자·알림톡으로 보낼 수 있는 문장으로 나옵니다. 발송은 학원에서 하시면 됩니다.</p></details>
       <details><summary>우리 반·회차 방식 그대로 되나요?</summary><p>학생별 출석 횟수와 총수업을 파일에서 읽어 계산합니다. 회차권·기간권처럼 계산 방식이 다른 경우는 상담할 때 함께 맞춥니다.</p></details>
       <details><summary>얼마인가요?</summary><p>월 39,000원(학생 100명 이하) 또는 월 59,000원(인원 제한 없음)이고 VAT 별도입니다. 첫 30일은 무료이며 약정은 없습니다. 알림톡 발송은 건당 실비 10~14원만 받고 저희 마진은 0원입니다.</p></details>
-      <details><summary>맞지 않으면 그만둘 수 있나요?</summary><p>약정이 없습니다. 언제든 멈출 수 있고, 남은 기간은 일할로 환불합니다.</p></details>
+      <details><summary>맞지 않으면 그만둘 수 있나요?</summary><p>약정이 없습니다. 언제든 멈출 수 있고, 남은 기간은 일할 계산해 환불합니다.</p></details>
       <details><summary>잘못 돌리면 되돌릴 수 있나요?</summary><p>한 번의 실행이 만든 결과만 골라 되돌릴 수 있습니다. 다른 기록은 건드리지 않습니다.</p></details>
     </div>
   </div>
@@ -759,15 +772,15 @@ NOTICE = """
 <section class="tight">
   <div class="wrap doc">
     <p class="date">2026.10.09</p>
-    <h3 id="n1">소개 페이지를 열었습니다</h3>
+    <h2 id="n1">소개 페이지를 열었습니다</h3>
     <p>학원 운영 자동화 소개 페이지를 열었습니다. 도입 문의는 이메일로 받습니다. 지금 쓰는 출결 파일을 기준으로 적용 가능 여부를 먼저 확인해 드립니다.</p>
 
     <p class="date">2026.10.08</p>
-    <h3 id="n2">엑셀 파일(.xlsx) 직접 읽기 지원</h3>
+    <h2 id="n2">엑셀 파일(.xlsx) 직접 읽기 지원</h3>
     <p>CSV로 저장하지 않고 엑셀 파일을 그대로 넣어도 읽습니다. 첫 번째 시트를 사용하며, 칸 이름이 달라도 인식합니다. 옛 형식(.xls)은 지원하지 않으므로 엑셀에서 .xlsx로 저장해 주세요.</p>
 
     <p class="date">2026.10.07</p>
-    <h3 id="n3">수강료 정산 안내문, 발송 전 확인 사항</h3>
+    <h2 id="n3">수강료 정산 안내문, 발송 전 확인 사항</h3>
     <p>정산으로 만드는 미납 안내문은 초안입니다. 보내기 전에 아래 세 가지를 확인해 주세요.</p>
     <ol>
       <li>금액이 실제 입금 내역과 맞는지 확인합니다.</li>
@@ -783,18 +796,15 @@ CONTACT = """
   <div class="wrap doc">
     <p>아래 양식을 채워 보내주시거나 이메일로 바로 보내주셔도 됩니다. 영업일 기준 1일 이내에 회신드립니다.</p>
 
-    <form class="form" action="mailto:hello@kernfoundry.com" method="post" enctype="text/plain">
-      <div class="row2">
-        <div><label for="c1">성함</label><input id="c1" name="성함" type="text" required></div>
-        <div><label for="c2">연락처</label><input id="c2" name="연락처" type="text"></div>
-      </div>
-      <div><label for="c3">학원·기관명</label><input id="c3" name="기관명" type="text"></div>
-      <div><label for="c4">문의 내용</label>
-        <textarea id="c4" name="문의내용" rows="7" required placeholder="예: 출결 파일은 엑셀이고, 칸 이름은 이름 / 출석일수 / 총수업일수 입니다."></textarea></div>
-      <label class="agree"><input type="checkbox" required> 문의 응답을 위한 개인정보(성함·연락처) 수집에 동의합니다. 수집한 정보는 응답 목적으로만 쓰고 처리 후 파기합니다. 자세한 내용은 <a href="privacy.html">개인정보처리방침</a>을 봐 주세요.</label>
-      <div><button class="btn solid" type="submit">문의 보내기</button></div>
-    </form>
-    <p class="credit">이 양식은 이메일 작성 창을 엽니다. 바로 보내려면 <a href="mailto:hello@kernfoundry.com">hello@kernfoundry.com</a> 으로 보내주셔도 됩니다.</p>
+    <div class="note-box">
+      <p style="margin:0 0 4px"><b>파일을 함께 보내주시면 확인이 빠릅니다.</b></p>
+      <p style="margin:0">아래 양식이 채워진 메일 창이 열립니다. 출결 파일과 수납 파일을 첨부해 주세요. 학생 이름·연락처가 들어간 칸은 지우고 보내셔도 됩니다.</p>
+    </div>
+    <div style="margin:20px 0 6px">
+      <a class="btn solid" href="mailto:hello@kernfoundry.com?subject=%EB%8F%84%EC%9E%85%20%EB%AC%B8%EC%9D%98&amp;body=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94.%0A%0A%C2%B7%20%ED%95%99%EC%9B%90%EC%9D%B4%EB%A6%84%3A%20%0A%C2%B7%20%EA%B0%95%EC%82%AC%20%EC%88%98%20%2F%20%ED%95%99%EC%83%9D%20%EC%88%98%3A%20%0A%C2%B7%20%EC%B6%9C%EA%B2%B0%EC%B2%98%EB%A6%AC%20%ED%8C%8C%EC%9D%BC%20%ED%98%95%EC%8B%9D%28%EC%97%91%EC%85%80%C2%B7CSV%29%3A%20%0A%C2%B7%20%ED%95%84%EC%9A%94%ED%95%9C%20%EB%B2%94%EC%9C%84%3A%20">문의 이메일 열기</a>
+      <a class="btn" href="mailto:hello@kernfoundry.com" style="margin-left:8px">빈 메일로 보내기</a>
+    </div>
+    <p class="credit">메일 프로그램이 열리지 않으면 hello@kernfoundry.com 으로 보내주세요. 개인정보 수집·이용에 대한 자세한 내용은 <a href="privacy.html">개인정보처리방침</a>에 적혀 있습니다.</p>
 
     <div class="shead" style="margin-top:56px">
       <div class="eyebrow">What to send</div>
@@ -945,13 +955,19 @@ def main() -> None:
 
     index_meta = dict(self="", title="Kernfoundry | 학원 운영 자동화", crumb="Home", h1="Kernfoundry", enpage="en/index.html",
                       sub="", desc="학원 운영의 반복 업무를 프로그램으로 대체합니다. 출결 집계, 학부모 안내문 초안, 수강료 정산 자동화.")
-    (SITE / "index.html").write_text(ensure_main(align_numbers(HEAD.format(**index_meta) + INDEX)) + FOOT.replace("{biz}", business_line()) + LDJSON, encoding="utf-8", newline="\n")
+    (SITE / "index.html").write_text(ensure_main(align_numbers(HEAD.format(**index_meta) + INDEX)) + FOOT.replace("{biz}", business_line()).replace("</body>", LDJSON + "\n</body>"), encoding="utf-8", newline="\n")
     print(f"작성: index.html ({(SITE / 'index.html').stat().st_size} bytes)")
 
     for name, (meta, body) in SUBS.items():
-        html = ensure_main(align_numbers(HEAD.format(**meta) + SUBHERO.format(**meta) + body)) + FOOT.replace("{biz}", business_line()) + LDJSON
+        html = ensure_main(align_numbers(HEAD.format(**meta) + SUBHERO.format(**meta) + body)) + FOOT.replace("{biz}", business_line()).replace("</body>", LDJSON + "\n</body>")
         (SITE / name).write_text(html, encoding="utf-8", newline="\n")
         print(f"작성: {name} ({(SITE / name).stat().st_size} bytes)")
+
+    n404 = SITE / "404.html"
+    t404 = n404.read_text(encoding="utf-8")
+    if "noindex" not in t404:
+        n404.write_text(t404.replace("<head>", '<head>\n<meta name="robots" content="noindex">'), encoding="utf-8", newline="\n")
+        print("404 noindex 추가")
 
 
 if __name__ == "__main__":

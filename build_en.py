@@ -57,7 +57,7 @@ NAV = [
                                   ("business.html#notice", "Parent messages"),
                                   ("business.html#settlement", "Tuition"),
                                   ("business.html#principle", "Operating rules")]),
-    ("work.html", "Results", [("work.html#result", "Results"), ("work.html#tests", "Automated checks"), ("work.html#code", "Code")]),
+    ("work.html", "Results", [("work.html#result", "Results"), ("work.html#tests", "Automated checks"), ("work.html#record", "Record")]),
     ("about.html", "Company", [("about.html#greeting", "Message"), ("about.html#now", "Now")]),
     ("notice.html", "Notes", []),
 ]
@@ -73,13 +73,15 @@ HEAD = """<!DOCTYPE html>
 <link rel="alternate" hreflang="en" href="{enurl}">
 <link rel="canonical" href="{enurl}">
 <meta property="og:url" content="{enurl}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{title}">
+<meta property="og:site_name" content="Kernfoundry">
+<meta property="og:description" content="{desc}">
 <meta property="og:image" content="https://kernfoundry.github.io/images/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../assets/site6.css">
 </head>
 <body>
@@ -87,8 +89,8 @@ HEAD = """<!DOCTYPE html>
 
 <div class="promo">
   <div class="wrap">
-    <span><b>New</b> Drop in an attendance file and get settlement plus parent drafts in one pass</span>
-    <a href="notice.html">Read more &rarr;</a>
+    <span><b>New</b> Add an attendance file and get settlement plus parent drafts in one pass</span>
+    <a href="work.html#result">See how &rarr;</a>
   </div>
 </div>
 
@@ -126,8 +128,7 @@ HEAD = """<!DOCTYPE html>
       <a class="lang" href="../{kofile}" hreflang="ko">한국어</a>
       <a class="hd-cta" href="contact.html">Contact</a>
     </div>
-    <button class="menu-btn" type="button" aria-controls="gnb" aria-label="Menu"
-      onclick="document.getElementById('gnb').classList.toggle('open')">Menu</button>
+    <button class="menu-btn" type="button" aria-controls="gnb" aria-label="Menu">Menu</button>
   </div>
 </header>
 """
@@ -249,7 +250,7 @@ INDEX = """
   <div class="wrap doc">
     <div class="shead">
       <div class="eyebrow">Academy operations</div>
-      <h2>Attendance, settlement and parent note drafts, from one file</h2>
+      <h1>Attendance, settlement and parent note drafts, from one file</h1>
       <p>Put in the spreadsheet (.xlsx) you already keep and it is done. It counts the rates, settles the tuition, and prepares parent note drafts. Sending and payment stay with the academy.</p>
     </div>
     <table class="result">
@@ -270,93 +271,6 @@ INDEX = """
   <div class="wrap doc">
     <div class="shead">
       <div class="eyebrow">Before / after</div>
-      <h2>What changes on Monday morning</h2>
-      <p>Only the work the owner used to handle by hand.</p>
-    </div>
-    <table class="compare">
-      <thead><tr><th>Task</th><th>Before</th><th>After</th></tr></thead>
-      <tbody>
-        <tr><td>Tidying attendance</td><td>Opening the file and counting by hand</td><td><b>Put the file in and it is sorted at once</b></td></tr>
-        <tr><td>Rate calculation</td><td>Dividing by hand from the table</td><td><b>Calculated by the program; odd values split out as warnings</b></td></tr>
-        <tr><td>Parent notes</td><td>Writing sentences anew for each student</td><td><b>Read the draft and confirm</b></td></tr>
-        <tr><td>Finding unpaid students</td><td>Matching payment records one by one</td><td><b>Only the unpaid students are picked out</b></td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section>
-  <div class="wrap doc">
-    <div class="shead">
-      <div class="eyebrow">What it does</div>
-      <h2>Six jobs it takes over</h2>
-      <p>One file starts the chain: calculation, drafting, and a record of what happened. Only what you need is used.</p>
-    </div>
-    <div class="cards">
-      <div class="card">
-        <div class="k">01</div>
-        <h3>Attendance</h3>
-        <p>Reads .xlsx and CSV as they are and counts one rate per student, with absence and late counts.</p>
-      </div>
-      <div class="card t2">
-        <div class="k">02</div>
-        <h3>Parent notes</h3>
-        <p>Drafts an absence or monthly note from the rate. Nothing is sent by the program itself.</p>
-      </div>
-      <div class="card t3">
-        <div class="k">03</div>
-        <h3>Tuition settlement</h3>
-        <p>Compares charge and payment and classifies each student as paid, partial, unpaid or overpaid.</p>
-      </div>
-      <div class="card t2">
-        <div class="k">04</div>
-        <h3>Edge-case warnings</h3>
-        <p>Empty cells, text in numeric columns, a total of zero, attendance above the total: set aside and reported.</p>
-      </div>
-      <div class="card t3">
-        <div class="k">05</div>
-        <h3>Run record and undo</h3>
-        <p>Every run leaves a record, and only the files that run produced are reverted.</p>
-      </div>
-      <div class="card">
-        <div class="k">06</div>
-        <h3>Personal data blocked</h3>
-        <p>Phone numbers, resident registration numbers and card numbers are blocked inside a note.</p>
-      </div>
-    </div>
-    <p>Every run checks 76 items on its own. The full screen is on the <a href="work.html">results</a> page.</p>
-  </div>
-</section>
-
-<section class="alt" id="faq">
-  <div class="wrap doc">
-    <div class="shead">
-      <div class="eyebrow">FAQ</div>
-      <h2>Questions owners ask before starting</h2>
-      <p>In the order owners usually check them.</p>
-    </div>
-    <div class="faq">
-      <details open><summary>Will it read the spreadsheet we already keep?</summary><p>Yes. Put in the .xlsx file you already use and it reads the first sheet. Column names such as name, attended or total classes are found even when they differ. Only the older .xls format needs saving once as .xlsx.</p></details>
-      <details><summary>Do we have to install anything?</summary><p>No install and no server. A web browser is all you need.</p></details>
-      <details><summary>What about personal data?</summary><p>Files are processed on the academy computer and are not transmitted anywhere. If a note would contain a phone number, resident registration number or card number, it is blocked automatically.</p></details>
-      <details><summary>Do parents need an app?</summary><p>No. The notes come out as text that can be sent by SMS or a messaging channel. Sending stays with the academy.</p></details>
-      <details><summary>Does it match our class and term system?</summary><p>Attendance counts and totals are read from your file. Where a different scheme is used, such as per-term packages, the calculation is agreed during onboarding.</p></details>
-      <details><summary>How much does it cost?</summary><p>KRW 39,000 a month (up to 100 students) or KRW 59,000 a month (no limit), VAT excluded. The first 30 days are free and there is no fixed term. Messages are metered at KRW 10&ndash;14 each and our markup is zero.</p></details>
-      <details><summary>Can we stop if it does not fit?</summary><p>There is no fixed term. You can stop at any time, and unused remaining days are refunded pro rata.</p></details>
-      <details><summary>Can a mistake be undone?</summary><p>Yes. Only the output of a single run is reverted; nothing else is touched.</p></details>
-    </div>
-  </div>
-</section>
-
-<div class="cta">
-  <div class="wrap in">
-    <div>
-      <h2>Just tell us your file format</h2>
-      <p>We will confirm whether it fits. You can send it with no commitment.</p>
-    </div>
-    <a class="btn solid" href="contact.html">Contact</a>
-  </div>
-</div>
 """ + """
 <section>
   <div class="wrap doc">
@@ -386,12 +300,12 @@ INDEX = """
       <p>One file starts the chain: calculation, writing, and a record of what happened.</p>
     </div>
     <div class="cards">
-      <div class="card"><div class="k">01</div><h3>Attendance</h3><p>Reads .xlsx and CSV as they are and calculates one rate per student, with absence and late counts.</p></div>
-      <div class="card t2"><div class="k">02</div><h3>Parent messages</h3><p>Drafts absence or monthly notes from the rate. Nothing is sent by the program.</p></div>
-      <div class="card t3"><div class="k">03</div><h3>Tuition settlement</h3><p>Compares charge and payment, classifies each student, and drafts reminders for unpaid balances.</p></div>
-      <div class="card t2"><div class="k">04</div><h3>Edge-case warnings</h3><p>Empty cells, text in numeric columns, a total of zero, attendance above total: set aside and reported.</p></div>
-      <div class="card t3"><div class="k">05</div><h3>Run record and undo</h3><p>Every run leaves a record, and only the files that run produced can be reverted.</p></div>
-      <div class="card"><div class="k">06</div><h3>Personal data blocked</h3><p>Phone numbers, resident registration numbers and card numbers never enter a message body.</p></div>
+      <div class="card"><div class="k">01</div><h3>Attendance</h2><p>Reads .xlsx and CSV as they are and calculates one rate per student, with absence and late counts.</p></div>
+      <div class="card t2"><div class="k">02</div><h3>Parent messages</h2><p>Drafts absence or monthly notes from the rate. Nothing is sent by the program.</p></div>
+      <div class="card t3"><div class="k">03</div><h3>Tuition settlement</h2><p>Compares charge and payment, classifies each student, and drafts reminders for unpaid balances.</p></div>
+      <div class="card t2"><div class="k">04</div><h3>Edge-case warnings</h2><p>Empty cells, text in numeric columns, a total of zero, attendance above total: set aside and reported.</p></div>
+      <div class="card t3"><div class="k">05</div><h3>Run record and undo</h2><p>Every run leaves a record, and only the files that run produced can be reverted.</p></div>
+      <div class="card"><div class="k">06</div><h3>Personal data blocked</h2><p>Phone numbers, resident registration numbers and card numbers never enter a message body.</p></div>
     </div>
   </div>
 </section>
@@ -439,9 +353,9 @@ INDEX = """
       <p>Nothing is uploaded to a cloud service. It runs on the academy computer.</p>
     </div>
     <div class="cards">
-      <div class="card"><div class="k">1</div><h3>No upload</h3><p>Attendance and payment files are processed locally and are not sent to a server.</p></div>
-      <div class="card t2"><div class="k">2</div><h3>Contact details blocked</h3><p>Phone numbers, resident registration numbers and card numbers stop a draft from being written.</p></div>
-      <div class="card t3"><div class="k">3</div><h3>Record and undo</h3><p>Every run leaves a record, and only that run's output can be reverted.</p></div>
+      <div class="card"><div class="k">1</div><h3>No upload</h2><p>Attendance and payment files are processed locally and are not sent to a server.</p></div>
+      <div class="card t2"><div class="k">2</div><h3>Contact details blocked</h2><p>Phone numbers, resident registration numbers and card numbers stop a draft from being written.</p></div>
+      <div class="card t3"><div class="k">3</div><h3>Record and undo</h2><p>Every run leaves a record, and only that run's output can be reverted.</p></div>
     </div>
   </div>
 </section>
@@ -459,7 +373,7 @@ INDEX = """
       <details><summary>What about personal data?</summary><p>Files are processed on the academy computer and are not transmitted anywhere. If a message body contains a phone number, resident registration number or card number, the draft is blocked.</p></details>
       <details><summary>Do parents need an app?</summary><p>No. Drafts are plain text that can be sent by SMS or a messaging channel. Sending stays with the academy.</p></details>
       <details><summary>Does it match our class and term system?</summary><p>Attendance counts and totals are read from your file. Where a different scheme is used (per-term packages, for example) we agree on the calculation during onboarding.</p></details>
-      <details><summary>How much does it cost?</summary><p>No price list is published yet. We check your file format first, then quote according to academy size.</p></details>
+      <details><summary>How much does it cost?</summary><p>Monthly 39,000 KRW for up to 100 students, or 59,000 KRW with no student limit, VAT excluded. The first 30 days are free and there is no fixed term. Message delivery is charged at cost only, 10 to 14 KRW per message, with no markup. The <a href="pricing.html">pricing</a> page has the full table.</p></details>
       <details><summary>Can we stop if it does not fit?</summary><p>We start without a fixed term. If it does not fit, you can stop.</p></details>
       <details><summary>Can a mistake be undone?</summary><p>Yes. Only the output of a single run can be reverted; nothing else is touched.</p></details>
     </div>
@@ -553,17 +467,17 @@ BUSINESS = """
     <div class="cards">
       <div class="card">
         <div class="k">1</div>
-        <h3>Review gate</h3>
+        <h3>Review gate</h2>
         <p>A note without a review record cannot become sendable. The owner has to check it before it moves on.</p>
       </div>
       <div class="card t2">
         <div class="k">2</div>
-        <h3>No invented numbers</h3>
+        <h3>No invented numbers</h2>
         <p>When a value looks wrong it is split out as a warning, instead of being filled in with a plausible figure.</p>
       </div>
       <div class="card t3">
         <div class="k">3</div>
-        <h3>Scope of undo</h3>
+        <h3>Scope of undo</h2>
         <p>Only the files produced by one run are reverted. The records before and after are left untouched.</p>
       </div>
     </div>
@@ -703,14 +617,36 @@ CONTACT = """
     <div class="shead">
       <div class="eyebrow">Contact</div>
       <h2>Tell us what you keep</h2>
-      <p>Send one example attendance file and one tuition file (with the names removed). We will confirm whether the program can read them.</p>
+      <p>Send your attendance and tuition files with the names removed. We will confirm whether the program can read them, before any commitment.</p>
+    </div>
+    <div class="note-box">
+      <p style="margin:0 0 4px"><b>Sending your files makes the check faster.</b></p>
+      <p style="margin:0">The button opens a mail window with a short template. Attach one attendance file and one tuition file. Remove the columns with student names or contact details first.</p>
+    </div>
+    <div style="margin:20px 0 6px">
+      <a class="btn solid" href="mailto:hello@kernfoundry.com?subject=Enquiry&amp;body=Hello.%0A%0A%C2%B7%20Academy%20name%3A%20%0A%C2%B7%20Teachers%20%2F%20students%3A%20%0A%C2%B7%20Attendance%20file%20format%20%28Excel%2C%20CSV%29%3A%20%0A%C2%B7%20Scope%20needed%3A%20">Open an email</a>
+      <a class="btn" href="mailto:hello@kernfoundry.com" style="margin-left:8px">Send a blank email</a>
+    </div>
+    <p class="credit">If no mail program opens, write to hello@kernfoundry.com. What we collect and how it is used is in the <a href="privacy.html">privacy notice</a>.</p>
+    <div class="shead" style="margin-top:56px">
+      <div class="eyebrow">What to send</div>
+      <h2>Four things are enough</h2>
+      <p>With these, the check usually takes one reply.</p>
+    </div>
+    <table class="info">
+      <tr><th>Attendance and payment files</th><td>One copy of the files you already use. Names and contact details can be removed.</td></tr>
+      <tr><th>The columns in them</th><td>Which columns you use, for example name / attended days / total classes.</td></tr>
+      <tr><th>Academy size</th><td>Number of teachers and roughly how many students. The plan depends on whether it is 100 or above.</td></tr>
+      <tr><th>How far you need it</th><td>Attendance only / settlement as well / note drafts as well.</td></tr>
+    </table>
+    <div class="shead" style="margin-top:56px">
+      <div class="eyebrow">Hours</div>
+      <h2>Where to reach us</h2>
     </div>
     <table class="info">
       <tr><th>Email</th><td><a href="mailto:hello@kernfoundry.com">hello@kernfoundry.com</a></td></tr>
-      <tr><th>What to send</th><td>One attendance file, one tuition file, and the messages you send most often</td></tr>
-      <tr><th>What we do not need</th><td>Student names, contact details, card or account numbers</td></tr>
-      <tr><th>Hours</th><td>Weekdays 10:00-18:00 (KST), excluding public holidays</td></tr>
-      <tr><th>Reply</th><td>Usually within two business days</td></tr>
+      <tr><th>Hours</th><td>Weekdays 10:00&ndash;18:00 (KST), excluding public holidays</td></tr>
+      <tr><th>Reply</th><td>Mail is received around the clock. We usually answer within two business days.</td></tr>
     </table>
   </div>
 </section>
@@ -722,17 +658,46 @@ PRIVACY = """
     <div class="shead">
       <div class="eyebrow">Privacy</div>
       <h2>Privacy</h2>
-      <p>Short version: we collect as little as possible, and the program does not send anything to parents by itself.</p>
+      <p>Short version: we collect as little as possible, and nothing is sent on your behalf.</p>
     </div>
+
+    <h3>1. What we collect, and how</h2>
     <table class="info">
-      <tr><th>What we collect</th><td>Name, contact details, academy name, and your message — used only to answer the enquiry</td></tr>
-      <tr><th>Retention</th><td>One year after the enquiry closes, then deleted. Deleted immediately on request</td></tr>
-      <tr><th>Files</th><td>Example files you send are used to check compatibility and then deleted on request</td></tr>
-      <tr><th>Messages</th><td>Drafts stay on your own machine. The program has no sending channel</td></tr>
-      <tr><th>Personal data</th><td>Contact numbers, resident registration numbers and card numbers are blocked from message bodies</td></tr>
-      <tr><th>Cookies</th><td>This site sets no cookies and loads no analytics</td></tr>
-      <tr><th>Questions</th><td><a href="mailto:hello@kernfoundry.com">hello@kernfoundry.com</a></td></tr>
+      <tr><th>What</th><td>Your name, contact details (optional), academy name (optional), and the text of your message</td></tr>
+      <tr><th>How</th><td>Only what you choose to send, by email or through this site</td></tr>
     </table>
+
+    <h3>2. Why we use it</h2>
+    <ul>
+      <li>To read your enquiry and answer it</li>
+      <li>To reach you about a start-up conversation</li>
+    </ul>
+
+    <h3>3. How long we keep it</h2>
+    <p>We keep information for one year after the enquiry has been answered, then delete it. If you ask us to delete it earlier, we do so without delay. Where a law requires longer retention, we keep it only for that period.</p>
+
+    <h3>4. Sharing with others</h2>
+    <p>We do not share your information with anyone else. The only exception is where a law requires it.</p>
+
+    <h3>5. Delegated processing</h2>
+    <p>We do not delegate processing of your information to an outside party. If that ever changes, we will say so on this site first.</p>
+
+    <h3>6. Your rights</h2>
+    <p>You can ask to see, correct, delete, or stop the use of your information at any time, and we act on the request without delay.</p>
+
+    <h3>7. How it is kept safe</h2>
+    <ul>
+      <li>Information collected is used only to answer the enquiry.</li>
+      <li>Contact numbers, resident registration numbers and card numbers are blocked automatically from a message body.</li>
+      <li>Only the people who need to answer the enquiry see the information.</li>
+    </ul>
+
+    <h3>8. Contact about privacy</h2>
+    <p>Email: <a href="mailto:hello@kernfoundry.com">hello@kernfoundry.com</a></p>
+
+    <h3>9. When this changes</h2>
+    <p>Any change to this notice is posted on this site, under Notes.</p>
+    <p class="credit">In effect from 9 October 2026</p>
   </div>
 </section>
 """
@@ -740,17 +705,21 @@ PRIVACY = """
 NOTICE = """
 <section class="tight">
   <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">Notes</div>
+      <h2>Updates</h2>
+      <p>What changed, newest first.</p>
+    </div>
     <p class="date">2026.10.09</p>
-    <p class="date">2026.10.09</p>
-    <h3 id="n1">We opened this site</h3>
+    <h2 id="n1">We opened this site</h2>
     <p>An introduction to the academy back-office tooling. Enquiries by email.</p>
 
     <p class="date">2026.10.08</p>
-    <h3 id="n2">Direct .xlsx reading</h3>
+    <h2 id="n2">Direct .xlsx reading</h2>
     <p>The program reads the spreadsheet as it is; the export step is gone. The first sheet is used and column names are matched automatically. The older .xls format is not supported.</p>
 
     <p class="date">2026.10.07</p>
-    <h3 id="n3">Before sending a payment reminder</h3>
+    <h2 id="n3">Before sending a payment reminder</h2>
     <p>Drafts produced by the settlement result are drafts. Three checks before sending:</p>
     <ol>
       <li>Confirm the amount matches the actual deposit.</li>
@@ -841,21 +810,21 @@ TERMS = """
       <p>The basic conditions for using the service.</p>
     </div>
     <div class="doc-body">
-      <h3>1. What the service does</h3>
+      <h3>1. What the service does</h2>
       <p>Software that reads academy records (attendance, payments) and produces calculations and draft messages. Sending messages and the final decision remain with the academy.</p>
-      <h3>2. Fees and payment</h3>
+      <h3>2. Fees and payment</h2>
       <p>Fees follow the pricing page. The first 30 days are free, then billing is monthly. Fees follow the pricing page (KRW 39,000 / 59,000 per month).</p>
-      <h3>3. Cancellation</h3>
+      <h3>3. Cancellation</h2>
       <p>There is no fixed term. Tell us before the start of the next month and billing stops.</p>
-      <h3>4. Refunds</h3>
+      <h3>4. Refunds</h2>
       <p>Periods already used are not refunded. Unused remaining periods are refunded pro rata on request.</p>
-      <h3>5. Data handling</h3>
+      <h3>5. Data handling</h2>
       <p>Records you provide are used only to deliver the service. Output and logs stay with the academy. See the privacy policy for details.</p>
-      <h3>6. Your responsibilities</h3>
+      <h3>6. Your responsibilities</h2>
       <p>You confirm you have the right to provide the records, and you review each draft before sending.</p>
-      <h3>7. Limits of liability</h3>
+      <h3>7. Limits of liability</h2>
       <p>We provide calculations and drafts. Final decisions about sending and payments rest with the academy. Matters requiring legal advice should be checked with a professional.</p>
-      <h3>8. Changes</h3>
+      <h3>8. Changes</h2>
       <p>If these terms change, we give 7 days notice on this site.</p>
       <p class="credit">Effective: 9 October 2026</p>
     </div>
@@ -911,14 +880,30 @@ def align_numbers(html: str) -> str:
     return re.sub(r'<table class="result[^"]*">.*?</table>', fix_block, html, flags=re.S)
 
 
+def first_h1(html: str) -> str:
+    """본문의 첫 h2를 h1으로 올린다 (페이지 제목 단계)."""
+    if '<h1' in html:
+        return html
+    i = html.find('<h2>')
+    if i >= 0:
+        return html[:i] + '<h1>' + html[i+4:]
+    return html
+
+
 def main() -> None:
     for name, title, desc, body in PAGES:
         kofile = "404.html" if name == "404.html" else name
         enurl = BASE + "en/" + name
         kourl = BASE + kofile
-        html = ensure_main(align_numbers(HEAD.format(title=title, desc=desc, kofile=kofile, self=name, enurl=enurl, kourl=kourl) + body)) + FOOT.replace("{biz}", business_line()) + LDJSON
+        html = ensure_main(first_h1(align_numbers(HEAD.format(title=title, desc=desc, kofile=kofile, self=name, enurl=enurl, kourl=kourl) + body))) + FOOT.replace("{biz}", business_line()).replace("</body>", LDJSON + "\n</body>")
         (EN / name).write_text(html, encoding="utf-8", newline="\n")
         print("작성:", f"en/{name}", f"({len(html)} bytes)")
+
+    n404 = EN / "404.html"
+    t404 = n404.read_text(encoding="utf-8")
+    if "noindex" not in t404:
+        n404.write_text(t404.replace("<head>", '<head>\n<meta name="robots" content="noindex">'), encoding="utf-8", newline="\n")
+        print("404 noindex added")
 
 
 if __name__ == "__main__":

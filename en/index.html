@@ -9,13 +9,15 @@
 <link rel="alternate" hreflang="en" href="https://kernfoundry.github.io/en/index.html">
 <link rel="canonical" href="https://kernfoundry.github.io/en/index.html">
 <meta property="og:url" content="https://kernfoundry.github.io/en/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kernfoundry — academy operations automation">
+<meta property="og:site_name" content="Kernfoundry">
+<meta property="og:description" content="Attendance rates, tuition settlement and parent message drafts from the file you already keep.">
 <meta property="og:image" content="https://kernfoundry.github.io/images/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../assets/site6.css">
 </head>
 <body>
@@ -23,8 +25,8 @@
 
 <div class="promo">
   <div class="wrap">
-    <span><b>New</b> Drop in an attendance file and get settlement plus parent drafts in one pass</span>
-    <a href="notice.html">Read more &rarr;</a>
+    <span><b>New</b> Add an attendance file and get settlement plus parent drafts in one pass</span>
+    <a href="work.html#result">See how &rarr;</a>
   </div>
 </div>
 
@@ -62,8 +64,7 @@
       <a class="lang" href="../index.html" hreflang="ko">한국어</a>
       <a class="hd-cta" href="contact.html">Contact</a>
     </div>
-    <button class="menu-btn" type="button" aria-controls="gnb" aria-label="Menu"
-      onclick="document.getElementById('gnb').classList.toggle('open')">Menu</button>
+    <button class="menu-btn" type="button" aria-controls="gnb" aria-label="Menu">Menu</button>
   </div>
 </header>
 
@@ -71,7 +72,7 @@
   <div class="wrap doc">
     <div class="shead">
       <div class="eyebrow">Academy operations</div>
-      <h2>Attendance, settlement and parent note drafts, from one file</h2>
+      <h1>Attendance, settlement and parent note drafts, from one file</h1>
       <p>Put in the spreadsheet (.xlsx) you already keep and it is done. It counts the rates, settles the tuition, and prepares parent note drafts. Sending and payment stay with the academy.</p>
     </div>
     <table class="result">
@@ -92,93 +93,6 @@
   <div class="wrap doc">
     <div class="shead">
       <div class="eyebrow">Before / after</div>
-      <h2>What changes on Monday morning</h2>
-      <p>Only the work the owner used to handle by hand.</p>
-    </div>
-    <table class="compare">
-      <thead><tr><th>Task</th><th>Before</th><th>After</th></tr></thead>
-      <tbody>
-        <tr><td>Tidying attendance</td><td>Opening the file and counting by hand</td><td><b>Put the file in and it is sorted at once</b></td></tr>
-        <tr><td>Rate calculation</td><td>Dividing by hand from the table</td><td><b>Calculated by the program; odd values split out as warnings</b></td></tr>
-        <tr><td>Parent notes</td><td>Writing sentences anew for each student</td><td><b>Read the draft and confirm</b></td></tr>
-        <tr><td>Finding unpaid students</td><td>Matching payment records one by one</td><td><b>Only the unpaid students are picked out</b></td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section>
-  <div class="wrap doc">
-    <div class="shead">
-      <div class="eyebrow">What it does</div>
-      <h2>Six jobs it takes over</h2>
-      <p>One file starts the chain: calculation, drafting, and a record of what happened. Only what you need is used.</p>
-    </div>
-    <div class="cards">
-      <div class="card">
-        <div class="k">01</div>
-        <h3>Attendance</h3>
-        <p>Reads .xlsx and CSV as they are and counts one rate per student, with absence and late counts.</p>
-      </div>
-      <div class="card t2">
-        <div class="k">02</div>
-        <h3>Parent notes</h3>
-        <p>Drafts an absence or monthly note from the rate. Nothing is sent by the program itself.</p>
-      </div>
-      <div class="card t3">
-        <div class="k">03</div>
-        <h3>Tuition settlement</h3>
-        <p>Compares charge and payment and classifies each student as paid, partial, unpaid or overpaid.</p>
-      </div>
-      <div class="card t2">
-        <div class="k">04</div>
-        <h3>Edge-case warnings</h3>
-        <p>Empty cells, text in numeric columns, a total of zero, attendance above the total: set aside and reported.</p>
-      </div>
-      <div class="card t3">
-        <div class="k">05</div>
-        <h3>Run record and undo</h3>
-        <p>Every run leaves a record, and only the files that run produced are reverted.</p>
-      </div>
-      <div class="card">
-        <div class="k">06</div>
-        <h3>Personal data blocked</h3>
-        <p>Phone numbers, resident registration numbers and card numbers are blocked inside a note.</p>
-      </div>
-    </div>
-    <p>Every run checks 76 items on its own. The full screen is on the <a href="work.html">results</a> page.</p>
-  </div>
-</section>
-
-<section class="alt" id="faq">
-  <div class="wrap doc">
-    <div class="shead">
-      <div class="eyebrow">FAQ</div>
-      <h2>Questions owners ask before starting</h2>
-      <p>In the order owners usually check them.</p>
-    </div>
-    <div class="faq">
-      <details open><summary>Will it read the spreadsheet we already keep?</summary><p>Yes. Put in the .xlsx file you already use and it reads the first sheet. Column names such as name, attended or total classes are found even when they differ. Only the older .xls format needs saving once as .xlsx.</p></details>
-      <details><summary>Do we have to install anything?</summary><p>No install and no server. A web browser is all you need.</p></details>
-      <details><summary>What about personal data?</summary><p>Files are processed on the academy computer and are not transmitted anywhere. If a note would contain a phone number, resident registration number or card number, it is blocked automatically.</p></details>
-      <details><summary>Do parents need an app?</summary><p>No. The notes come out as text that can be sent by SMS or a messaging channel. Sending stays with the academy.</p></details>
-      <details><summary>Does it match our class and term system?</summary><p>Attendance counts and totals are read from your file. Where a different scheme is used, such as per-term packages, the calculation is agreed during onboarding.</p></details>
-      <details><summary>How much does it cost?</summary><p>KRW 39,000 a month (up to 100 students) or KRW 59,000 a month (no limit), VAT excluded. The first 30 days are free and there is no fixed term. Messages are metered at KRW 10&ndash;14 each and our markup is zero.</p></details>
-      <details><summary>Can we stop if it does not fit?</summary><p>There is no fixed term. You can stop at any time, and unused remaining days are refunded pro rata.</p></details>
-      <details><summary>Can a mistake be undone?</summary><p>Yes. Only the output of a single run is reverted; nothing else is touched.</p></details>
-    </div>
-  </div>
-</section>
-
-<div class="cta">
-  <div class="wrap in">
-    <div>
-      <h2>Just tell us your file format</h2>
-      <p>We will confirm whether it fits. You can send it with no commitment.</p>
-    </div>
-    <a class="btn solid" href="contact.html">Contact</a>
-  </div>
-</div>
 
 <section>
   <div class="wrap doc">
@@ -208,12 +122,12 @@
       <p>One file starts the chain: calculation, writing, and a record of what happened.</p>
     </div>
     <div class="cards">
-      <div class="card"><div class="k">01</div><h3>Attendance</h3><p>Reads .xlsx and CSV as they are and calculates one rate per student, with absence and late counts.</p></div>
-      <div class="card t2"><div class="k">02</div><h3>Parent messages</h3><p>Drafts absence or monthly notes from the rate. Nothing is sent by the program.</p></div>
-      <div class="card t3"><div class="k">03</div><h3>Tuition settlement</h3><p>Compares charge and payment, classifies each student, and drafts reminders for unpaid balances.</p></div>
-      <div class="card t2"><div class="k">04</div><h3>Edge-case warnings</h3><p>Empty cells, text in numeric columns, a total of zero, attendance above total: set aside and reported.</p></div>
-      <div class="card t3"><div class="k">05</div><h3>Run record and undo</h3><p>Every run leaves a record, and only the files that run produced can be reverted.</p></div>
-      <div class="card"><div class="k">06</div><h3>Personal data blocked</h3><p>Phone numbers, resident registration numbers and card numbers never enter a message body.</p></div>
+      <div class="card"><div class="k">01</div><h3>Attendance</h2><p>Reads .xlsx and CSV as they are and calculates one rate per student, with absence and late counts.</p></div>
+      <div class="card t2"><div class="k">02</div><h3>Parent messages</h2><p>Drafts absence or monthly notes from the rate. Nothing is sent by the program.</p></div>
+      <div class="card t3"><div class="k">03</div><h3>Tuition settlement</h2><p>Compares charge and payment, classifies each student, and drafts reminders for unpaid balances.</p></div>
+      <div class="card t2"><div class="k">04</div><h3>Edge-case warnings</h2><p>Empty cells, text in numeric columns, a total of zero, attendance above total: set aside and reported.</p></div>
+      <div class="card t3"><div class="k">05</div><h3>Run record and undo</h2><p>Every run leaves a record, and only the files that run produced can be reverted.</p></div>
+      <div class="card"><div class="k">06</div><h3>Personal data blocked</h2><p>Phone numbers, resident registration numbers and card numbers never enter a message body.</p></div>
     </div>
   </div>
 </section>
@@ -261,9 +175,9 @@
       <p>Nothing is uploaded to a cloud service. It runs on the academy computer.</p>
     </div>
     <div class="cards">
-      <div class="card"><div class="k">1</div><h3>No upload</h3><p>Attendance and payment files are processed locally and are not sent to a server.</p></div>
-      <div class="card t2"><div class="k">2</div><h3>Contact details blocked</h3><p>Phone numbers, resident registration numbers and card numbers stop a draft from being written.</p></div>
-      <div class="card t3"><div class="k">3</div><h3>Record and undo</h3><p>Every run leaves a record, and only that run's output can be reverted.</p></div>
+      <div class="card"><div class="k">1</div><h3>No upload</h2><p>Attendance and payment files are processed locally and are not sent to a server.</p></div>
+      <div class="card t2"><div class="k">2</div><h3>Contact details blocked</h2><p>Phone numbers, resident registration numbers and card numbers stop a draft from being written.</p></div>
+      <div class="card t3"><div class="k">3</div><h3>Record and undo</h2><p>Every run leaves a record, and only that run's output can be reverted.</p></div>
     </div>
   </div>
 </section>
@@ -281,7 +195,7 @@
       <details><summary>What about personal data?</summary><p>Files are processed on the academy computer and are not transmitted anywhere. If a message body contains a phone number, resident registration number or card number, the draft is blocked.</p></details>
       <details><summary>Do parents need an app?</summary><p>No. Drafts are plain text that can be sent by SMS or a messaging channel. Sending stays with the academy.</p></details>
       <details><summary>Does it match our class and term system?</summary><p>Attendance counts and totals are read from your file. Where a different scheme is used (per-term packages, for example) we agree on the calculation during onboarding.</p></details>
-      <details><summary>How much does it cost?</summary><p>No price list is published yet. We check your file format first, then quote according to academy size.</p></details>
+      <details><summary>How much does it cost?</summary><p>Monthly 39,000 KRW for up to 100 students, or 59,000 KRW with no student limit, VAT excluded. The first 30 days are free and there is no fixed term. Message delivery is charged at cost only, 10 to 14 KRW per message, with no markup. The <a href="pricing.html">pricing</a> page has the full table.</p></details>
       <details><summary>Can we stop if it does not fit?</summary><p>We start without a fixed term. If it does not fit, you can stop.</p></details>
       <details><summary>Can a mistake be undone?</summary><p>Yes. Only the output of a single run can be reverted; nothing else is touched.</p></details>
     </div>
@@ -385,8 +299,9 @@
   });
 })();
 </script>
-</body>
-</html>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "Organization", "name": "Kernfoundry", "url": "https://kernfoundry.github.io/", "logo": "https://kernfoundry.github.io/images/og.png", "email": "hello@kernfoundry.com", "description": "Academy operations automation software: attendance, parent messages, tuition settlement."}
 </script>
+
+</body>
+</html>
