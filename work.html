@@ -41,7 +41,7 @@
         <div class="sub">
           <a href="work.html#result">실행 결과</a>
           <a href="work.html#tests">자동 검사</a>
-          <a href="work.html#code">코드 예시</a>
+          <a href="work.html#record">실행 기록</a>
         </div>
       </div>
       <div>
@@ -96,7 +96,7 @@
     <div class="feature" id="tests">
       <div class="txt">
         <div class="no">02 — 자동 검사</div>
-        <h3>76개 항목을 매번 확인</h3>
+        <h3>76개 항목을 매번 스스로 확인</h3>
         <p>빈 입력, 숫자가 아닌 값, 검토 전 발송 차단, 개인정보 차단, 되돌리기 범위 등 6개 파일 76개 항목을 실행할 때마다 돌립니다.</p>
       </div>
       <table class="result dark-cap">
@@ -110,20 +110,19 @@
       </table>
     </div>
 
-    <div class="shead" id="code" style="margin-top:76px">
-      <div class="eyebrow">Code</div>
-      <h2>코드로도 씁니다</h2>
-      <p>설치할 패키지가 없습니다. 파이썬 표준 라이브러리만 사용합니다.</p>
+    <div class="shead" id="record">
+      <div class="eyebrow">Record</div>
+      <h2>실행 기록</h2>
+      <p>돌릴 때마다 무엇을 처리했는지 남습니다. 잘못 돌렸으면 그 실행만 되돌립니다.</p>
     </div>
-    <div class="note-box mono" style="white-space:pre;overflow:auto;font-size:14px;line-height:1.75">from pipeline.csv_input import read_table
-from pipeline.attendance_rate import attendance_rate
-from pipeline.notice_draft import generate_drafts
-
-table = read_table("attendance.xlsx")
-rates, warnings = attendance_rate(table.rows)
-drafts = generate_drafts(rates, academy="OO학원")</div>
-    <p style="color:#6b7280">소스 공개 —
-      <a href="https://github.com/kernfoundry" target="_blank" rel="noopener" style="color:#8a2c07">github.com/kernfoundry</a></p>
+    <table class="result">
+      <thead><tr><th>시각</th><th>처리</th><th>결과</th><th>되돌리기</th></tr></thead>
+      <tbody>
+        <tr><td>10:02</td><td>출결 파일 읽기</td><td class="num">학생 24명</td><td><span class="tag info">가능</span></td></tr>
+        <tr><td>10:03</td><td>출석률 계산</td><td class="num">경고 2건 분리</td><td><span class="tag info">가능</span></td></tr>
+        <tr><td>10:03</td><td>안내문 초안 생성</td><td class="num">5건 검토 대기</td><td><span class="tag dim">검토 후</span></td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
 

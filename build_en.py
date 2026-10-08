@@ -60,7 +60,7 @@ HEAD = """<!DOCTYPE html>
         <div class="sub">
           <a href="work.html#result">Results</a>
           <a href="work.html#tests">Automated checks</a>
-          <a href="work.html#code">Code</a>
+          <a href="work.html#record">Record</a>
         </div>
       </div>
       <div>
@@ -100,7 +100,7 @@ FOOT = """
       <ul>
         <li><a href="work.html#result">Results</a></li>
         <li><a href="work.html#tests">Automated checks</a></li>
-        <li><a href="work.html#code">Code</a></li>
+        <li><a href="work.html#record">Record</a></li>
       </ul>
     </div>
     <div><b>Contact</b>
@@ -204,9 +204,9 @@ INDEX = """
         <a class="btn" href="work.html">See it in practice</a>
       </div>
       <div class="metrics">
-        <div><b>6</b><span>operating modules</span></div>
-        <div><b>76</b><span>automated checks</span></div>
-        <div><b>0</b><span>things to install</span></div>
+        <div><b>6</b><span>things it does</span></div>
+        <div><b>76</b><span>self-checks</span></div>
+        <div><b>0</b><span>nothing to install</span></div>
       </div>
     </div>
   </div>
@@ -230,8 +230,28 @@ INDEX = """
 <section>
   <div class="wrap doc">
     <div class="shead">
+      <div class="eyebrow">Your file</div>
+      <h2>Your spreadsheet, as it is</h2>
+      <p>Nothing is re-entered. The file you already keep is the input.</p>
+    </div>
+    <table class="compare">
+      <thead><tr><th>Column in your file</th><th>Value read</th><th>Used for</th></tr></thead>
+      <tbody>
+        <tr><td>Name</td><td>Student</td><td>Row identity</td></tr>
+        <tr><td>Attended / attended days</td><td>Attendance count</td><td>Rate calculation</td></tr>
+        <tr><td>Total classes</td><td>Total</td><td>Rate denominator</td></tr>
+        <tr><td>Notes</td><td>&mdash;</td><td>Not used</td></tr>
+      </tbody>
+    </table>
+    <p class="credit">Column names are matched automatically. Missing columns are agreed during onboarding.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap doc">
+    <div class="shead">
       <div class="eyebrow">Modules</div>
-      <h2>Six parts that work together</h2>
+      <h2>Six jobs it takes over</h2>
       <p>One file starts the chain: calculation, writing, and a record of what happened.</p>
     </div>
     <div class="cards">
@@ -245,7 +265,7 @@ INDEX = """
   </div>
 </section>
 
-<section class="alt">
+<section>
   <div class="wrap doc">
     <div class="shead">
       <div class="eyebrow">Getting started</div>
@@ -279,6 +299,41 @@ INDEX = """
   </div>
 </section>
 
+
+<section class="band-navy">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">Data</div>
+      <h2>Student data stays inside the academy</h2>
+      <p>Nothing is uploaded to a cloud service. It runs on the academy computer.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="k">1</div><h3>No upload</h3><p>Attendance and payment files are processed locally and are not sent to a server.</p></div>
+      <div class="card t2"><div class="k">2</div><h3>Contact details blocked</h3><p>Phone numbers, resident registration numbers and card numbers stop a draft from being written.</p></div>
+      <div class="card t3"><div class="k">3</div><h3>Record and undo</h3><p>Every run leaves a record, and only that run's output can be reverted.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">FAQ</div>
+      <h2>Questions we hear before starting</h2>
+      <p>In the order owners usually check them.</p>
+    </div>
+    <div class="faq">
+      <details open><summary>Will it read our existing spreadsheet?</summary><p>Yes. The .xlsx file you already keep is read as it is; the first sheet is used. Column names such as name, attended, or total classes are matched automatically. Only the older .xls format needs saving as .xlsx once.</p></details>
+      <details><summary>Do we have to install anything?</summary><p>No install and no server. It runs on the computer you already use.</p></details>
+      <details><summary>What about personal data?</summary><p>Files are processed on the academy computer and are not transmitted anywhere. If a message body contains a phone number, resident registration number or card number, the draft is blocked.</p></details>
+      <details><summary>Do parents need an app?</summary><p>No. Drafts are plain text that can be sent by SMS or a messaging channel. Sending stays with the academy.</p></details>
+      <details><summary>Does it match our class and term system?</summary><p>Attendance counts and totals are read from your file. Where a different scheme is used (per-term packages, for example) we agree on the calculation during onboarding.</p></details>
+      <details><summary>How much does it cost?</summary><p>No price list is published yet. We check your file format first, then quote according to academy size.</p></details>
+      <details><summary>Can we stop if it does not fit?</summary><p>We start without a fixed term. If it does not fit, you can stop.</p></details>
+      <details><summary>Can a mistake be undone?</summary><p>Yes. Only the output of a single run can be reverted; nothing else is touched.</p></details>
+    </div>
+  </div>
+</section>
 
 <div class="cta">
   <div class="wrap in">
@@ -392,14 +447,19 @@ WORK = """
       </table>
     </div>
 
-    <div class="shead" id="code" style="margin-top:76px">
-      <div class="eyebrow">Code</div>
-      <h2>Used as a library</h2>
-      <p>No packages to install. Python standard library only.</p>
+    <div class="shead" id="record">
+      <div class="eyebrow">Record</div>
+      <h2>Run record</h2>
+      <p>Every run leaves a record of what it processed. A wrong run can be reverted on its own.</p>
     </div>
-    <div class="note-box mono" style="white-space:pre;overflow:auto;font-size:14px;line-height:1.75">""" + CODE + """</div>
-    <p style="color:#6b7280">Source &mdash;
-      <a href="https://github.com/kernfoundry" target="_blank" rel="noopener" style="color:#8a2c07">github.com/kernfoundry</a></p>
+    <table class="result">
+      <thead><tr><th>Time</th><th>Step</th><th>Result</th><th>Undo</th></tr></thead>
+      <tbody>
+        <tr><td>10:02</td><td>Read attendance file</td><td class="num">24 students</td><td><span class="tag info">available</span></td></tr>
+        <tr><td>10:03</td><td>Calculate rates</td><td class="num">2 warnings split out</td><td><span class="tag info">available</span></td></tr>
+        <tr><td>10:03</td><td>Generate drafts</td><td class="num">5 awaiting review</td><td><span class="tag dim">after review</span></td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
 """
@@ -529,7 +589,7 @@ PAGES = [
     ("business.html", "Product — Kernfoundry",
      "Attendance, parent messages and tuition settlement: what is calculated and what is left to people.", BUSINESS),
     ("work.html", "In practice — Kernfoundry",
-     "Settlement output, automated checks and the library interface.", WORK),
+     "Settlement output, self-checks and the library interface.", WORK),
     ("about.html", "Company — Kernfoundry",
      "Who builds Kernfoundry and why the sending gate exists.", ABOUT),
     ("contact.html", "Contact — Kernfoundry",

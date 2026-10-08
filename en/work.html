@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>In practice — Kernfoundry</title>
-<meta name="description" content="Settlement output, automated checks and the library interface.">
+<meta name="description" content="Settlement output, self-checks and the library interface.">
 <link rel="alternate" hreflang="ko" href="../work.html">
 <link rel="alternate" hreflang="en" href="work.html">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
@@ -39,7 +39,7 @@
         <div class="sub">
           <a href="work.html#result">Results</a>
           <a href="work.html#tests">Automated checks</a>
-          <a href="work.html#code">Code</a>
+          <a href="work.html#record">Record</a>
         </div>
       </div>
       <div>
@@ -96,20 +96,19 @@
       </table>
     </div>
 
-    <div class="shead" id="code" style="margin-top:76px">
-      <div class="eyebrow">Code</div>
-      <h2>Used as a library</h2>
-      <p>No packages to install. Python standard library only.</p>
+    <div class="shead" id="record">
+      <div class="eyebrow">Record</div>
+      <h2>Run record</h2>
+      <p>Every run leaves a record of what it processed. A wrong run can be reverted on its own.</p>
     </div>
-    <div class="note-box mono" style="white-space:pre;overflow:auto;font-size:14px;line-height:1.75">from pipeline.csv_input import read_table
-from pipeline.attendance_rate import attendance_rate
-from pipeline.notice_draft import generate_drafts
-
-table = read_table("attendance.xlsx")
-rates, warnings = attendance_rate(table.rows)
-drafts = generate_drafts(rates, academy="Your Academy")</div>
-    <p style="color:#6b7280">Source &mdash;
-      <a href="https://github.com/kernfoundry" target="_blank" rel="noopener" style="color:#8a2c07">github.com/kernfoundry</a></p>
+    <table class="result">
+      <thead><tr><th>Time</th><th>Step</th><th>Result</th><th>Undo</th></tr></thead>
+      <tbody>
+        <tr><td>10:02</td><td>Read attendance file</td><td class="num">24 students</td><td><span class="tag info">available</span></td></tr>
+        <tr><td>10:03</td><td>Calculate rates</td><td class="num">2 warnings split out</td><td><span class="tag info">available</span></td></tr>
+        <tr><td>10:03</td><td>Generate drafts</td><td class="num">5 awaiting review</td><td><span class="tag dim">after review</span></td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
@@ -130,7 +129,7 @@ drafts = generate_drafts(rates, academy="Your Academy")</div>
       <ul>
         <li><a href="work.html#result">Results</a></li>
         <li><a href="work.html#tests">Automated checks</a></li>
-        <li><a href="work.html#code">Code</a></li>
+        <li><a href="work.html#record">Record</a></li>
       </ul>
     </div>
     <div><b>Contact</b>

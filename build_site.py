@@ -51,7 +51,7 @@ HEAD = """<!DOCTYPE html>
         <div class="sub">
           <a href="work.html#result">실행 결과</a>
           <a href="work.html#tests">자동 검사</a>
-          <a href="work.html#code">코드 예시</a>
+          <a href="work.html#record">실행 기록</a>
         </div>
       </div>
       <div>
@@ -205,9 +205,9 @@ INDEX = """
         <a class="btn" href="work.html">적용 화면 보기</a>
       </div>
       <div class="metrics">
-        <div><b>6</b><span>운영 모듈</span></div>
-        <div><b>76</b><span>자동 검사 항목</span></div>
-        <div><b>0</b><span>설치할 프로그램</span></div>
+        <div><b>6</b><span>기능</span></div>
+        <div><b>76</b><span>자체 점검 항목</span></div>
+        <div><b>0</b><span>설치 필요 없음</span></div>
       </div>
     </div>
   </div>
@@ -231,9 +231,29 @@ INDEX = """
 <section>
   <div class="wrap doc">
     <div class="shead">
+      <div class="eyebrow">Your file</div>
+      <h2>학원 엑셀, 그대로 됩니다</h2>
+      <p>새로 입력하지 않습니다. 쓰던 파일을 그대로 넣습니다.</p>
+    </div>
+    <table class="compare">
+      <thead><tr><th>파일의 칸</th><th>읽는 값</th><th>쓰이는 곳</th></tr></thead>
+      <tbody>
+        <tr><td>이름 / 성명</td><td>학생</td><td>행 구분</td></tr>
+        <tr><td>출석 / 출석일수</td><td>출석 횟수</td><td>출석률 계산</td></tr>
+        <tr><td>총수업 / 수업일수</td><td>총 수업</td><td>출석률 기준</td></tr>
+        <tr><td>비고</td><td>—</td><td>사용하지 않음</td></tr>
+      </tbody>
+    </table>
+    <p class="credit">칸 이름이 달라도 알아서 찾습니다. 없는 칸은 상담할 때 함께 맞춥니다.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap doc">
+    <div class="shead">
       <div class="eyebrow">Modules</div>
-      <h2>여섯 가지가 함께 돌아갑니다</h2>
-      <p>하나의 파일에서 시작해 계산·문장·기록까지 이어집니다. 필요한 것만 켜서 씁니다.</p>
+      <h2>여섯 가지 일을 대신합니다</h2>
+      <p>파일 하나에서 시작해 계산·문장·기록까지 이어집니다. 필요한 것만 씁니다.</p>
     </div>
     <div class="cards">
       <div class="card">
@@ -270,7 +290,7 @@ INDEX = """
   </div>
 </section>
 
-<section class="alt">
+<section>
   <div class="wrap doc">
     <div class="shead">
       <div class="eyebrow">Getting started</div>
@@ -304,6 +324,41 @@ INDEX = """
   </div>
 </section>
 
+
+<section class="band-navy">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">Data</div>
+      <h2>학생 자료는 학원 안에서만 처리됩니다</h2>
+      <p>클라우드에 올리지 않습니다. 학원 컴퓨터에서 돌고, 밖으로 나가지 않습니다.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="k">1</div><h3>밖으로 전송하지 않음</h3><p>출결·수납 파일은 학원 컴퓨터에서 처리됩니다. 서버로 보내지 않습니다.</p></div>
+      <div class="card t2"><div class="k">2</div><h3>연락처 자동 차단</h3><p>안내문에 휴대폰 번호·주민등록번호·카드번호가 들어가면 작성을 막습니다.</p></div>
+      <div class="card t3"><div class="k">3</div><h3>기록 남기고 되돌리기</h3><p>실행할 때마다 무엇을 처리했는지 남고, 그 실행 결과만 되돌릴 수 있습니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">FAQ</div>
+      <h2>도입 전에 많이 묻는 것</h2>
+      <p>원장님이 먼저 확인하는 순서대로 정리했습니다.</p>
+    </div>
+    <div class="faq">
+      <details open><summary>우리 학원 엑셀 파일, 그대로 되나요?</summary><p>됩니다. 학원에서 쓰던 .xlsx 파일을 그대로 넣으면 첫 시트를 읽습니다. 이름·성명, 출석·출석일수, 총수업·수업일수처럼 칸 이름이 달라도 찾아냅니다. 옛 형식(.xls)만 엑셀에서 .xlsx로 한 번 저장해 주시면 됩니다.</p></details>
+      <details><summary>설치해야 하나요?</summary><p>설치 필요 없음이 없습니다. 별도 서버도 필요하지 않습니다.</p></details>
+      <details><summary>개인정보는 괜찮나요?</summary><p>자료는 학원 컴퓨터 안에서 처리되고 밖으로 전송되지 않습니다. 학부모에게 나가는 안내문에 연락처·주민등록번호·카드번호가 들어가면 자동으로 막습니다.</p></details>
+      <details><summary>학부모가 앱을 깔아야 하나요?</summary><p>아닙니다. 안내문은 문자·알림톡으로 보낼 수 있는 문장으로 나옵니다. 발송은 학원에서 하시면 됩니다.</p></details>
+      <details><summary>우리 반·회차 방식 그대로 되나요?</summary><p>학생별 출석 횟수와 총수업을 파일에서 읽어 계산합니다. 회차권·기간권처럼 계산 방식이 다른 경우는 상담할 때 함께 맞춥니다.</p></details>
+      <details><summary>얼마인가요?</summary><p>아직 요금표를 공개하지 않았습니다. 파일 형식을 확인한 뒤 학원 규모에 맞춰 안내드립니다.</p></details>
+      <details><summary>맞지 않으면 그만둘 수 있나요?</summary><p>기간을 정해 두지 않고 시작합니다. 맞지 않으면 중단하실 수 있습니다.</p></details>
+      <details><summary>잘못 돌리면 되돌릴 수 있나요?</summary><p>한 번의 실행이 만든 결과만 골라 되돌릴 수 있습니다. 다른 기록은 건드리지 않습니다.</p></details>
+    </div>
+  </div>
+</section>
 
 <div class="cta">
   <div class="wrap in">
@@ -447,7 +502,7 @@ WORK = """
     <div class="feature" id="tests">
       <div class="txt">
         <div class="no">02 — 자동 검사</div>
-        <h3>76개 항목을 매번 확인</h3>
+        <h3>76개 항목을 매번 스스로 확인</h3>
         <p>빈 입력, 숫자가 아닌 값, 검토 전 발송 차단, 개인정보 차단, 되돌리기 범위 등 6개 파일 76개 항목을 실행할 때마다 돌립니다.</p>
       </div>
       <table class="result dark-cap">
@@ -461,20 +516,19 @@ WORK = """
       </table>
     </div>
 
-    <div class="shead" id="code" style="margin-top:76px">
-      <div class="eyebrow">Code</div>
-      <h2>코드로도 씁니다</h2>
-      <p>설치할 패키지가 없습니다. 파이썬 표준 라이브러리만 사용합니다.</p>
+    <div class="shead" id="record">
+      <div class="eyebrow">Record</div>
+      <h2>실행 기록</h2>
+      <p>돌릴 때마다 무엇을 처리했는지 남습니다. 잘못 돌렸으면 그 실행만 되돌립니다.</p>
     </div>
-    <div class="note-box mono" style="white-space:pre;overflow:auto;font-size:14px;line-height:1.75">from pipeline.csv_input import read_table
-from pipeline.attendance_rate import attendance_rate
-from pipeline.notice_draft import generate_drafts
-
-table = read_table("attendance.xlsx")
-rates, warnings = attendance_rate(table.rows)
-drafts = generate_drafts(rates, academy="OO학원")</div>
-    <p style="color:#6b7280">소스 공개 —
-      <a href="https://github.com/kernfoundry" target="_blank" rel="noopener" style="color:#8a2c07">github.com/kernfoundry</a></p>
+    <table class="result">
+      <thead><tr><th>시각</th><th>처리</th><th>결과</th><th>되돌리기</th></tr></thead>
+      <tbody>
+        <tr><td>10:02</td><td>출결 파일 읽기</td><td class="num">학생 24명</td><td><span class="tag info">가능</span></td></tr>
+        <tr><td>10:03</td><td>출석률 계산</td><td class="num">경고 2건 분리</td><td><span class="tag info">가능</span></td></tr>
+        <tr><td>10:03</td><td>안내문 초안 생성</td><td class="num">5건 검토 대기</td><td><span class="tag dim">검토 후</span></td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
 """
