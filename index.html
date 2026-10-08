@@ -27,7 +27,7 @@
 
 <div class="promo">
   <div class="wrap">
-    <span><b>새로 추가</b> 출결 파일을 올리면 정산과 안내 초안까지 한 번에</span>
+    <span><b>새로 추가</b> 출결 파일을 넣으면 정산과 안내 초안까지 한 번에</span>
     <a href="notice.html">자세히 →</a>
   </div>
 </div>
@@ -71,66 +71,50 @@
   </div>
 </header>
 
-<div class="hero dark" id="main">
-  <div class="wrap in">
-    <div class="hero-copy">
-      <div class="kicker">Academy operations automation</div>
-      <h1>학원 행정의 반복 작업을<br>프로그램이 대신합니다</h1>
-      <p class="lead">학원에서 쓰던 출결 파일을 올리면 출석률 계산과 수강료 정산이 끝나고,
-        학부모에게 보낼 안내문은 초안까지 나옵니다. 이상한 값은 조용히 넘기지 않고 경고로 남기고,
-        초안은 담당자가 확인한 뒤에만 발송됩니다.</p>
-      <div class="actions">
-        <a class="btn solid" href="contact.html">도입 문의</a>
-        <a class="btn" href="work.html">적용 화면 보기</a>
-      </div>
-      <div class="metrics">
-        <div><b>6</b><span>기능</span></div>
-        <div><b>76</b><span>자체 점검 항목</span></div>
-        <div><b>0</b><span>설치 필요 없음</span></div>
-      </div>
-    </div>
-  </div>
-    </div>
-    <div class="hero-side">
-      <table class="result hero-mini">
-        <thead><tr><th>학생</th><th>출석</th><th>총수업</th><th>출석률</th><th>안내문</th></tr></thead>
-        <tbody>
-          <tr><td>학생 1</td><td class="num">18</td><td class="num">20</td><td class="num ok">90.0%</td><td><span class="tag ok">월간 안내</span></td></tr>
-          <tr><td>학생 2</td><td class="num">19</td><td class="num">20</td><td class="num ok">95.0%</td><td><span class="tag ok">월간 안내</span></td></tr>
-          <tr><td>학생 3</td><td class="num">5</td><td class="num">20</td><td class="num warn">25.0%</td><td><span class="tag warn">결석 안내</span></td></tr>
-          <tr><td>학생 4</td><td class="num dim">—</td><td class="num">20</td><td class="num dim">—</td><td><span class="tag dim">입력 확인</span></td></tr>
-        </tbody>
-      </table>
-      <p class="cap">예시 자료입니다. 실제 학생 정보는 쓰지 않습니다.</p>
-    </div>
-  </div>
-</div>
-</div>
-
-<section>
+<section id="main">
   <div class="wrap doc">
     <div class="shead">
-      <div class="eyebrow">Your file</div>
-      <h2>학원 엑셀, 그대로 됩니다</h2>
-      <p>새로 입력하지 않습니다. 쓰던 파일을 그대로 넣습니다.</p>
+      <div class="eyebrow">Academy operations</div>
+      <h2>출결 파일 하나로 정산과 학부모 안내문 초안까지</h2>
+      <p>학원에서 쓰던 엑셀(.xlsx)을 그대로 넣으면 끝납니다. 출석률을 세고, 수강료를 정산하고, 학부모께 보낼 안내문은 초안까지 만들어 둡니다. 발송과 결제는 학원이 합니다.</p>
     </div>
-    <table class="compare">
-      <thead><tr><th>파일의 칸</th><th>읽는 값</th><th>쓰이는 곳</th></tr></thead>
+    <table class="result">
+      <caption>아래는 예시 자료입니다. 실제 학생 정보는 쓰지 않습니다.</caption>
+      <thead><tr><th>학생</th><th>출석</th><th>총수업</th><th>출석률</th><th>안내문</th></tr></thead>
       <tbody>
-        <tr><td>이름 / 성명</td><td>학생</td><td>행 구분</td></tr>
-        <tr><td>출석 / 출석일수</td><td>출석 횟수</td><td>출석률 계산</td></tr>
-        <tr><td>총수업 / 수업일수</td><td>총 수업</td><td>출석률 기준</td></tr>
-        <tr><td>비고</td><td>—</td><td>사용하지 않음</td></tr>
+        <tr><td>학생 1</td><td class="num">18</td><td class="num">20</td><td class="num ok">90.0%</td><td><span class="tag ok">월간 안내</span></td></tr>
+        <tr><td>학생 2</td><td class="num">19</td><td class="num">20</td><td class="num ok">95.0%</td><td><span class="tag ok">월간 안내</span></td></tr>
+        <tr><td>학생 3</td><td class="num">5</td><td class="num">20</td><td class="num warn">25.0%</td><td><span class="tag warn">결석 안내</span></td></tr>
+        <tr><td>학생 4</td><td class="num dim">—</td><td class="num">20</td><td class="num dim">—</td><td><span class="tag dim">입력 확인</span></td></tr>
       </tbody>
     </table>
-    <p class="credit">칸 이름이 달라도 알아서 찾습니다. 없는 칸은 상담할 때 함께 맞춥니다.</p>
+    <p>월 39,000원부터 (학생 100명 이하) · 첫 30일 무료 · 알림톡은 건당 실비 10~14원, 저희 마진은 없습니다. 자세한 요금은 <a href="pricing.html">요금</a>에서 확인하세요.</p>
   </div>
 </section>
 
 <section class="alt">
   <div class="wrap doc">
     <div class="shead">
-      <div class="eyebrow">Modules</div>
+      <div class="eyebrow">Before / after</div>
+      <h2>월요일 아침에 달라지는 것</h2>
+      <p>원장님이 실제로 손대던 일만 적었습니다.</p>
+    </div>
+    <table class="compare">
+      <thead><tr><th>하던 일</th><th>도입 전</th><th>도입 후</th></tr></thead>
+      <tbody>
+        <tr><td>출결 정리</td><td>파일을 열어 손으로 세기</td><td><b>파일을 그대로 넣으면 한 번에 정리</b></td></tr>
+        <tr><td>출석률 계산</td><td>표를 보며 손으로 나누기</td><td><b>프로그램이 계산, 이상값은 경고로 분리</b></td></tr>
+        <tr><td>학부모 안내문</td><td>학생마다 문장을 새로 쓰기</td><td><b>초안이 나오면 확인만</b></td></tr>
+        <tr><td>미납자 확인</td><td>납부 기록과 하나씩 대조</td><td><b>미납자만 추려서 보여줌</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">What it does</div>
       <h2>여섯 가지 일을 대신합니다</h2>
       <p>파일 하나에서 시작해 계산·문장·기록까지 이어집니다. 필요한 것만 씁니다.</p>
     </div>
@@ -138,17 +122,17 @@
       <div class="card">
         <div class="k">01</div>
         <h3>출결 집계</h3>
-        <p>엑셀(.xlsx)·CSV를 그대로 읽어 학생별 출석률과 결석·지각 횟수를 계산합니다.</p>
+        <p>엑셀·CSV를 그대로 읽어 학생별 출석률과 결석·지각 횟수를 셉니다.</p>
       </div>
       <div class="card t2">
         <div class="k">02</div>
         <h3>학부모 안내문</h3>
-        <p>출석률 기준으로 결석 안내와 월간 안내 초안을 작성합니다. 발송은 하지 않습니다.</p>
+        <p>출석률 기준으로 결석 안내와 월간 안내 초안을 만듭니다. 발송은 하지 않습니다.</p>
       </div>
       <div class="card t3">
         <div class="k">03</div>
         <h3>수강료 정산</h3>
-        <p>청구액·납부액을 계산해 완납·일부납·미납·과납을 구분하고 안내 초안을 만듭니다.</p>
+        <p>청구액과 납부액을 계산해 완납·일부납·미납·과납을 구분합니다.</p>
       </div>
       <div class="card t2">
         <div class="k">04</div>
@@ -158,7 +142,7 @@
       <div class="card t3">
         <div class="k">05</div>
         <h3>실행 기록·되돌리기</h3>
-        <p>실행할 때마다 처리 내역을 남기고, 그 실행이 만든 파일만 골라 되돌릴 수 있습니다.</p>
+        <p>실행할 때마다 처리 내역을 남기고, 그 실행이 만든 파일만 골라 되돌립니다.</p>
       </div>
       <div class="card">
         <div class="k">06</div>
@@ -166,60 +150,11 @@
         <p>안내문 본문에 연락처·주민등록번호·카드번호가 들어가면 자동으로 막습니다.</p>
       </div>
     </div>
+    <p>실행할 때마다 76개 항목을 스스로 점검합니다. 자세한 결과는 <a href="work.html">결과 화면</a>에서 볼 수 있습니다.</p>
   </div>
 </section>
 
-<section>
-  <div class="wrap doc">
-    <div class="shead">
-      <div class="eyebrow">Getting started</div>
-      <h2>시작은 파일 하나입니다</h2>
-      <p>설치도, 서버도, 형식 변환도 필요하지 않습니다.</p>
-    </div>
-    <div class="steps">
-      <div class="step"><b>1. 파일 확인</b><p>학원에서 쓰는 출결·수강료 파일을 보내주시면 읽히는지 먼저 확인해 드립니다.</p></div>
-      <div class="step"><b>2. 예시로 검증</b><p>실제 자료로 결과를 뽑아 보고, 경고가 뜨는 항목의 처리 기준을 함께 정합니다.</p></div>
-      <div class="step"><b>3. 운영에 사용</b><p>매주 같은 순서로 돌립니다. 계산과 초안까지 프로그램, 판단과 발송은 담당자.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="wrap doc">
-    <div class="shead">
-      <div class="eyebrow">Before / after</div>
-      <h2>도입 전과 후</h2>
-      <p>학원에서 실제로 달라지는 부분만 적었습니다.</p>
-    </div>
-    <table class="compare">
-      <thead><tr><th>하던 일</th><th>도입 전</th><th>도입 후</th></tr></thead>
-      <tbody>
-        <tr><td>출결 파일 정리</td><td>월요일 오전 3시간</td><td><b>20분</b></td></tr>
-        <tr><td>출석률 계산 실수</td><td>매월 몇 건</td><td><b>0건</b> (이상값은 경고로 분리)</td></tr>
-        <tr><td>학부모 안내문 작성</td><td>학생마다 문장 새로 쓰기</td><td><b>초안 생성 후 확인만</b></td></tr>
-        <tr><td>미납 확인</td><td>납부 기록과 대조</td><td><b>미납자만 자동 추출</b></td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-
-<section class="band-navy">
-  <div class="wrap doc">
-    <div class="shead">
-      <div class="eyebrow">Data</div>
-      <h2>학생 자료는 학원 안에서만 처리됩니다</h2>
-      <p>클라우드에 올리지 않습니다. 학원 컴퓨터에서 돌고, 밖으로 나가지 않습니다.</p>
-    </div>
-    <div class="cards">
-      <div class="card"><div class="k">1</div><h3>밖으로 전송하지 않음</h3><p>출결·수납 파일은 학원 컴퓨터에서 처리됩니다. 서버로 보내지 않습니다.</p></div>
-      <div class="card t2"><div class="k">2</div><h3>연락처 자동 차단</h3><p>안내문에 휴대폰 번호·주민등록번호·카드번호가 들어가면 작성을 막습니다.</p></div>
-      <div class="card t3"><div class="k">3</div><h3>기록 남기고 되돌리기</h3><p>실행할 때마다 무엇을 처리했는지 남고, 그 실행 결과만 되돌릴 수 있습니다.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
+<section class="alt" id="faq">
   <div class="wrap doc">
     <div class="shead">
       <div class="eyebrow">FAQ</div>
@@ -227,13 +162,13 @@
       <p>원장님이 먼저 확인하는 순서대로 정리했습니다.</p>
     </div>
     <div class="faq">
-      <details open><summary>우리 학원 엑셀 파일, 그대로 되나요?</summary><p>됩니다. 학원에서 쓰던 .xlsx 파일을 그대로 넣으면 첫 시트를 읽습니다. 이름·성명, 출석·출석일수, 총수업·수업일수처럼 칸 이름이 달라도 찾아냅니다. 옛 형식(.xls)만 엑셀에서 .xlsx로 한 번 저장해 주시면 됩니다.</p></details>
-      <details><summary>설치해야 하나요?</summary><p>설치 필요 없음이 없습니다. 별도 서버도 필요하지 않습니다.</p></details>
-      <details><summary>개인정보는 괜찮나요?</summary><p>자료는 학원 컴퓨터 안에서 처리되고 밖으로 전송되지 않습니다. 학부모에게 나가는 안내문에 연락처·주민등록번호·카드번호가 들어가면 자동으로 막습니다.</p></details>
+      <details open><summary>우리 학원 엑셀 파일, 그대로 되나요?</summary><p>됩니다. 쓰던 .xlsx 파일을 그대로 넣으면 첫 시트를 읽습니다. 이름·성명, 출석·출석일수, 총수업·수업일수처럼 칸 이름이 달라도 찾아냅니다. 옛 형식(.xls)만 엑셀에서 .xlsx로 한 번 저장해 주세요.</p></details>
+      <details><summary>설치해야 하나요?</summary><p>설치도 서버도 필요 없습니다. 인터넷 브라우저만 있으면 됩니다.</p></details>
+      <details><summary>개인정보는 괜찮나요?</summary><p>자료는 학원 컴퓨터 안에서 처리되고 밖으로 전송되지 않습니다. 안내문 본문에 연락처·주민등록번호·카드번호가 들어가면 자동으로 막습니다.</p></details>
       <details><summary>학부모가 앱을 깔아야 하나요?</summary><p>아닙니다. 안내문은 문자·알림톡으로 보낼 수 있는 문장으로 나옵니다. 발송은 학원에서 하시면 됩니다.</p></details>
       <details><summary>우리 반·회차 방식 그대로 되나요?</summary><p>학생별 출석 횟수와 총수업을 파일에서 읽어 계산합니다. 회차권·기간권처럼 계산 방식이 다른 경우는 상담할 때 함께 맞춥니다.</p></details>
-      <details><summary>얼마인가요?</summary><p>아직 요금표를 공개하지 않았습니다. 파일 형식을 확인한 뒤 학원 규모에 맞춰 안내드립니다.</p></details>
-      <details><summary>맞지 않으면 그만둘 수 있나요?</summary><p>기간을 정해 두지 않고 시작합니다. 맞지 않으면 중단하실 수 있습니다.</p></details>
+      <details><summary>얼마인가요?</summary><p>월 39,000원(학생 100명 이하) 또는 월 59,000원(인원 제한 없음)이고 VAT 별도입니다. 첫 30일은 무료이며 약정은 없습니다. 알림톡 발송은 건당 실비 10~14원만 받고 저희 마진은 0원입니다.</p></details>
+      <details><summary>맞지 않으면 그만둘 수 있나요?</summary><p>약정이 없습니다. 언제든 멈출 수 있고, 남은 기간은 일할로 환불합니다.</p></details>
       <details><summary>잘못 돌리면 되돌릴 수 있나요?</summary><p>한 번의 실행이 만든 결과만 골라 되돌릴 수 있습니다. 다른 기록은 건드리지 않습니다.</p></details>
     </div>
   </div>

@@ -1,0 +1,101 @@
+<section>
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">What we do</div>
+      <h2>Three jobs the owner did every week, finished in order</h2>
+      <p>It counts attendance, drafts the notes to send to parents, and settles tuition. Calculation and drafting are done by the program; the decision and the sending are done by a person.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><b>1. It counts attendance</b><p>Put in the spreadsheet you already use and, on Monday morning, the rates and the absence and late counts are ready.</p></div>
+      <div class="step"><b>2. It drafts the parent notes</b><p>From the rate it prepares the sentences to send to parents. They go out only after the owner has reviewed them.</p></div>
+      <div class="step"><b>3. It settles tuition</b><p>It matches charge and payment and picks out only the unpaid students. The month-end cross-checking is gone.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="attendance">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">01 &mdash; Attendance</div>
+      <h2>It reads attendance as it is</h2>
+      <p>No separate install and no format conversion. On Monday morning you put the file in and read the result.</p>
+    </div>
+    <table class="info">
+      <tr><th>Input</th><td>.xlsx, CSV or TSV &mdash; the first sheet is read</td></tr>
+      <tr><th>Columns</th><td>name / attended / total / absent / late &mdash; recognised even when the names differ</td></tr>
+      <tr><th>Calculation</th><td>Attendance rate per student, plus absence and late counts</td></tr>
+      <tr><th>Edge cases</th><td>Empty cells, non-numeric values, a total of zero, attendance above the total, negative values &rarr; excluded from the result and shown as warnings</td></tr>
+      <tr><th>Record</th><td>Each run leaves what was processed and where the result file went</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="notice">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">02 &mdash; Parent notes</div>
+      <h2>Drafts only; sending stays with a person</h2>
+      <p>A note that reaches a parent goes out only after the owner has reviewed it.</p>
+    </div>
+    <table class="info">
+      <tr><th>Rule</th><td>Below the threshold an absence note, at or above it a monthly note</td></tr>
+      <tr><th>Sending gate</th><td>Drafts are created in a review state &mdash; without a person's review they cannot be marked sendable</td></tr>
+      <tr><th>Personal data</th><td>Phone numbers, resident registration numbers and card numbers are blocked inside the body</td></tr>
+      <tr><th>Sending</th><td>They come out as text that can be sent by SMS or a messaging channel. Sending stays with the academy</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="alt" id="settlement">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">03 &mdash; Tuition settlement</div>
+      <h2>Only the unpaid students are picked out</h2>
+      <p>Charge and payment are matched, and a reminder draft is prepared for the unpaid students. The month-end cross-checking is gone.</p>
+    </div>
+    <table class="info">
+      <tr><th>Charge</th><td>Fee &minus; discount</td></tr>
+      <tr><th>Balance</th><td>Charge &minus; payment</td></tr>
+      <tr><th>Status</th><td>Paid &middot; partially paid &middot; unpaid &middot; overpaid</td></tr>
+      <tr><th>Edge cases</th><td>A discount above the fee, non-numeric amounts, negative values &rarr; shown as warnings</td></tr>
+      <tr><th>Draft</th><td>Created for unpaid students only; no account or card numbers in the body</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="band-navy" id="principle">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">Operating rules</div>
+      <h2>Automation stops at the draft</h2>
+      <p>Anything that reaches a customer or moves money is reviewed by a person first. This rule is kept by the program, not just promised.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="k">1</div>
+        <h3>Review gate</h3>
+        <p>A note without a review record cannot become sendable. The owner has to check it before it moves on.</p>
+      </div>
+      <div class="card t2">
+        <div class="k">2</div>
+        <h3>No invented numbers</h3>
+        <p>When a value looks wrong it is split out as a warning, instead of being filled in with a plausible figure.</p>
+      </div>
+      <div class="card t3">
+        <div class="k">3</div>
+        <h3>Scope of undo</h3>
+        <p>Only the files produced by one run are reverted. The records before and after are left untouched.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap in">
+    <div>
+      <h2>Check it with the file you use now</h2>
+      <p>Tell us the attendance file format and we will confirm first whether it fits.</p>
+    </div>
+    <a class="btn solid" href="contact.html">Contact</a>
+  </div>
+</div>

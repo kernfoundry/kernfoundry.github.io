@@ -1,0 +1,100 @@
+<section>
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">What we do</div>
+      <h2>매주 원장님이 하던 세 가지 일을 순서대로 끝냅니다</h2>
+      <p>출결을 세고, 학부모께 보낼 안내문 초안을 만들고, 수강료를 정산합니다. 계산과 초안까지는 프로그램이, 판단과 발송은 사람이 합니다.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><b>1. 출결을 셉니다</b><p>쓰던 엑셀을 그대로 넣으면 월요일 오전에 출석률과 결석·지각이 정리됩니다.</p></div>
+      <div class="step"><b>2. 안내문 초안을 만듭니다</b><p>출석률 기준으로 학부모께 보낼 문장 초안을 만들어 둡니다. 발송은 원장님 확인 뒤입니다.</p></div>
+      <div class="step"><b>3. 수강료를 정산합니다</b><p>청구액과 납부액을 맞춰 미납자만 추려냅니다. 월말에 하나씩 대조하던 일이 없어집니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="attendance">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">01 — 출결 관리</div>
+      <h2>출결을 그대로 읽습니다</h2>
+      <p>별도 설치나 형식 변환이 필요 없습니다. 월요일 아침, 파일을 넣고 결과만 보면 됩니다.</p>
+    </div>
+    <table class="info">
+      <tr><th>입력</th><td>엑셀(.xlsx) · CSV · TSV — 첫 번째 시트를 읽습니다</td></tr>
+      <tr><th>칸 인식</th><td>이름·성명·학생 / 출석·출석일수 / 총수업·수업일수 / 결석 / 지각 — 이름이 달라도 인식합니다</td></tr>
+      <tr><th>계산</th><td>학생별 출석률(%)과 결석·지각 횟수</td></tr>
+      <tr><th>이상값</th><td>빈값, 숫자가 아닌 값, 총수업 0, 출석 &gt; 총수업, 음수 → 계산에서 빼고 경고로 표시합니다</td></tr>
+      <tr><th>기록</th><td>실행할 때마다 처리 내역과 결과 파일 위치가 남습니다</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="notice">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">02 — 학부모 안내</div>
+      <h2>초안까지만, 발송은 사람이</h2>
+      <p>학부모께 나가는 문장은 원장님이 확인한 뒤에만 나갑니다.</p>
+    </div>
+    <table class="info">
+      <tr><th>생성 기준</th><td>출석률이 기준 미만이면 결석 안내, 이상이면 월간 안내 초안을 만듭니다</td></tr>
+      <tr><th>발송 차단</th><td>초안은 검토 대기 상태로 생성됩니다 — 사람이 확인하기 전에는 발송 표시가 되지 않습니다</td></tr>
+      <tr><th>개인정보</th><td>휴대폰 번호·주민등록번호·카드번호가 본문에 들어가면 자동으로 막습니다</td></tr>
+      <tr><th>발송 방법</th><td>문자·알림톡으로 보낼 수 있는 문장으로 나옵니다. 발송은 학원에서 합니다</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="alt" id="settlement">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">03 — 수강료 정산</div>
+      <h2>미납자만 추려서 보여줍니다</h2>
+      <p>청구액과 납부액을 맞춰 미납자에게 보낼 안내 초안까지 만듭니다. 월말에 하나씩 대조하던 일이 없어집니다.</p>
+    </div>
+    <table class="info">
+      <tr><th>계산</th><td>청구액 = 수강료 − 할인 / 미납액 = 청구액 − 납부액</td></tr>
+      <tr><th>구분</th><td>완납 · 일부납 · 미납 · 과납</td></tr>
+      <tr><th>이상값</th><td>할인이 수강료보다 큰 경우, 숫자가 아닌 금액, 음수 → 경고로 표시합니다</td></tr>
+      <tr><th>안내 초안</th><td>미납자에게만 만들고, 계좌·카드번호는 본문에 넣지 않습니다</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="band-navy" id="principle">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">운영 원칙</div>
+      <h2>자동화는 초안까지</h2>
+      <p>고객에게 닿는 발송과 결제는 반드시 사람이 검토한 뒤 처리합니다. 이 규칙은 약속이 아니라 프로그램이 지킵니다.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="k">1</div>
+        <h3>검토 게이트</h3>
+        <p>안내문은 검토 기록이 없으면 발송 가능 상태가 되지 않습니다. 원장님이 확인해야 다음으로 넘어갑니다.</p>
+      </div>
+      <div class="card t2">
+        <div class="k">2</div>
+        <h3>숫자를 지어내지 않음</h3>
+        <p>값이 이상하면 그럴듯한 숫자로 채우지 않고, 경고로 분리해 원장님께 알립니다.</p>
+      </div>
+      <div class="card t3">
+        <div class="k">3</div>
+        <h3>되돌리기 범위</h3>
+        <p>한 번의 실행이 만든 파일만 골라 되돌립니다. 그 전후 기록은 건드리지 않습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap in">
+    <div>
+      <h2>지금 쓰는 파일로 확인해 보세요</h2>
+      <p>출결 파일 형식을 알려주시면 되는지 먼저 확인해 드립니다.</p>
+    </div>
+    <a class="btn solid" href="contact.html">도입 문의</a>
+  </div>
+</div>

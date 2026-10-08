@@ -245,40 +245,117 @@ rates, warnings = attendance_rate(table.rows)
 drafts = generate_drafts(rates, academy="Your Academy")"""
 
 INDEX = """
-<div class="hero dark" id="main">
+<section id="main">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">Academy operations</div>
+      <h2>Attendance, settlement and parent note drafts, from one file</h2>
+      <p>Put in the spreadsheet (.xlsx) you already keep and it is done. It counts the rates, settles the tuition, and prepares parent note drafts. Sending and payment stay with the academy.</p>
+    </div>
+    <table class="result">
+      <caption>Example data only. No real student information is used.</caption>
+      <thead><tr><th>Student</th><th>Attended</th><th>Total</th><th>Rate</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Student 1</td><td class="num">18</td><td class="num">20</td><td class="num ok">90.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
+        <tr><td>Student 2</td><td class="num">19</td><td class="num">20</td><td class="num ok">95.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
+        <tr><td>Student 3</td><td class="num">5</td><td class="num">20</td><td class="num warn">25.0%</td><td><span class="tag warn">Absence note</span></td></tr>
+        <tr><td>Student 4</td><td class="num dim">&mdash;</td><td class="num">20</td><td class="num dim">&mdash;</td><td><span class="tag dim">Needs input</span></td></tr>
+      </tbody>
+    </table>
+    <p>From KRW 39,000 a month (up to 100 students) &middot; first 30 days free &middot; messages metered at KRW 10&ndash;14 each with no markup from us. The full list is on the <a href="pricing.html">pricing</a> page.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">Before / after</div>
+      <h2>What changes on Monday morning</h2>
+      <p>Only the work the owner used to handle by hand.</p>
+    </div>
+    <table class="compare">
+      <thead><tr><th>Task</th><th>Before</th><th>After</th></tr></thead>
+      <tbody>
+        <tr><td>Tidying attendance</td><td>Opening the file and counting by hand</td><td><b>Put the file in and it is sorted at once</b></td></tr>
+        <tr><td>Rate calculation</td><td>Dividing by hand from the table</td><td><b>Calculated by the program; odd values split out as warnings</b></td></tr>
+        <tr><td>Parent notes</td><td>Writing sentences anew for each student</td><td><b>Read the draft and confirm</b></td></tr>
+        <tr><td>Finding unpaid students</td><td>Matching payment records one by one</td><td><b>Only the unpaid students are picked out</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">What it does</div>
+      <h2>Six jobs it takes over</h2>
+      <p>One file starts the chain: calculation, drafting, and a record of what happened. Only what you need is used.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="k">01</div>
+        <h3>Attendance</h3>
+        <p>Reads .xlsx and CSV as they are and counts one rate per student, with absence and late counts.</p>
+      </div>
+      <div class="card t2">
+        <div class="k">02</div>
+        <h3>Parent notes</h3>
+        <p>Drafts an absence or monthly note from the rate. Nothing is sent by the program itself.</p>
+      </div>
+      <div class="card t3">
+        <div class="k">03</div>
+        <h3>Tuition settlement</h3>
+        <p>Compares charge and payment and classifies each student as paid, partial, unpaid or overpaid.</p>
+      </div>
+      <div class="card t2">
+        <div class="k">04</div>
+        <h3>Edge-case warnings</h3>
+        <p>Empty cells, text in numeric columns, a total of zero, attendance above the total: set aside and reported.</p>
+      </div>
+      <div class="card t3">
+        <div class="k">05</div>
+        <h3>Run record and undo</h3>
+        <p>Every run leaves a record, and only the files that run produced are reverted.</p>
+      </div>
+      <div class="card">
+        <div class="k">06</div>
+        <h3>Personal data blocked</h3>
+        <p>Phone numbers, resident registration numbers and card numbers are blocked inside a note.</p>
+      </div>
+    </div>
+    <p>Every run checks 76 items on its own. The full screen is on the <a href="work.html">results</a> page.</p>
+  </div>
+</section>
+
+<section class="alt" id="faq">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">FAQ</div>
+      <h2>Questions owners ask before starting</h2>
+      <p>In the order owners usually check them.</p>
+    </div>
+    <div class="faq">
+      <details open><summary>Will it read the spreadsheet we already keep?</summary><p>Yes. Put in the .xlsx file you already use and it reads the first sheet. Column names such as name, attended or total classes are found even when they differ. Only the older .xls format needs saving once as .xlsx.</p></details>
+      <details><summary>Do we have to install anything?</summary><p>No install and no server. A web browser is all you need.</p></details>
+      <details><summary>What about personal data?</summary><p>Files are processed on the academy computer and are not transmitted anywhere. If a note would contain a phone number, resident registration number or card number, it is blocked automatically.</p></details>
+      <details><summary>Do parents need an app?</summary><p>No. The notes come out as text that can be sent by SMS or a messaging channel. Sending stays with the academy.</p></details>
+      <details><summary>Does it match our class and term system?</summary><p>Attendance counts and totals are read from your file. Where a different scheme is used, such as per-term packages, the calculation is agreed during onboarding.</p></details>
+      <details><summary>How much does it cost?</summary><p>KRW 39,000 a month (up to 100 students) or KRW 59,000 a month (no limit), VAT excluded. The first 30 days are free and there is no fixed term. Messages are metered at KRW 10&ndash;14 each and our markup is zero.</p></details>
+      <details><summary>Can we stop if it does not fit?</summary><p>There is no fixed term. You can stop at any time, and unused remaining days are refunded pro rata.</p></details>
+      <details><summary>Can a mistake be undone?</summary><p>Yes. Only the output of a single run is reverted; nothing else is touched.</p></details>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
   <div class="wrap in">
-    <div class="hero-copy">
-      <div class="kicker">Academy operations automation</div>
-      <h1>The repetitive part of running<br>an academy, handled by software</h1>
-      <p class="lead">Upload the attendance file you already keep. Rates are calculated, tuition is settled,
-        and parent messages are drafted. Unusual values are flagged instead of guessed, and nothing is sent
-        before a person reviews it.</p>
-      <div class="actions">
-        <a class="btn solid" href="contact.html">Talk to us</a>
-        <a class="btn" href="work.html">See it in practice</a>
-      </div>
-      <div class="metrics">
-        <div><b>6</b><span>things it does</span></div>
-        <div><b>76</b><span>self-checks</span></div>
-        <div><b>0</b><span>nothing to install</span></div>
-      </div>
+    <div>
+      <h2>Just tell us your file format</h2>
+      <p>We will confirm whether it fits. You can send it with no commitment.</p>
     </div>
+    <a class="btn solid" href="contact.html">Contact</a>
   </div>
-    </div>
-    <div class="hero-side">
-      <table class="result hero-mini">
-        <thead><tr><th>Student</th><th>Attended</th><th>Total</th><th>Rate</th><th>Draft</th></tr></thead>
-        <tbody>
-          <tr><td>Student 1</td><td class="num">18</td><td class="num">20</td><td class="num ok">90.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
-          <tr><td>Student 2</td><td class="num">19</td><td class="num">20</td><td class="num ok">95.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
-          <tr><td>Student 3</td><td class="num">5</td><td class="num">20</td><td class="num warn">25.0%</td><td><span class="tag warn">Absence note</span></td></tr>
-          <tr><td>Student 4</td><td class="num dim">&mdash;</td><td class="num">20</td><td class="num dim">&mdash;</td><td><span class="tag dim">Needs input</span></td></tr>
-        </tbody>
-      </table>
-      <p class="cap">Example data only. No real student information is used.</p>
-    </div>
-  </div>
-</div>
 </div>
 """ + """
 <section>
@@ -304,7 +381,7 @@ INDEX = """
 <section class="alt">
   <div class="wrap doc">
     <div class="shead">
-      <div class="eyebrow">Modules</div>
+      <div class="eyebrow">What it does</div>
       <h2>Six jobs it takes over</h2>
       <p>One file starts the chain: calculation, writing, and a record of what happened.</p>
     </div>
@@ -401,121 +478,184 @@ INDEX = """
 """
 
 BUSINESS = """
-<section class="tight">
+<section>
   <div class="wrap doc">
-    <div class="feature" id="attendance" style="border-top:0">
-      <div class="txt">
-        <div class="no">01 &mdash; Attendance</div>
-        <h3>Reads the file you already keep</h3>
-        <p>No installation, no format conversion.</p>
-      </div>
+    <div class="shead">
+      <div class="eyebrow">What we do</div>
+      <h2>Three jobs the owner did every week, finished in order</h2>
+      <p>It counts attendance, drafts the notes to send to parents, and settles tuition. Calculation and drafting are done by the program; the decision and the sending are done by a person.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><b>1. It counts attendance</b><p>Put in the spreadsheet you already use and, on Monday morning, the rates and the absence and late counts are ready.</p></div>
+      <div class="step"><b>2. It drafts the parent notes</b><p>From the rate it prepares the sentences to send to parents. They go out only after the owner has reviewed them.</p></div>
+      <div class="step"><b>3. It settles tuition</b><p>It matches charge and payment and picks out only the unpaid students. The month-end cross-checking is gone.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="attendance">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">01 &mdash; Attendance</div>
+      <h2>It reads attendance as it is</h2>
+      <p>No separate install and no format conversion. On Monday morning you put the file in and read the result.</p>
     </div>
     <table class="info">
       <tr><th>Input</th><td>.xlsx, CSV or TSV &mdash; the first sheet is read</td></tr>
-      <tr><th>Columns</th><td>name / attended / total / absent / late &mdash; common variations are recognised</td></tr>
-      <tr><th>Output</th><td>Attendance rate per student, plus absence and late counts</td></tr>
-      <tr><th>Edge cases</th><td>Empty cells, non-numeric values, total of zero, attended above total, negative values: excluded from the result and reported</td></tr>
-      <tr><th>Record</th><td>Each run writes what was processed and where the output went</td></tr>
-    </table>
-
-    <div class="feature" id="notice">
-      <div class="txt">
-        <div class="no">02 &mdash; Parent messages</div>
-        <h3>Drafts only, sending stays human</h3>
-        <p>Attendance rate decides which note is drafted.</p>
-      </div>
-    </div>
-    <table class="info">
-      <tr><th>Rule</th><td>Below the threshold an absence note, above it a monthly note</td></tr>
-      <tr><th>Sending</th><td>Drafts are created in a review state &mdash; no review record, no sendable draft</td></tr>
-      <tr><th>Privacy</th><td>Phone numbers, resident registration numbers and card numbers are blocked</td></tr>
-      <tr><th>Writing</th><td>An optional language model writes the sentences; a plain template is used when it is unavailable</td></tr>
-    </table>
-
-    <div class="feature" id="settlement">
-      <div class="txt">
-        <div class="no">03 &mdash; Tuition settlement</div>
-        <h3>Charge, payment, balance</h3>
-        <p>Unpaid students are picked out and a reminder draft is prepared.</p>
-      </div>
-    </div>
-    <table class="info">
-      <tr><th>Charge</th><td>Fee minus discount</td></tr>
-      <tr><th>Balance</th><td>Charge minus payment</td></tr>
-      <tr><th>Status</th><td>Paid / partially paid / unpaid / overpaid</td></tr>
-      <tr><th>Edge cases</th><td>Discount above the fee, non-numeric amounts, negative values: reported</td></tr>
-      <tr><th>Draft</th><td>Created for unpaid students only; no account or card numbers in the body</td></tr>
-    </table>
-
-    <div class="feature" id="principle">
-      <div class="txt">
-        <div class="no">Operating rules</div>
-        <h3>Automation drafts, people decide</h3>
-        <p>Anything that reaches a parent or moves money is reviewed by a person first. The rule is enforced in code, not in a policy document.</p>
-      </div>
-    </div>
-    <table class="info">
-      <tr><th>Draft state</th><td>Without a review record the draft cannot be sent</td></tr>
-      <tr><th>Personal data</th><td>Contact details and card numbers never enter message bodies</td></tr>
-      <tr><th>Undo</th><td>Only the files produced by one run can be reverted, and only those</td></tr>
-      <tr><th>Warnings first</th><td>When a value looks wrong, the program reports it instead of inventing a number</td></tr>
+      <tr><th>Columns</th><td>name / attended / total / absent / late &mdash; recognised even when the names differ</td></tr>
+      <tr><th>Calculation</th><td>Attendance rate per student, plus absence and late counts</td></tr>
+      <tr><th>Edge cases</th><td>Empty cells, non-numeric values, a total of zero, attendance above the total, negative values &rarr; excluded from the result and shown as warnings</td></tr>
+      <tr><th>Record</th><td>Each run leaves what was processed and where the result file went</td></tr>
     </table>
   </div>
 </section>
+
+<section id="notice">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">02 &mdash; Parent notes</div>
+      <h2>Drafts only; sending stays with a person</h2>
+      <p>A note that reaches a parent goes out only after the owner has reviewed it.</p>
+    </div>
+    <table class="info">
+      <tr><th>Rule</th><td>Below the threshold an absence note, at or above it a monthly note</td></tr>
+      <tr><th>Sending gate</th><td>Drafts are created in a review state &mdash; without a person's review they cannot be marked sendable</td></tr>
+      <tr><th>Personal data</th><td>Phone numbers, resident registration numbers and card numbers are blocked inside the body</td></tr>
+      <tr><th>Sending</th><td>They come out as text that can be sent by SMS or a messaging channel. Sending stays with the academy</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="alt" id="settlement">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">03 &mdash; Tuition settlement</div>
+      <h2>Only the unpaid students are picked out</h2>
+      <p>Charge and payment are matched, and a reminder draft is prepared for the unpaid students. The month-end cross-checking is gone.</p>
+    </div>
+    <table class="info">
+      <tr><th>Charge</th><td>Fee &minus; discount</td></tr>
+      <tr><th>Balance</th><td>Charge &minus; payment</td></tr>
+      <tr><th>Status</th><td>Paid &middot; partially paid &middot; unpaid &middot; overpaid</td></tr>
+      <tr><th>Edge cases</th><td>A discount above the fee, non-numeric amounts, negative values &rarr; shown as warnings</td></tr>
+      <tr><th>Draft</th><td>Created for unpaid students only; no account or card numbers in the body</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="band-navy" id="principle">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">Operating rules</div>
+      <h2>Automation stops at the draft</h2>
+      <p>Anything that reaches a customer or moves money is reviewed by a person first. This rule is kept by the program, not just promised.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="k">1</div>
+        <h3>Review gate</h3>
+        <p>A note without a review record cannot become sendable. The owner has to check it before it moves on.</p>
+      </div>
+      <div class="card t2">
+        <div class="k">2</div>
+        <h3>No invented numbers</h3>
+        <p>When a value looks wrong it is split out as a warning, instead of being filled in with a plausible figure.</p>
+      </div>
+      <div class="card t3">
+        <div class="k">3</div>
+        <h3>Scope of undo</h3>
+        <p>Only the files produced by one run are reverted. The records before and after are left untouched.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap in">
+    <div>
+      <h2>Check it with the file you use now</h2>
+      <p>Tell us the attendance file format and we will confirm first whether it fits.</p>
+    </div>
+    <a class="btn solid" href="contact.html">Contact</a>
+  </div>
+</div>
 """
 
 WORK = """
 <section class="tight">
   <div class="wrap doc">
-    <div class="feature" id="result" style="border-top:0">
-      <div class="txt">
-        <div class="no">01 &mdash; Settlement</div>
-        <h3>Unpaid balances only</h3>
-        <p>Charge 1,150,000 / paid 700,000 / unpaid 450,000. Reminder drafts for two students are created in a review state.</p>
-      </div>
-      <table class="result dark-cap">
-        <thead><tr><th>Student</th><th>Charge</th><th>Paid</th><th>Balance</th><th>Status</th></tr></thead>
-        <tbody>
-          <tr><td>Student 1</td><td>300,000</td><td>300,000</td><td class="ok">0</td><td><span class="tag ok">Paid</span></td></tr>
-          <tr><td>Student 2</td><td>300,000</td><td>250,000</td><td class="dim">0</td><td><span class="tag ok">Paid</span></td></tr>
-          <tr><td>Student 3</td><td>300,000</td><td>150,000</td><td class="warn">150,000</td><td><span class="tag dim">Partial</span></td></tr>
-          <tr><td>Student 4</td><td>300,000</td><td>0</td><td class="warn">300,000</td><td><span class="tag warn">Unpaid</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="feature" id="tests">
-      <div class="txt">
-        <div class="no">02 &mdash; Automated checks</div>
-        <h3>76 checks on every run</h3>
-        <p>Six files, seventy-six checks, executed whenever the pipeline runs.</p>
-      </div>
-      <table class="result dark-cap">
-        <thead><tr><th>Check</th><th>What it verifies</th><th>Result</th></tr></thead>
-        <tbody>
-          <tr><td>Empty input</td><td>Missing values stop nothing; they are separated as warnings</td><td><span class="tag ok">Pass</span></td></tr>
-          <tr><td>Non-numeric values</td><td>Text such as "twelve" is excluded from the arithmetic</td><td><span class="tag ok">Pass</span></td></tr>
-          <tr><td>Sending gate</td><td>Without a review record a draft stays un-sendable</td><td><span class="tag ok">Pass</span></td></tr>
-          <tr><td>Personal data</td><td>Contact numbers and card numbers are blocked from message bodies</td><td><span class="tag ok">Pass</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="shead" id="record">
-      <div class="eyebrow">Record</div>
-      <h2>Run record</h2>
-      <p>Every run leaves a record of what it processed. A wrong run can be reverted on its own.</p>
+    <div class="shead" id="result">
+      <div class="eyebrow">Results</div>
+      <h2>The result stays as numbers</h2>
+      <p>This is the screen from running example data. No real student information is used. Only confirmed values are shown.</p>
     </div>
     <table class="result">
-      <thead><tr><th>Time</th><th>Step</th><th>Result</th><th>Undo</th></tr></thead>
+      <caption>Attendance and parent note drafts (example)</caption>
+      <thead><tr><th>Student</th><th>Attended</th><th>Total</th><th>Rate</th><th>Note</th></tr></thead>
       <tbody>
-        <tr><td>10:02</td><td>Read attendance file</td><td class="num">24 students</td><td><span class="tag info">available</span></td></tr>
-        <tr><td>10:03</td><td>Calculate rates</td><td class="num">2 warnings split out</td><td><span class="tag info">available</span></td></tr>
-        <tr><td>10:03</td><td>Generate drafts</td><td class="num">5 awaiting review</td><td><span class="tag dim">after review</span></td></tr>
+        <tr><td>Student 1</td><td class="num">18</td><td class="num">20</td><td class="num">90.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
+        <tr><td>Student 2</td><td class="num">19</td><td class="num">20</td><td class="num">95.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
+        <tr><td>Student 3</td><td class="num">5</td><td class="num">20</td><td class="num warn">25.0%</td><td><span class="tag warn">Absence note</span></td></tr>
+        <tr><td>Student 4</td><td class="num dim">&mdash;</td><td class="num">20</td><td class="num dim">&mdash;</td><td><span class="tag dim">Needs input</span></td></tr>
+      </tbody>
+    </table>
+    <p>A low rate like Student 3 becomes an absence note draft. A missing value like Student 4 is not filled in with a guess; it is kept aside as &ldquo;needs input&rdquo;.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap doc">
+    <div class="shead" id="tests">
+      <div class="eyebrow">Self-checks</div>
+      <h2>It checks 76 items on every run</h2>
+      <p>Each time a file is processed the groups below are run. Unusual values are taken out of the calculation and left as warnings.</p>
+    </div>
+    <table class="result">
+      <caption>Self-checks that run before a file is processed (76 in total)</caption>
+      <thead><tr><th>Check group</th><th>Items</th><th>What it checks</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>Reading the attendance file</td><td class="num">18</td><td>Finds the columns even when the names differ; empty cells are split out as warnings</td><td><span class="tag ok">Pass</span></td></tr>
+        <tr><td>Rate calculation</td><td class="num">14</td><td>A total of zero, attendance above the total, non-numeric values</td><td><span class="tag ok">Pass</span></td></tr>
+        <tr><td>Tuition settlement</td><td class="num">16</td><td>Paid &middot; partial &middot; unpaid &middot; overpaid, and a discount above the fee</td><td><span class="tag ok">Pass</span></td></tr>
+        <tr><td>Note drafts</td><td class="num">12</td><td>Class, session and amount agree with the calculated result</td><td><span class="tag ok">Pass</span></td></tr>
+        <tr><td>Personal data</td><td class="num">8</td><td>Phone numbers, resident registration numbers and card numbers block the body</td><td><span class="tag ok">Pass</span></td></tr>
+        <tr><td>Review and undo</td><td class="num">8</td><td>No review record, no sendable draft; one run can be reverted</td><td><span class="tag ok">Pass</span></td></tr>
+        <tr><td>Total</td><td class="num">76</td><td>All six groups run every time</td><td><span class="tag ok">Pass</span></td></tr>
       </tbody>
     </table>
   </div>
 </section>
+
+<section class="alt">
+  <div class="wrap doc">
+    <div class="shead" id="record">
+      <div class="eyebrow">Record</div>
+      <h2>What was done, with the time</h2>
+      <p>Every run adds to the record. If a run was wrong, that run alone is reverted.</p>
+    </div>
+    <table class="result">
+      <caption>Example record from one run</caption>
+      <thead><tr><th>Time</th><th>Step</th><th>Result</th><th>Undo</th></tr></thead>
+      <tbody>
+        <tr><td>10:02</td><td>Read the attendance file</td><td class="num">24 students</td><td><span class="tag info">available</span></td></tr>
+        <tr><td>10:03</td><td>Calculate rates</td><td class="num">2 warnings split out</td><td><span class="tag info">available</span></td></tr>
+        <tr><td>10:03</td><td>Create note drafts</td><td class="num">5 awaiting review</td><td><span class="tag dim">after review</span></td></tr>
+        <tr><td>10:05</td><td>Owner review</td><td class="num">3 approved &middot; 2 held</td><td><span class="tag dim">after review</span></td></tr>
+      </tbody>
+    </table>
+    <p>Example record. The actual sending is done by the academy. A note with no review record does not become sendable.</p>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap in">
+    <div>
+      <h2>Check this screen with your own files</h2>
+      <p>Send the attendance file you use and we will build the same result screen for you.</p>
+    </div>
+    <a class="btn solid" href="contact.html">Contact</a>
+  </div>
+</div>
 """
 
 ABOUT = """
@@ -611,7 +751,7 @@ NOTICE = """
 
     <p class="date">2026.10.07</p>
     <h3 id="n3">Before sending a payment reminder</h3>
-    <p>Drafts produced by the settlement module are drafts. Three checks before sending:</p>
+    <p>Drafts produced by the settlement result are drafts. Three checks before sending:</p>
     <ol>
       <li>Confirm the amount matches the actual deposit.</li>
       <li>Update the paid flag first, so nobody who already paid receives a reminder.</li>
@@ -641,52 +781,55 @@ NOTFOUND = """
 
 
 PRICING = """
-<section id="main">
+<section class="tight">
   <div class="wrap doc">
     <div class="shead">
       <div class="eyebrow">Pricing</div>
-      <h2>Pricing</h2>
-      <p>No setup fee. The first 30 days are free. Start and stop month by month.</p>
+      <h2>No setup fee. The first 30 days are free.</h2>
+      <p>Start and stop month by month, with no fixed term. Beyond the monthly fee we add nothing of our own.</p>
     </div>
     <table class="compare">
-      <thead><tr><th>Plan</th><th>Small</th><th>Unlimited</th></tr></thead>
+      <thead><tr><th>Item</th><th>Small</th><th>Unlimited</th></tr></thead>
       <tbody>
         <tr><td>Who it covers</td><td>Up to 100 students</td><td>No limit</td></tr>
-        <tr><td>Monthly fee</td><td><b>KRW 39,000</b> <span class="dim">(VAT excluded)</span></td><td><b>KRW 59,000</b> <span class="dim">(VAT excluded)</span></td></tr>
-        <tr><td>Message sending</td><td colspan="2">Metered at cost (KRW 10-14 per message). <b>No markup.</b></td></tr>
-        <tr><td>Balance classification</td><td>Included</td><td>Included</td></tr>
-        <tr><td>Stage-based message drafts</td><td>Included</td><td>Included</td></tr>
-        <tr><td>Recovery dashboard</td><td>Included</td><td>Included</td></tr>
-        <tr><td>Formal notice drafts</td><td>Included</td><td>Included</td></tr>
-        <tr><td>Refunds</td><td>Pro rata for unused days</td><td>Pro rata for unused days</td></tr>
-        <tr><td>Install or server</td><td>Not needed</td><td>Not needed</td></tr>
+        <tr><td>Monthly fee</td><td><b>KRW 39,000</b> (VAT excluded)</td><td><b>KRW 59,000</b> (VAT excluded)</td></tr>
+        <tr><td>Message sending</td><td colspan="2">Metered at cost, <b>KRW 10&ndash;14</b> per message. <b>Zero markup</b> &mdash; the same rate the academy is charged.</td></tr>
         <tr><td>First 30 days</td><td>Free</td><td>Free</td></tr>
+        <tr><td>Fixed term</td><td>None</td><td>None</td></tr>
         <tr><td>Cancellation</td><td>Anytime</td><td>Anytime</td></tr>
+        <tr><td>Refunds</td><td>Pro rata for unused days</td><td>Pro rata for unused days</td></tr>
+        <tr><td>Attendance, tuition settlement and note drafts</td><td>Included</td><td>Included</td></tr>
+        <tr><td>Install or server</td><td>Not needed</td><td>Not needed</td></tr>
       </tbody>
     </table>
-    <p class="credit">No hidden costs. Message sending is metered at cost with zero markup. Refunds follow the <a href="terms.html">terms of service</a>.</p>
-    <div class="cta" style="margin-top:52px">
-      <div class="wrap in">
-        <div>
-          <h2>Start with one list</h2>
-          <p>Send us your unpaid-balance list and we will show what the program reads and drafts.</p>
-        </div>
-        <a class="btn solid" href="contact.html">Contact</a>
-      </div>
-    </div>
+    <p>The monthly fee excludes VAT. Message sending is charged at the carrier's cost of KRW 10&ndash;14 per message, and we add nothing to it. Refunds follow the <a href="terms.html">terms of service</a>.</p>
+  </div>
+</section>
 
-    <div class="shead" style="margin-top:64px">
-      <div class="eyebrow">Onboarding</div>
-      <h2>Getting started</h2>
-      <p>Three steps, usually within a week.</p>
+<section>
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">Getting started</div>
+      <h2>Usually done within a week</h2>
+      <p>There is nothing new for the academy to prepare. We use the files you already keep.</p>
     </div>
     <div class="steps">
-      <div class="step"><b>1. File check</b><p>Send the unpaid-balance list you keep (.xlsx or CSV) and we confirm it reads correctly.</p></div>
-      <div class="step"><b>2. Setup</b><p>We configure the overdue stages and message tone for your academy.</p></div>
-      <div class="step"><b>3. Run it</b><p>Upload the list each month, review the drafts, send. Recovery results accumulate automatically.</p></div>
+      <div class="step"><b>1. File check</b><p>Send the attendance and tuition files you use (.xlsx or CSV). We confirm first that they read correctly.</p></div>
+      <div class="step"><b>2. Set up for your academy</b><p>We set the overdue stages and the tone of the notes to fit your academy. We do this part for you.</p></div>
+      <div class="step"><b>3. Start running</b><p>Each month, add the files and review the drafts before sending. The results build up in the record.</p></div>
     </div>
   </div>
 </section>
+
+<div class="cta">
+  <div class="wrap in">
+    <div>
+      <h2>Use the first 30 days free</h2>
+      <p>No fixed term and no penalty. Send your files and we will show you the same result screen first.</p>
+    </div>
+    <a class="btn solid" href="contact.html">Contact</a>
+  </div>
+</div>
 """
 
 TERMS = """
@@ -701,7 +844,7 @@ TERMS = """
       <h3>1. What the service does</h3>
       <p>Software that reads academy records (attendance, payments) and produces calculations and draft messages. Sending messages and the final decision remain with the academy.</p>
       <h3>2. Fees and payment</h3>
-      <p>Fees follow the pricing page. The first 30 days are free, then billing is monthly. Recovery-based amounts are calculated from what the system records.</p>
+      <p>Fees follow the pricing page. The first 30 days are free, then billing is monthly. Fees follow the pricing page (KRW 39,000 / 59,000 per month).</p>
       <h3>3. Cancellation</h3>
       <p>There is no fixed term. Tell us before the start of the next month and billing stops.</p>
       <h3>4. Refunds</h3>
@@ -726,7 +869,7 @@ PAGES = [
     ("business.html", "Product — Kernfoundry",
      "Attendance, parent messages and tuition settlement: what is calculated and what is left to people.", BUSINESS),
     ("work.html", "In practice — Kernfoundry",
-     "Settlement output, self-checks and the library interface.", WORK),
+     "Settlement output, self-checks and the run record.", WORK),
     ("about.html", "Company — Kernfoundry",
      "Who builds Kernfoundry and why the sending gate exists.", ABOUT),
     ("contact.html", "Contact — Kernfoundry",
