@@ -53,10 +53,13 @@ nav.main .sub a:hover{background:var(--bg-alt);color:var(--ink)}
 .hero.dark .btn.solid:hover{background:#e6e7ea}
 .hero.dark .kicker{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#c2410c;font-weight:700}
 .hero.dark .shot img{border-color:#242629}
-.hero .in{display:grid;grid-template-columns:1fr 1.12fr;gap:60px;align-items:center}
+.hero .in{display:block}
+.hero .in>div:first-child{max-width:780px}
+.hero .lead{max-width:660px}
+.hero .shot{margin-top:54px}
 .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.16em;color:var(--accent);text-transform:uppercase}
 .hero h1{font-size:clamp(32px,4.2vw,52px);line-height:1.22;letter-spacing:-.03em;font-weight:800;margin:18px 0 22px}
-.hero p.lead{font-size:18px;color:var(--body);margin:0 0 34px;max-width:520px}
+.hero p.lead{font-size:18px;color:var(--body);margin:0 0 32px;max-width:660px}
 .actions{display:flex;gap:12px;flex-wrap:wrap}
 .btn{display:inline-block;border:1px solid var(--line-strong);border-radius:4px;padding:12px 22px;
   font-size:15px;font-weight:600;background:#fff;color:var(--ink);cursor:pointer}
@@ -79,16 +82,35 @@ section.alt{background:var(--bg-alt);border-top:1px solid var(--line);border-bot
 .shead p{color:var(--body);margin:0}
 
 /* 기능 행 */
-.feature{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding:52px 0;border-top:1px solid var(--line)}
+.feature{display:block;padding:56px 0;border-top:1px solid var(--line)}
+.feature .txt{max-width:760px}
+.feature .pic{margin-top:30px}
 .feature:first-of-type{border-top:0}
 .feature .no{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--accent)}
 .feature h3{font-size:24px;letter-spacing:-.02em;margin:10px 0 12px;font-weight:700}
 .feature p{color:var(--body);margin:0 0 14px}
-.feature ul{margin:0;padding-left:18px;color:var(--dim);font-size:15.5px}
+.feature ul{margin:0;padding-left:18px;color:var(--dim);font-size:15.5px;max-width:760px;columns:2;column-gap:36px}
 .feature li{margin:5px 0}
-.feature .pic img{width:100%;display:block;border-radius:8px;border:1px solid var(--line)}
-.feature.rev .txt{order:2}
-.feature.rev .pic{order:1}
+.feature .pic img{width:100%;display:block;border-radius:10px;border:1px solid var(--line);box-shadow:0 20px 40px rgba(9,16,29,.10)}
+
+/* 결과 표 (히어로 아래) */
+.hero-table{background:var(--navy);padding:0 0 66px}
+.hero-table .wrap{max-width:1000px}
+table.result{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 24px 48px rgba(0,0,0,.35)}
+table.result caption{caption-side:top;text-align:left;color:#8fa3bd;font-size:13.5px;padding:0 2px 12px}
+table.result th,table.result td{padding:14px 18px;text-align:left;font-size:15px;border-bottom:1px solid #eef1f6}
+table.result thead th{background:#f7f9fc;font-size:13px;font-weight:700;color:#8a94a6;letter-spacing:.02em}
+table.result tbody tr:last-child td{border-bottom:0}
+table.result td:first-child{font-weight:700;color:#1b2b45}
+table.result td.ok{color:#0f7b4f;font-weight:700}
+table.result td.warn{color:#c2410c;font-weight:700}
+table.result td.dim{color:#8a94a6}
+.tag{display:inline-block;padding:4px 10px;border-radius:11px;font-size:12.5px;font-weight:700}
+.tag.ok{background:#e8f6ef;color:#0f7b4f}
+.tag.warn{background:#fdeee7;color:#c2410c}
+.tag.dim{background:#fdf4e3;color:#a16207}
+.hero-table .cap{color:#8fa3bd;font-size:13.5px;margin:14px 2px 0}
+
 
 /* 전폭 이미지 */
 .band{position:relative;margin:0}

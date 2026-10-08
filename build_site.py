@@ -166,9 +166,21 @@ INDEX = """
         <div><b>0</b><span>외부 라이브러리</span></div>
       </div>
     </div>
-    <div class="shot">
-      <img src="images/screen-attendance.svg" alt="출결 리포트 화면">
-    </div>
+  </div>
+</div>
+<div class="hero-table">
+  <div class="wrap">
+    <table class="result">
+      <caption>출결 파일을 올렸을 때 나오는 결과 (예시)</caption>
+      <thead><tr><th>학생</th><th>출석</th><th>총수업</th><th>출석률</th><th>안내문</th></tr></thead>
+      <tbody>
+        <tr><td>김민수</td><td>18</td><td>20</td><td class="ok">90.0%</td><td><span class="tag ok">월간 안내</span></td></tr>
+        <tr><td>정다움</td><td>19</td><td>20</td><td class="ok">95.0%</td><td><span class="tag ok">월간 안내</span></td></tr>
+        <tr><td>한가영</td><td>5</td><td>20</td><td class="warn">25.0%</td><td><span class="tag warn">결석 안내</span></td></tr>
+        <tr><td>박철수</td><td>10</td><td>0</td><td class="dim">—</td><td><span class="tag dim">입력 확인</span></td></tr>
+      </tbody>
+    </table>
+    <p class="cap">계산은 프로그램이, 발송 여부는 담당자가 판단합니다. 초안은 검토 대기 상태로 남습니다.</p>
   </div>
 </div>
 
@@ -191,7 +203,6 @@ INDEX = """
           <li>별도 프로그램 설치 없이 표준 라이브러리만 사용</li>
         </ul>
       </div>
-      <div class="pic"><img src="images/screen-import.svg" alt="파일 불러오기와 칸 자동 인식 화면"></div>
     </div>
 
     <div class="feature rev">
@@ -205,7 +216,6 @@ INDEX = """
           <li>문장 생성은 언어 모델을 붙일 수 있고, 안 되면 기본 문장으로 대체</li>
         </ul>
       </div>
-      <div class="pic"><img src="images/screen-notice.svg" alt="학부모 안내 초안 화면"></div>
     </div>
 
     <div class="feature">
@@ -219,7 +229,6 @@ INDEX = """
           <li>안내 초안에 계좌·카드번호를 넣지 않음</li>
         </ul>
       </div>
-      <div class="pic"><img src="images/screen-settlement.svg" alt="수강료 정산 화면"></div>
     </div>
   </div>
 </section>
@@ -300,10 +309,6 @@ ABOUT = """
     <p>그래서 필요한 부분을 직접 프로그램으로 만들었습니다. 계산은 프로그램이 하고, 판단과 발송은 사람이 합니다.
        잘못된 값은 넘기지 않고 경고로 남기고, 학부모님께 나가는 초안은 반드시 검토 상태를 거치게 했습니다.</p>
     <p>같은 일을 반복하는 다른 교육 사업자에게도 도움이 되기를 바랍니다.</p>
-    <div class="pic-grid">
-      <img src="images/photo-classroom.jpg" alt="학원 강의실">
-      <img src="images/photo-classroom2.jpg" alt="수업 공간">
-    </div>
 
     <div class="shead" id="history" style="margin-top:70px">
       <div class="eyebrow">History</div>
@@ -406,16 +411,32 @@ WORK = """
           <li>할인이 수강료보다 큰 경우 경고</li>
         </ul>
       </div>
-      <div class="pic"><img src="images/screen-settlement.svg" alt="수강료 정산 화면"></div>
+      <table class="result dark-cap">
+        <thead><tr><th>학생</th><th>청구액</th><th>납부액</th><th>미납액</th><th>상태</th></tr></thead>
+        <tbody>
+          <tr><td>김민수</td><td>300,000</td><td>300,000</td><td class="ok">0</td><td><span class="tag ok">완납</span></td></tr>
+          <tr><td>정다움</td><td>300,000</td><td>250,000</td><td class="dim">0</td><td><span class="tag ok">완납</span></td></tr>
+          <tr><td>한가영</td><td>300,000</td><td>150,000</td><td class="warn">150,000</td><td><span class="tag dim">일부납</span></td></tr>
+          <tr><td>최지우</td><td>300,000</td><td>0</td><td class="warn">300,000</td><td><span class="tag warn">미납</span></td></tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="feature rev" id="tests">
+    <div class="feature" id="tests">
       <div class="txt">
         <div class="no">02 — 자동 검사</div>
         <h3>76개 항목을 매번 확인</h3>
         <p>빈 입력, 숫자가 아닌 값, 검토 전 발송 차단, 개인정보 차단, 되돌리기 범위 등 6개 파일 76개 항목을 실행할 때마다 돌립니다.</p>
       </div>
-      <div class="pic"><img src="images/screen-tests.svg" alt="자동 검사 결과 화면"></div>
+      <table class="result dark-cap">
+        <thead><tr><th>검사 항목</th><th>내용</th><th>결과</th></tr></thead>
+        <tbody>
+          <tr><td>빈 입력</td><td>값이 비어 있어도 멈추지 않고 경고로 분리</td><td><span class="tag ok">통과</span></td></tr>
+          <tr><td>숫자 아닌 값</td><td>"열두 번" 같은 문자를 계산에서 제외</td><td><span class="tag ok">통과</span></td></tr>
+          <tr><td>검토 전 발송</td><td>검토 기록 없으면 발송 불가 상태 유지</td><td><span class="tag ok">통과</span></td></tr>
+          <tr><td>개인정보</td><td>연락처·주민등록번호·카드번호 본문 포함 시 차단</td><td><span class="tag ok">통과</span></td></tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="shead" id="code" style="margin-top:76px">

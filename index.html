@@ -77,9 +77,21 @@
         <div><b>0</b><span>외부 라이브러리</span></div>
       </div>
     </div>
-    <div class="shot">
-      <img src="images/screen-attendance.svg" alt="출결 리포트 화면">
-    </div>
+  </div>
+</div>
+<div class="hero-table">
+  <div class="wrap">
+    <table class="result">
+      <caption>출결 파일을 올렸을 때 나오는 결과 (예시)</caption>
+      <thead><tr><th>학생</th><th>출석</th><th>총수업</th><th>출석률</th><th>안내문</th></tr></thead>
+      <tbody>
+        <tr><td>김민수</td><td>18</td><td>20</td><td class="ok">90.0%</td><td><span class="tag ok">월간 안내</span></td></tr>
+        <tr><td>정다움</td><td>19</td><td>20</td><td class="ok">95.0%</td><td><span class="tag ok">월간 안내</span></td></tr>
+        <tr><td>한가영</td><td>5</td><td>20</td><td class="warn">25.0%</td><td><span class="tag warn">결석 안내</span></td></tr>
+        <tr><td>박철수</td><td>10</td><td>0</td><td class="dim">—</td><td><span class="tag dim">입력 확인</span></td></tr>
+      </tbody>
+    </table>
+    <p class="cap">계산은 프로그램이, 발송 여부는 담당자가 판단합니다. 초안은 검토 대기 상태로 남습니다.</p>
   </div>
 </div>
 
@@ -102,7 +114,6 @@
           <li>별도 프로그램 설치 없이 표준 라이브러리만 사용</li>
         </ul>
       </div>
-      <div class="pic"><img src="images/screen-import.svg" alt="파일 불러오기와 칸 자동 인식 화면"></div>
     </div>
 
     <div class="feature rev">
@@ -116,7 +127,6 @@
           <li>문장 생성은 언어 모델을 붙일 수 있고, 안 되면 기본 문장으로 대체</li>
         </ul>
       </div>
-      <div class="pic"><img src="images/screen-notice.svg" alt="학부모 안내 초안 화면"></div>
     </div>
 
     <div class="feature">
@@ -130,7 +140,6 @@
           <li>안내 초안에 계좌·카드번호를 넣지 않음</li>
         </ul>
       </div>
-      <div class="pic"><img src="images/screen-settlement.svg" alt="수강료 정산 화면"></div>
     </div>
   </div>
 </section>
