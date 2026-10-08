@@ -175,16 +175,15 @@
 (function(){
   var doc = document.querySelector('.wrap.doc');
   if (!doc) return;
-  var heads = doc.querySelectorAll('h2, h3');
-  var named = [];
-  heads.forEach(function(h){ if (h.id) named.push(h); });
-  if (named.length < 2) return;
+  var heads = Array.prototype.slice.call(doc.querySelectorAll('h2, h3'));
+  if (heads.length < 3) return;
+  heads.forEach(function(h, i){ if (!h.id) h.id = 'sec' + (i + 1); });
   var split = document.createElement('div'); split.className = 'doc-split';
   var main = document.createElement('div'); main.className = 'doc-main';
   while (doc.firstChild) main.appendChild(doc.firstChild);
   var rail = document.createElement('aside'); rail.className = 'rail';
   var label = document.createElement('b'); label.textContent = '이 페이지'; rail.appendChild(label);
-  named.forEach(function(h){
+  heads.forEach(function(h){
     var a = document.createElement('a'); a.href = '#' + h.id;
     a.textContent = h.textContent.replace(/^\d+\.\s*/, '');
     rail.appendChild(a);
