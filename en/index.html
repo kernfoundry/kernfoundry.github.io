@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kernfoundry — academy operations automation</title>
+<meta name="description" content="Attendance rates, tuition settlement and parent message drafts from the file you already keep.">
+<link rel="alternate" hreflang="ko" href="../index.html">
+<link rel="alternate" hreflang="en" href="index.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<div class="promo">
+  <div class="wrap">
+    <span><b>New</b> Upload an attendance file and get settlement plus parent drafts in one pass</span>
+    <a href="notice.html">Read more &rarr;</a>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap gnb">
+    <a class="logo" href="index.html">Kernfoundry<em>.</em></a>
+    <nav class="main" id="gnb">
+      <div>
+        <a class="top" href="business.html">Product</a>
+        <div class="sub">
+          <a href="business.html#attendance">Attendance</a>
+          <a href="business.html#notice">Parent messages</a>
+          <a href="business.html#settlement">Tuition</a>
+          <a href="business.html#principle">Operating rules</a>
+        </div>
+      </div>
+      <div>
+        <a class="top" href="work.html">In practice</a>
+        <div class="sub">
+          <a href="work.html#result">Results</a>
+          <a href="work.html#tests">Automated checks</a>
+          <a href="work.html#code">Code</a>
+        </div>
+      </div>
+      <div>
+        <a class="top" href="about.html">Company</a>
+        <div class="sub">
+          <a href="about.html#greeting">Message</a>
+          <a href="about.html#history">History</a>
+        </div>
+      </div>
+      <div><a class="top" href="notice.html">Notes</a></div>
+    </nav>
+    <div class="hd-right">
+      <a class="lang" href="../index.html" hreflang="ko">KO</a>
+      <a class="hd-cta" href="contact.html">Contact</a>
+    </div>
+    <button class="menu-btn" type="button" aria-controls="gnb" aria-label="Menu"
+      onclick="document.getElementById('gnb').classList.toggle('open')">Menu</button>
+  </div>
+</header>
+
+<div class="hero dark">
+  <div class="wrap in">
+    <div>
+      <div class="kicker">Academy operations automation</div>
+      <h1>The repetitive part of running<br>an academy, handled by software</h1>
+      <p class="lead">Upload the attendance file you already keep. The program calculates attendance rates,
+        settles tuition, and drafts parent messages. Unusual values are flagged instead of guessed,
+        and nothing reaches a parent until a person reviews it.</p>
+      <div class="actions">
+        <a class="btn solid" href="contact.html">Talk to us</a>
+        <a class="btn" href="work.html">See it in practice</a>
+      </div>
+      <div class="metrics">
+        <div><b>6</b><span>operating modules</span></div>
+        <div><b>76</b><span>automated checks</span></div>
+        <div><b>0</b><span>external libraries</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="hero-table">
+  <div class="wrap">
+    <table class="result">
+      <caption>What comes back after an attendance file is uploaded (example)</caption>
+      <thead><tr><th>Student</th><th>Attended</th><th>Total</th><th>Rate</th><th>Draft</th></tr></thead>
+      <tbody>
+        <tr><td>Minsu Kim</td><td>18</td><td>20</td><td class="ok">90.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
+        <tr><td>Daum Jung</td><td>19</td><td>20</td><td class="ok">95.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
+        <tr><td>Gayoung Han</td><td>5</td><td>20</td><td class="warn">25.0%</td><td><span class="tag warn">Absence note</span></td></tr>
+        <tr><td>Cheolsu Park</td><td>10</td><td>0</td><td class="dim">&mdash;</td><td><span class="tag dim">Needs input</span></td></tr>
+      </tbody>
+    </table>
+    <p class="cap">The program calculates. A person decides whether to send. Drafts stay in a review state until then.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">Product</div>
+      <h2>Three recurring tasks, turned into calculation and writing</h2>
+      <p>We did not move the spreadsheet to the web. We kept the decisions that need a person and gave the arithmetic and the first draft to software.</p>
+    </div>
+
+    <div class="feature">
+      <div class="txt">
+        <div class="no">01 &mdash; Attendance</div>
+        <h3>Your file format is fine</h3>
+        <p>No export step. The program reads the .xlsx file you already use.</p>
+        <ul>
+          <li>Column names are matched automatically (name / attended / total / late)</li>
+          <li>Empty cells, text in numeric columns, totals of zero, attendance above total: flagged, not invented</li>
+          <li>Standard library only &mdash; nothing to install</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="txt">
+        <div class="no">02 &mdash; Parent messages</div>
+        <h3>Writing stops at the draft</h3>
+        <p>Below your threshold, an absence note. Above it, a monthly note. The program never sends.</p>
+        <ul>
+          <li>Without a review record the draft stays un-sendable</li>
+          <li>Phone numbers, resident registration numbers and card numbers are blocked in the body</li>
+          <li>An optional language model writes the sentences; if it is unavailable, a plain template is used</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="txt">
+        <div class="no">03 &mdash; Tuition settlement</div>
+        <h3>Unpaid balances, one by one</h3>
+        <p>Charge and payment are compared and each student is classified.</p>
+        <ul>
+          <li>Paid, partially paid, unpaid, overpaid</li>
+          <li>Discounts larger than the fee are reported instead of applied</li>
+          <li>Payment details never appear in the message body</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">How it works</div>
+      <h2>Four steps, one of them yours</h2>
+      <p>Drop in a file, read the warnings, review the drafts, keep the record.</p>
+    </div>
+    <table class="info">
+      <tr><th>1. File</th><td>Use the attendance and tuition files you already have (.xlsx / CSV / TSV).</td></tr>
+      <tr><th>2. Calculate</th><td>Attendance rates and settlement amounts are computed; odd rows are listed as warnings.</td></tr>
+      <tr><th>3. Review</th><td>Drafts are created in a review state. A staff member checks and sends them.</td></tr>
+      <tr><th>4. Record</th><td>Every run leaves a record of what was processed and where the files are.</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">For developers</div>
+      <h2>Also usable as a library</h2>
+      <p>No packages to install. Python standard library only.</p>
+    </div>
+    <div class="note-box mono" style="white-space:pre;overflow:auto;font-size:14px;line-height:1.75">from pipeline.csv_input import read_table
+from pipeline.attendance_rate import attendance_rate
+from pipeline.notice_draft import generate_drafts
+
+table = read_table("attendance.xlsx")
+rates, warnings = attendance_rate(table.rows)
+drafts = generate_drafts(rates, academy="Your Academy")</div>
+    <p style="color:#6b7280">Source &mdash;
+      <a href="https://github.com/kernfoundry" target="_blank" rel="noopener" style="color:#8a2c07">github.com/kernfoundry</a></p>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap in">
+    <div>
+      <h2>Send us your file format</h2>
+      <p>We will confirm whether it fits, before any commitment.</p>
+    </div>
+    <a class="btn solid" href="contact.html">Get in touch</a>
+  </div>
+</div>
+
+<footer class="site">
+  <div class="wrap cols">
+    <div>
+      <a class="logo" href="index.html">Kernfoundry<em>.</em></a>
+      <p>Automation for academy back-office work: attendance, parent messages, tuition settlement.</p>
+    </div>
+    <div><b>Product</b>
+      <ul>
+        <li><a href="business.html#attendance">Attendance</a></li>
+        <li><a href="business.html#notice">Parent messages</a></li>
+        <li><a href="business.html#settlement">Tuition settlement</a></li>
+      </ul>
+    </div>
+    <div><b>In practice</b>
+      <ul>
+        <li><a href="work.html#result">Results</a></li>
+        <li><a href="work.html#tests">Automated checks</a></li>
+        <li><a href="work.html#code">Code</a></li>
+      </ul>
+    </div>
+    <div><b>Contact</b>
+      <ul>
+        <li><a href="mailto:hello@kernfoundry.com">hello@kernfoundry.com</a></li>
+        <li><a href="contact.html">Contact form</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap bottom">
+    <span>&copy; 2026 Kernfoundry</span>
+    <span>Automation drafts. Sending and payment stay with people.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('nav.main a.top').forEach(function(a){
+    if ((a.getAttribute('href') || '').split('#')[0] === here) a.classList.add('on');
+  });
+})();
+</script>
+</body>
+</html>

@@ -53,7 +53,6 @@ HEAD = """<!DOCTYPE html>
           <a href="work.html#code">코드 예시</a>
         </div>
       </div>
-      <div><a class="top" href="demo.html">직접 해보기</a></div>
       <div>
         <a class="top" href="about.html">회사</a>
         <div class="sub">
@@ -63,7 +62,10 @@ HEAD = """<!DOCTYPE html>
       </div>
       <div><a class="top" href="notice.html">소식</a></div>
     </nav>
-    <a class="hd-cta" href="contact.html">도입 문의</a>
+    <div class="hd-right">
+      <a class="lang" href="{enpage}" hreflang="en">EN</a>
+      <a class="hd-cta" href="contact.html">도입 문의</a>
+    </div>
     <button class="menu-btn" type="button" aria-controls="gnb" aria-label="메뉴"
       onclick="document.getElementById('gnb').classList.toggle('open')">메뉴</button>
   </div>
@@ -90,8 +92,7 @@ FOOT = """
       <div>
         <h4>자료</h4>
         <ul>
-          <li><a href="demo.html">직접 해보기</a></li>
-          <li><a href="work.html">적용 화면</a></li>
+                    <li><a href="work.html">적용 화면</a></li>
           <li><a href="notice.html">소식</a></li>
           <li><a href="https://github.com/kernfoundry" target="_blank" rel="noopener">소스 공개</a></li>
         </ul>
@@ -157,7 +158,7 @@ INDEX = """
       <p class="lead">학원에서 쓰던 출결 파일을 올리면 출석률 계산과 수강료 정산이 끝나고, 학부모에게 보낼 안내문은 초안까지 나옵니다.
         이상한 값은 조용히 넘기지 않고 경고로 남기고, 초안은 담당자가 확인한 뒤에만 발송됩니다.</p>
       <div class="actions">
-        <a class="btn solid" href="demo.html">출결 계산 직접 해보기</a>
+        <a class="btn solid" href="contact.html">도입 문의</a>
         <a class="btn" href="work.html">적용 화면 보기</a>
       </div>
       <div class="metrics">
@@ -489,7 +490,6 @@ DEMO_HEAD = """
     <p class="credit">※ 실제 프로그램과 같은 규칙으로 계산합니다(총수업 0, 숫자가 아닌 값, 출석이 총수업보다 많은 경우를 경고로 분리).</p>
   </div>
 </section>
-<script src="assets/demo.js"></script>
 <script>
 (function(){
   var ta=document.getElementById('d1'), out=document.getElementById('dout');
@@ -651,27 +651,24 @@ NOTFOUND = """
 """
 
 SUBS = {
-    "about.html": (dict(title="회사 | Kernfoundry", crumb="Company", h1="회사",
+    "about.html": (dict(enpage="en/about.html", title="회사 | Kernfoundry", crumb="Company", h1="회사",
                         sub="교육 사업을 운영하며 만든 자동화를 제품으로 정리하고 있습니다.",
                         desc="Kernfoundry 회사 소개 — 인사말, 연혁, 연락."), ABOUT),
-    "business.html": (dict(title="제품 | Kernfoundry", crumb="Product", h1="제품",
+    "business.html": (dict(enpage="en/business.html", title="제품 | Kernfoundry", crumb="Product", h1="제품",
                            sub="출결 관리, 학부모 안내 초안, 수강료 정산.",
                            desc="Kernfoundry 제품 — 출결 관리, 학부모 안내, 수강료 정산, 운영 원칙."), BUSINESS),
-    "work.html": (dict(title="적용 화면 | Kernfoundry", crumb="Output", h1="적용 화면",
+    "work.html": (dict(enpage="en/work.html", title="적용 화면 | Kernfoundry", crumb="Output", h1="적용 화면",
                        sub="예시 자료로 실행한 실제 출력과 코드 예시.",
                        desc="Kernfoundry 적용 화면 — 실행 결과, 자동 검사, 코드 예시."), WORK),
-    "demo.html": (dict(title="직접 해보기 | Kernfoundry", crumb="Try it", h1="직접 해보기",
-                       sub="출결 자료를 붙여넣으면 이 화면에서 바로 계산됩니다.",
-                       desc="Kernfoundry 출결 계산기 — 브라우저에서 바로 확인."), DEMO_HEAD),
-    "notice.html": (dict(title="소식 | Kernfoundry", crumb="News", h1="소식",
+    "notice.html": (dict(enpage="en/notice.html", title="소식 | Kernfoundry", crumb="News", h1="소식",
                          sub="변경 사항과 안내입니다.", desc="Kernfoundry 소식."), NOTICE),
-    "contact.html": (dict(title="도입 문의 | Kernfoundry", crumb="Contact", h1="도입 문의",
+    "contact.html": (dict(enpage="en/contact.html", title="도입 문의 | Kernfoundry", crumb="Contact", h1="도입 문의",
                           sub="파일 형식을 알려주시면 적용 가능 여부를 확인해 드립니다.",
                           desc="Kernfoundry 도입 문의."), CONTACT),
-    "privacy.html": (dict(title="개인정보처리방침 | Kernfoundry", crumb="Privacy", h1="개인정보처리방침",
+    "privacy.html": (dict(enpage="en/privacy.html", title="개인정보처리방침 | Kernfoundry", crumb="Privacy", h1="개인정보처리방침",
                           sub="문의 응답에 필요한 최소한의 정보만 수집합니다.",
                           desc="Kernfoundry 개인정보처리방침."), PRIVACY),
-    "404.html": (dict(title="페이지를 찾을 수 없습니다 | Kernfoundry", crumb="404", h1="페이지를 찾을 수 없습니다",
+    "404.html": (dict(enpage="en/404.html", title="페이지를 찾을 수 없습니다 | Kernfoundry", crumb="404", h1="페이지를 찾을 수 없습니다",
                       sub="주소를 다시 확인해 주세요.", desc="Kernfoundry 페이지 안내."), NOTFOUND),
 }
 
@@ -690,7 +687,7 @@ def main() -> None:
         (SITE / "assets" / "site.css").write_text(css + PROMO_CSS, encoding="utf-8", newline="\n")
         print("site.css 에 promo 스타일 추가")
 
-    index_meta = dict(title="Kernfoundry | 학원 운영 자동화", crumb="Home", h1="Kernfoundry",
+    index_meta = dict(title="Kernfoundry | 학원 운영 자동화", crumb="Home", h1="Kernfoundry", enpage="en/index.html",
                       sub="", desc="학원 운영의 반복 업무를 프로그램으로 대체합니다. 출결 집계, 학부모 안내문 초안, 수강료 정산 자동화.")
     (SITE / "index.html").write_text(HEAD.format(**index_meta) + INDEX + FOOT, encoding="utf-8", newline="\n")
     print(f"작성: index.html ({(SITE / 'index.html').stat().st_size} bytes)")

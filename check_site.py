@@ -6,28 +6,33 @@ import pathlib
 import collections
 
 root = pathlib.Path(__file__).resolve().parent
-pages = sorted(root.glob("*.html"))
+pages = sorted(root.glob("*.html")) + sorted((root / "en").glob("*.html"))
 errors, warns = [], []
+
+def key(path):
+    return path.relative_to(root).as_posix()
+
 
 ids = {}
 for p in pages:
-    html = p.read_text(encoding="utf-8")
-    ids[p.name] = set(re.findall(r'id="([^"]+)"', html))
+    ids[key(p)] = set(re.findall(r'id="([^"]+)"', p.read_text(encoding="utf-8")))
 
 # 1) 로컬 링크·앵커
 for p in pages:
     html = p.read_text(encoding="utf-8")
     for href in set(re.findall(r'href="([^"]+)"', html)):
-        if href.startswith(("http", "mailto:", "#")):
-            if href.startswith("#") and href[1:] and href[1:] not in ids[p.name]:
-                errors.append(f"{p.name}: 페이지 내 앵커 없음 {href}")
+        if href.startswith(("http", "mailto:")):
+            continue
+        if href.startswith(("#",)):
+            if href[1:] and href[1:] not in ids[key(p)]:
+                errors.append(f"{key(p)}: 페이지 내 앵커 없음 {href}")
             continue
         file_part, _, anchor = href.partition("#")
-        target = root / file_part
+        target = (p.parent / file_part).resolve()
         if not target.exists():
-            errors.append(f"{p.name}: 없는 파일 {href}")
-        elif anchor and anchor not in ids.get(file_part, set()):
-            errors.append(f"{p.name}: 없는 앵커 {href}")
+            errors.append(f"{key(p)}: 없는 파일 {href}")
+        elif anchor and anchor not in ids.get(key(target), set()):
+            errors.append(f"{key(p)}: 없는 앵커 {href}")
 
 # 2) 이미지
 for p in pages:
@@ -35,8 +40,8 @@ for p in pages:
     for src in set(re.findall(r'src="([^"]+)"', html)):
         if src.startswith("http"):
             continue
-        if not (root / src).exists():
-            errors.append(f"{p.name}: 없는 이미지 {src}")
+        if not (p.parent / src).exists():
+            errors.append(f"{key(p)}: 없는 이미지 {src}")
 
 # 3) 중복 문구(같은 문단이 두 곳 이상)
 texts = collections.defaultdict(set)

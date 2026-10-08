@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Product — Kernfoundry</title>
+<meta name="description" content="Attendance, parent messages and tuition settlement: what is calculated and what is left to people.">
+<link rel="alternate" hreflang="ko" href="../business.html">
+<link rel="alternate" hreflang="en" href="business.html">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<div class="promo">
+  <div class="wrap">
+    <span><b>New</b> Upload an attendance file and get settlement plus parent drafts in one pass</span>
+    <a href="notice.html">Read more &rarr;</a>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap gnb">
+    <a class="logo" href="index.html">Kernfoundry<em>.</em></a>
+    <nav class="main" id="gnb">
+      <div>
+        <a class="top" href="business.html">Product</a>
+        <div class="sub">
+          <a href="business.html#attendance">Attendance</a>
+          <a href="business.html#notice">Parent messages</a>
+          <a href="business.html#settlement">Tuition</a>
+          <a href="business.html#principle">Operating rules</a>
+        </div>
+      </div>
+      <div>
+        <a class="top" href="work.html">In practice</a>
+        <div class="sub">
+          <a href="work.html#result">Results</a>
+          <a href="work.html#tests">Automated checks</a>
+          <a href="work.html#code">Code</a>
+        </div>
+      </div>
+      <div>
+        <a class="top" href="about.html">Company</a>
+        <div class="sub">
+          <a href="about.html#greeting">Message</a>
+          <a href="about.html#history">History</a>
+        </div>
+      </div>
+      <div><a class="top" href="notice.html">Notes</a></div>
+    </nav>
+    <div class="hd-right">
+      <a class="lang" href="../business.html" hreflang="ko">KO</a>
+      <a class="hd-cta" href="contact.html">Contact</a>
+    </div>
+    <button class="menu-btn" type="button" aria-controls="gnb" aria-label="Menu"
+      onclick="document.getElementById('gnb').classList.toggle('open')">Menu</button>
+  </div>
+</header>
+
+<section class="tight">
+  <div class="wrap doc">
+    <div class="feature" id="attendance" style="border-top:0">
+      <div class="txt">
+        <div class="no">01 &mdash; Attendance</div>
+        <h3>Reads the file you already keep</h3>
+        <p>No installation, no format conversion.</p>
+      </div>
+    </div>
+    <table class="info">
+      <tr><th>Input</th><td>.xlsx, CSV or TSV &mdash; the first sheet is read</td></tr>
+      <tr><th>Columns</th><td>name / attended / total / absent / late &mdash; common variations are recognised</td></tr>
+      <tr><th>Output</th><td>Attendance rate per student, plus absence and late counts</td></tr>
+      <tr><th>Edge cases</th><td>Empty cells, non-numeric values, total of zero, attended above total, negative values: excluded from the result and reported</td></tr>
+      <tr><th>Record</th><td>Each run writes what was processed and where the output went</td></tr>
+    </table>
+
+    <div class="feature" id="notice">
+      <div class="txt">
+        <div class="no">02 &mdash; Parent messages</div>
+        <h3>Drafts only, sending stays human</h3>
+        <p>Attendance rate decides which note is drafted.</p>
+      </div>
+    </div>
+    <table class="info">
+      <tr><th>Rule</th><td>Below the threshold an absence note, above it a monthly note</td></tr>
+      <tr><th>Sending</th><td>Drafts are created in a review state &mdash; no review record, no sendable draft</td></tr>
+      <tr><th>Privacy</th><td>Phone numbers, resident registration numbers and card numbers are blocked</td></tr>
+      <tr><th>Writing</th><td>An optional language model writes the sentences; a plain template is used when it is unavailable</td></tr>
+    </table>
+
+    <div class="feature" id="settlement">
+      <div class="txt">
+        <div class="no">03 &mdash; Tuition settlement</div>
+        <h3>Charge, payment, balance</h3>
+        <p>Unpaid students are picked out and a reminder draft is prepared.</p>
+      </div>
+    </div>
+    <table class="info">
+      <tr><th>Charge</th><td>Fee minus discount</td></tr>
+      <tr><th>Balance</th><td>Charge minus payment</td></tr>
+      <tr><th>Status</th><td>Paid / partially paid / unpaid / overpaid</td></tr>
+      <tr><th>Edge cases</th><td>Discount above the fee, non-numeric amounts, negative values: reported</td></tr>
+      <tr><th>Draft</th><td>Created for unpaid students only; no account or card numbers in the body</td></tr>
+    </table>
+
+    <div class="feature" id="principle">
+      <div class="txt">
+        <div class="no">Operating rules</div>
+        <h3>Automation drafts, people decide</h3>
+        <p>Anything that reaches a parent or moves money is reviewed by a person first. The rule is enforced in code, not in a policy document.</p>
+      </div>
+    </div>
+    <table class="info">
+      <tr><th>Draft state</th><td>Without a review record the draft cannot be sent</td></tr>
+      <tr><th>Personal data</th><td>Contact details and card numbers never enter message bodies</td></tr>
+      <tr><th>Undo</th><td>Only the files produced by one run can be reverted, and only those</td></tr>
+      <tr><th>Warnings first</th><td>When a value looks wrong, the program reports it instead of inventing a number</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap cols">
+    <div>
+      <a class="logo" href="index.html">Kernfoundry<em>.</em></a>
+      <p>Automation for academy back-office work: attendance, parent messages, tuition settlement.</p>
+    </div>
+    <div><b>Product</b>
+      <ul>
+        <li><a href="business.html#attendance">Attendance</a></li>
+        <li><a href="business.html#notice">Parent messages</a></li>
+        <li><a href="business.html#settlement">Tuition settlement</a></li>
+      </ul>
+    </div>
+    <div><b>In practice</b>
+      <ul>
+        <li><a href="work.html#result">Results</a></li>
+        <li><a href="work.html#tests">Automated checks</a></li>
+        <li><a href="work.html#code">Code</a></li>
+      </ul>
+    </div>
+    <div><b>Contact</b>
+      <ul>
+        <li><a href="mailto:hello@kernfoundry.com">hello@kernfoundry.com</a></li>
+        <li><a href="contact.html">Contact form</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap bottom">
+    <span>&copy; 2026 Kernfoundry</span>
+    <span>Automation drafts. Sending and payment stay with people.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('nav.main a.top').forEach(function(a){
+    if ((a.getAttribute('href') || '').split('#')[0] === here) a.classList.add('on');
+  });
+})();
+</script>
+</body>
+</html>
