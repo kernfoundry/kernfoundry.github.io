@@ -8,6 +8,33 @@ import re
 
 SITE = pathlib.Path(__file__).resolve().parent
 
+# 사업자 정보 — 값이 채워진 항목만 푸터에 표시된다. (빈칸이면 그 줄은 나오지 않음)
+BIZ = dict(
+    name="Kernfoundry",
+    rep="",            # 대표자
+    regno="",          # 사업자등록번호
+    address="",        # 사업장 주소
+    tel="",            # 대표 전화
+    email="hello@kernfoundry.com",
+    kakao="",          # 카카오 채널
+)
+
+
+def business_line() -> str:
+    parts = [BIZ["name"]]
+    if BIZ["rep"]:
+        parts.append("대표 " + BIZ["rep"])
+    if BIZ["regno"]:
+        parts.append("사업자등록번호 " + BIZ["regno"])
+    if BIZ["address"]:
+        parts.append(BIZ["address"])
+    if BIZ["tel"]:
+        parts.append("Tel " + BIZ["tel"])
+    if BIZ["kakao"]:
+        parts.append("카카오채널 " + BIZ["kakao"])
+    return " · ".join(parts)
+
+
 HEAD = """<!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -103,7 +130,8 @@ FOOT = """
         <h4>자료</h4>
         <ul>
                     <li><a href="work.html">결과 화면</a></li>
-          <li><a href="notice.html">소식</a></li>
+          <li><a href="pricing.html">요금</a>
+      <div><a class="top" href="notice.html">소식</a></div></li>
           <li><a href="https://github.com/kernfoundry" target="_blank" rel="noopener">소스 공개</a></li>
         </ul>
       </div>
@@ -112,13 +140,17 @@ FOOT = """
         <ul>
           <li><a href="contact.html">도입 문의</a></li>
           <li><a href="mailto:hello@kernfoundry.com">hello@kernfoundry.com</a></li>
-          <li><a href="privacy.html">개인정보처리방침</a></li>
+          <li><a href="pricing.html">요금</a></li>
+        <li><a href="terms.html">이용약관</a></li>
+        <li><a href="privacy.html">개인정보처리방침</a></li>
         </ul>
       </div>
     </div>
     <div class="bottom">
       <span>&copy; 2026 Kernfoundry</span>
       <span><a href="mailto:hello@kernfoundry.com">hello@kernfoundry.com</a></span>
+    </div>
+    <div class="bizline">{biz}</div>
     </div>
   </div>
 </footer>
@@ -204,6 +236,77 @@ LDJSON = ('<script type="application/ld+json">\n'
               'description': '학원 운영 자동화 소프트웨어. 출결 집계, 학부모 안내문 초안, 수강료 정산.',
           }, ensure_ascii=False)
           + '\n</script>\n')
+
+
+PRICING = """
+<section id="main">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">Pricing</div>
+      <h2>요금</h2>
+      <p>설치비 없음. 첫 30일은 무료로 씁니다. 약정 없이 월 단위로 시작하고 멈출 수 있습니다.</p>
+    </div>
+    <table class="compare">
+      <thead><tr><th>구분</th><th>기본형</th><th>성과형</th></tr></thead>
+      <tbody>
+        <tr><td>월 이용료</td><td><b>29,000원</b></td><td><b>19,000원</b></td></tr>
+        <tr><td>회수 연동</td><td>없음</td><td><b>회수 금액의 3~5%</b></td></tr>
+        <tr><td>미납 분류·단계 자동화</td><td>포함</td><td>포함</td></tr>
+        <tr><td>단계별 안내 문구 초안</td><td>포함</td><td>포함</td></tr>
+        <tr><td>회수율 대시보드</td><td>포함</td><td>포함</td></tr>
+        <tr><td>내용증명·지급명령 초안</td><td>포함</td><td>포함</td></tr>
+        <tr><td>설치·서버</td><td>불필요</td><td>불필요</td></tr>
+        <tr><td>첫 30일</td><td>무료</td><td>무료</td></tr>
+        <tr><td>해지</td><td>언제든</td><td>언제든</td></tr>
+      </tbody>
+    </table>
+    <p class="credit">성과형은 시스템이 기록한 회수 금액만 계산합니다. 원장님이 따로 청구하지 않습니다.</p>
+
+    <div class="shead" style="margin-top:64px">
+      <div class="eyebrow">Onboarding</div>
+      <h2>도입 절차</h2>
+      <p>세 단계, 보통 일주일 안에 끝납니다.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><b>1. 파일 확인</b><p>학원에서 쓰는 미납 명단(엑셀·CSV)을 보내주시면 읽히는지 먼저 확인해 드립니다.</p></div>
+      <div class="step"><b>2. 명단 세팅</b><p>연체 단계와 문구 톤을 학원에 맞게 잡습니다. 이 작업은 저희가 대신 해 드립니다.</p></div>
+      <div class="step"><b>3. 운영 시작</b><p>매달 명단을 넣고 문구를 확인해 보내면 됩니다. 회수 결과는 자동으로 쌓입니다.</p></div>
+    </div>
+    <p class="credit">세금계산서 발행, 계좌 이체 결제 모두 가능합니다.</p>
+  </div>
+</section>
+"""
+
+TERMS = """
+<section id="main">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">Terms</div>
+      <h2>이용약관</h2>
+      <p>서비스 이용에 관한 기본 조건입니다.</p>
+    </div>
+    <div class="doc-body">
+      <h3>1. 서비스 내용</h3>
+      <p>회사가 제공하는 서비스는 학원 운영 자료(출결·수납 명단 등)를 읽어 계산 결과와 안내 문구 초안을 만드는 소프트웨어입니다. 안내 문구의 발송과 최종 판단은 이용 학원이 합니다.</p>
+      <h3>2. 요금과 결제</h3>
+      <p>요금은 요금표에 따릅니다. 첫 30일은 무료이며, 이후 월 단위로 청구됩니다. 성과형 요금제의 회수 연동 금액은 시스템이 기록한 금액을 기준으로 산정합니다.</p>
+      <h3>3. 해지</h3>
+      <p>약정 기간은 없습니다. 해지를 원하시면 익월 시작 전까지 알려주시면 다음 달부터 청구되지 않습니다.</p>
+      <h3>4. 환불</h3>
+      <p>이미 사용한 기간에 대해서는 환불되지 않습니다. 사용하지 않은 남은 기간에 대해서는 요청 시 일할 계산으로 환불합니다.</p>
+      <h3>5. 자료의 처리</h3>
+      <p>학원에서 제공한 자료는 서비스 제공 목적에만 사용합니다. 처리 결과물과 기록은 학원이 보관합니다. 개인정보 처리에 관한 자세한 내용은 개인정보처리방침을 따릅니다.</p>
+      <h3>6. 이용자의 의무</h3>
+      <p>이용 학원은 자료 제공에 필요한 권한을 가지고 있어야 하며, 안내 문구를 발송하기 전에 내용을 확인해야 합니다.</p>
+      <h3>7. 책임의 범위</h3>
+      <p>회사는 계산 결과와 초안을 제공할 뿐이며, 발송과 결제에 대한 최종 판단과 책임은 이용 학원에 있습니다. 법률 자문이 필요한 사안은 전문가에게 확인하시기 바랍니다.</p>
+      <h3>8. 약관의 변경</h3>
+      <p>약관이 바뀌면 시행 7일 전에 사이트에 알립니다.</p>
+      <p class="credit">시행일: 2026년 10월 9일</p>
+    </div>
+  </div>
+</section>
+"""
 
 SUBHERO = """
 <div class="phero" id="main">
@@ -753,6 +856,11 @@ SUBS = {
     "work.html": (dict(self="work.html", enpage="en/work.html", title="적용 화면 | Kernfoundry", crumb="Results", h1="결과 화면",
                        sub="예시 자료로 실행한 실제 출력과 코드 예시.",
                        desc="Kernfoundry 적용 화면 — 실행 결과, 자동 검사, 코드 예시."), WORK),
+    "pricing.html": (dict(self="pricing.html", enpage="en/pricing.html", title="요금 | Kernfoundry", crumb="Pricing", h1="요금",
+                          sub="설치비 없음. 첫 30일 무료. 월 단위로 시작하고 멈춥니다.",
+                          desc="Kernfoundry 요금 — 기본형과 성과형, 도입 절차."), PRICING),
+    "terms.html": (dict(self="terms.html", enpage="en/terms.html", title="이용약관 | Kernfoundry", crumb="Terms", h1="이용약관",
+                        sub="서비스 이용에 관한 기본 조건입니다.", desc="Kernfoundry 이용약관."), TERMS),
     "notice.html": (dict(self="notice.html", enpage="en/notice.html", title="소식 | Kernfoundry", crumb="News", h1="소식",
                          sub="변경 사항과 안내입니다.", desc="Kernfoundry 소식."), NOTICE),
     "contact.html": (dict(self="contact.html", enpage="en/contact.html", title="도입 문의 | Kernfoundry", crumb="Contact", h1="도입 문의",
@@ -806,11 +914,11 @@ def main() -> None:
 
     index_meta = dict(self="", title="Kernfoundry | 학원 운영 자동화", crumb="Home", h1="Kernfoundry", enpage="en/index.html",
                       sub="", desc="학원 운영의 반복 업무를 프로그램으로 대체합니다. 출결 집계, 학부모 안내문 초안, 수강료 정산 자동화.")
-    (SITE / "index.html").write_text(ensure_main(align_numbers(HEAD.format(**index_meta) + INDEX)) + FOOT + LDJSON, encoding="utf-8", newline="\n")
+    (SITE / "index.html").write_text(ensure_main(align_numbers(HEAD.format(**index_meta) + INDEX)) + FOOT.replace("{biz}", business_line()) + LDJSON, encoding="utf-8", newline="\n")
     print(f"작성: index.html ({(SITE / 'index.html').stat().st_size} bytes)")
 
     for name, (meta, body) in SUBS.items():
-        html = ensure_main(align_numbers(HEAD.format(**meta) + SUBHERO.format(**meta) + body)) + FOOT + LDJSON
+        html = ensure_main(align_numbers(HEAD.format(**meta) + SUBHERO.format(**meta) + body)) + FOOT.replace("{biz}", business_line()) + LDJSON
         (SITE / name).write_text(html, encoding="utf-8", newline="\n")
         print(f"작성: {name} ({(SITE / name).stat().st_size} bytes)")
 

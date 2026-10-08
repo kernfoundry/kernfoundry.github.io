@@ -350,3 +350,8 @@ html,body{overflow-x:hidden}
   .faq p{padding:0 18px 18px;font-size:14.5px}
   .flow>div{padding:18px}
 }
+
+/* 사업자 정보 줄 (값이 채워진 항목만 표시) */
+.bizline{margin-top:10px;padding-top:14px;border-top:1px solid #22314c;color:#7c8fa9;font-size:13px}
+.doc-body h3{margin-top:34px}
+.doc-body p{color:var(--body)}

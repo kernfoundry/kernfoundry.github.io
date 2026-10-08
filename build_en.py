@@ -9,6 +9,33 @@ import re
 SITE = pathlib.Path(__file__).resolve().parent
 BASE = "https://kernfoundry.github.io/"
 
+# 사업자 정보 — 값이 채워진 항목만 푸터에 표시된다. (빈칸이면 그 줄은 나오지 않음)
+BIZ = dict(
+    name="Kernfoundry",
+    rep="",            # 대표자
+    regno="",          # 사업자등록번호
+    address="",        # 사업장 주소
+    tel="",            # 대표 전화
+    email="hello@kernfoundry.com",
+    kakao="",          # 카카오 채널
+)
+
+
+def business_line() -> str:
+    parts = [BIZ["name"]]
+    if BIZ["rep"]:
+        parts.append("대표 " + BIZ["rep"])
+    if BIZ["regno"]:
+        parts.append("사업자등록번호 " + BIZ["regno"])
+    if BIZ["address"]:
+        parts.append(BIZ["address"])
+    if BIZ["tel"]:
+        parts.append("Tel " + BIZ["tel"])
+    if BIZ["kakao"]:
+        parts.append("카카오채널 " + BIZ["kakao"])
+    return " · ".join(parts)
+
+
 LDJSON = ('<script type="application/ld+json">' + chr(10)
           + _json.dumps({
               '@' + 'context': 'https://schema.org',
@@ -25,6 +52,7 @@ EN = SITE / "en"
 EN.mkdir(exist_ok=True)
 
 NAV = [
+    ("pricing.html", "Pricing", []),
     ("business.html", "What we do", [("business.html#attendance", "Attendance"),
                                   ("business.html#notice", "Parent messages"),
                                   ("business.html#settlement", "Tuition"),
@@ -129,6 +157,8 @@ FOOT = """
       <ul>
         <li><a href="mailto:hello@kernfoundry.com">hello@kernfoundry.com</a></li>
         <li><a href="contact.html">Contact form</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="terms.html">Terms</a></li>
         <li><a href="privacy.html">Privacy</a></li>
       </ul>
     </div>
@@ -136,6 +166,8 @@ FOOT = """
   <div class="wrap bottom">
     <span>&copy; 2026 Kernfoundry</span>
     <span><a href="mailto:hello@kernfoundry.com">hello@kernfoundry.com</a></span>
+  </div>
+  <div class="bizline">{biz}</div>
   </div>
 </footer>
 
@@ -605,6 +637,76 @@ NOTFOUND = """
 </section>
 """
 
+
+PRICING = """
+<section id="main">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">Pricing</div>
+      <h2>Pricing</h2>
+      <p>No setup fee. The first 30 days are free. Start and stop month by month.</p>
+    </div>
+    <table class="compare">
+      <thead><tr><th>Plan</th><th>Standard</th><th>Recovery-based</th></tr></thead>
+      <tbody>
+        <tr><td>Monthly fee</td><td><b>KRW 29,000</b></td><td><b>KRW 19,000</b></td></tr>
+        <tr><td>Recovery share</td><td>None</td><td><b>3-5% of recovered amounts</b></td></tr>
+        <tr><td>Balance classification</td><td>Included</td><td>Included</td></tr>
+        <tr><td>Stage-based message drafts</td><td>Included</td><td>Included</td></tr>
+        <tr><td>Recovery dashboard</td><td>Included</td><td>Included</td></tr>
+        <tr><td>Formal notice drafts</td><td>Included</td><td>Included</td></tr>
+        <tr><td>Install or server</td><td>Not needed</td><td>Not needed</td></tr>
+        <tr><td>First 30 days</td><td>Free</td><td>Free</td></tr>
+        <tr><td>Cancellation</td><td>Anytime</td><td>Anytime</td></tr>
+      </tbody>
+    </table>
+    <p class="credit">Recovery-based billing uses amounts recorded by the system only. Nothing is invoiced manually.</p>
+
+    <div class="shead" style="margin-top:64px">
+      <div class="eyebrow">Onboarding</div>
+      <h2>Getting started</h2>
+      <p>Three steps, usually within a week.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><b>1. File check</b><p>Send the unpaid-balance list you keep (.xlsx or CSV) and we confirm it reads correctly.</p></div>
+      <div class="step"><b>2. Setup</b><p>We configure the overdue stages and message tone for your academy.</p></div>
+      <div class="step"><b>3. Run it</b><p>Upload the list each month, review the drafts, send. Recovery results accumulate automatically.</p></div>
+    </div>
+  </div>
+</section>
+"""
+
+TERMS = """
+<section id="main">
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">Terms</div>
+      <h2>Terms of service</h2>
+      <p>The basic conditions for using the service.</p>
+    </div>
+    <div class="doc-body">
+      <h3>1. What the service does</h3>
+      <p>Software that reads academy records (attendance, payments) and produces calculations and draft messages. Sending messages and the final decision remain with the academy.</p>
+      <h3>2. Fees and payment</h3>
+      <p>Fees follow the pricing page. The first 30 days are free, then billing is monthly. Recovery-based amounts are calculated from what the system records.</p>
+      <h3>3. Cancellation</h3>
+      <p>There is no fixed term. Tell us before the start of the next month and billing stops.</p>
+      <h3>4. Refunds</h3>
+      <p>Periods already used are not refunded. Unused remaining periods are refunded pro rata on request.</p>
+      <h3>5. Data handling</h3>
+      <p>Records you provide are used only to deliver the service. Output and logs stay with the academy. See the privacy policy for details.</p>
+      <h3>6. Your responsibilities</h3>
+      <p>You confirm you have the right to provide the records, and you review each draft before sending.</p>
+      <h3>7. Limits of liability</h3>
+      <p>We provide calculations and drafts. Final decisions about sending and payments rest with the academy. Matters requiring legal advice should be checked with a professional.</p>
+      <h3>8. Changes</h3>
+      <p>If these terms change, we give 7 days notice on this site.</p>
+      <p class="credit">Effective: 9 October 2026</p>
+    </div>
+  </div>
+</section>
+"""
+
 PAGES = [
     ("index.html", "Kernfoundry — academy operations automation",
      "Attendance rates, tuition settlement and parent message drafts from the file you already keep.", INDEX),
@@ -616,6 +718,10 @@ PAGES = [
      "Who builds Kernfoundry and why the sending gate exists.", ABOUT),
     ("contact.html", "Contact — Kernfoundry",
      "Send an example file and we will confirm whether the program reads it.", CONTACT),
+    ("pricing.html", "Pricing — Kernfoundry",
+     "No setup fee, first 30 days free, monthly billing.", PRICING),
+    ("terms.html", "Terms — Kernfoundry",
+     "The basic conditions for using the service.", TERMS),
     ("privacy.html", "Privacy — Kernfoundry",
      "What we collect, what we do not, and how parent messages are handled.", PRIVACY),
     ("notice.html", "Notes — Kernfoundry",
@@ -654,7 +760,7 @@ def main() -> None:
         kofile = "404.html" if name == "404.html" else name
         enurl = BASE + "en/" + name
         kourl = BASE + kofile
-        html = ensure_main(align_numbers(HEAD.format(title=title, desc=desc, kofile=kofile, self=name, enurl=enurl, kourl=kourl) + body)) + FOOT + LDJSON
+        html = ensure_main(align_numbers(HEAD.format(title=title, desc=desc, kofile=kofile, self=name, enurl=enurl, kourl=kourl) + body)) + FOOT.replace("{biz}", business_line()) + LDJSON
         (EN / name).write_text(html, encoding="utf-8", newline="\n")
         print("작성:", f"en/{name}", f"({len(html)} bytes)")
 
