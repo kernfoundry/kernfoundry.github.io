@@ -7,6 +7,8 @@
   --wrap:1120px;
 }
 *{box-sizing:border-box}
+body,h1,h2,h3,h4,p,li,td,th,span,a{word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3{text-wrap:balance}
 html{scroll-behavior:smooth}
 body{
   margin:0;background:var(--bg);color:var(--ink);
@@ -28,6 +30,7 @@ nav.main{display:flex;align-items:center;gap:30px;margin-left:auto}
 nav.main>div{position:relative}
 nav.main a.top{font-size:14.5px;color:#26272b;font-weight:500}
 nav.main a.top:hover{color:var(--accent)}
+nav.main a.top.on{color:var(--accent);box-shadow:0 2px 0 var(--accent)}
 nav.main .sub{position:absolute;top:100%;left:-14px;min-width:184px;background:#fff;
   border:1px solid var(--line);padding:10px 0;display:none;box-shadow:0 14px 28px rgba(16,24,40,.09);z-index:70}
 nav.main .sub::before{content:"";position:absolute;left:0;right:0;top:-18px;height:18px}
@@ -39,7 +42,7 @@ nav.main .sub a:hover{background:var(--bg-alt);color:var(--ink)}
 .menu-btn{display:none;border:1px solid var(--line-strong);background:#fff;border-radius:4px;padding:7px 11px;font-size:13px}
 
 /* 히어로 */
-.hero{padding:104px 0 84px;border-bottom:1px solid var(--line)}
+.hero{padding:92px 0 76px;border-bottom:1px solid var(--line)}
 .hero.dark{background:#08090a;color:#fff;border-bottom:0}
 .hero.dark p.lead{color:#b9bcc2}
 .hero.dark .metrics{border-top-color:#242629}
@@ -50,17 +53,18 @@ nav.main .sub a:hover{background:var(--bg-alt);color:var(--ink)}
 .hero.dark .btn.solid:hover{background:#e6e7ea}
 .hero.dark .kicker{font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#c2410c;font-weight:700}
 .hero.dark .shot img{border-color:#242629}
-.hero .in{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.hero .in{display:grid;grid-template-columns:1fr 1.12fr;gap:60px;align-items:center}
 .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.16em;color:var(--accent);text-transform:uppercase}
-.hero h1{font-size:clamp(34px,4.6vw,58px);line-height:1.12;letter-spacing:-.035em;font-weight:800;margin:18px 0 22px}
+.hero h1{font-size:clamp(32px,4.2vw,52px);line-height:1.22;letter-spacing:-.03em;font-weight:800;margin:18px 0 22px}
 .hero p.lead{font-size:18px;color:var(--body);margin:0 0 34px;max-width:520px}
 .actions{display:flex;gap:12px;flex-wrap:wrap}
 .btn{display:inline-block;border:1px solid var(--line-strong);border-radius:4px;padding:12px 22px;
   font-size:15px;font-weight:600;background:#fff;color:var(--ink);cursor:pointer}
 .btn:hover{border-color:var(--ink)}
-.btn.solid{background:var(--ink);border-color:var(--ink);color:#fff}
-.btn.solid:hover{background:#26272b}
-.hero .shot img{width:100%;display:block;border-radius:8px;border:1px solid var(--line)}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.solid:hover{background:var(--accent-ink);border-color:var(--accent-ink)}
+.hero .shot img{width:100%;display:block;border-radius:10px;border:1px solid var(--line);box-shadow:0 24px 48px rgba(9,16,29,.14)}
+.hero.dark .shot img{border-color:#2a2d31;box-shadow:0 26px 52px rgba(0,0,0,.55)}
 .metrics{display:flex;margin-top:56px;border-top:1px solid var(--line);padding-top:26px}
 .metrics div{flex:1;padding-right:24px}
 .metrics b{display:block;font-size:30px;font-weight:800;letter-spacing:-.03em}

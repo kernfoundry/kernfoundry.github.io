@@ -27,7 +27,7 @@ HEAD = """<!DOCTYPE html>
 
 <div class="promo">
   <div class="wrap">
-    <span><b>새로 추가</b> 엑셀(.xlsx) 파일을 그대로 읽습니다</span>
+    <span><b>새로 추가</b> 출결 파일을 올리면 정산과 안내 초안까지 한 번에</span>
     <a href="notice.html">자세히 →</a>
   </div>
 </div>
@@ -114,6 +114,15 @@ FOOT = """
 
 <script>
 (function(){
+  var here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('nav.main a.top').forEach(function(a){
+    if ((a.getAttribute('href') || '').split('#')[0] === here) a.classList.add('on');
+  });
+})();
+</script>
+
+<script>
+(function(){
   if (!('IntersectionObserver' in window)) return;
   var targets = document.querySelectorAll('.shead, .feature, .metrics, .band, .info, .notice, .pic-grid');
   if (!targets.length) return;
@@ -144,9 +153,9 @@ INDEX = """
   <div class="wrap in">
     <div>
       <div class="kicker">Academy operations automation</div>
-      <h1>학원 행정의 반복 업무를<br>프로그램이 대신 처리합니다</h1>
-      <p class="lead">출결 파일을 넣으면 출석률을 계산하고, 학부모에게 보낼 안내문 초안과 수강료 정산 결과를 만듭니다.
-        잘못된 값은 조용히 넘기지 않고 경고로 남기고, 초안은 사람이 검토한 뒤에만 발송됩니다.</p>
+      <h1>학원 행정의 반복 작업을<br>프로그램이 대신합니다</h1>
+      <p class="lead">학원에서 쓰던 출결 파일을 올리면 출석률 계산과 수강료 정산이 끝나고, 학부모에게 보낼 안내문은 초안까지 나옵니다.
+        이상한 값은 조용히 넘기지 않고 경고로 남기고, 초안은 담당자가 확인한 뒤에만 발송됩니다.</p>
       <div class="actions">
         <a class="btn solid" href="demo.html">출결 계산 직접 해보기</a>
         <a class="btn" href="work.html">적용 화면 보기</a>
@@ -168,13 +177,13 @@ INDEX = """
     <div class="shead">
       <div class="eyebrow">Product</div>
       <h2>세 가지 반복 업무를 계산과 문장 생성으로</h2>
-      <p>엑셀과 손으로 처리하던 과정을 그대로 옮기지 않았습니다. 담당자가 판단해야 할 부분만 남기고 나머지는 프로그램이 처리합니다.</p>
+      <p>엑셀과 손으로 하던 흐름을 그대로 옮기지 않았습니다. 담당자가 판단해야 할 부분만 남기고, 계산과 문장 작성은 프로그램이 맡습니다.</p>
     </div>
 
     <div class="feature">
       <div class="txt">
         <div class="no">01 — 출결 관리</div>
-        <h3>엑셀 그대로 넣으면 끝</h3>
+        <h3>파일 형식을 바꾸지 않아도 됩니다</h3>
         <p>CSV로 다시 저장할 필요가 없습니다. 학원에서 쓰던 .xlsx 파일을 그대로 읽습니다.</p>
         <ul>
           <li>칸 이름이 달라도 인식 (이름·성명 / 출석·출석일수 / 총수업·수업일수)</li>
@@ -182,21 +191,21 @@ INDEX = """
           <li>별도 프로그램 설치 없이 표준 라이브러리만 사용</li>
         </ul>
       </div>
-      <div class="pic"><img src="images/photo-classroom2.jpg" alt="학원 강의실"></div>
+      <div class="pic"><img src="images/screen-import.svg" alt="파일 불러오기와 칸 자동 인식 화면"></div>
     </div>
 
     <div class="feature rev">
       <div class="txt">
         <div class="no">02 — 학부모 안내</div>
-        <h3>초안까지만 만듭니다</h3>
-        <p>출석률을 기준으로 결석 안내 또는 월간 안내문 초안을 만듭니다. 프로그램은 발송하지 않습니다.</p>
+        <h3>문장은 초안까지만</h3>
+        <p>출석률을 기준으로 결석 안내 또는 월간 안내문을 작성합니다. 발송은 하지 않습니다.</p>
         <ul>
           <li>검토 기록이 없으면 발송 불가 상태로 남음</li>
           <li>휴대폰 번호·주민등록번호·카드번호가 들어가면 자동 차단</li>
           <li>문장 생성은 언어 모델을 붙일 수 있고, 안 되면 기본 문장으로 대체</li>
         </ul>
       </div>
-      <div class="pic"><img src="images/photo-documents.jpg" alt="안내문 작성 업무"></div>
+      <div class="pic"><img src="images/screen-notice.svg" alt="학부모 안내 초안 화면"></div>
     </div>
 
     <div class="feature">
@@ -210,7 +219,7 @@ INDEX = """
           <li>안내 초안에 계좌·카드번호를 넣지 않음</li>
         </ul>
       </div>
-      <div class="pic"><img src="images/photo-deskwork.jpg" alt="정산 자료 확인"></div>
+      <div class="pic"><img src="images/screen-settlement.svg" alt="수강료 정산 화면"></div>
     </div>
   </div>
 </section>
@@ -291,8 +300,9 @@ ABOUT = """
     <p>그래서 필요한 부분을 직접 프로그램으로 만들었습니다. 계산은 프로그램이 하고, 판단과 발송은 사람이 합니다.
        잘못된 값은 넘기지 않고 경고로 남기고, 학부모님께 나가는 초안은 반드시 검토 상태를 거치게 했습니다.</p>
     <p>같은 일을 반복하는 다른 교육 사업자에게도 도움이 되기를 바랍니다.</p>
-    <div class="pic-grid" style="grid-template-columns:1fr">
-      <img src="images/photo-classroom.jpg" alt="학원 강의실" style="height:320px">
+    <div class="pic-grid">
+      <img src="images/photo-classroom.jpg" alt="학원 강의실">
+      <img src="images/photo-classroom2.jpg" alt="수업 공간">
     </div>
 
     <div class="shead" id="history" style="margin-top:70px">

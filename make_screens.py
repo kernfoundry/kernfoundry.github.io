@@ -121,4 +121,73 @@ tests = frame(
 )
 (OUT / "screen-tests.svg").write_text(tests, encoding="utf-8")
 
+# 4) 엑셀 불러오기 안내 — 칸 매핑 화면
+import_ui = [
+    '<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="360" viewBox="0 0 1000 360">',
+    '<rect width="1000" height="360" rx="10" fill="#ffffff"/>',
+    '<rect x="0.5" y="0.5" width="999" height="359" rx="10" fill="none" stroke="#e3e7ee"/>',
+    '<rect width="1000" height="46" rx="10" fill="#f7f9fc"/><rect y="36" width="1000" height="10" fill="#f7f9fc"/>',
+    '<line x1="0" y1="46" x2="1000" y2="46" stroke="#e3e7ee"/>',
+    '<circle cx="24" cy="23" r="5.5" fill="#e6e9ef"/><circle cx="44" cy="23" r="5.5" fill="#e6e9ef"/><circle cx="64" cy="23" r="5.5" fill="#e6e9ef"/>',
+    f'<text x="88" y="28" font-family="{FONT}" font-size="13.5" font-weight="700" fill="#33405a">Kernfoundry · 파일 불러오기</text>',
+    f'<text x="976" y="28" text-anchor="end" font-family="{FONT}" font-size="12.5" fill="#98a2b3">attendance_10.xlsx</text>',
+    '<rect x="0" y="46" width="190" height="314" fill="#fbfcfe"/><line x1="190" y1="46" x2="190" y2="360" stroke="#eaedf3"/>',
+    f'<rect x="14" y="63" width="162" height="30" rx="7" fill="#eef3fb"/><rect x="14" y="63" width="3" height="30" rx="1.5" fill="#1f4e79"/>',
+    f'<text x="30" y="84" font-family="{FONT}" font-size="13" font-weight="700" fill="#1b2b45">출결</text>',
+    f'<text x="30" y="122" font-family="{FONT}" font-size="13" font-weight="500" fill="#6b7686">학부모 안내</text>',
+    f'<text x="30" y="160" font-family="{FONT}" font-size="13" font-weight="500" fill="#6b7686">수강료 정산</text>',
+    f'<text x="30" y="198" font-family="{FONT}" font-size="13" font-weight="500" fill="#6b7686">실행 기록</text>',
+    f'<text x="218" y="86" font-family="{FONT}" font-size="14.5" font-weight="700" fill="#1b2b45">칸 이름을 자동으로 맞췄습니다</text>',
+    f'<text x="218" y="116" font-family="{FONT}" font-size="12.5" font-weight="700" fill="#8a94a6">파일의 칸</text>',
+    f'<text x="560" y="116" font-family="{FONT}" font-size="12.5" font-weight="700" fill="#8a94a6">프로그램이 읽는 값</text>',
+    '<line x1="218" y1="126" x2="976" y2="126" stroke="#eaedf3"/>',
+]
+pairs = [("이름", "학생 이름", "확인"), ("출석일수", "출석 횟수", "확인"),
+         ("수업일수", "총수업", "확인"), ("비고", "사용 안 함", "제외")]
+yy = 126
+for src, dst, tag in pairs:
+    import_ui.append(f'<line x1="218" y1="{yy+44}" x2="976" y2="{yy+44}" stroke="#f1f4f8"/>')
+    import_ui.append(f'<text x="218" y="{yy+28}" font-family="{FONT}" font-size="14" fill="#55606f">{html.escape(src)}</text>')
+    import_ui.append(f'<text x="560" y="{yy+28}" font-family="{FONT}" font-size="14" font-weight="600" fill="#1b2b45">{html.escape(dst)}</text>')
+    ok = tag == "확인"
+    import_ui.append(chip(890, yy + 8, tag, GREEN_BG if ok else AMBER_BG, GREEN_FG if ok else AMBER_FG, 70))
+    yy += 44
+import_ui.append(f'<line x1="190" y1="308" x2="1000" y2="308" stroke="#eaedf3"/>')
+import_ui.append(f'<text x="218" y="336" font-family="{FONT}" font-size="13" fill="#55606f">4개 칸 인식 · 1개 제외 · 다음 단계에서 학생별 출석률을 계산합니다</text>')
+import_ui.append("</svg>")
+(OUT / "screen-import.svg").write_text("".join(import_ui), encoding="utf-8")
+
+# 5) 학부모 안내문 초안 화면
+notice = [
+    '<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="404" viewBox="0 0 1000 404">',
+    '<rect width="1000" height="404" rx="10" fill="#ffffff"/>',
+    '<rect x="0.5" y="0.5" width="999" height="403" rx="10" fill="none" stroke="#e3e7ee"/>',
+    '<rect width="1000" height="46" rx="10" fill="#f7f9fc"/><rect y="36" width="1000" height="10" fill="#f7f9fc"/>',
+    '<line x1="0" y1="46" x2="1000" y2="46" stroke="#e3e7ee"/>',
+    '<circle cx="24" cy="23" r="5.5" fill="#e6e9ef"/><circle cx="44" cy="23" r="5.5" fill="#e6e9ef"/><circle cx="64" cy="23" r="5.5" fill="#e6e9ef"/>',
+    f'<text x="88" y="28" font-family="{FONT}" font-size="13.5" font-weight="700" fill="#33405a">Kernfoundry · 학부모 안내 초안</text>',
+    f'<text x="976" y="28" text-anchor="end" font-family="{FONT}" font-size="12.5" fill="#98a2b3">초안 3건</text>',
+    '<rect x="0" y="46" width="190" height="358" fill="#fbfcfe"/><line x1="190" y1="46" x2="190" y2="404" stroke="#eaedf3"/>',
+    f'<text x="30" y="84" font-family="{FONT}" font-size="13" font-weight="500" fill="#6b7686">출결</text>',
+    f'<rect x="14" y="101" width="162" height="30" rx="7" fill="#eef3fb"/><rect x="14" y="101" width="3" height="30" rx="1.5" fill="#1f4e79"/>',
+    f'<text x="30" y="122" font-family="{FONT}" font-size="13" font-weight="700" fill="#1b2b45">학부모 안내</text>',
+    f'<text x="30" y="160" font-family="{FONT}" font-size="13" font-weight="500" fill="#6b7686">수강료 정산</text>',
+    f'<text x="30" y="198" font-family="{FONT}" font-size="13" font-weight="500" fill="#6b7686">실행 기록</text>',
+]
+notice_rows = [
+    ("한가영 · 결석 안내", "이번 달 5회 중 4회 결석하셨습니다. 일정 확인 부탁드립니다.", "검토 대기", AMBER_BG, AMBER_FG),
+    ("김민수 · 월간 안내", "이번 달 출석률 90%입니다. 결석 2회, 지각 1회입니다.", "검토 대기", AMBER_BG, AMBER_FG),
+    ("최지우 · 결석 안내", "본문에 휴대폰 번호가 포함되어 생성이 차단되었습니다.", "생성 차단", RED_BG, RED_FG),
+]
+ry = 74
+for title, body, status, bg, fg in notice_rows:
+    notice.append(f'<rect x="214" y="{ry}" width="762" height="92" rx="8" fill="#fdfdfe" stroke="#eaedf3"/>')
+    notice.append(f'<text x="236" y="{ry+28}" font-family="{FONT}" font-size="14" font-weight="700" fill="#1b2b45">{html.escape(title)}</text>')
+    notice.append(f'<text x="236" y="{ry+56}" font-family="{FONT}" font-size="13.5" fill="#55606f">{html.escape(body)}</text>')
+    notice.append(chip(898, ry + 16, status, bg, fg, 62))
+    notice.append(f'<text x="236" y="{ry+78}" font-family="{FONT}" font-size="12" fill="#98a2b3">사람이 확인하기 전에는 발송되지 않습니다</text>')
+    ry += 104
+notice.append("</svg>")
+(OUT / "screen-notice.svg").write_text("".join(notice), encoding="utf-8")
+
 print("생성:", sorted(p.name for p in OUT.glob("screen-*.svg")))

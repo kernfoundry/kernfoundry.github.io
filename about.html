@@ -18,7 +18,7 @@
 
 <div class="promo">
   <div class="wrap">
-    <span><b>새로 추가</b> 엑셀(.xlsx) 파일을 그대로 읽습니다</span>
+    <span><b>새로 추가</b> 출결 파일을 올리면 정산과 안내 초안까지 한 번에</span>
     <a href="notice.html">자세히 →</a>
   </div>
 </div>
@@ -81,8 +81,9 @@
     <p>그래서 필요한 부분을 직접 프로그램으로 만들었습니다. 계산은 프로그램이 하고, 판단과 발송은 사람이 합니다.
        잘못된 값은 넘기지 않고 경고로 남기고, 학부모님께 나가는 초안은 반드시 검토 상태를 거치게 했습니다.</p>
     <p>같은 일을 반복하는 다른 교육 사업자에게도 도움이 되기를 바랍니다.</p>
-    <div class="pic-grid" style="grid-template-columns:1fr">
-      <img src="images/photo-classroom.jpg" alt="학원 강의실" style="height:320px">
+    <div class="pic-grid">
+      <img src="images/photo-classroom.jpg" alt="학원 강의실">
+      <img src="images/photo-classroom2.jpg" alt="수업 공간">
     </div>
 
     <div class="shead" id="history" style="margin-top:70px">
@@ -149,6 +150,15 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('nav.main a.top').forEach(function(a){
+    if ((a.getAttribute('href') || '').split('#')[0] === here) a.classList.add('on');
+  });
+})();
+</script>
 
 <script>
 (function(){

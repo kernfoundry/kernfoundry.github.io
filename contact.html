@@ -18,7 +18,7 @@
 
 <div class="promo">
   <div class="wrap">
-    <span><b>새로 추가</b> 엑셀(.xlsx) 파일을 그대로 읽습니다</span>
+    <span><b>새로 추가</b> 출결 파일을 올리면 정산과 안내 초안까지 한 번에</span>
     <a href="notice.html">자세히 →</a>
   </div>
 </div>
@@ -137,6 +137,15 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('nav.main a.top').forEach(function(a){
+    if ((a.getAttribute('href') || '').split('#')[0] === here) a.classList.add('on');
+  });
+})();
+</script>
 
 <script>
 (function(){
