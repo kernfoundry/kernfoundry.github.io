@@ -5,14 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kernfoundry | 학원 운영 자동화</title>
 <meta name="description" content="Kernfoundry는 학원 운영의 반복 업무를 프로그램으로 대체합니다. 출결 집계, 학부모 안내문 초안, 수강료 정산을 자동화하고 검토 기록을 남깁니다.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kernfoundry | 학원 운영 자동화">
+<meta property="og:site_name" content="Kernfoundry">
+<meta property="og:description" content="학원 운영의 반복 업무를 프로그램으로 대체합니다.">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
 <header class="site">
   <div class="wrap gnb">
-    <a class="logo" href="index.html">KERNFOUNDRY<small>ACADEMY OPERATIONS AUTOMATION</small></a>
-    <nav class="main">
+    <a class="logo" href="index.html">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3.5v17M6 12l7-8.5M6 12l8 8.5" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+      <span class="txt">KERNFOUNDRY<small>ACADEMY OPERATIONS AUTOMATION</small></span>
+    </a>
+    <nav class="main" id="gnb">
       <div>
         <a href="about.html">회사소개</a>
         <div class="sub">
@@ -43,6 +51,8 @@
       <div><a href="contact.html">문의</a></div>
     </nav>
     <a class="btn" href="contact.html">도입 문의</a>
+    <button class="menu-btn" type="button" aria-controls="gnb" aria-label="메뉴"
+      onclick="document.getElementById('gnb').classList.toggle('open')">메뉴</button>
   </div>
 </header>
 

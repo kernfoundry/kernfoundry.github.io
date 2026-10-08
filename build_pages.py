@@ -12,14 +12,22 @@ HEAD = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{title}">
+<meta property="og:site_name" content="Kernfoundry">
+<meta property="og:description" content="{desc}">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
 <header class="site">
   <div class="wrap gnb">
-    <a class="logo" href="index.html">KERNFOUNDRY<small>ACADEMY OPERATIONS AUTOMATION</small></a>
-    <nav class="main">
+    <a class="logo" href="index.html">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3.5v17M6 12l7-8.5M6 12l8 8.5" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+      <span class="txt">KERNFOUNDRY<small>ACADEMY OPERATIONS AUTOMATION</small></span>
+    </a>
+    <nav class="main" id="gnb">
       <div>
         <a href="about.html">회사소개</a>
         <div class="sub">
@@ -49,6 +57,8 @@ HEAD = """<!DOCTYPE html>
       <div><a href="contact.html">문의</a></div>
     </nav>
     <a class="btn" href="contact.html">도입 문의</a>
+    <button class="menu-btn" type="button" aria-controls="gnb" aria-label="메뉴"
+      onclick="document.getElementById('gnb').classList.toggle('open')">메뉴</button>
   </div>
 </header>
 
@@ -337,6 +347,17 @@ PRIVACY = """
 </section>
 """
 
+NOTFOUND = """
+<section>
+  <div class="wrap doc" style="text-align:center;padding:30px 0 10px">
+    <p style="font-size:64px;font-weight:800;color:#0f2c4d;margin:0 0 8px">404</p>
+    <p style="font-size:17px;color:#4b5563;margin:0 0 26px">요청하신 페이지를 찾을 수 없습니다. 주소가 바뀌었거나 삭제된 페이지입니다.</p>
+    <p><a class="btn solid" href="index.html">메인으로 이동</a>
+       <a class="btn" href="contact.html" style="margin-left:8px">문의하기</a></p>
+  </div>
+</section>
+"""
+
 PAGES = {
     "about.html": (dict(title="회사소개 | Kernfoundry", crumb="회사소개", h1="회사소개",
                         sub="교육 사업을 운영하며 만든 자동화를 사업으로 정리했습니다.",
@@ -355,6 +376,8 @@ PAGES = {
     "privacy.html": (dict(title="개인정보처리방침 | Kernfoundry", crumb="개인정보처리방침", h1="개인정보처리방침",
                           sub="문의 응답에 필요한 최소한의 정보만 수집합니다.",
                           desc="Kernfoundry 개인정보처리방침."), PRIVACY),
+    "404.html": (dict(title="페이지를 찾을 수 없습니다 | Kernfoundry", crumb="404", h1="페이지를 찾을 수 없습니다",
+                      sub="주소를 다시 확인해 주세요.", desc="Kernfoundry 페이지 안내."), NOTFOUND),
 }
 
 
