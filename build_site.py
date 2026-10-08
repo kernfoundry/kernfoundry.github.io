@@ -172,17 +172,11 @@ INDEX = """
 </div>
 <div class="hero-table">
   <div class="wrap">
-    <table class="result">
-      <caption>출결 파일을 올렸을 때 나오는 결과 (예시)</caption>
-      <thead><tr><th>학생</th><th>출석</th><th>총수업</th><th>출석률</th><th>안내문</th></tr></thead>
-      <tbody>
-        <tr><td>김민수</td><td>18</td><td>20</td><td class="ok">90.0%</td><td><span class="tag ok">월간 안내</span></td></tr>
-        <tr><td>정다움</td><td>19</td><td>20</td><td class="ok">95.0%</td><td><span class="tag ok">월간 안내</span></td></tr>
-        <tr><td>한가영</td><td>5</td><td>20</td><td class="warn">25.0%</td><td><span class="tag warn">결석 안내</span></td></tr>
-        <tr><td>박철수</td><td class="dim">—</td><td>20</td><td class="dim">—</td><td><span class="tag dim">입력 확인</span></td></tr>
-      </tbody>
-    </table>
-    <p class="cap">계산은 프로그램이, 발송 여부는 담당자가 판단합니다. 초안은 검토 대기 상태로 남습니다.</p>
+    <div class="flow">
+      <div><b>파일</b><span>학원에서 쓰던 출결·수강료 파일을 그대로 올립니다</span></div>
+      <div><b>계산</b><span>출석률과 정산 금액을 계산하고, 이상한 값은 경고로 분리합니다</span></div>
+      <div><b>초안</b><span>학부모 안내문은 검토 대기 상태로 남습니다. 발송은 담당자가 합니다</span></div>
+    </div>
   </div>
 </div>
 
@@ -414,10 +408,10 @@ WORK = """
       <table class="result dark-cap">
         <thead><tr><th>학생</th><th>청구액</th><th>납부액</th><th>미납액</th><th>상태</th></tr></thead>
         <tbody>
-          <tr><td>김민수</td><td>300,000</td><td>300,000</td><td class="ok">0</td><td><span class="tag ok">완납</span></td></tr>
-          <tr><td>정다움</td><td>300,000</td><td>250,000</td><td class="dim">0</td><td><span class="tag ok">완납</span></td></tr>
-          <tr><td>한가영</td><td>300,000</td><td>150,000</td><td class="warn">150,000</td><td><span class="tag dim">일부납</span></td></tr>
-          <tr><td>최지우</td><td>300,000</td><td>0</td><td class="warn">300,000</td><td><span class="tag warn">미납</span></td></tr>
+          <tr><td>학생 1</td><td>300,000</td><td>300,000</td><td class="ok">0</td><td><span class="tag ok">완납</span></td></tr>
+          <tr><td>학생 2</td><td>300,000</td><td>250,000</td><td class="dim">0</td><td><span class="tag ok">완납</span></td></tr>
+          <tr><td>학생 3</td><td>300,000</td><td>150,000</td><td class="warn">150,000</td><td><span class="tag dim">일부납</span></td></tr>
+          <tr><td>학생 4</td><td>300,000</td><td>0</td><td class="warn">300,000</td><td><span class="tag warn">미납</span></td></tr>
         </tbody>
       </table>
     </div>

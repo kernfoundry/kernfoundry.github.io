@@ -132,17 +132,11 @@ FOOT = """
 RESULT_TABLE = """
 <div class="hero-table">
   <div class="wrap">
-    <table class="result">
-      <caption>What comes back after an attendance file is uploaded (example)</caption>
-      <thead><tr><th>Student</th><th>Attended</th><th>Total</th><th>Rate</th><th>Draft</th></tr></thead>
-      <tbody>
-        <tr><td>Minsu Kim</td><td>18</td><td>20</td><td class="ok">90.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
-        <tr><td>Daum Jung</td><td>19</td><td>20</td><td class="ok">95.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
-        <tr><td>Gayoung Han</td><td>5</td><td>20</td><td class="warn">25.0%</td><td><span class="tag warn">Absence note</span></td></tr>
-        <tr><td>Cheolsu Park</td><td class="dim">&mdash;</td><td>20</td><td class="dim">&mdash;</td><td><span class="tag dim">Needs input</span></td></tr>
-      </tbody>
-    </table>
-    <p class="cap">The program calculates. A person decides whether to send. Drafts stay in a review state until then.</p>
+    <div class="flow">
+      <div><b>File</b><span>Upload the attendance and tuition file you already keep</span></div>
+      <div><b>Calculate</b><span>Rates and balances are computed; odd values are set aside as warnings</span></div>
+      <div><b>Draft</b><span>Parent messages stay in a review state &mdash; a person sends them</span></div>
+    </div>
   </div>
 </div>
 """
@@ -342,10 +336,10 @@ WORK = """
       <table class="result dark-cap">
         <thead><tr><th>Student</th><th>Charge</th><th>Paid</th><th>Balance</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td>Minsu Kim</td><td>300,000</td><td>300,000</td><td class="ok">0</td><td><span class="tag ok">Paid</span></td></tr>
-          <tr><td>Daum Jung</td><td>300,000</td><td>250,000</td><td class="dim">0</td><td><span class="tag ok">Paid</span></td></tr>
-          <tr><td>Gayoung Han</td><td>300,000</td><td>150,000</td><td class="warn">150,000</td><td><span class="tag dim">Partial</span></td></tr>
-          <tr><td>Jiwoo Choi</td><td>300,000</td><td>0</td><td class="warn">300,000</td><td><span class="tag warn">Unpaid</span></td></tr>
+          <tr><td>Student 1</td><td>300,000</td><td>300,000</td><td class="ok">0</td><td><span class="tag ok">Paid</span></td></tr>
+          <tr><td>Student 2</td><td>300,000</td><td>250,000</td><td class="dim">0</td><td><span class="tag ok">Paid</span></td></tr>
+          <tr><td>Student 3</td><td>300,000</td><td>150,000</td><td class="warn">150,000</td><td><span class="tag dim">Partial</span></td></tr>
+          <tr><td>Student 4</td><td>300,000</td><td>0</td><td class="warn">300,000</td><td><span class="tag warn">Unpaid</span></td></tr>
         </tbody>
       </table>
     </div>

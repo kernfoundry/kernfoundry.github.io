@@ -113,6 +113,10 @@ table.result td.dim{color:#8a94a6}
 .tag.ok{background:#e8f6ef;color:#0f7b4f}
 .tag.warn{background:#fdeee7;color:#c2410c}
 .tag.dim{background:#fdf4e3;color:#a16207}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;border-top:1px solid #222a38;padding-top:26px}
+.flow b{display:block;color:#fff;font-size:15px;font-weight:800;margin-bottom:8px}
+.flow b::before{content:"";display:block;width:22px;height:2px;background:var(--accent);margin-bottom:12px}
+.flow span{color:#9fb0c6;font-size:14.5px;line-height:1.55;display:block}
 .hero-table .cap{color:#8fa3bd;font-size:13.5px;margin:14px 2px 0}
 
 
