@@ -485,6 +485,7 @@ NOTICE = """
 <section class="tight">
   <div class="wrap doc">
     <p class="date">2026.10.09</p>
+    <p class="date">2026.10.09</p>
     <h3 id="n1">We opened this site</h3>
     <p>An introduction to the academy back-office tooling. Enquiries by email.</p>
 

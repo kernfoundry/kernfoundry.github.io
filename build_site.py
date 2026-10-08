@@ -557,6 +557,7 @@ DEMO_HEAD = """
 NOTICE = """
 <section class="tight">
   <div class="wrap doc">
+    <p class="date">2026.10.09</p>
     <h3 id="n1">소개 페이지를 열었습니다</h3>
     <p>학원 운영 자동화 소개 페이지를 열었습니다. 도입 문의는 이메일로 받습니다.</p>
 

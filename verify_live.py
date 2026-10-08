@@ -26,7 +26,7 @@ for group, pages in (("KO", ko), ("EN", en)):
 
 h = get("")[1]
 e = get("en/")[1]
-css = get("assets/site.css")[1]
+css = get("assets/site6.css")[1]
 print("KO -> EN 링크:", 'href="en/index.html"' in h, "| EN -> KO 링크:", 'href="../index.html"' in e)
 print("데모 메뉴 제거:", "demo.html" not in h, "| 언어 표시(hreflang):", 'hreflang="ko"' in e)
 print("메뉴 빈틈 방지:", ".sub::before" in css, "| 언어 버튼:", ".lang{" in css)
