@@ -1,6 +1,6 @@
 """Kernfoundry 사이트 생성기 v3 (글로벌 제품 사이트형)
-- 참고: linear.app / resend.com / vercel.com 의 구조 (상단 프로모 스트립 → 미니멀 GNB → 큰 단정문 히어로 + 제품 화면 → 기능 행 → 개발자용 코드 블록 → 체인지로그 → 최종 CTA → 4열 푸터)
-- 국내 기업형(사업자등록번호·대표·주소) 푸터는 쓰지 않는다.
+- 참고: linear.app / resend.com / vercel.com 구조 + 국내 디자인 강의 3편(스케치→도색→마감, 3원칙, 품질 8요소)
+- 푸터에는 회사 등록 정보를 두지 않는다(개인 정보 노출 방지). 브랜드·링크·연락처만.
 사용: python build_site.py
 """
 import pathlib
@@ -15,6 +15,8 @@ HEAD = """<!DOCTYPE html>
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{title}">
 <meta property="og:site_name" content="Kernfoundry">
@@ -110,6 +112,19 @@ FOOT = """
   </div>
 </footer>
 
+<script>
+(function(){
+  if (!('IntersectionObserver' in window)) return;
+  var targets = document.querySelectorAll('.shead, .feature, .metrics, .band, .info, .notice, .pic-grid');
+  if (!targets.length) return;
+  Array.prototype.forEach.call(targets, function(el){ el.classList.add('reveal'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.06 });
+  Array.prototype.forEach.call(targets, function(el){ io.observe(el); });
+})();
+</script>
+
 </body>
 </html>
 """
@@ -125,10 +140,10 @@ SUBHERO = """
 """
 
 INDEX = """
-<div class="hero">
+<div class="hero dark">
   <div class="wrap in">
     <div>
-      <div class="eyebrow">Academy operations automation</div>
+      <div class="kicker">Academy operations automation</div>
       <h1>학원 행정의 반복 업무를<br>프로그램이 대신 처리합니다</h1>
       <p class="lead">출결 파일을 넣으면 출석률을 계산하고, 학부모에게 보낼 안내문 초안과 수강료 정산 결과를 만듭니다.
         잘못된 값은 조용히 넘기지 않고 경고로 남기고, 초안은 사람이 검토한 뒤에만 발송됩니다.</p>
