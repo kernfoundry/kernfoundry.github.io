@@ -6,6 +6,7 @@ import pathlib
 import re
 
 SITE = pathlib.Path(__file__).resolve().parent
+BASE = "https://kernfoundry.github.io/"
 EN = SITE / "en"
 EN.mkdir(exist_ok=True)
 
@@ -26,14 +27,21 @@ HEAD = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<link rel="alternate" hreflang="ko" href="../{kofile}">
-<link rel="alternate" hreflang="en" href="{self}">
+<link rel="alternate" hreflang="ko" href="{kourl}">
+<link rel="alternate" hreflang="en" href="{enurl}">
+<link rel="canonical" href="{enurl}">
+<meta property="og:url" content="{enurl}">
+<meta property="og:image" content="https://kernfoundry.github.io/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../assets/site6.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <div class="promo">
   <div class="wrap">
@@ -166,6 +174,9 @@ FOOT = """
   });
 })();
 </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Kernfoundry","url":"https://kernfoundry.github.io/","logo":"https://kernfoundry.github.io/images/og.png","email":"hello@kernfoundry.com","description":"학원 운영 자동화 소프트웨어. 출결 집계, 학부모 안내문 초안, 수강료 정산."}
+</script>
 </body>
 </html>
 """
@@ -191,7 +202,7 @@ rates, warnings = attendance_rate(table.rows)
 drafts = generate_drafts(rates, academy="Your Academy")"""
 
 INDEX = """
-<div class="hero dark">
+<div class="hero dark" id="main">
   <div class="wrap in">
     <div class="hero-copy">
       <div class="kicker">Academy operations automation</div>
@@ -604,6 +615,16 @@ PAGES = [
 
 
 
+
+def ensure_main(html: str) -> str:
+    """모든 페이지에 건너뛰기 링크 대상(#main)을 보장한다."""
+    if 'id="main"' in html:
+        return html
+    if "<section" in html:
+        return html.replace("<section", '<section id="main"', 1)
+    return html
+
+
 def align_numbers(html: str) -> str:
     """결과 표에서 숫자 칸을 오른쪽 정렬로 (읽기 좋게)."""
     def fix_block(m):
@@ -620,7 +641,9 @@ def align_numbers(html: str) -> str:
 def main() -> None:
     for name, title, desc, body in PAGES:
         kofile = "404.html" if name == "404.html" else name
-        html = align_numbers(HEAD.format(title=title, desc=desc, kofile=kofile, self=name) + body) + FOOT
+        enurl = BASE + "en/" + name
+        kourl = BASE + kofile
+        html = ensure_main(align_numbers(HEAD.format(title=title, desc=desc, kofile=kofile, self=name, enurl=enurl, kourl=kourl) + body)) + FOOT
         (EN / name).write_text(html, encoding="utf-8", newline="\n")
         print("작성:", f"en/{name}", f"({len(html)} bytes)")
 

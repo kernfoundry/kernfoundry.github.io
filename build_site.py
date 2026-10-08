@@ -22,9 +22,19 @@ HEAD = """<!DOCTYPE html>
 <meta property="og:title" content="{title}">
 <meta property="og:site_name" content="Kernfoundry">
 <meta property="og:description" content="{desc}">
+<meta property="og:url" content="https://kernfoundry.github.io/{self}">
+<meta property="og:image" content="https://kernfoundry.github.io/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://kernfoundry.github.io/{self}">
+<link rel="alternate" hreflang="ko" href="https://kernfoundry.github.io/{self}">
+<link rel="alternate" hreflang="en" href="https://kernfoundry.github.io/{enpage}">
 <link rel="stylesheet" href="assets/site6.css">
+<script type="application/ld+json">
 </head>
 <body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
 
 <div class="promo">
   <div class="wrap">
@@ -177,12 +187,15 @@ FOOT = """
 })();
 </script>
 
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Kernfoundry","url":"https://kernfoundry.github.io/","logo":"https://kernfoundry.github.io/images/og.png","email":"hello@kernfoundry.com","description":"학원 운영 자동화 소프트웨어. 출결 집계, 학부모 안내문 초안, 수강료 정산."}
+</script>
 </body>
 </html>
 """
 
 SUBHERO = """
-<div class="phero">
+<div class="phero" id="main">
   <div class="wrap">
     <div class="crumb">{crumb}</div>
     <h1>{h1}</h1>
@@ -192,7 +205,7 @@ SUBHERO = """
 """
 
 INDEX = """
-<div class="hero dark">
+<div class="hero dark" id="main">
   <div class="wrap in">
     <div class="hero-copy">
       <div class="kicker">Academy operations automation</div>
@@ -720,24 +733,24 @@ NOTFOUND = """
 """
 
 SUBS = {
-    "about.html": (dict(enpage="en/about.html", title="회사 | Kernfoundry", crumb="Company", h1="회사",
+    "about.html": (dict(self="about.html", enpage="en/about.html", title="회사 | Kernfoundry", crumb="Company", h1="회사",
                         sub="교육 사업을 운영하며 만든 자동화를 제품으로 정리하고 있습니다.",
                         desc="Kernfoundry 회사 소개 — 인사말, 지금 하는 일, 연락."), ABOUT),
-    "business.html": (dict(enpage="en/business.html", title="제품 | Kernfoundry", crumb="What we do", h1="하는 일",
+    "business.html": (dict(self="business.html", enpage="en/business.html", title="제품 | Kernfoundry", crumb="What we do", h1="하는 일",
                            sub="출결 관리, 학부모 안내 초안, 수강료 정산.",
                            desc="Kernfoundry 하는 일 — 출결 관리, 학부모 안내, 수강료 정산, 운영 원칙."), BUSINESS),
-    "work.html": (dict(enpage="en/work.html", title="적용 화면 | Kernfoundry", crumb="Results", h1="결과 화면",
+    "work.html": (dict(self="work.html", enpage="en/work.html", title="적용 화면 | Kernfoundry", crumb="Results", h1="결과 화면",
                        sub="예시 자료로 실행한 실제 출력과 코드 예시.",
                        desc="Kernfoundry 적용 화면 — 실행 결과, 자동 검사, 코드 예시."), WORK),
-    "notice.html": (dict(enpage="en/notice.html", title="소식 | Kernfoundry", crumb="News", h1="소식",
+    "notice.html": (dict(self="notice.html", enpage="en/notice.html", title="소식 | Kernfoundry", crumb="News", h1="소식",
                          sub="변경 사항과 안내입니다.", desc="Kernfoundry 소식."), NOTICE),
-    "contact.html": (dict(enpage="en/contact.html", title="도입 문의 | Kernfoundry", crumb="Contact", h1="도입 문의",
+    "contact.html": (dict(self="contact.html", enpage="en/contact.html", title="도입 문의 | Kernfoundry", crumb="Contact", h1="도입 문의",
                           sub="파일 형식을 알려주시면 적용 가능 여부를 확인해 드립니다.",
                           desc="Kernfoundry 도입 문의."), CONTACT),
-    "privacy.html": (dict(enpage="en/privacy.html", title="개인정보처리방침 | Kernfoundry", crumb="Privacy", h1="개인정보처리방침",
+    "privacy.html": (dict(self="privacy.html", enpage="en/privacy.html", title="개인정보처리방침 | Kernfoundry", crumb="Privacy", h1="개인정보처리방침",
                           sub="문의 응답에 필요한 최소한의 정보만 수집합니다.",
                           desc="Kernfoundry 개인정보처리방침."), PRIVACY),
-    "404.html": (dict(enpage="en/404.html", title="페이지를 찾을 수 없습니다 | Kernfoundry", crumb="404", h1="페이지를 찾을 수 없습니다",
+    "404.html": (dict(self="404.html", enpage="en/404.html", title="페이지를 찾을 수 없습니다 | Kernfoundry", crumb="404", h1="페이지를 찾을 수 없습니다",
                       sub="주소를 다시 확인해 주세요.", desc="Kernfoundry 페이지 안내."), NOTFOUND),
 }
 
@@ -749,6 +762,16 @@ PROMO_CSS = """
 .promo a:hover{color:#fff}
 """
 
+
+
+
+def ensure_main(html: str) -> str:
+    """모든 페이지에 건너뛰기 링크 대상(#main)을 보장한다."""
+    if 'id="main"' in html:
+        return html
+    if "<section" in html:
+        return html.replace("<section", '<section id="main"', 1)
+    return html
 
 
 def align_numbers(html: str) -> str:
@@ -770,13 +793,13 @@ def main() -> None:
         (SITE / "assets" / "site6.css").write_text(css + PROMO_CSS, encoding="utf-8", newline="\n")
         print("site.css 에 promo 스타일 추가")
 
-    index_meta = dict(title="Kernfoundry | 학원 운영 자동화", crumb="Home", h1="Kernfoundry", enpage="en/index.html",
+    index_meta = dict(self="", title="Kernfoundry | 학원 운영 자동화", crumb="Home", h1="Kernfoundry", enpage="en/index.html",
                       sub="", desc="학원 운영의 반복 업무를 프로그램으로 대체합니다. 출결 집계, 학부모 안내문 초안, 수강료 정산 자동화.")
-    (SITE / "index.html").write_text(align_numbers(HEAD.format(**index_meta) + INDEX) + FOOT, encoding="utf-8", newline="\n")
+    (SITE / "index.html").write_text(ensure_main(align_numbers(HEAD.format(**index_meta) + INDEX)) + FOOT, encoding="utf-8", newline="\n")
     print(f"작성: index.html ({(SITE / 'index.html').stat().st_size} bytes)")
 
     for name, (meta, body) in SUBS.items():
-        html = align_numbers(HEAD.format(**meta) + SUBHERO.format(**meta) + body) + FOOT
+        html = ensure_main(align_numbers(HEAD.format(**meta) + SUBHERO.format(**meta) + body)) + FOOT
         (SITE / name).write_text(html, encoding="utf-8", newline="\n")
         print(f"작성: {name} ({(SITE / name).stat().st_size} bytes)")
 
