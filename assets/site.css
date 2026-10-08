@@ -181,6 +181,8 @@ footer.site li a:hover{color:var(--ink)}
 footer.site .bottom{margin-top:48px;padding-top:22px;border-top:1px solid var(--line);
   display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13.5px}
 
+.period{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--accent);margin:0 0 26px}
+
 /* 서브페이지 */
 .phero{padding:78px 0 54px;border-bottom:1px solid var(--line)}
 .phero h1{font-size:clamp(28px,3.4vw,42px);letter-spacing:-.03em;font-weight:800;margin:12px 0 10px}

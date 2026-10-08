@@ -58,7 +58,7 @@ HEAD = """<!DOCTYPE html>
         <a class="top" href="about.html">회사</a>
         <div class="sub">
           <a href="about.html#greeting">인사말</a>
-          <a href="about.html#history">연혁</a>
+          <a href="about.html#now">지금 하는 일</a>
         </div>
       </div>
       <div><a class="top" href="notice.html">소식</a></div>
@@ -273,14 +273,13 @@ drafts = generate_drafts(rates, academy="OO학원")</div>
 <section class="alt">
   <div class="wrap">
     <div class="shead">
-      <div class="eyebrow">Changelog</div>
-      <h2>최근 변경</h2>
+      <div class="eyebrow">Status</div>
+      <h2>진행 상황</h2>
     </div>
     <table class="notice">
       <tbody>
-        <tr><td class="c">2026-10-09</td><td><a href="notice.html#n2">엑셀(.xlsx) 직접 읽기 지원</a> — CSV 변환 없이 사용</td></tr>
-        <tr><td class="c">2026-10-09</td><td><a href="business.html#settlement">수강료 정산 모듈</a> — 미납자 안내 초안까지</td></tr>
-        <tr><td class="c">2026-10-09</td><td><a href="work.html#tests">자동 검사 76항목</a> — 이상값·개인정보·발송 차단 규칙을 코드로 강제</td></tr>
+        <tr><td class="c">2026.09</td><td><a href="business.html#attendance">출결 집계 모듈</a> — 이상값 처리와 자동 검사 포함</td></tr>
+        <tr><td class="c">2026.10</td><td><a href="business.html#settlement">학부모 안내 초안·수강료 정산</a> · <a href="notice.html#n2">엑셀 직접 읽기</a></td></tr>
       </tbody>
     </table>
   </div>
@@ -312,17 +311,16 @@ ABOUT = """
        잘못된 값은 넘기지 않고 경고로 남기고, 학부모님께 나가는 초안은 반드시 검토 상태를 거치게 했습니다.</p>
     <p>같은 일을 반복하는 다른 교육 사업자에게도 도움이 되기를 바랍니다.</p>
 
-    <div class="shead" id="history" style="margin-top:70px">
-      <div class="eyebrow">History</div>
-      <h2>연혁</h2>
+    <div class="shead" id="now" style="margin-top:70px">
+      <div class="eyebrow">Now</div>
+      <h2>지금 하는 일</h2>
+      <p>작은 팀입니다. 아래 세 가지에 집중하고 있습니다.</p>
     </div>
-    <ul class="timeline">
-      <li><b>2026.10</b><span>Kernfoundry 설립</span></li>
-      <li><b>2026.10</b><span>출결 집계·학부모 안내 초안 모듈을 실제 운영에 적용</span></li>
-      <li><b>2026.10</b><span>수강료 정산 모듈 추가, 엑셀(.xlsx) 직접 읽기 지원</span></li>
-      <li><b>2026.10</b><span>자동 검사 76항목 도입 — 이상값·개인정보·발송 차단을 코드로 강제</span></li>
-      <li><b>2026.10</b><span>운영 소스 공개 (github.com/kernfoundry)</span></li>
-    </ul>
+    <table class="info">
+      <tr><th>제품</th><td>출결·정산 계산의 정확도와 경고 기준을 다듬고 있습니다. 실제 학원 파일에서 나온 예외를 처리 규칙에 반영합니다.</td></tr>
+      <tr><th>적용</th><td>운영 중인 학원에서 직접 쓰면서 불편한 순서를 줄이고 있습니다. 화면 없이 파일로만 도는 흐름을 유지합니다.</td></tr>
+      <tr><th>공개</th><td>핵심 모듈 소스를 공개했습니다. 다른 교육 사업자가 같은 문제를 겪을 때 참고할 수 있게 하는 것이 목적입니다.</td></tr>
+    </table>
 
     <div class="shead" id="contact" style="margin-top:70px">
       <div class="eyebrow">Contact</div>
@@ -537,29 +535,22 @@ DEMO_HEAD = """
 NOTICE = """
 <section class="tight">
   <div class="wrap doc">
-    <table class="notice">
-      <thead><tr><th style="width:130px">날짜</th><th>내용</th></tr></thead>
-      <tbody>
-        <tr><td class="c">2026-10-09</td><td><a href="#n3">수강료 정산 안내문 발송 시 확인 사항</a></td></tr>
-        <tr><td class="c">2026-10-09</td><td><a href="#n2">엑셀 파일(.xlsx) 직접 읽기 지원</a></td></tr>
-        <tr><td class="c">2026-10-09</td><td><a href="#n1">Kernfoundry 소개 페이지를 열었습니다</a></td></tr>
-      </tbody>
-    </table>
+    <p class="period">2026.10</p>
 
-    <h3 id="n3" style="margin-top:48px">수강료 정산 안내문 발송 시 확인 사항</h3>
+    <h3 id="n1">소개 페이지를 열었습니다</h3>
+    <p>학원 운영 자동화 소개 페이지를 열었습니다. 도입 문의는 이메일로 받습니다.</p>
+
+    <h3 id="n2">엑셀 파일(.xlsx) 직접 읽기 지원</h3>
+    <p>CSV로 저장하지 않고 엑셀 파일 그대로 넣어도 읽습니다. 첫 번째 시트를 사용하며 칸 이름이 달라도 인식합니다.
+       옛 형식(.xls)은 지원하지 않으므로 엑셀에서 .xlsx로 저장해 주세요.</p>
+
+    <h3 id="n3">수강료 정산 안내문 발송 시 확인 사항</h3>
     <p>정산 모듈이 만드는 미납 안내문은 초안입니다. 아래를 확인한 뒤 발송해 주세요.</p>
     <ol>
       <li>금액이 실제 입금 내역과 일치하는지 확인합니다.</li>
       <li>이미 납부한 학부모님께 발송되지 않도록 납부 표시를 먼저 갱신합니다.</li>
       <li>안내문에는 계좌번호가 들어가지 않습니다. 입금 계좌는 학원에서 쓰는 안내 문구로 추가합니다.</li>
     </ol>
-
-    <h3 id="n2" style="margin-top:36px">엑셀 파일(.xlsx) 직접 읽기 지원</h3>
-    <p>CSV로 저장하지 않고 엑셀 파일 그대로 넣어도 읽습니다. 첫 번째 시트를 사용하며 칸 이름이 달라도 인식합니다.
-       옛 형식(.xls)은 지원하지 않으므로 엑셀에서 .xlsx로 저장해 주세요.</p>
-
-    <h3 id="n1" style="margin-top:36px">Kernfoundry 소개 페이지를 열었습니다</h3>
-    <p>학원 운영 자동화 소개 페이지를 열었습니다. 도입 문의는 이메일로 받습니다.</p>
   </div>
 </section>
 """
@@ -654,7 +645,7 @@ NOTFOUND = """
 SUBS = {
     "about.html": (dict(enpage="en/about.html", title="회사 | Kernfoundry", crumb="Company", h1="회사",
                         sub="교육 사업을 운영하며 만든 자동화를 제품으로 정리하고 있습니다.",
-                        desc="Kernfoundry 회사 소개 — 인사말, 연혁, 연락."), ABOUT),
+                        desc="Kernfoundry 회사 소개 — 인사말, 지금 하는 일, 연락."), ABOUT),
     "business.html": (dict(enpage="en/business.html", title="제품 | Kernfoundry", crumb="Product", h1="제품",
                            sub="출결 관리, 학부모 안내 초안, 수강료 정산.",
                            desc="Kernfoundry 제품 — 출결 관리, 학부모 안내, 수강료 정산, 운영 원칙."), BUSINESS),

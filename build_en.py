@@ -15,7 +15,7 @@ NAV = [
                                   ("business.html#settlement", "Tuition"),
                                   ("business.html#principle", "Operating rules")]),
     ("work.html", "In practice", [("work.html#result", "Results"), ("work.html#tests", "Automated checks"), ("work.html#code", "Code")]),
-    ("about.html", "Company", [("about.html#greeting", "Message"), ("about.html#history", "History")]),
+    ("about.html", "Company", [("about.html#greeting", "Message"), ("about.html#now", "Now")]),
     ("notice.html", "Notes", []),
 ]
 
@@ -67,7 +67,7 @@ HEAD = """<!DOCTYPE html>
         <a class="top" href="about.html">Company</a>
         <div class="sub">
           <a href="about.html#greeting">Message</a>
-          <a href="about.html#history">History</a>
+          <a href="about.html#now">Now</a>
         </div>
       </div>
       <div><a class="top" href="notice.html">Notes</a></div>
@@ -392,15 +392,16 @@ ABOUT = """
        Anything a parent sees, and anything that moves money, is checked by a person first.</p>
     <p>We are preparing the same tooling for other education businesses that repeat this work.</p>
 
-    <div class="shead" id="history" style="margin-top:70px">
-      <div class="eyebrow">History</div>
-      <h2>History</h2>
+    <div class="shead" id="now" style="margin-top:70px">
+      <div class="eyebrow">Now</div>
+      <h2>What we are working on</h2>
+      <p>A small team. Three things hold our attention.</p>
     </div>
-    <ul class="info">
-      <li><b>2026.09</b><span>Attendance module, edge-case handling, automated checks</span></li>
-      <li><b>2026.10</b><span>Parent message drafts, tuition settlement module</span></li>
-      <li><b>2026.10</b><span>Direct .xlsx reading (no CSV conversion)</span></li>
-    </ul>
+    <table class="info">
+      <tr><th>Product</th><td>Sharpening the arithmetic and the warning rules, using exceptions that appear in real attendance files.</td></tr>
+      <tr><th>Use</th><td>Running it inside a live academy and removing unnecessary steps. The file-in, result-out flow stays.</td></tr>
+      <tr><th>Open</th><td>Core modules are published so other education businesses can check the approach.</td></tr>
+    </table>
 
     <div class="shead" id="contact" style="margin-top:70px">
       <div class="eyebrow">Contact</div>
@@ -456,16 +457,21 @@ PRIVACY = """
 NOTICE = """
 <section class="tight">
   <div class="wrap doc">
-    <div class="shead">
-      <div class="eyebrow">Notes</div>
-      <h2>Notes</h2>
-      <p>Short entries on what changed and why.</p>
-    </div>
-    <ul class="info">
-      <li><b>2026.10</b><span>Direct .xlsx reading &mdash; the export step is gone</span></li>
-      <li><b>2026.10</b><span>Tuition settlement module &mdash; unpaid reminders drafted, never sent</span></li>
-      <li><b>2026.10</b><span>Review gate &mdash; no review record, no sendable draft</span></li>
-    </ul>
+    <p class="period">2026.10</p>
+
+    <h3 id="n1">We opened this site</h3>
+    <p>An introduction to the academy back-office tooling. Enquiries by email.</p>
+
+    <h3 id="n2">Direct .xlsx reading</h3>
+    <p>The program reads the spreadsheet as it is; the export step is gone. The first sheet is used and column names are matched automatically. The older .xls format is not supported.</p>
+
+    <h3 id="n3">Before sending a payment reminder</h3>
+    <p>Drafts produced by the settlement module are drafts. Three checks before sending:</p>
+    <ol>
+      <li>Confirm the amount matches the actual deposit.</li>
+      <li>Update the paid flag first, so nobody who already paid receives a reminder.</li>
+      <li>Account numbers are never inserted into the draft; add your own transfer line.</li>
+    </ol>
   </div>
 </section>
 """
