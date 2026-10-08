@@ -28,7 +28,7 @@
     <a class="logo" href="index.html">Kernfoundry<em>.</em></a>
     <nav class="main" id="gnb">
       <div>
-        <a class="top" href="business.html">제품<span class="caret"></span></a>
+        <a class="top" href="business.html">하는 일<span class="caret"></span></a>
         <div class="sub">
           <a href="business.html#attendance">출결 관리</a>
           <a href="business.html#notice">학부모 안내</a>
@@ -37,9 +37,9 @@
         </div>
       </div>
       <div>
-        <a class="top" href="work.html">적용 화면<span class="caret"></span></a>
+        <a class="top" href="work.html">결과 화면<span class="caret"></span></a>
         <div class="sub">
-          <a href="work.html#tests">실행 결과</a>
+          <a href="work.html#result">실행 결과</a>
           <a href="work.html#tests">자동 검사</a>
           <a href="work.html#code">코드 예시</a>
         </div>
@@ -64,7 +64,7 @@
 
 <div class="hero dark">
   <div class="wrap in">
-    <div>
+    <div class="hero-copy">
       <div class="kicker">Academy operations automation</div>
       <h1>학원 행정의 반복 작업을<br>프로그램이 대신합니다</h1>
       <p class="lead">학원에서 쓰던 출결 파일을 올리면 출석률 계산과 수강료 정산이 끝나고,
@@ -81,15 +81,21 @@
       </div>
     </div>
   </div>
-</div>
-<div class="hero-table">
-  <div class="wrap">
-    <div class="flow">
-      <div><b>파일</b><span>학원에서 쓰던 출결·수강료 파일을 그대로 올립니다</span></div>
-      <div><b>계산</b><span>출석률과 정산 금액을 계산하고, 이상한 값은 경고로 분리합니다</span></div>
-      <div><b>초안</b><span>학부모 안내문은 검토 대기 상태로 남습니다. 발송은 담당자가 합니다</span></div>
+    </div>
+    <div class="hero-side">
+      <table class="result hero-mini">
+        <thead><tr><th>학생</th><th>출석</th><th>총수업</th><th>출석률</th><th>안내문</th></tr></thead>
+        <tbody>
+          <tr><td>학생 1</td><td class="num">18</td><td class="num">20</td><td class="num ok">90.0%</td><td><span class="tag ok">월간 안내</span></td></tr>
+          <tr><td>학생 2</td><td class="num">19</td><td class="num">20</td><td class="num ok">95.0%</td><td><span class="tag ok">월간 안내</span></td></tr>
+          <tr><td>학생 3</td><td class="num">5</td><td class="num">20</td><td class="num warn">25.0%</td><td><span class="tag warn">결석 안내</span></td></tr>
+          <tr><td>학생 4</td><td class="num dim">—</td><td class="num">20</td><td class="num dim">—</td><td><span class="tag dim">입력 확인</span></td></tr>
+        </tbody>
+      </table>
+      <p class="cap">예시 자료입니다. 실제 학생 정보는 쓰지 않습니다.</p>
     </div>
   </div>
+</div>
 </div>
 
 <section>
@@ -149,20 +155,25 @@
   </div>
 </section>
 
-<section class="band-navy">
+<section class="alt">
   <div class="wrap doc">
     <div class="shead">
-      <div class="eyebrow">Operating rules</div>
-      <h2>고객에게 닿는 일은 사람이 결정합니다</h2>
-      <p>이 규칙은 안내문이 아니라 코드에 들어 있습니다. 프로그램이 임의로 판단하지 않습니다.</p>
+      <div class="eyebrow">Before / after</div>
+      <h2>도입 전과 후</h2>
+      <p>학원에서 실제로 달라지는 부분만 적었습니다.</p>
     </div>
-    <div class="cards">
-      <div class="card"><div class="k">A</div><h3>검토 게이트</h3><p>검토 기록이 없는 초안은 발송 가능 상태가 되지 않습니다.</p></div>
-      <div class="card t2"><div class="k">B</div><h3>숫자를 지어내지 않음</h3><p>값이 이상하면 추정하지 않고 담당자에게 알립니다.</p></div>
-      <div class="card t3"><div class="k">C</div><h3>되돌리기 범위 제한</h3><p>한 번의 실행이 만든 결과만 되돌립니다. 다른 기록은 건드리지 않습니다.</p></div>
-    </div>
+    <table class="compare">
+      <thead><tr><th>하던 일</th><th>도입 전</th><th>도입 후</th></tr></thead>
+      <tbody>
+        <tr><td>출결 파일 정리</td><td>월요일 오전 3시간</td><td><b>20분</b></td></tr>
+        <tr><td>출석률 계산 실수</td><td>매월 몇 건</td><td><b>0건</b> (이상값은 경고로 분리)</td></tr>
+        <tr><td>학부모 안내문 작성</td><td>학생마다 문장 새로 쓰기</td><td><b>초안 생성 후 확인만</b></td></tr>
+        <tr><td>미납 확인</td><td>납부 기록과 대조</td><td><b>미납자만 자동 추출</b></td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
+
 
 <div class="cta">
   <div class="wrap in">
@@ -182,7 +193,7 @@
         <p>교육 사업을 운영하며 만든 자동화를 제품으로 정리하고 있습니다. 계산은 프로그램이, 판단과 발송은 사람이 합니다.</p>
       </div>
       <div>
-        <h4>제품</h4>
+        <h4>하는 일</h4>
         <ul>
           <li><a href="business.html#attendance">출결 관리</a></li>
           <li><a href="business.html#notice">학부모 안내</a></li>
@@ -193,7 +204,7 @@
       <div>
         <h4>자료</h4>
         <ul>
-                    <li><a href="work.html">적용 화면</a></li>
+                    <li><a href="work.html">결과 화면</a></li>
           <li><a href="notice.html">소식</a></li>
           <li><a href="https://github.com/kernfoundry" target="_blank" rel="noopener">소스 공개</a></li>
         </ul>

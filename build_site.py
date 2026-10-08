@@ -38,7 +38,7 @@ HEAD = """<!DOCTYPE html>
     <a class="logo" href="index.html">Kernfoundry<em>.</em></a>
     <nav class="main" id="gnb">
       <div>
-        <a class="top" href="business.html">제품<span class="caret"></span></a>
+        <a class="top" href="business.html">하는 일<span class="caret"></span></a>
         <div class="sub">
           <a href="business.html#attendance">출결 관리</a>
           <a href="business.html#notice">학부모 안내</a>
@@ -47,9 +47,9 @@ HEAD = """<!DOCTYPE html>
         </div>
       </div>
       <div>
-        <a class="top" href="work.html">적용 화면<span class="caret"></span></a>
+        <a class="top" href="work.html">결과 화면<span class="caret"></span></a>
         <div class="sub">
-          <a href="work.html#tests">실행 결과</a>
+          <a href="work.html#result">실행 결과</a>
           <a href="work.html#tests">자동 검사</a>
           <a href="work.html#code">코드 예시</a>
         </div>
@@ -82,7 +82,7 @@ FOOT = """
         <p>교육 사업을 운영하며 만든 자동화를 제품으로 정리하고 있습니다. 계산은 프로그램이, 판단과 발송은 사람이 합니다.</p>
       </div>
       <div>
-        <h4>제품</h4>
+        <h4>하는 일</h4>
         <ul>
           <li><a href="business.html#attendance">출결 관리</a></li>
           <li><a href="business.html#notice">학부모 안내</a></li>
@@ -93,7 +93,7 @@ FOOT = """
       <div>
         <h4>자료</h4>
         <ul>
-                    <li><a href="work.html">적용 화면</a></li>
+                    <li><a href="work.html">결과 화면</a></li>
           <li><a href="notice.html">소식</a></li>
           <li><a href="https://github.com/kernfoundry" target="_blank" rel="noopener">소스 공개</a></li>
         </ul>
@@ -194,7 +194,7 @@ SUBHERO = """
 INDEX = """
 <div class="hero dark">
   <div class="wrap in">
-    <div>
+    <div class="hero-copy">
       <div class="kicker">Academy operations automation</div>
       <h1>학원 행정의 반복 작업을<br>프로그램이 대신합니다</h1>
       <p class="lead">학원에서 쓰던 출결 파일을 올리면 출석률 계산과 수강료 정산이 끝나고,
@@ -211,15 +211,21 @@ INDEX = """
       </div>
     </div>
   </div>
-</div>
-<div class="hero-table">
-  <div class="wrap">
-    <div class="flow">
-      <div><b>파일</b><span>학원에서 쓰던 출결·수강료 파일을 그대로 올립니다</span></div>
-      <div><b>계산</b><span>출석률과 정산 금액을 계산하고, 이상한 값은 경고로 분리합니다</span></div>
-      <div><b>초안</b><span>학부모 안내문은 검토 대기 상태로 남습니다. 발송은 담당자가 합니다</span></div>
+    </div>
+    <div class="hero-side">
+      <table class="result hero-mini">
+        <thead><tr><th>학생</th><th>출석</th><th>총수업</th><th>출석률</th><th>안내문</th></tr></thead>
+        <tbody>
+          <tr><td>학생 1</td><td class="num">18</td><td class="num">20</td><td class="num ok">90.0%</td><td><span class="tag ok">월간 안내</span></td></tr>
+          <tr><td>학생 2</td><td class="num">19</td><td class="num">20</td><td class="num ok">95.0%</td><td><span class="tag ok">월간 안내</span></td></tr>
+          <tr><td>학생 3</td><td class="num">5</td><td class="num">20</td><td class="num warn">25.0%</td><td><span class="tag warn">결석 안내</span></td></tr>
+          <tr><td>학생 4</td><td class="num dim">—</td><td class="num">20</td><td class="num dim">—</td><td><span class="tag dim">입력 확인</span></td></tr>
+        </tbody>
+      </table>
+      <p class="cap">예시 자료입니다. 실제 학생 정보는 쓰지 않습니다.</p>
     </div>
   </div>
+</div>
 </div>
 
 <section>
@@ -279,20 +285,25 @@ INDEX = """
   </div>
 </section>
 
-<section class="band-navy">
+<section class="alt">
   <div class="wrap doc">
     <div class="shead">
-      <div class="eyebrow">Operating rules</div>
-      <h2>고객에게 닿는 일은 사람이 결정합니다</h2>
-      <p>이 규칙은 안내문이 아니라 코드에 들어 있습니다. 프로그램이 임의로 판단하지 않습니다.</p>
+      <div class="eyebrow">Before / after</div>
+      <h2>도입 전과 후</h2>
+      <p>학원에서 실제로 달라지는 부분만 적었습니다.</p>
     </div>
-    <div class="cards">
-      <div class="card"><div class="k">A</div><h3>검토 게이트</h3><p>검토 기록이 없는 초안은 발송 가능 상태가 되지 않습니다.</p></div>
-      <div class="card t2"><div class="k">B</div><h3>숫자를 지어내지 않음</h3><p>값이 이상하면 추정하지 않고 담당자에게 알립니다.</p></div>
-      <div class="card t3"><div class="k">C</div><h3>되돌리기 범위 제한</h3><p>한 번의 실행이 만든 결과만 되돌립니다. 다른 기록은 건드리지 않습니다.</p></div>
-    </div>
+    <table class="compare">
+      <thead><tr><th>하던 일</th><th>도입 전</th><th>도입 후</th></tr></thead>
+      <tbody>
+        <tr><td>출결 파일 정리</td><td>월요일 오전 3시간</td><td><b>20분</b></td></tr>
+        <tr><td>출석률 계산 실수</td><td>매월 몇 건</td><td><b>0건</b> (이상값은 경고로 분리)</td></tr>
+        <tr><td>학부모 안내문 작성</td><td>학생마다 문장 새로 쓰기</td><td><b>초안 생성 후 확인만</b></td></tr>
+        <tr><td>미납 확인</td><td>납부 기록과 대조</td><td><b>미납자만 자동 추출</b></td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
+
 
 <div class="cta">
   <div class="wrap in">
@@ -321,14 +332,16 @@ ABOUT = """
     <p>같은 일을 반복하는 다른 교육 사업자에게도 도움이 되기를 바랍니다.</p>
 
     <div class="shead" id="now" style="margin-top:70px">
-      <div class="eyebrow">Now</div>
-      <h2>지금 하는 일</h2>
-      <p>작은 팀입니다. 아래 세 가지에 집중하고 있습니다.</p>
+      <div class="eyebrow">Fit</div>
+      <h2>맞는 곳과 맞지 않는 곳</h2>
+      <p>도입 전에 확인해 주세요.</p>
     </div>
-    <table class="info">
-      <tr><th>제품</th><td>출결·정산 계산의 정확도와 경고 기준을 다듬고 있습니다. 실제 학원 파일에서 나온 예외를 처리 규칙에 반영합니다.</td></tr>
-      <tr><th>적용</th><td>운영 중인 학원에서 직접 쓰면서 불편한 순서를 줄이고 있습니다. 화면 없이 파일로만 도는 흐름을 유지합니다.</td></tr>
-      <tr><th>공개</th><td>핵심 모듈 소스를 공개했습니다. 다른 교육 사업자가 같은 문제를 겪을 때 참고할 수 있게 하는 것이 목적입니다.</td></tr>
+    <table class="compare">
+      <thead><tr><th>구분</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td>이런 학원에 맞습니다</td><td>강사 5명 이하 소규모 학원. 출결과 수납을 원장이 직접 처리하는 곳.</td></tr>
+        <tr><td>이럴 때는 안 맞습니다</td><td>프랜차이즈 본사. 지점 통합 관리·정산 체계가 이미 있는 경우.</td></tr>
+      </tbody>
     </table>
 
     <div class="shead" id="contact" style="margin-top:70px">
@@ -410,7 +423,7 @@ BUSINESS = """
 WORK = """
 <section class="tight">
   <div class="wrap">
-    <div class="feature" style="border-top:0">
+    <div class="feature" id="result" style="border-top:0">
       <div class="txt">
         <div class="no">01 — 수강료 정산</div>
         <h3>미납자만 골라 초안까지</h3>
@@ -544,15 +557,15 @@ DEMO_HEAD = """
 NOTICE = """
 <section class="tight">
   <div class="wrap doc">
-    <p class="period">2026.10</p>
-
     <h3 id="n1">소개 페이지를 열었습니다</h3>
     <p>학원 운영 자동화 소개 페이지를 열었습니다. 도입 문의는 이메일로 받습니다.</p>
 
+    <p class="date">2026.10.08</p>
     <h3 id="n2">엑셀 파일(.xlsx) 직접 읽기 지원</h3>
     <p>CSV로 저장하지 않고 엑셀 파일 그대로 넣어도 읽습니다. 첫 번째 시트를 사용하며 칸 이름이 달라도 인식합니다.
        옛 형식(.xls)은 지원하지 않으므로 엑셀에서 .xlsx로 저장해 주세요.</p>
 
+    <p class="date">2026.10.07</p>
     <h3 id="n3">수강료 정산 안내문 발송 시 확인 사항</h3>
     <p>정산 모듈이 만드는 미납 안내문은 초안입니다. 아래를 확인한 뒤 발송해 주세요.</p>
     <ol>
@@ -655,10 +668,10 @@ SUBS = {
     "about.html": (dict(enpage="en/about.html", title="회사 | Kernfoundry", crumb="Company", h1="회사",
                         sub="교육 사업을 운영하며 만든 자동화를 제품으로 정리하고 있습니다.",
                         desc="Kernfoundry 회사 소개 — 인사말, 지금 하는 일, 연락."), ABOUT),
-    "business.html": (dict(enpage="en/business.html", title="제품 | Kernfoundry", crumb="Product", h1="제품",
+    "business.html": (dict(enpage="en/business.html", title="제품 | Kernfoundry", crumb="What we do", h1="하는 일",
                            sub="출결 관리, 학부모 안내 초안, 수강료 정산.",
-                           desc="Kernfoundry 제품 — 출결 관리, 학부모 안내, 수강료 정산, 운영 원칙."), BUSINESS),
-    "work.html": (dict(enpage="en/work.html", title="적용 화면 | Kernfoundry", crumb="Output", h1="적용 화면",
+                           desc="Kernfoundry 하는 일 — 출결 관리, 학부모 안내, 수강료 정산, 운영 원칙."), BUSINESS),
+    "work.html": (dict(enpage="en/work.html", title="적용 화면 | Kernfoundry", crumb="Results", h1="결과 화면",
                        sub="예시 자료로 실행한 실제 출력과 코드 예시.",
                        desc="Kernfoundry 적용 화면 — 실행 결과, 자동 검사, 코드 예시."), WORK),
     "notice.html": (dict(enpage="en/notice.html", title="소식 | Kernfoundry", crumb="News", h1="소식",

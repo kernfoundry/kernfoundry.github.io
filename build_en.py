@@ -10,11 +10,11 @@ EN = SITE / "en"
 EN.mkdir(exist_ok=True)
 
 NAV = [
-    ("business.html", "Product", [("business.html#attendance", "Attendance"),
+    ("business.html", "What we do", [("business.html#attendance", "Attendance"),
                                   ("business.html#notice", "Parent messages"),
                                   ("business.html#settlement", "Tuition"),
                                   ("business.html#principle", "Operating rules")]),
-    ("work.html", "In practice", [("work.html#result", "Results"), ("work.html#tests", "Automated checks"), ("work.html#code", "Code")]),
+    ("work.html", "Results", [("work.html#result", "Results"), ("work.html#tests", "Automated checks"), ("work.html#code", "Code")]),
     ("about.html", "Company", [("about.html#greeting", "Message"), ("about.html#now", "Now")]),
     ("notice.html", "Notes", []),
 ]
@@ -47,7 +47,7 @@ HEAD = """<!DOCTYPE html>
     <a class="logo" href="index.html">Kernfoundry<em>.</em></a>
     <nav class="main" id="gnb">
       <div>
-        <a class="top" href="business.html">Product<span class="caret"></span></a>
+        <a class="top" href="business.html">What we do<span class="caret"></span></a>
         <div class="sub">
           <a href="business.html#attendance">Attendance</a>
           <a href="business.html#notice">Parent messages</a>
@@ -56,7 +56,7 @@ HEAD = """<!DOCTYPE html>
         </div>
       </div>
       <div>
-        <a class="top" href="work.html">In practice<span class="caret"></span></a>
+        <a class="top" href="work.html">Results<span class="caret"></span></a>
         <div class="sub">
           <a href="work.html#result">Results</a>
           <a href="work.html#tests">Automated checks</a>
@@ -89,14 +89,14 @@ FOOT = """
       <a class="logo" href="index.html">Kernfoundry<em>.</em></a>
       <p>Automation for academy back-office work: attendance, parent messages, tuition settlement.</p>
     </div>
-    <div><b>Product</b>
+    <div><b>What we do</b>
       <ul>
         <li><a href="business.html#attendance">Attendance</a></li>
         <li><a href="business.html#notice">Parent messages</a></li>
         <li><a href="business.html#settlement">Tuition settlement</a></li>
       </ul>
     </div>
-    <div><b>In practice</b>
+    <div><b>Results</b>
       <ul>
         <li><a href="work.html#result">Results</a></li>
         <li><a href="work.html#tests">Automated checks</a></li>
@@ -193,7 +193,7 @@ drafts = generate_drafts(rates, academy="Your Academy")"""
 INDEX = """
 <div class="hero dark">
   <div class="wrap in">
-    <div>
+    <div class="hero-copy">
       <div class="kicker">Academy operations automation</div>
       <h1>The repetitive part of running<br>an academy, handled by software</h1>
       <p class="lead">Upload the attendance file you already keep. Rates are calculated, tuition is settled,
@@ -210,8 +210,23 @@ INDEX = """
       </div>
     </div>
   </div>
+    </div>
+    <div class="hero-side">
+      <table class="result hero-mini">
+        <thead><tr><th>Student</th><th>Attended</th><th>Total</th><th>Rate</th><th>Draft</th></tr></thead>
+        <tbody>
+          <tr><td>Student 1</td><td class="num">18</td><td class="num">20</td><td class="num ok">90.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
+          <tr><td>Student 2</td><td class="num">19</td><td class="num">20</td><td class="num ok">95.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
+          <tr><td>Student 3</td><td class="num">5</td><td class="num">20</td><td class="num warn">25.0%</td><td><span class="tag warn">Absence note</span></td></tr>
+          <tr><td>Student 4</td><td class="num dim">&mdash;</td><td class="num">20</td><td class="num dim">&mdash;</td><td><span class="tag dim">Needs input</span></td></tr>
+        </tbody>
+      </table>
+      <p class="cap">Example data only. No real student information is used.</p>
+    </div>
+  </div>
 </div>
-""" + RESULT_TABLE + """
+</div>
+""" + """
 <section>
   <div class="wrap doc">
     <div class="shead">
@@ -245,20 +260,25 @@ INDEX = """
   </div>
 </section>
 
-<section class="band-navy">
+<section class="alt">
   <div class="wrap doc">
     <div class="shead">
-      <div class="eyebrow">Operating rules</div>
-      <h2>Anything reaching a parent is decided by a person</h2>
-      <p>The rule lives in the code, not in a policy page.</p>
+      <div class="eyebrow">Before / after</div>
+      <h2>Before and after</h2>
+      <p>Only the parts that actually change in a working academy.</p>
     </div>
-    <div class="cards">
-      <div class="card"><div class="k">A</div><h3>Review gate</h3><p>A draft without a review record never becomes sendable.</p></div>
-      <div class="card t2"><div class="k">B</div><h3>No invented numbers</h3><p>When a value looks wrong the program reports it instead of estimating.</p></div>
-      <div class="card t3"><div class="k">C</div><h3>Bounded undo</h3><p>Only the output of one run can be reverted. Nothing else is touched.</p></div>
-    </div>
+    <table class="compare">
+      <thead><tr><th>Task</th><th>Before</th><th>After</th></tr></thead>
+      <tbody>
+        <tr><td>Attendance tidy-up</td><td>Three hours on Monday</td><td><b>20 minutes</b></td></tr>
+        <tr><td>Rate calculation errors</td><td>A few each month</td><td><b>Zero</b> (odd values listed as warnings)</td></tr>
+        <tr><td>Parent messages</td><td>Written from scratch each time</td><td><b>Draft, then review</b></td></tr>
+        <tr><td>Finding unpaid balances</td><td>Cross-checking payment records</td><td><b>Extracted automatically</b></td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
+
 
 <div class="cta">
   <div class="wrap in">
@@ -398,14 +418,16 @@ ABOUT = """
     <p>We are preparing the same tooling for other education businesses that repeat this work.</p>
 
     <div class="shead" id="now" style="margin-top:70px">
-      <div class="eyebrow">Now</div>
-      <h2>What we are working on</h2>
-      <p>A small team. Three things hold our attention.</p>
+      <div class="eyebrow">Fit</div>
+      <h2>Where it fits, where it does not</h2>
+      <p>Worth checking before you start.</p>
     </div>
-    <table class="info">
-      <tr><th>Product</th><td>Sharpening the arithmetic and the warning rules, using exceptions that appear in real attendance files.</td></tr>
-      <tr><th>Use</th><td>Running it inside a live academy and removing unnecessary steps. The file-in, result-out flow stays.</td></tr>
-      <tr><th>Open</th><td>Core modules are published so other education businesses can check the approach.</td></tr>
+    <table class="compare">
+      <thead><tr><th>Case</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>Fits</td><td>Small academies with five or fewer teachers, where the owner handles attendance and payments directly.</td></tr>
+        <tr><td>Does not fit</td><td>Franchise head offices with an existing central system for branches and settlement.</td></tr>
+      </tbody>
     </table>
 
     <div class="shead" id="contact" style="margin-top:70px">
@@ -462,14 +484,15 @@ PRIVACY = """
 NOTICE = """
 <section class="tight">
   <div class="wrap doc">
-    <p class="period">2026.10</p>
-
+    <p class="date">2026.10.09</p>
     <h3 id="n1">We opened this site</h3>
     <p>An introduction to the academy back-office tooling. Enquiries by email.</p>
 
+    <p class="date">2026.10.08</p>
     <h3 id="n2">Direct .xlsx reading</h3>
     <p>The program reads the spreadsheet as it is; the export step is gone. The first sheet is used and column names are matched automatically. The older .xls format is not supported.</p>
 
+    <p class="date">2026.10.07</p>
     <h3 id="n3">Before sending a payment reminder</h3>
     <p>Drafts produced by the settlement module are drafts. Three checks before sending:</p>
     <ol>
@@ -490,8 +513,8 @@ NOTFOUND = """
       <p>The address may have changed. The links below all work.</p>
     </div>
     <table class="info">
-      <tr><th>Product</th><td><a href="business.html">What the program does</a></td></tr>
-      <tr><th>In practice</th><td><a href="work.html">Settlement and checks</a></td></tr>
+      <tr><th>What we do</th><td><a href="business.html">What the program does</a></td></tr>
+      <tr><th>Results</th><td><a href="work.html">Settlement and checks</a></td></tr>
       <tr><th>Company</th><td><a href="about.html">Who is behind it</a></td></tr>
       <tr><th>Contact</th><td><a href="contact.html">Talk to us</a></td></tr>
     </table>

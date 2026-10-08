@@ -26,7 +26,7 @@
     <a class="logo" href="index.html">Kernfoundry<em>.</em></a>
     <nav class="main" id="gnb">
       <div>
-        <a class="top" href="business.html">Product<span class="caret"></span></a>
+        <a class="top" href="business.html">What we do<span class="caret"></span></a>
         <div class="sub">
           <a href="business.html#attendance">Attendance</a>
           <a href="business.html#notice">Parent messages</a>
@@ -35,7 +35,7 @@
         </div>
       </div>
       <div>
-        <a class="top" href="work.html">In practice<span class="caret"></span></a>
+        <a class="top" href="work.html">Results<span class="caret"></span></a>
         <div class="sub">
           <a href="work.html#result">Results</a>
           <a href="work.html#tests">Automated checks</a>
@@ -62,7 +62,7 @@
 
 <div class="hero dark">
   <div class="wrap in">
-    <div>
+    <div class="hero-copy">
       <div class="kicker">Academy operations automation</div>
       <h1>The repetitive part of running<br>an academy, handled by software</h1>
       <p class="lead">Upload the attendance file you already keep. Rates are calculated, tuition is settled,
@@ -79,16 +79,21 @@
       </div>
     </div>
   </div>
-</div>
-
-<div class="hero-table">
-  <div class="wrap">
-    <div class="flow">
-      <div><b>File</b><span>Upload the attendance and tuition file you already keep</span></div>
-      <div><b>Calculate</b><span>Rates and balances are computed; odd values are set aside as warnings</span></div>
-      <div><b>Draft</b><span>Parent messages stay in a review state &mdash; a person sends them</span></div>
+    </div>
+    <div class="hero-side">
+      <table class="result hero-mini">
+        <thead><tr><th>Student</th><th>Attended</th><th>Total</th><th>Rate</th><th>Draft</th></tr></thead>
+        <tbody>
+          <tr><td>Student 1</td><td class="num">18</td><td class="num">20</td><td class="num ok">90.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
+          <tr><td>Student 2</td><td class="num">19</td><td class="num">20</td><td class="num ok">95.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
+          <tr><td>Student 3</td><td class="num">5</td><td class="num">20</td><td class="num warn">25.0%</td><td><span class="tag warn">Absence note</span></td></tr>
+          <tr><td>Student 4</td><td class="num dim">&mdash;</td><td class="num">20</td><td class="num dim">&mdash;</td><td><span class="tag dim">Needs input</span></td></tr>
+        </tbody>
+      </table>
+      <p class="cap">Example data only. No real student information is used.</p>
     </div>
   </div>
+</div>
 </div>
 
 <section>
@@ -124,20 +129,25 @@
   </div>
 </section>
 
-<section class="band-navy">
+<section class="alt">
   <div class="wrap doc">
     <div class="shead">
-      <div class="eyebrow">Operating rules</div>
-      <h2>Anything reaching a parent is decided by a person</h2>
-      <p>The rule lives in the code, not in a policy page.</p>
+      <div class="eyebrow">Before / after</div>
+      <h2>Before and after</h2>
+      <p>Only the parts that actually change in a working academy.</p>
     </div>
-    <div class="cards">
-      <div class="card"><div class="k">A</div><h3>Review gate</h3><p>A draft without a review record never becomes sendable.</p></div>
-      <div class="card t2"><div class="k">B</div><h3>No invented numbers</h3><p>When a value looks wrong the program reports it instead of estimating.</p></div>
-      <div class="card t3"><div class="k">C</div><h3>Bounded undo</h3><p>Only the output of one run can be reverted. Nothing else is touched.</p></div>
-    </div>
+    <table class="compare">
+      <thead><tr><th>Task</th><th>Before</th><th>After</th></tr></thead>
+      <tbody>
+        <tr><td>Attendance tidy-up</td><td>Three hours on Monday</td><td><b>20 minutes</b></td></tr>
+        <tr><td>Rate calculation errors</td><td>A few each month</td><td><b>Zero</b> (odd values listed as warnings)</td></tr>
+        <tr><td>Parent messages</td><td>Written from scratch each time</td><td><b>Draft, then review</b></td></tr>
+        <tr><td>Finding unpaid balances</td><td>Cross-checking payment records</td><td><b>Extracted automatically</b></td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
+
 
 <div class="cta">
   <div class="wrap in">
@@ -155,14 +165,14 @@
       <a class="logo" href="index.html">Kernfoundry<em>.</em></a>
       <p>Automation for academy back-office work: attendance, parent messages, tuition settlement.</p>
     </div>
-    <div><b>Product</b>
+    <div><b>What we do</b>
       <ul>
         <li><a href="business.html#attendance">Attendance</a></li>
         <li><a href="business.html#notice">Parent messages</a></li>
         <li><a href="business.html#settlement">Tuition settlement</a></li>
       </ul>
     </div>
-    <div><b>In practice</b>
+    <div><b>Results</b>
       <ul>
         <li><a href="work.html#result">Results</a></li>
         <li><a href="work.html#tests">Automated checks</a></li>
