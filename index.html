@@ -3,84 +3,214 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kernfoundry — 학원 운영을 위한 AI 자동화</title>
-<meta name="description" content="Kernfoundry는 직접 운영하는 교육 사업의 반복 업무를 에이전트 파이프라인으로 자동화합니다. 접수, 정산, 공지, 기록 관리를 사람이 검토 가능한 형태로 만듭니다.">
-<style>
-  :root{--bg:#0b0d12;--panel:#12151d;--line:#232838;--fg:#e8eaf0;--dim:#9aa3b2;--accent:#7c9cff}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Malgun Gothic",sans-serif}
-  .wrap{max-width:820px;margin:0 auto;padding:64px 24px 80px}
-  header{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:40px}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:700}
-  .dot{width:11px;height:11px;border-radius:3px;background:var(--accent)}
-  h1{font-size:34px;line-height:1.3;margin:0 0 14px}
-  h2{font-size:19px;margin:44px 0 12px}
-  p{color:var(--dim);margin:0 0 14px}
-  .lead{font-size:18px;color:var(--fg)}
-  ul{padding-left:20px;color:var(--dim)}
-  li{margin:8px 0}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:16px}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
-  .card h3{margin:0 0 6px;font-size:15px;color:var(--fg)}
-  .card p{margin:0;font-size:14px}
-  .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-  .tag{font-size:13px;color:var(--dim);border:1px solid var(--line);border-radius:999px;padding:4px 12px}
-  footer{margin-top:56px;border-top:1px solid var(--line);padding-top:20px;font-size:14px;color:var(--dim)}
-  a{color:var(--accent);text-decoration:none}
-  a:hover{text-decoration:underline}
-</style>
+<title>Kernfoundry | 학원 운영 자동화</title>
+<meta name="description" content="Kernfoundry는 학원 운영의 반복 업무를 프로그램으로 대체합니다. 출결 집계, 학부모 안내문 초안, 수강료 정산을 자동화하고 검토 기록을 남깁니다.">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<div class="wrap">
 
-  <header>
-    <div class="brand"><span class="dot"></span><span>Kernfoundry</span></div>
-  </header>
-
-  <h1>우리 학원의 반복 업무를<br>직접 자동화하고 있습니다</h1>
-  <p class="lead">Kernfoundry는 교육 사업을 운영하면서 매일 하던 단순 작업을 에이전트 파이프라인으로 대체합니다. 접수 정리, 출결 기록, 공지 발송, 정산 문서 같은 일을 묶어 처리하고, 각 단계의 실행 근거를 남겨서 나중에 검증할 수 있게 만듭니다.</p>
-
-  <div class="meta">
-    <span class="tag">교육 운영</span>
-    <span class="tag">AI 에이전트 파이프라인</span>
-    <span class="tag">문서 자동화</span>
-    <span class="tag">한국 · 서울</span>
+<header class="site">
+  <div class="wrap gnb">
+    <a class="logo" href="index.html">KERNFOUNDRY<small>ACADEMY OPERATIONS AUTOMATION</small></a>
+    <nav class="main">
+      <div>
+        <a href="about.html">회사소개</a>
+        <div class="sub">
+          <a href="about.html#greeting">인사말</a>
+          <a href="about.html#history">연혁</a>
+          <a href="about.html#location">오시는 길</a>
+        </div>
+      </div>
+      <div>
+        <a href="business.html">사업분야</a>
+        <div class="sub">
+          <a href="business.html#attendance">출결 관리</a>
+          <a href="business.html#notice">학부모 안내</a>
+          <a href="business.html#settlement">수강료 정산</a>
+          <a href="business.html#principle">운영 원칙</a>
+        </div>
+      </div>
+      <div>
+        <a href="work.html">적용 화면</a>
+        <div class="sub">
+          <a href="work.html#run">실행 결과</a>
+          <a href="work.html#tests">자동 검사</a>
+        </div>
+      </div>
+      <div>
+        <a href="notice.html">공지사항</a>
+      </div>
+      <div><a href="contact.html">문의</a></div>
+    </nav>
+    <a class="btn" href="contact.html">도입 문의</a>
   </div>
+</header>
 
-  <h2>무엇을 만드나</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>운영 파이프라인</h3>
-      <p>접수부터 기록까지 이어지는 작업을 한 줄로 이어지게 묶습니다. 중간에 사람이 확인할 지점을 남겨 둡니다.</p>
+<div class="hero">
+  <div class="wrap in">
+    <div>
+      <div class="eyebrow">ACADEMY OPERATIONS AUTOMATION</div>
+      <h1>학원 운영의 반복 업무를<br>프로그램이 대신 처리합니다</h1>
+      <p class="lead">출결 파일을 넣으면 출석률을 계산하고, 학부모에게 보낼 안내문 초안과 수강료 정산 결과를 만듭니다.
+        잘못된 값은 조용히 넘기지 않고 경고로 남기며, 초안은 사람이 검토한 뒤에만 발송됩니다.</p>
+      <div class="stats">
+        <div><b>6</b><span>운영 모듈</span></div>
+        <div><b>76</b><span>자동 검사 항목</span></div>
+        <div><b>0</b><span>외부 라이브러리</span></div>
+      </div>
     </div>
-    <div class="card">
-      <h3>에이전트 작업 분배</h3>
-      <p>여러 에이전트가 각자 한 가지 일을 맡고, 결과를 다른 에이전트가 검증하는 구조로 운영합니다.</p>
-    </div>
-    <div class="card">
-      <h3>기록과 되돌리기</h3>
-      <p>모든 변경은 커밋과 패치 노트로 남깁니다. 문제가 생기면 이전 상태로 되돌릴 수 있습니다.</p>
+    <div class="shot">
+      <img src="images/report-attendance.svg" alt="출결 집계 실행 결과 화면">
     </div>
   </div>
-
-  <h2>어떻게 운영하나</h2>
-  <ul>
-    <li><strong>사람이 판단하고, 에이전트가 처리한다.</strong> 고객에게 닿는 모든 자동화에는 검토 기록을 남깁니다.</li>
-    <li><strong>근거를 남긴다.</strong> 누가 언제 무엇을 실행했는지 파일과 커밋으로 추적합니다.</li>
-    <li><strong>측정한다.</strong> 절약된 시간과 잡아낸 오류를 세어, 다음에 무엇을 자동화할지 정합니다.</li>
-  </ul>
-
-  <h2>현재 상태</h2>
-  <p>서울의 소규모 교육 사업을 직접 운영하며, 같은 업무를 반복하는 다른 사업자에게 검증된 파이프라인을 이전하는 것을 목표로 합니다. 현재 초기 단계이며 실제 운영 데이터를 기반으로 만들고 있습니다.</p>
-
-  <h2>연락처</h2>
-  <p><a href="mailto:hello@kernfoundry.com">hello@kernfoundry.com</a></p>
-
-  <footer>
-    <div>Kernfoundry · kernfoundry.com</div>
-    <div>© 2026 Kernfoundry</div>
-  </footer>
-
 </div>
+
+<section>
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow">BUSINESS</div>
+      <h2>학원 행정의 세 가지 반복 업무</h2>
+      <p>엑셀과 손으로 처리하던 과정을 그대로 옮기지 않았습니다. 담당자가 판단해야 할 부분만 남기고, 나머지는 계산과 문장 생성으로 처리합니다.</p>
+    </div>
+
+    <div class="biz">
+      <div class="row">
+        <div class="no">01</div>
+        <h3>출결 관리</h3>
+        <div>
+          <p>학원에서 쓰던 엑셀(.xlsx)이나 CSV 파일을 그대로 읽어 학생별 출석률을 계산합니다.</p>
+          <ul>
+            <li>칸 이름이 달라도 인식 (이름·성명·학생 / 출석·출석일수 / 총수업·수업일수)</li>
+            <li>빈값·문자 혼입·출석이 총수업보다 많은 경우 등 이상값을 경고로 분리</li>
+            <li>엑셀 파일을 직접 읽으며 별도 프로그램 설치가 필요 없음</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="no">02</div>
+        <h3>학부모 안내 초안</h3>
+        <div>
+          <p>출석률을 기준으로 결석 안내 또는 월간 안내문 초안을 만듭니다. 발송은 하지 않습니다.</p>
+          <ul>
+            <li>초안에는 <b>검토 전 발송 불가</b> 상태가 붙어 원장님 확인 없이 나가지 않음</li>
+            <li>휴대폰 번호·주민등록번호·카드번호가 본문에 들어가면 자동 차단</li>
+            <li>문장 생성에 언어 모델을 쓸 수 있고, 연결이 안 되면 기본 문장으로 대체</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="no">03</div>
+        <h3>수강료 정산</h3>
+        <div>
+          <p>청구액과 납부액을 계산해 미납자를 추려내고, 안내 초안을 만듭니다.</p>
+          <ul>
+            <li>할인 반영 청구액, 미납액, 완납·일부납·미납·과납 구분</li>
+            <li>할인이 수강료보다 큰 경우 등 입력 실수를 경고로 표시</li>
+            <li>안내 초안에 계좌·카드번호를 넣지 않음 (납부 안내는 학원 문구를 사용)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="soft">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow">IN OPERATION</div>
+      <h2>실제 실행 결과</h2>
+      <p>아래 화면은 예시 자료로 실행한 실제 출력입니다. 실행할 때마다 무엇을 처리했는지 기록이 함께 남습니다.</p>
+    </div>
+    <div class="shot-band">
+      <figure>
+        <img src="images/report-attendance.svg" alt="출결 집계 실행 결과">
+        <figcaption>출결 집계 실행 — 3명 계산, 이상값 3건을 경고로 분리, 안내문 초안 3건 생성(모두 검토 대기 상태)</figcaption>
+      </figure>
+      <figure>
+        <img src="images/report-settlement.svg" alt="수강료 정산 실행 결과">
+        <figcaption>수강료 정산 실행 — 청구액 1,050,000원 / 납부 700,000원 / 미납 450,000원, 미납자 2명에게 보낼 초안 생성</figcaption>
+      </figure>
+    </div>
+    <a class="btn" href="work.html">적용 화면 더 보기</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow">COMPANY</div>
+      <h2>회사 개요</h2>
+      <p>교육 사업을 직접 운영하며 만든 자동화를 정리해 사업으로 운영하고 있습니다.</p>
+    </div>
+    <table class="info">
+      <tr><th>회사명</th><td>Kernfoundry (켄파운드리)</td></tr>
+      <tr><th>설립</th><td>2026년 10월</td></tr>
+      <tr><th>대표</th><td>전일도</td></tr>
+      <tr><th>소재지</th><td>서울특별시 <span class="todo">(상세주소 기재 예정)</span></td></tr>
+      <tr><th>사업분야</th><td>교육 사업 운영 자동화 소프트웨어 개발</td></tr>
+      <tr><th>운영 원칙</th><td>자동화는 초안까지만 만든다. 고객에게 닿는 발송·결제는 사람이 검토한 뒤 처리한다.</td></tr>
+      <tr><th>문의</th><td><a href="mailto:hello@kernfoundry.com">hello@kernfoundry.com</a></td></tr>
+      <tr><th>소스 공개</th><td><a href="https://github.com/kernfoundry" target="_blank" rel="noopener">github.com/kernfoundry</a></td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="soft">
+  <div class="wrap">
+    <div class="shead">
+      <div class="eyebrow">NOTICE</div>
+      <h2>공지사항</h2>
+    </div>
+    <table class="notice">
+      <thead>
+        <tr><th style="width:80px">번호</th><th>제목</th><th style="width:130px">등록일</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="c">3</td><td><a href="notice.html">수강료 정산 안내문 발송 시 확인 사항</a></td><td class="c">2026-10-09</td></tr>
+        <tr><td class="c">2</td><td><a href="notice.html">엑셀 파일(.xlsx) 직접 읽기 지원</a></td><td class="c">2026-10-09</td></tr>
+        <tr><td class="c">1</td><td><a href="notice.html">Kernfoundry 소개 페이지를 열었습니다</a></td><td class="c">2026-10-09</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap in">
+    <div>
+      <h2>학원 행정 자동화 상담</h2>
+      <p>현재 사용하는 출결·정산 파일 형식을 보내주시면 적용 가능 여부를 확인해 드립니다.</p>
+    </div>
+    <a class="btn" href="contact.html">문의하기</a>
+  </div>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">KERNFOUNDRY<span>ACADEMY OPERATIONS AUTOMATION</span></div>
+      <div class="quick">
+        <a href="about.html">회사소개</a>
+        <a href="business.html">사업분야</a>
+        <a href="work.html">적용 화면</a>
+        <a href="notice.html">공지사항</a>
+        <a href="contact.html">문의</a>
+        <a href="privacy.html">개인정보처리방침</a>
+      </div>
+    </div>
+    <div class="biz">
+      <div><b>상호</b><span>Kernfoundry (켄파운드리)</span></div>
+      <div><b>대표</b><span>전일도</span></div>
+      <div><b>사업자등록번호</b><span class="todo">기재 예정</span></div>
+      <div><b>주소</b><span>서울특별시 <span class="todo">(상세주소 기재 예정)</span></span></div>
+      <div><b>이메일</b><span>hello@kernfoundry.com</span></div>
+      <div><b>개인정보관리책임자</b><span>전일도</span></div>
+    </div>
+    <div class="copy">
+      <span>© 2026 Kernfoundry. All rights reserved.</span>
+      <span>자동화는 초안까지. 발송과 결제는 사람이 검토합니다.</span>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

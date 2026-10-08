@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>사업분야 | Kernfoundry</title>
+<meta name="description" content="Kernfoundry 사업분야 — 출결 관리, 학부모 안내 초안, 수강료 정산.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap gnb">
+    <a class="logo" href="index.html">KERNFOUNDRY<small>ACADEMY OPERATIONS AUTOMATION</small></a>
+    <nav class="main">
+      <div>
+        <a href="about.html">회사소개</a>
+        <div class="sub">
+          <a href="about.html#greeting">인사말</a>
+          <a href="about.html#history">연혁</a>
+          <a href="about.html#location">오시는 길</a>
+        </div>
+      </div>
+      <div>
+        <a href="business.html">사업분야</a>
+        <div class="sub">
+          <a href="business.html#attendance">출결 관리</a>
+          <a href="business.html#notice">학부모 안내</a>
+          <a href="business.html#settlement">수강료 정산</a>
+          <a href="business.html#principle">운영 원칙</a>
+        </div>
+      </div>
+      <div>
+        <a href="work.html">적용 화면</a>
+        <div class="sub">
+          <a href="work.html#run">실행 결과</a>
+          <a href="work.html#tests">자동 검사</a>
+          <a href="work.html#source">소스 공개</a>
+        </div>
+      </div>
+      <div><a href="notice.html">공지사항</a></div>
+      <div><a href="contact.html">문의</a></div>
+    </nav>
+    <a class="btn" href="contact.html">도입 문의</a>
+  </div>
+</header>
+
+<div class="phero">
+  <div class="wrap">
+    <div class="crumb">HOME &gt; 사업분야</div>
+    <h1>사업분야</h1>
+    <p>학원 행정의 반복 업무를 계산과 문장 생성으로 처리합니다.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap doc">
+    <div class="shead" id="attendance">
+      <div class="eyebrow">01</div>
+      <h2>출결 관리</h2>
+      <p>학원에서 쓰던 파일을 그대로 읽습니다. 별도 프로그램 설치나 형식 변환이 필요하지 않습니다.</p>
+    </div>
+    <table class="info">
+      <tr><th>입력</th><td>엑셀(.xlsx) · CSV · TSV — 첫 번째 시트를 읽습니다</td></tr>
+      <tr><th>칸 인식</th><td>이름·성명·학생 / 출석·출석일수 / 총수업·수업일수 / 결석 / 지각 (이름이 달라도 인식)</td></tr>
+      <tr><th>계산</th><td>학생별 출석률(%)과 결석·지각 횟수</td></tr>
+      <tr><th>이상값</th><td>빈값, 숫자가 아닌 값, 총수업 0, 출석이 총수업보다 많은 경우, 음수 — 경고로 분리</td></tr>
+      <tr><th>기록</th><td>실행할 때마다 처리 내역과 산출물 경로가 기록으로 남습니다</td></tr>
+    </table>
+
+    <div class="shead" id="notice" style="margin-top:56px">
+      <div class="eyebrow">02</div>
+      <h2>학부모 안내 초안</h2>
+      <p>출석률을 기준으로 결석 안내 또는 월간 안내문 초안을 만듭니다. 프로그램은 발송하지 않습니다.</p>
+    </div>
+    <table class="info">
+      <tr><th>생성 기준</th><td>설정한 기준 미만이면 결석 안내, 이상이면 월간 안내</td></tr>
+      <tr><th>발송 차단</th><td>초안은 검토 대기 상태로 생성되며, 사람이 확인하기 전에는 발송 표시가 되지 않습니다</td></tr>
+      <tr><th>개인정보</th><td>휴대폰 번호·주민등록번호·카드번호가 본문에 들어가면 자동으로 차단 표시</td></tr>
+      <tr><th>문장 생성</th><td>언어 모델을 연결해 쓸 수 있고, 연결이 안 되면 기본 문장으로 대체되어 중단되지 않습니다</td></tr>
+    </table>
+
+    <div class="shead" id="settlement" style="margin-top:56px">
+      <div class="eyebrow">03</div>
+      <h2>수강료 정산</h2>
+      <p>청구액·납부액을 계산해 미납자를 추려내고 안내 초안을 만듭니다.</p>
+    </div>
+    <table class="info">
+      <tr><th>계산</th><td>청구액 = 수강료 − 할인 / 미납액 = 청구액 − 납부액</td></tr>
+      <tr><th>구분</th><td>완납 · 일부납 · 미납 · 과납</td></tr>
+      <tr><th>이상값</th><td>할인이 수강료보다 큰 경우, 숫자가 아닌 금액, 음수 — 경고로 분리</td></tr>
+      <tr><th>안내 초안</th><td>미납자에게만 생성, 계좌·카드번호는 본문에 넣지 않음</td></tr>
+    </table>
+
+    <div class="shead" id="principle" style="margin-top:56px">
+      <div class="eyebrow">PRINCIPLE</div>
+      <h2>운영 원칙</h2>
+    </div>
+    <div class="note-box">
+      자동화는 <b>초안까지</b>만 만듭니다. 고객에게 닿는 발송과 결제는 반드시 사람이 검토한 뒤 처리합니다.
+    </div>
+    <table class="info">
+      <tr><th>초안 상태</th><td>검토 기록이 없으면 발송 불가 상태로 남습니다</td></tr>
+      <tr><th>개인정보</th><td>안내문에 연락처·주민등록번호·카드번호가 들어가지 않습니다</td></tr>
+      <tr><th>되돌리기</th><td>한 번의 실행이 만든 파일만 골라 되돌릴 수 있습니다</td></tr>
+      <tr><th>경고 우선</th><td>값이 이상하면 숫자를 만들어내지 않고 담당자에게 알립니다</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">KERNFOUNDRY<span>ACADEMY OPERATIONS AUTOMATION</span></div>
+      <div class="quick">
+        <a href="about.html">회사소개</a>
+        <a href="business.html">사업분야</a>
+        <a href="work.html">적용 화면</a>
+        <a href="notice.html">공지사항</a>
+        <a href="contact.html">문의</a>
+        <a href="privacy.html">개인정보처리방침</a>
+      </div>
+    </div>
+    <div class="biz">
+      <div><b>상호</b><span>Kernfoundry (켄파운드리)</span></div>
+      <div><b>대표</b><span>전일도</span></div>
+      <div><b>사업자등록번호</b><span class="todo">기재 예정</span></div>
+      <div><b>주소</b><span>서울특별시 <span class="todo">(상세주소 기재 예정)</span></span></div>
+      <div><b>이메일</b><span>hello@kernfoundry.com</span></div>
+      <div><b>개인정보관리책임자</b><span>전일도</span></div>
+    </div>
+    <div class="copy">
+      <span>&copy; 2026 Kernfoundry. All rights reserved.</span>
+      <span>자동화는 초안까지. 발송과 결제는 사람이 검토합니다.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
