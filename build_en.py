@@ -31,7 +31,7 @@ HEAD = """<!DOCTYPE html>
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/site6.css">
 </head>
 <body>
 
@@ -47,7 +47,7 @@ HEAD = """<!DOCTYPE html>
     <a class="logo" href="index.html">Kernfoundry<em>.</em></a>
     <nav class="main" id="gnb">
       <div>
-        <a class="top" href="business.html">Product</a>
+        <a class="top" href="business.html">Product<span class="caret"></span></a>
         <div class="sub">
           <a href="business.html#attendance">Attendance</a>
           <a href="business.html#notice">Parent messages</a>
@@ -56,7 +56,7 @@ HEAD = """<!DOCTYPE html>
         </div>
       </div>
       <div>
-        <a class="top" href="work.html">In practice</a>
+        <a class="top" href="work.html">In practice<span class="caret"></span></a>
         <div class="sub">
           <a href="work.html#result">Results</a>
           <a href="work.html#tests">Automated checks</a>
@@ -64,7 +64,7 @@ HEAD = """<!DOCTYPE html>
         </div>
       </div>
       <div>
-        <a class="top" href="about.html">Company</a>
+        <a class="top" href="about.html">Company<span class="caret"></span></a>
         <div class="sub">
           <a href="about.html#greeting">Message</a>
           <a href="about.html#now">Now</a>
@@ -113,9 +113,29 @@ FOOT = """
   </div>
   <div class="wrap bottom">
     <span>&copy; 2026 Kernfoundry</span>
-    <span>Automation drafts. Sending and payment stay with people.</span>
+    <span><a href="mailto:hello@kernfoundry.com">hello@kernfoundry.com</a></span>
   </div>
 </footer>
+
+<script>
+(function(){
+  document.querySelectorAll('nav.main > div').forEach(function(d){
+    var sub = d.querySelector('.sub');
+    if (!sub) return;
+    var timer;
+    d.addEventListener('mouseenter', function(){ clearTimeout(timer); d.classList.add('open'); });
+    d.addEventListener('mouseleave', function(){
+      timer = setTimeout(function(){ d.classList.remove('open'); }, 220);
+    });
+    var top = d.querySelector('a.top');
+    if (top) top.addEventListener('click', function(ev){
+      if (window.matchMedia('(max-width:820px)').matches) { ev.preventDefault(); d.classList.toggle('open'); }
+    });
+  });
+  var btn = document.querySelector('.menu-btn');
+  if (btn) btn.addEventListener('click', function(){ document.getElementById('gnb').classList.toggle('open'); });
+})();
+</script>
 
 <script>
 (function(){
@@ -155,9 +175,9 @@ INDEX = """
     <div>
       <div class="kicker">Academy operations automation</div>
       <h1>The repetitive part of running<br>an academy, handled by software</h1>
-      <p class="lead">Upload the attendance file you already keep. The program calculates attendance rates,
-        settles tuition, and drafts parent messages. Unusual values are flagged instead of guessed,
-        and nothing reaches a parent until a person reviews it.</p>
+      <p class="lead">Upload the attendance file you already keep. Rates are calculated, tuition is settled,
+        and parent messages are drafted. Unusual values are flagged instead of guessed, and nothing is sent
+        before a person reviews it.</p>
       <div class="actions">
         <a class="btn solid" href="contact.html">Talk to us</a>
         <a class="btn" href="work.html">See it in practice</a>
@@ -165,7 +185,7 @@ INDEX = """
       <div class="metrics">
         <div><b>6</b><span>operating modules</span></div>
         <div><b>76</b><span>automated checks</span></div>
-        <div><b>0</b><span>external libraries</span></div>
+        <div><b>0</b><span>things to install</span></div>
       </div>
     </div>
   </div>
@@ -174,48 +194,17 @@ INDEX = """
 <section>
   <div class="wrap doc">
     <div class="shead">
-      <div class="eyebrow">Product</div>
-      <h2>Three recurring tasks, turned into calculation and writing</h2>
-      <p>We did not move the spreadsheet to the web. We kept the decisions that need a person and gave the arithmetic and the first draft to software.</p>
+      <div class="eyebrow">Modules</div>
+      <h2>Six parts that work together</h2>
+      <p>One file starts the chain: calculation, writing, and a record of what happened.</p>
     </div>
-
-    <div class="feature">
-      <div class="txt">
-        <div class="no">01 &mdash; Attendance</div>
-        <h3>Your file format is fine</h3>
-        <p>No export step. The program reads the .xlsx file you already use.</p>
-        <ul>
-          <li>Column names are matched automatically (name / attended / total / late)</li>
-          <li>Empty cells, text in numeric columns, totals of zero, attendance above total: flagged, not invented</li>
-          <li>Standard library only &mdash; nothing to install</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="feature">
-      <div class="txt">
-        <div class="no">02 &mdash; Parent messages</div>
-        <h3>Writing stops at the draft</h3>
-        <p>Below your threshold, an absence note. Above it, a monthly note. The program never sends.</p>
-        <ul>
-          <li>Without a review record the draft stays un-sendable</li>
-          <li>Phone numbers, resident registration numbers and card numbers are blocked in the body</li>
-          <li>An optional language model writes the sentences; if it is unavailable, a plain template is used</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="feature">
-      <div class="txt">
-        <div class="no">03 &mdash; Tuition settlement</div>
-        <h3>Unpaid balances, one by one</h3>
-        <p>Charge and payment are compared and each student is classified.</p>
-        <ul>
-          <li>Paid, partially paid, unpaid, overpaid</li>
-          <li>Discounts larger than the fee are reported instead of applied</li>
-          <li>Payment details never appear in the message body</li>
-        </ul>
-      </div>
+    <div class="cards">
+      <div class="card"><div class="k">01</div><h3>Attendance</h3><p>Reads .xlsx and CSV as they are and calculates one rate per student, with absence and late counts.</p></div>
+      <div class="card t2"><div class="k">02</div><h3>Parent messages</h3><p>Drafts absence or monthly notes from the rate. Nothing is sent by the program.</p></div>
+      <div class="card t3"><div class="k">03</div><h3>Tuition settlement</h3><p>Compares charge and payment, classifies each student, and drafts reminders for unpaid balances.</p></div>
+      <div class="card t2"><div class="k">04</div><h3>Edge-case warnings</h3><p>Empty cells, text in numeric columns, a total of zero, attendance above total: set aside and reported.</p></div>
+      <div class="card t3"><div class="k">05</div><h3>Run record and undo</h3><p>Every run leaves a record, and only the files that run produced can be reverted.</p></div>
+      <div class="card"><div class="k">06</div><h3>Personal data blocked</h3><p>Phone numbers, resident registration numbers and card numbers never enter a message body.</p></div>
     </div>
   </div>
 </section>
@@ -223,29 +212,30 @@ INDEX = """
 <section class="alt">
   <div class="wrap doc">
     <div class="shead">
-      <div class="eyebrow">How it works</div>
-      <h2>Four steps, one of them yours</h2>
-      <p>Drop in a file, read the warnings, review the drafts, keep the record.</p>
+      <div class="eyebrow">Getting started</div>
+      <h2>It starts with one file</h2>
+      <p>No install, no server, no format conversion.</p>
     </div>
-    <table class="info">
-      <tr><th>1. File</th><td>Use the attendance and tuition files you already have (.xlsx / CSV / TSV).</td></tr>
-      <tr><th>2. Calculate</th><td>Attendance rates and settlement amounts are computed; odd rows are listed as warnings.</td></tr>
-      <tr><th>3. Review</th><td>Drafts are created in a review state. A staff member checks and sends them.</td></tr>
-      <tr><th>4. Record</th><td>Every run leaves a record of what was processed and where the files are.</td></tr>
-    </table>
+    <div class="steps">
+      <div class="step"><b>1. File check</b><p>Send the attendance and tuition files you use. We confirm they read correctly first.</p></div>
+      <div class="step"><b>2. Validate on your data</b><p>We run them and agree on how each warning should be handled.</p></div>
+      <div class="step"><b>3. Use it weekly</b><p>Same order every week. Calculation and drafts by the program, decisions by your staff.</p></div>
+    </div>
   </div>
 </section>
 
-<section>
+<section class="band-navy">
   <div class="wrap doc">
     <div class="shead">
-      <div class="eyebrow">For developers</div>
-      <h2>Also usable as a library</h2>
-      <p>No packages to install. Python standard library only.</p>
+      <div class="eyebrow">Operating rules</div>
+      <h2>Anything reaching a parent is decided by a person</h2>
+      <p>The rule lives in the code, not in a policy page.</p>
     </div>
-    <div class="note-box mono" style="white-space:pre;overflow:auto;font-size:14px;line-height:1.75">""" + CODE + """</div>
-    <p style="color:#6b7280">Source &mdash;
-      <a href="https://github.com/kernfoundry" target="_blank" rel="noopener" style="color:#8a2c07">github.com/kernfoundry</a></p>
+    <div class="cards">
+      <div class="card"><div class="k">A</div><h3>Review gate</h3><p>A draft without a review record never becomes sendable.</p></div>
+      <div class="card t2"><div class="k">B</div><h3>No invented numbers</h3><p>When a value looks wrong the program reports it instead of estimating.</p></div>
+      <div class="card t3"><div class="k">C</div><h3>Bounded undo</h3><p>Only the output of one run can be reverted. Nothing else is touched.</p></div>
+    </div>
   </div>
 </section>
 
@@ -255,7 +245,7 @@ INDEX = """
       <h2>Send us your file format</h2>
       <p>We will confirm whether it fits, before any commitment.</p>
     </div>
-    <a class="btn solid" href="contact.html">Get in touch</a>
+    <a class="btn solid" href="contact.html">Talk to us</a>
   </div>
 </div>
 """

@@ -22,7 +22,7 @@ HEAD = """<!DOCTYPE html>
 <meta property="og:title" content="{title}">
 <meta property="og:site_name" content="Kernfoundry">
 <meta property="og:description" content="{desc}">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/site6.css">
 </head>
 <body>
 
@@ -38,7 +38,7 @@ HEAD = """<!DOCTYPE html>
     <a class="logo" href="index.html">Kernfoundry<em>.</em></a>
     <nav class="main" id="gnb">
       <div>
-        <a class="top" href="business.html">제품</a>
+        <a class="top" href="business.html">제품<span class="caret"></span></a>
         <div class="sub">
           <a href="business.html#attendance">출결 관리</a>
           <a href="business.html#notice">학부모 안내</a>
@@ -47,7 +47,7 @@ HEAD = """<!DOCTYPE html>
         </div>
       </div>
       <div>
-        <a class="top" href="work.html">적용 화면</a>
+        <a class="top" href="work.html">적용 화면<span class="caret"></span></a>
         <div class="sub">
           <a href="work.html#tests">실행 결과</a>
           <a href="work.html#tests">자동 검사</a>
@@ -55,7 +55,7 @@ HEAD = """<!DOCTYPE html>
         </div>
       </div>
       <div>
-        <a class="top" href="about.html">회사</a>
+        <a class="top" href="about.html">회사<span class="caret"></span></a>
         <div class="sub">
           <a href="about.html#greeting">인사말</a>
           <a href="about.html#now">지금 하는 일</a>
@@ -109,10 +109,30 @@ FOOT = """
     </div>
     <div class="bottom">
       <span>&copy; 2026 Kernfoundry</span>
-      <span>자동화는 초안까지. 발송과 결제는 사람이 검토합니다.</span>
+      <span><a href="mailto:hello@kernfoundry.com">hello@kernfoundry.com</a></span>
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  document.querySelectorAll('nav.main > div').forEach(function(d){
+    var sub = d.querySelector('.sub');
+    if (!sub) return;
+    var timer;
+    d.addEventListener('mouseenter', function(){ clearTimeout(timer); d.classList.add('open'); });
+    d.addEventListener('mouseleave', function(){
+      timer = setTimeout(function(){ d.classList.remove('open'); }, 220);
+    });
+    var top = d.querySelector('a.top');
+    if (top) top.addEventListener('click', function(ev){
+      if (window.matchMedia('(max-width:820px)').matches) { ev.preventDefault(); d.classList.toggle('open'); }
+    });
+  });
+  var btn = document.querySelector('.menu-btn');
+  if (btn) btn.addEventListener('click', function(){ document.getElementById('gnb').classList.toggle('open'); });
+})();
+</script>
 
 <script>
 (function(){
@@ -156,8 +176,9 @@ INDEX = """
     <div>
       <div class="kicker">Academy operations automation</div>
       <h1>학원 행정의 반복 작업을<br>프로그램이 대신합니다</h1>
-      <p class="lead">학원에서 쓰던 출결 파일을 올리면 출석률 계산과 수강료 정산이 끝나고, 학부모에게 보낼 안내문은 초안까지 나옵니다.
-        이상한 값은 조용히 넘기지 않고 경고로 남기고, 초안은 담당자가 확인한 뒤에만 발송됩니다.</p>
+      <p class="lead">학원에서 쓰던 출결 파일을 올리면 출석률 계산과 수강료 정산이 끝나고,
+        학부모에게 보낼 안내문은 초안까지 나옵니다. 이상한 값은 조용히 넘기지 않고 경고로 남기고,
+        초안은 담당자가 확인한 뒤에만 발송됩니다.</p>
       <div class="actions">
         <a class="btn solid" href="contact.html">도입 문의</a>
         <a class="btn" href="work.html">적용 화면 보기</a>
@@ -165,7 +186,7 @@ INDEX = """
       <div class="metrics">
         <div><b>6</b><span>운영 모듈</span></div>
         <div><b>76</b><span>자동 검사 항목</span></div>
-        <div><b>0</b><span>외부 라이브러리</span></div>
+        <div><b>0</b><span>설치할 프로그램</span></div>
       </div>
     </div>
   </div>
@@ -181,111 +202,84 @@ INDEX = """
 </div>
 
 <section>
-  <div class="wrap">
+  <div class="wrap doc">
     <div class="shead">
-      <div class="eyebrow">Product</div>
-      <h2>세 가지 반복 업무를 계산과 문장 생성으로</h2>
-      <p>엑셀과 손으로 하던 흐름을 그대로 옮기지 않았습니다. 담당자가 판단해야 할 부분만 남기고, 계산과 문장 작성은 프로그램이 맡습니다.</p>
+      <div class="eyebrow">Modules</div>
+      <h2>여섯 가지가 함께 돌아갑니다</h2>
+      <p>하나의 파일에서 시작해 계산·문장·기록까지 이어집니다. 필요한 것만 켜서 씁니다.</p>
     </div>
-
-    <div class="feature">
-      <div class="txt">
-        <div class="no">01 — 출결 관리</div>
-        <h3>파일 형식을 바꾸지 않아도 됩니다</h3>
-        <p>CSV로 다시 저장할 필요가 없습니다. 학원에서 쓰던 .xlsx 파일을 그대로 읽습니다.</p>
-        <ul>
-          <li>칸 이름이 달라도 인식 (이름·성명 / 출석·출석일수 / 총수업·수업일수)</li>
-          <li>빈값·문자 혼입·출석이 총수업보다 많은 경우를 경고로 분리</li>
-          <li>별도 프로그램 설치 없이 표준 라이브러리만 사용</li>
-        </ul>
+    <div class="cards">
+      <div class="card">
+        <div class="k">01</div>
+        <h3>출결 집계</h3>
+        <p>엑셀(.xlsx)·CSV를 그대로 읽어 학생별 출석률과 결석·지각 횟수를 계산합니다.</p>
       </div>
-    </div>
-
-    <div class="feature rev">
-      <div class="txt">
-        <div class="no">02 — 학부모 안내</div>
-        <h3>문장은 초안까지만</h3>
-        <p>출석률을 기준으로 결석 안내 또는 월간 안내문을 작성합니다. 발송은 하지 않습니다.</p>
-        <ul>
-          <li>검토 기록이 없으면 발송 불가 상태로 남음</li>
-          <li>휴대폰 번호·주민등록번호·카드번호가 들어가면 자동 차단</li>
-          <li>문장 생성은 언어 모델을 붙일 수 있고, 안 되면 기본 문장으로 대체</li>
-        </ul>
+      <div class="card t2">
+        <div class="k">02</div>
+        <h3>학부모 안내문</h3>
+        <p>출석률 기준으로 결석 안내와 월간 안내 초안을 작성합니다. 발송은 하지 않습니다.</p>
       </div>
-    </div>
-
-    <div class="feature">
-      <div class="txt">
-        <div class="no">03 — 수강료 정산</div>
-        <h3>미납자만 골라 안내 초안까지</h3>
-        <p>청구액·납부액을 계산하고 완납·일부납·미납·과납을 구분합니다.</p>
-        <ul>
-          <li>할인 반영 청구액과 미납액 계산</li>
-          <li>할인이 수강료보다 큰 경우 등 입력 실수를 경고로 표시</li>
-          <li>안내 초안에 계좌·카드번호를 넣지 않음</li>
-        </ul>
+      <div class="card t3">
+        <div class="k">03</div>
+        <h3>수강료 정산</h3>
+        <p>청구액·납부액을 계산해 완납·일부납·미납·과납을 구분하고 안내 초안을 만듭니다.</p>
+      </div>
+      <div class="card t2">
+        <div class="k">04</div>
+        <h3>이상값 경고</h3>
+        <p>빈칸, 숫자가 아닌 값, 총수업 0, 출석이 총수업보다 큰 경우를 계산에서 빼고 알려줍니다.</p>
+      </div>
+      <div class="card t3">
+        <div class="k">05</div>
+        <h3>실행 기록·되돌리기</h3>
+        <p>실행할 때마다 처리 내역을 남기고, 그 실행이 만든 파일만 골라 되돌릴 수 있습니다.</p>
+      </div>
+      <div class="card">
+        <div class="k">06</div>
+        <h3>개인정보 차단</h3>
+        <p>안내문 본문에 연락처·주민등록번호·카드번호가 들어가면 자동으로 막습니다.</p>
       </div>
     </div>
   </div>
 </section>
 
 <section class="alt">
-  <div class="wrap">
+  <div class="wrap doc">
     <div class="shead">
-      <div class="eyebrow">How it works</div>
-      <h2>실행은 세 단계입니다</h2>
-      <p>파일을 넣고, 계산과 경고를 확인하고, 초안을 검토해 보냅니다.</p>
+      <div class="eyebrow">Getting started</div>
+      <h2>시작은 파일 하나입니다</h2>
+      <p>설치도, 서버도, 형식 변환도 필요하지 않습니다.</p>
     </div>
-    <table class="info">
-      <tr><th>1. 파일</th><td>학원에서 쓰던 출결·수강료 파일을 그대로 사용합니다 (엑셀 .xlsx / CSV / TSV).</td></tr>
-      <tr><th>2. 계산</th><td>출석률·청구액·미납액을 계산하고, 값이 이상하면 숫자를 만들지 않고 경고로 남깁니다.</td></tr>
-      <tr><th>3. 검토</th><td>안내문 초안은 검토 대기 상태로 생성됩니다. 담당자가 확인한 뒤 발송합니다.</td></tr>
-      <tr><th>기록</th><td>실행할 때마다 무엇을 처리했는지 기록이 남고, 그 실행이 만든 파일만 되돌릴 수 있습니다.</td></tr>
-    </table>
+    <div class="steps">
+      <div class="step"><b>1. 파일 확인</b><p>학원에서 쓰는 출결·수강료 파일을 보내주시면 읽히는지 먼저 확인해 드립니다.</p></div>
+      <div class="step"><b>2. 예시로 검증</b><p>실제 자료로 결과를 뽑아 보고, 경고가 뜨는 항목의 처리 기준을 함께 정합니다.</p></div>
+      <div class="step"><b>3. 운영에 사용</b><p>매주 같은 순서로 돌립니다. 계산과 초안까지 프로그램, 판단과 발송은 담당자.</p></div>
+    </div>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
+<section class="band-navy">
+  <div class="wrap doc">
     <div class="shead">
-      <div class="eyebrow">For developers</div>
-      <h2>표준 라이브러리만 씁니다</h2>
-      <p>설치할 패키지가 없습니다. 파이썬만 있으면 돌아갑니다.</p>
+      <div class="eyebrow">Operating rules</div>
+      <h2>고객에게 닿는 일은 사람이 결정합니다</h2>
+      <p>이 규칙은 안내문이 아니라 코드에 들어 있습니다. 프로그램이 임의로 판단하지 않습니다.</p>
     </div>
-    <div class="note-box mono" style="white-space:pre;overflow:auto;font-size:14px;line-height:1.75">from pipeline.csv_input import read_table
-from pipeline.attendance_rate import attendance_rate
-from pipeline.notice_draft import generate_drafts
-
-table = read_table("attendance.xlsx")
-rates, warnings = attendance_rate(table.rows)
-drafts = generate_drafts(rates, academy="OO학원")</div>
-    <p style="color:#6b7280">소스는 공개 저장소에서 확인할 수 있습니다 —
-      <a href="https://github.com/kernfoundry" target="_blank" rel="noopener" style="color:#8a2c07">github.com/kernfoundry</a></p>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="wrap">
-    <div class="shead">
-      <div class="eyebrow">Status</div>
-      <h2>진행 상황</h2>
+    <div class="cards">
+      <div class="card"><div class="k">A</div><h3>검토 게이트</h3><p>검토 기록이 없는 초안은 발송 가능 상태가 되지 않습니다.</p></div>
+      <div class="card t2"><div class="k">B</div><h3>숫자를 지어내지 않음</h3><p>값이 이상하면 추정하지 않고 담당자에게 알립니다.</p></div>
+      <div class="card t3"><div class="k">C</div><h3>되돌리기 범위 제한</h3><p>한 번의 실행이 만든 결과만 되돌립니다. 다른 기록은 건드리지 않습니다.</p></div>
     </div>
-    <table class="notice">
-      <tbody>
-        <tr><td class="c">2026.09</td><td><a href="business.html#attendance">출결 집계 모듈</a> — 이상값 처리와 자동 검사 포함</td></tr>
-        <tr><td class="c">2026.10</td><td><a href="business.html#settlement">학부모 안내 초안·수강료 정산</a> · <a href="notice.html#n2">엑셀 직접 읽기</a></td></tr>
-      </tbody>
-    </table>
   </div>
 </section>
 
 <div class="cta">
   <div class="wrap in">
     <div>
-      <h2>지금 쓰는 파일로 확인해 보세요</h2>
-      <p>출결·정산 파일 형식을 보내주시면 적용 가능 여부를 확인해 드립니다.</p>
+      <h2>파일 형식만 알려주세요</h2>
+      <p>맞는지 먼저 확인해 드립니다. 약속 없이 보내셔도 됩니다.</p>
     </div>
-    <a class="btn" href="contact.html">도입 문의</a>
+    <a class="btn solid" href="contact.html">도입 문의</a>
   </div>
 </div>
 """
@@ -682,9 +676,9 @@ def align_numbers(html: str) -> str:
 
 
 def main() -> None:
-    css = (SITE / "assets" / "site.css").read_text(encoding="utf-8")
+    css = (SITE / "assets" / "site6.css").read_text(encoding="utf-8")
     if ".promo{" not in css:
-        (SITE / "assets" / "site.css").write_text(css + PROMO_CSS, encoding="utf-8", newline="\n")
+        (SITE / "assets" / "site6.css").write_text(css + PROMO_CSS, encoding="utf-8", newline="\n")
         print("site.css 에 promo 스타일 추가")
 
     index_meta = dict(title="Kernfoundry | 학원 운영 자동화", crumb="Home", h1="Kernfoundry", enpage="en/index.html",
