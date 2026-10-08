@@ -53,6 +53,7 @@ HEAD = """<!DOCTYPE html>
           <a href="work.html#source">소스 공개</a>
         </div>
       </div>
+      <div><a href="demo.html">직접 해보기</a></div>
       <div><a href="notice.html">공지사항</a></div>
       <div><a href="contact.html">문의</a></div>
     </nav>
@@ -80,6 +81,7 @@ FOOT = """
         <a href="about.html">회사소개</a>
         <a href="business.html">사업분야</a>
         <a href="work.html">적용 화면</a>
+        <a href="demo.html">직접 해보기</a>
         <a href="notice.html">공지사항</a>
         <a href="contact.html">문의</a>
         <a href="privacy.html">개인정보처리방침</a>
@@ -358,6 +360,98 @@ NOTFOUND = """
 </section>
 """
 
+DEMO = """
+<section>
+  <div class="wrap doc">
+    <div class="shead">
+      <div class="eyebrow">TRY IT</div>
+      <h2>출결 계산, 지금 이 화면에서 해보기</h2>
+      <p>아래 칸에 학원 출결 자료를 붙여넣고 버튼을 누르면 결과가 바로 나옵니다.
+         입력한 값은 <b>이 브라우저 안에서만</b> 계산되며 어디에도 전송·저장되지 않습니다.</p>
+    </div>
+
+    <div class="note-box">
+      엑셀에서 <b>이름 / 출석 / 총수업</b> 칸을 복사해 붙여넣으면 됩니다. 칸 이름이 달라도 알아서 찾습니다
+      (예: 성명·출석일수·수업일수). 기본으로 예시 자료가 들어가 있으니 그대로 눌러봐도 됩니다.
+    </div>
+
+    <div class="form" style="max-width:100%">
+      <div>
+        <label for="d1">출결 자료 (CSV 또는 엑셀 복사본)</label>
+        <textarea id="d1" rows="8" style="font-family:Consolas,'Cascadia Mono',monospace;font-size:14px"></textarea>
+      </div>
+      <div class="row2">
+        <div><label for="d2">학원 이름 (안내문에 들어갑니다)</label><input id="d2" type="text" value="우리 학원"></div>
+        <div><label for="d3">결석 안내 기준 (이 값 미만)</label><input id="d3" type="number" value="80" min="0" max="100"></div>
+      </div>
+      <div>
+        <button class="btn solid" type="button" id="drun">계산하기</button>
+        <button class="btn" type="button" id="dreset" style="margin-left:8px">예시로 되돌리기</button>
+        <button class="btn" type="button" id="dclear" style="margin-left:8px">지우기</button>
+      </div>
+    </div>
+
+    <div id="dout" style="margin-top:34px"></div>
+
+    <p class="credit" style="margin-top:22px">
+      ※ 이 화면은 실제 프로그램과 <b>같은 규칙</b>으로 계산합니다(총수업 0, 숫자가 아닌 값, 출석이 총수업보다 많은 경우를 경고로 분리).
+      실제 도입 시에는 엑셀 파일을 그대로 읽고 결과가 기록으로 남습니다.
+    </p>
+  </div>
+</section>
+<script src="assets/demo.js"></script>
+<script>
+(function(){
+  var ta=document.getElementById('d1'), out=document.getElementById('dout');
+  var academy=document.getElementById('d2'), thr=document.getElementById('d3');
+  ta.value = Demo.sample;
+
+  function esc(s){ return String(s).replace(/[&<>]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; }); }
+
+  function render(){
+    var parsed = Demo.parse(ta.value);
+    var res = Demo.computeRates(parsed.rows);
+    var warnings = parsed.warnings.concat(res.warnings);
+    var threshold = Number(thr.value || 80);
+    var html = '';
+
+    if (res.rates.length) {
+      html += '<h3 style="font-size:17px;margin:0 0 10px">계산 결과 <span style="color:#6b7280;font-weight:400;font-size:14px">(' + res.rates.length + '명)</span></h3>';
+      html += '<table class="notice"><thead><tr><th>학생</th><th>출석</th><th>총수업</th><th>출석률</th><th>안내문 종류</th><th>상태</th></tr></thead><tbody>';
+      res.rates.forEach(function(r){
+        var isLow = r.rate < threshold;
+        html += '<tr><td>' + esc(r.name) + '</td><td>' + r.attended + '</td><td>' + r.total + '</td><td><b>' + r.rate + '%</b></td>'
+             +  '<td>' + (isLow ? '결석 안내' : '월간 안내') + '</td>'
+             +  '<td style="color:#b26a00">검토 대기</td></tr>';
+      });
+      html += '</tbody></table>';
+    } else {
+      html += '<p style="color:#6b7280">계산할 수 있는 학생이 없습니다.</p>';
+    }
+
+    if (warnings.length) {
+      html += '<h3 style="font-size:16px;margin:26px 0 8px">경고 ' + warnings.length + '건 <span style="color:#6b7280;font-weight:400;font-size:13.5px">— 값이 이상한 항목은 계산에서 빼고 알려드립니다</span></h3>';
+      html += '<ul style="color:#8a5a00;font-size:14.5px">' + warnings.map(function(w){ return '<li>' + esc(w) + '</li>'; }).join('') + '</ul>';
+    }
+
+    if (res.rates.length) {
+      var d = Demo.draftNotice(res.rates[0].name, res.rates[0].rate, threshold, academy.value || '우리 학원');
+      html += '<h3 style="font-size:16px;margin:26px 0 8px">안내문 초안 예시 <span style="color:#6b7280;font-weight:400;font-size:13.5px">(' + esc(d.student) + ' · ' + d.kind + ')</span></h3>';
+      html += '<div class="note-box" style="white-space:pre-line;background:#fff;border-left-color:#b26a00">' + esc(d.text) + '</div>';
+      html += '<p style="font-size:14px;color:#8a5a00">상태: <b>검토 대기</b> — 프로그램은 발송하지 않습니다. 담당자가 확인한 뒤 보냅니다.'
+           + (d.pii.length ? ' (개인정보 차단: ' + d.pii.join(', ') + ')' : '') + '</p>';
+    }
+    out.innerHTML = html;
+  }
+
+  document.getElementById('drun').onclick = render;
+  document.getElementById('dreset').onclick = function(){ ta.value = Demo.sample; render(); };
+  document.getElementById('dclear').onclick = function(){ ta.value=''; out.innerHTML=''; };
+  render();
+})();
+</script>
+"""
+
 PAGES = {
     "about.html": (dict(title="회사소개 | Kernfoundry", crumb="회사소개", h1="회사소개",
                         sub="교육 사업을 운영하며 만든 자동화를 사업으로 정리했습니다.",
@@ -378,6 +472,9 @@ PAGES = {
                           desc="Kernfoundry 개인정보처리방침."), PRIVACY),
     "404.html": (dict(title="페이지를 찾을 수 없습니다 | Kernfoundry", crumb="404", h1="페이지를 찾을 수 없습니다",
                       sub="주소를 다시 확인해 주세요.", desc="Kernfoundry 페이지 안내."), NOTFOUND),
+    "demo.html": (dict(title="직접 해보기 | Kernfoundry", crumb="직접 해보기", h1="직접 해보기",
+                       sub="출결 자료를 붙여넣으면 이 화면에서 바로 계산됩니다.",
+                       desc="Kernfoundry 출결 계산기 — 브라우저에서 바로 확인."), DEMO),
 }
 
 
