@@ -191,15 +191,19 @@ FOOT = """
 """
 
 
-LDJSON = ('<script type="application/ld+json">
-'
-          '{"@' + 'context":"https://schema.org","@' + 'type":"Organization",'
-          '"name":"Kernfoundry","url":"https://kernfoundry.github.io/",'
-          '"logo":"https://kernfoundry.github.io/images/og.png","email":"hello@kernfoundry.com",'
-          '"description":"Academy operations automation software. Attendance, parent messages, tuition settlement."}
-'
-          '</script>
-')
+import json as _json
+
+LDJSON = ('<script type="application/ld+json">\n'
+          + _json.dumps({
+              '@' + 'context': 'https://schema.org',
+              '@' + 'type': 'Organization',
+              'name': 'Kernfoundry',
+              'url': 'https://kernfoundry.github.io/',
+              'logo': 'https://kernfoundry.github.io/images/og.png',
+              'email': 'hello@kernfoundry.com',
+              'description': '학원 운영 자동화 소프트웨어. 출결 집계, 학부모 안내문 초안, 수강료 정산.',
+          }, ensure_ascii=False)
+          + '\n</script>\n')
 
 SUBHERO = """
 <div class="phero" id="main">
