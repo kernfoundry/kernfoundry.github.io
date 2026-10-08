@@ -39,7 +39,7 @@
       <div>
         <a class="top" href="work.html">적용 화면</a>
         <div class="sub">
-          <a href="work.html#run">실행 결과</a>
+          <a href="work.html#tests">실행 결과</a>
           <a href="work.html#tests">자동 검사</a>
           <a href="work.html#code">코드 예시</a>
         </div>
@@ -68,67 +68,64 @@
   </div>
 </div>
 
-<section>
+<section class="tight">
   <div class="wrap doc">
-    <div class="feature" id="attendance" style="border-top:0">
+    <div class="feature" id="attendance" style="border-top:0;grid-template-columns:1fr">
       <div class="txt">
         <div class="no">01 — 출결 관리</div>
         <h3>엑셀 파일을 그대로 읽습니다</h3>
         <p>별도 설치나 형식 변환이 필요하지 않습니다.</p>
-        <ul>
-          <li>입력: 엑셀(.xlsx) · CSV · TSV — 첫 번째 시트</li>
-          <li>칸 인식: 이름·성명·학생 / 출석·출석일수 / 총수업·수업일수 / 결석 / 지각</li>
-          <li>이상값: 빈값, 숫자가 아닌 값, 총수업 0, 출석 &gt; 총수업, 음수 → 경고로 분리</li>
-          <li>기록: 실행마다 처리 내역과 산출물 경로가 남음</li>
-        </ul>
       </div>
-      <div class="pic"><img src="images/report-attendance.svg" alt="출결 집계 실행 결과"></div>
     </div>
+    <table class="info">
+      <tr><th>입력</th><td>엑셀(.xlsx) · CSV · TSV — 첫 번째 시트를 읽습니다</td></tr>
+      <tr><th>칸 인식</th><td>이름·성명·학생 / 출석·출석일수 / 총수업·수업일수 / 결석 / 지각 — 이름이 달라도 인식</td></tr>
+      <tr><th>계산</th><td>학생별 출석률(%)과 결석·지각 횟수</td></tr>
+      <tr><th>이상값</th><td>빈값, 숫자가 아닌 값, 총수업 0, 출석 &gt; 총수업, 음수 → 계산에서 빼고 경고로 표시</td></tr>
+      <tr><th>기록</th><td>실행할 때마다 처리 내역과 산출물 경로가 기록으로 남습니다</td></tr>
+    </table>
 
-    <div class="feature rev" id="notice">
+    <div class="feature" id="notice" style="grid-template-columns:1fr">
       <div class="txt">
         <div class="no">02 — 학부모 안내</div>
         <h3>초안까지만, 발송은 사람이</h3>
         <p>출석률을 기준으로 결석 안내 또는 월간 안내문 초안을 만듭니다.</p>
-        <ul>
-          <li>기준 미만이면 결석 안내, 이상이면 월간 안내</li>
-          <li>초안은 검토 대기 상태로 생성 — 사람이 확인하기 전에는 발송 표시가 되지 않음</li>
-          <li>휴대폰 번호·주민등록번호·카드번호가 본문에 들어가면 자동 차단</li>
-          <li>문장 생성은 언어 모델 사용 가능, 연결이 안 되면 기본 문장으로 대체</li>
-        </ul>
       </div>
-      <div class="pic"><img src="images/photo-classroom2.jpg" alt="학원 강의실"></div>
     </div>
+    <table class="info">
+      <tr><th>생성 기준</th><td>기준 미만이면 결석 안내, 이상이면 월간 안내</td></tr>
+      <tr><th>발송 차단</th><td>초안은 검토 대기 상태로 생성 — 사람이 확인하기 전에는 발송 표시가 되지 않습니다</td></tr>
+      <tr><th>개인정보</th><td>휴대폰 번호·주민등록번호·카드번호가 본문에 들어가면 자동 차단</td></tr>
+      <tr><th>문장 생성</th><td>언어 모델을 붙일 수 있고, 연결이 안 되면 기본 문장으로 대체되어 멈추지 않습니다</td></tr>
+    </table>
 
-    <div class="feature" id="settlement">
+    <div class="feature" id="settlement" style="grid-template-columns:1fr">
       <div class="txt">
         <div class="no">03 — 수강료 정산</div>
         <h3>청구액·미납액을 정확히</h3>
         <p>청구액과 납부액을 계산해 미납자를 추려내고 안내 초안을 만듭니다.</p>
-        <ul>
-          <li>청구액 = 수강료 − 할인 / 미납액 = 청구액 − 납부액</li>
-          <li>구분: 완납 · 일부납 · 미납 · 과납</li>
-          <li>할인이 수강료보다 큰 경우, 숫자가 아닌 금액, 음수 → 경고로 분리</li>
-          <li>안내 초안에는 계좌·카드번호를 넣지 않음</li>
-        </ul>
       </div>
-      <div class="pic"><img src="images/report-settlement.svg" alt="수강료 정산 실행 결과"></div>
     </div>
+    <table class="info">
+      <tr><th>계산</th><td>청구액 = 수강료 − 할인 / 미납액 = 청구액 − 납부액</td></tr>
+      <tr><th>구분</th><td>완납 · 일부납 · 미납 · 과납</td></tr>
+      <tr><th>이상값</th><td>할인이 수강료보다 큰 경우, 숫자가 아닌 금액, 음수 → 경고로 표시</td></tr>
+      <tr><th>안내 초안</th><td>미납자에게만 생성하며 계좌·카드번호는 본문에 넣지 않습니다</td></tr>
+    </table>
 
-    <div class="feature rev" id="principle">
+    <div class="feature" id="principle" style="grid-template-columns:1fr">
       <div class="txt">
         <div class="no">운영 원칙</div>
         <h3>자동화는 초안까지</h3>
         <p>고객에게 닿는 발송과 결제는 반드시 사람이 검토한 뒤 처리합니다. 이 규칙은 문서가 아니라 코드로 강제됩니다.</p>
-        <ul>
-          <li>검토 기록이 없으면 발송 불가 상태</li>
-          <li>안내문에 연락처·주민등록번호·카드번호가 들어가지 않음</li>
-          <li>한 번의 실행이 만든 파일만 골라 되돌리기</li>
-          <li>값이 이상하면 숫자를 만들어내지 않고 담당자에게 알림</li>
-        </ul>
       </div>
-      <div class="pic"><img src="images/report-tests.svg" alt="자동 검사 결과"></div>
     </div>
+    <table class="info">
+      <tr><th>초안 상태</th><td>검토 기록이 없으면 발송 불가 상태로 남습니다</td></tr>
+      <tr><th>개인정보</th><td>안내문에 연락처·주민등록번호·카드번호가 들어가지 않습니다</td></tr>
+      <tr><th>되돌리기</th><td>한 번의 실행이 만든 파일만 골라 되돌릴 수 있습니다</td></tr>
+      <tr><th>경고 우선</th><td>값이 이상하면 숫자를 만들어내지 않고 담당자에게 알립니다</td></tr>
+    </table>
   </div>
 </section>
 

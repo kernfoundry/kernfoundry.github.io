@@ -48,7 +48,7 @@ HEAD = """<!DOCTYPE html>
       <div>
         <a class="top" href="work.html">적용 화면</a>
         <div class="sub">
-          <a href="work.html#run">실행 결과</a>
+          <a href="work.html#tests">실행 결과</a>
           <a href="work.html#tests">자동 검사</a>
           <a href="work.html#code">코드 예시</a>
         </div>
@@ -158,7 +158,7 @@ INDEX = """
       </div>
     </div>
     <div class="shot">
-      <img src="images/report-attendance.svg" alt="출결 집계 실행 결과">
+      <img src="images/screen-attendance.svg" alt="출결 리포트 화면">
     </div>
   </div>
 </div>
@@ -182,7 +182,7 @@ INDEX = """
           <li>별도 프로그램 설치 없이 표준 라이브러리만 사용</li>
         </ul>
       </div>
-      <div class="pic"><img src="images/report-attendance.svg" alt="출결 집계 실행 결과"></div>
+      <div class="pic"><img src="images/photo-classroom2.jpg" alt="학원 강의실"></div>
     </div>
 
     <div class="feature rev">
@@ -196,7 +196,7 @@ INDEX = """
           <li>문장 생성은 언어 모델을 붙일 수 있고, 안 되면 기본 문장으로 대체</li>
         </ul>
       </div>
-      <div class="pic"><img src="images/photo-documents.jpg" alt="학부모 안내 업무"></div>
+      <div class="pic"><img src="images/photo-documents.jpg" alt="안내문 작성 업무"></div>
     </div>
 
     <div class="feature">
@@ -210,7 +210,7 @@ INDEX = """
           <li>안내 초안에 계좌·카드번호를 넣지 않음</li>
         </ul>
       </div>
-      <div class="pic"><img src="images/report-settlement.svg" alt="수강료 정산 실행 결과"></div>
+      <div class="pic"><img src="images/photo-deskwork.jpg" alt="정산 자료 확인"></div>
     </div>
   </div>
 </section>
@@ -291,9 +291,8 @@ ABOUT = """
     <p>그래서 필요한 부분을 직접 프로그램으로 만들었습니다. 계산은 프로그램이 하고, 판단과 발송은 사람이 합니다.
        잘못된 값은 넘기지 않고 경고로 남기고, 학부모님께 나가는 초안은 반드시 검토 상태를 거치게 했습니다.</p>
     <p>같은 일을 반복하는 다른 교육 사업자에게도 도움이 되기를 바랍니다.</p>
-    <div class="pic-grid">
-      <img src="images/photo-classroom.jpg" alt="학원 강의실">
-      <img src="images/photo-deskwork.jpg" alt="운영 자료 작업">
+    <div class="pic-grid" style="grid-template-columns:1fr">
+      <img src="images/photo-classroom.jpg" alt="학원 강의실" style="height:320px">
     </div>
 
     <div class="shead" id="history" style="margin-top:70px">
@@ -308,7 +307,7 @@ ABOUT = """
       <li><b>2026.10</b><span>운영 소스 공개 (github.com/kernfoundry)</span></li>
     </ul>
 
-    <div class="shead" style="margin-top:70px">
+    <div class="shead" id="contact" style="margin-top:70px">
       <div class="eyebrow">Contact</div>
       <h2>연락</h2>
     </div>
@@ -322,67 +321,64 @@ ABOUT = """
 """
 
 BUSINESS = """
-<section>
+<section class="tight">
   <div class="wrap doc">
-    <div class="feature" id="attendance" style="border-top:0">
+    <div class="feature" id="attendance" style="border-top:0;grid-template-columns:1fr">
       <div class="txt">
         <div class="no">01 — 출결 관리</div>
         <h3>엑셀 파일을 그대로 읽습니다</h3>
         <p>별도 설치나 형식 변환이 필요하지 않습니다.</p>
-        <ul>
-          <li>입력: 엑셀(.xlsx) · CSV · TSV — 첫 번째 시트</li>
-          <li>칸 인식: 이름·성명·학생 / 출석·출석일수 / 총수업·수업일수 / 결석 / 지각</li>
-          <li>이상값: 빈값, 숫자가 아닌 값, 총수업 0, 출석 &gt; 총수업, 음수 → 경고로 분리</li>
-          <li>기록: 실행마다 처리 내역과 산출물 경로가 남음</li>
-        </ul>
       </div>
-      <div class="pic"><img src="images/report-attendance.svg" alt="출결 집계 실행 결과"></div>
     </div>
+    <table class="info">
+      <tr><th>입력</th><td>엑셀(.xlsx) · CSV · TSV — 첫 번째 시트를 읽습니다</td></tr>
+      <tr><th>칸 인식</th><td>이름·성명·학생 / 출석·출석일수 / 총수업·수업일수 / 결석 / 지각 — 이름이 달라도 인식</td></tr>
+      <tr><th>계산</th><td>학생별 출석률(%)과 결석·지각 횟수</td></tr>
+      <tr><th>이상값</th><td>빈값, 숫자가 아닌 값, 총수업 0, 출석 &gt; 총수업, 음수 → 계산에서 빼고 경고로 표시</td></tr>
+      <tr><th>기록</th><td>실행할 때마다 처리 내역과 산출물 경로가 기록으로 남습니다</td></tr>
+    </table>
 
-    <div class="feature rev" id="notice">
+    <div class="feature" id="notice" style="grid-template-columns:1fr">
       <div class="txt">
         <div class="no">02 — 학부모 안내</div>
         <h3>초안까지만, 발송은 사람이</h3>
         <p>출석률을 기준으로 결석 안내 또는 월간 안내문 초안을 만듭니다.</p>
-        <ul>
-          <li>기준 미만이면 결석 안내, 이상이면 월간 안내</li>
-          <li>초안은 검토 대기 상태로 생성 — 사람이 확인하기 전에는 발송 표시가 되지 않음</li>
-          <li>휴대폰 번호·주민등록번호·카드번호가 본문에 들어가면 자동 차단</li>
-          <li>문장 생성은 언어 모델 사용 가능, 연결이 안 되면 기본 문장으로 대체</li>
-        </ul>
       </div>
-      <div class="pic"><img src="images/photo-classroom2.jpg" alt="학원 강의실"></div>
     </div>
+    <table class="info">
+      <tr><th>생성 기준</th><td>기준 미만이면 결석 안내, 이상이면 월간 안내</td></tr>
+      <tr><th>발송 차단</th><td>초안은 검토 대기 상태로 생성 — 사람이 확인하기 전에는 발송 표시가 되지 않습니다</td></tr>
+      <tr><th>개인정보</th><td>휴대폰 번호·주민등록번호·카드번호가 본문에 들어가면 자동 차단</td></tr>
+      <tr><th>문장 생성</th><td>언어 모델을 붙일 수 있고, 연결이 안 되면 기본 문장으로 대체되어 멈추지 않습니다</td></tr>
+    </table>
 
-    <div class="feature" id="settlement">
+    <div class="feature" id="settlement" style="grid-template-columns:1fr">
       <div class="txt">
         <div class="no">03 — 수강료 정산</div>
         <h3>청구액·미납액을 정확히</h3>
         <p>청구액과 납부액을 계산해 미납자를 추려내고 안내 초안을 만듭니다.</p>
-        <ul>
-          <li>청구액 = 수강료 − 할인 / 미납액 = 청구액 − 납부액</li>
-          <li>구분: 완납 · 일부납 · 미납 · 과납</li>
-          <li>할인이 수강료보다 큰 경우, 숫자가 아닌 금액, 음수 → 경고로 분리</li>
-          <li>안내 초안에는 계좌·카드번호를 넣지 않음</li>
-        </ul>
       </div>
-      <div class="pic"><img src="images/report-settlement.svg" alt="수강료 정산 실행 결과"></div>
     </div>
+    <table class="info">
+      <tr><th>계산</th><td>청구액 = 수강료 − 할인 / 미납액 = 청구액 − 납부액</td></tr>
+      <tr><th>구분</th><td>완납 · 일부납 · 미납 · 과납</td></tr>
+      <tr><th>이상값</th><td>할인이 수강료보다 큰 경우, 숫자가 아닌 금액, 음수 → 경고로 표시</td></tr>
+      <tr><th>안내 초안</th><td>미납자에게만 생성하며 계좌·카드번호는 본문에 넣지 않습니다</td></tr>
+    </table>
 
-    <div class="feature rev" id="principle">
+    <div class="feature" id="principle" style="grid-template-columns:1fr">
       <div class="txt">
         <div class="no">운영 원칙</div>
         <h3>자동화는 초안까지</h3>
         <p>고객에게 닿는 발송과 결제는 반드시 사람이 검토한 뒤 처리합니다. 이 규칙은 문서가 아니라 코드로 강제됩니다.</p>
-        <ul>
-          <li>검토 기록이 없으면 발송 불가 상태</li>
-          <li>안내문에 연락처·주민등록번호·카드번호가 들어가지 않음</li>
-          <li>한 번의 실행이 만든 파일만 골라 되돌리기</li>
-          <li>값이 이상하면 숫자를 만들어내지 않고 담당자에게 알림</li>
-        </ul>
       </div>
-      <div class="pic"><img src="images/report-tests.svg" alt="자동 검사 결과"></div>
     </div>
+    <table class="info">
+      <tr><th>초안 상태</th><td>검토 기록이 없으면 발송 불가 상태로 남습니다</td></tr>
+      <tr><th>개인정보</th><td>안내문에 연락처·주민등록번호·카드번호가 들어가지 않습니다</td></tr>
+      <tr><th>되돌리기</th><td>한 번의 실행이 만든 파일만 골라 되돌릴 수 있습니다</td></tr>
+      <tr><th>경고 우선</th><td>값이 이상하면 숫자를 만들어내지 않고 담당자에게 알립니다</td></tr>
+    </table>
   </div>
 </section>
 """
@@ -390,28 +386,29 @@ BUSINESS = """
 WORK = """
 <section class="tight">
   <div class="wrap">
-    <div class="shead" id="run">
-      <div class="eyebrow">Output</div>
-      <h2>실제 실행 결과</h2>
-      <p>예시 자료로 실행한 출력입니다. 실제 고객 정보는 사용하지 않습니다.</p>
-    </div>
     <div class="feature" style="border-top:0">
-      <div class="txt"><h3>출결 집계</h3>
-        <p>학생 3명 계산, 이상값 3건을 경고로 분리, 안내문 초안 3건이 검토 대기 상태로 생성됩니다.</p></div>
-      <div class="pic"><img src="images/report-attendance.svg" alt="출결 집계"></div>
-    </div>
-    <div class="feature rev">
-      <div class="txt"><h3>수강료 정산</h3>
-        <p>청구액 1,050,000원 / 납부 700,000원 / 미납 450,000원, 미납자 2명에게 보낼 초안이 생성됩니다.</p></div>
-      <div class="pic"><img src="images/report-settlement.svg" alt="수강료 정산"></div>
-    </div>
-    <div class="feature" id="tests">
-      <div class="txt"><h3>자동 검사 76항목</h3>
-        <p>빈 입력, 숫자 아닌 값, 발송 차단, 개인정보 차단, 되돌리기 범위 등 6개 파일 76개 항목을 매번 돌립니다.</p></div>
-      <div class="pic"><img src="images/report-tests.svg" alt="자동 검사"></div>
+      <div class="txt">
+        <div class="no">01 — 수강료 정산</div>
+        <h3>미납자만 골라 초안까지</h3>
+        <p>청구액 1,150,000원 / 납부 700,000원 / 미납 450,000원. 미납자 2명에게 보낼 안내 초안이 검토 대기 상태로 생성됩니다.</p>
+        <ul>
+          <li>완납·일부납·미납·과납 구분</li>
+          <li>할인이 수강료보다 큰 경우 경고</li>
+        </ul>
+      </div>
+      <div class="pic"><img src="images/screen-settlement.svg" alt="수강료 정산 화면"></div>
     </div>
 
-    <div class="shead" id="code" style="margin-top:70px">
+    <div class="feature rev" id="tests">
+      <div class="txt">
+        <div class="no">02 — 자동 검사</div>
+        <h3>76개 항목을 매번 확인</h3>
+        <p>빈 입력, 숫자가 아닌 값, 검토 전 발송 차단, 개인정보 차단, 되돌리기 범위 등 6개 파일 76개 항목을 실행할 때마다 돌립니다.</p>
+      </div>
+      <div class="pic"><img src="images/screen-tests.svg" alt="자동 검사 결과 화면"></div>
+    </div>
+
+    <div class="shead" id="code" style="margin-top:76px">
       <div class="eyebrow">Code</div>
       <h2>코드로도 씁니다</h2>
       <p>설치할 패키지가 없습니다. 파이썬 표준 라이브러리만 사용합니다.</p>
