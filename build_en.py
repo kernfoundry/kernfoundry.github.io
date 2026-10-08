@@ -2,11 +2,25 @@
 Writes en/*.html using the same stylesheet as the Korean site, with a KO/EN switch.
 Run: python build_en.py
 """
+import json as _json
 import pathlib
 import re
 
 SITE = pathlib.Path(__file__).resolve().parent
 BASE = "https://kernfoundry.github.io/"
+
+LDJSON = ('<script type="application/ld+json">' + chr(10)
+          + _json.dumps({
+              '@' + 'context': 'https://schema.org',
+              '@' + 'type': 'Organization',
+              'name': 'Kernfoundry',
+              'url': 'https://kernfoundry.github.io/',
+              'logo': 'https://kernfoundry.github.io/images/og.png',
+              'email': 'hello@kernfoundry.com',
+              'description': 'Academy operations automation software: attendance, parent messages, tuition settlement.',
+          }, ensure_ascii=False)
+          + chr(10) + '</script>' + chr(10))
+
 EN = SITE / "en"
 EN.mkdir(exist_ok=True)
 
