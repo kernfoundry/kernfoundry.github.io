@@ -31,7 +31,6 @@ HEAD = """<!DOCTYPE html>
 <link rel="alternate" hreflang="ko" href="https://kernfoundry.github.io/{self}">
 <link rel="alternate" hreflang="en" href="https://kernfoundry.github.io/{enpage}">
 <link rel="stylesheet" href="assets/site6.css">
-<script type="application/ld+json">
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -187,12 +186,20 @@ FOOT = """
 })();
 </script>
 
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Kernfoundry","url":"https://kernfoundry.github.io/","logo":"https://kernfoundry.github.io/images/og.png","email":"hello@kernfoundry.com","description":"학원 운영 자동화 소프트웨어. 출결 집계, 학부모 안내문 초안, 수강료 정산."}
-</script>
 </body>
 </html>
 """
+
+
+LDJSON = ('<script type="application/ld+json">
+'
+          '{"@' + 'context":"https://schema.org","@' + 'type":"Organization",'
+          '"name":"Kernfoundry","url":"https://kernfoundry.github.io/",'
+          '"logo":"https://kernfoundry.github.io/images/og.png","email":"hello@kernfoundry.com",'
+          '"description":"Academy operations automation software. Attendance, parent messages, tuition settlement."}
+'
+          '</script>
+')
 
 SUBHERO = """
 <div class="phero" id="main">
@@ -795,11 +802,11 @@ def main() -> None:
 
     index_meta = dict(self="", title="Kernfoundry | 학원 운영 자동화", crumb="Home", h1="Kernfoundry", enpage="en/index.html",
                       sub="", desc="학원 운영의 반복 업무를 프로그램으로 대체합니다. 출결 집계, 학부모 안내문 초안, 수강료 정산 자동화.")
-    (SITE / "index.html").write_text(ensure_main(align_numbers(HEAD.format(**index_meta) + INDEX)) + FOOT, encoding="utf-8", newline="\n")
+    (SITE / "index.html").write_text(ensure_main(align_numbers(HEAD.format(**index_meta) + INDEX)) + FOOT + LDJSON, encoding="utf-8", newline="\n")
     print(f"작성: index.html ({(SITE / 'index.html').stat().st_size} bytes)")
 
     for name, (meta, body) in SUBS.items():
-        html = ensure_main(align_numbers(HEAD.format(**meta) + SUBHERO.format(**meta) + body)) + FOOT
+        html = ensure_main(align_numbers(HEAD.format(**meta) + SUBHERO.format(**meta) + body)) + FOOT + LDJSON
         (SITE / name).write_text(html, encoding="utf-8", newline="\n")
         print(f"작성: {name} ({(SITE / name).stat().st_size} bytes)")
 

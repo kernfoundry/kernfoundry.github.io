@@ -174,9 +174,6 @@ FOOT = """
   });
 })();
 </script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Kernfoundry","url":"https://kernfoundry.github.io/","logo":"https://kernfoundry.github.io/images/og.png","email":"hello@kernfoundry.com","description":"학원 운영 자동화 소프트웨어. 출결 집계, 학부모 안내문 초안, 수강료 정산."}
-</script>
 </body>
 </html>
 """
@@ -643,7 +640,7 @@ def main() -> None:
         kofile = "404.html" if name == "404.html" else name
         enurl = BASE + "en/" + name
         kourl = BASE + kofile
-        html = ensure_main(align_numbers(HEAD.format(title=title, desc=desc, kofile=kofile, self=name, enurl=enurl, kourl=kourl) + body)) + FOOT
+        html = ensure_main(align_numbers(HEAD.format(title=title, desc=desc, kofile=kofile, self=name, enurl=enurl, kourl=kourl) + body)) + FOOT + LDJSON
         (EN / name).write_text(html, encoding="utf-8", newline="\n")
         print("작성:", f"en/{name}", f"({len(html)} bytes)")
 
