@@ -110,6 +110,11 @@ ABOUT = """
        지금은 이 과정을 저희 학원에서 실제로 사용하고 있습니다.</p>
     <p>같은 일을 반복하는 다른 교육 사업자에게도 도움이 되기를 바라며, 문의는 언제든 환영합니다.</p>
     <p style="margin-top:26px;color:#222;font-weight:600">Kernfoundry 대표 전일도</p>
+    <div class="photos">
+      <img src="images/photo-classroom.jpg" alt="학원 강의실">
+      <img src="images/photo-documents.jpg" alt="운영 서류 확인">
+    </div>
+    <p class="credit">사진: Pexels 무료 라이선스 이미지</p>
 
     <div class="shead" id="history" style="margin-top:64px">
       <div class="eyebrow">HISTORY</div>
@@ -153,6 +158,9 @@ BUSINESS = """
       <tr><th>이상값</th><td>빈값, 숫자가 아닌 값, 총수업 0, 출석이 총수업보다 많은 경우, 음수 — 경고로 분리</td></tr>
       <tr><th>기록</th><td>실행할 때마다 처리 내역과 산출물 경로가 기록으로 남습니다</td></tr>
     </table>
+    <div class="photos" style="grid-template-columns:1fr">
+      <img src="images/photo-classroom.jpg" alt="학원 강의실" style="height:300px">
+    </div>
 
     <div class="shead" id="notice" style="margin-top:56px">
       <div class="eyebrow">02</div>
