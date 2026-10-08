@@ -214,6 +214,17 @@ ul.info b{color:var(--navy-3);min-width:130px}
 .pic-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
 .pic-grid img{width:100%;height:250px;object-fit:cover;border-radius:12px;display:block}
 
+/* 문서 페이지: 본문 + 오른쪽 목차 */
+.doc-split{display:grid;grid-template-columns:minmax(0,1fr) 258px;gap:54px;align-items:start}
+.doc-main{min-width:0}
+.rail{position:sticky;top:92px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow-sm)}
+.rail b{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8a97ad;margin-bottom:12px}
+.rail a{display:block;padding:7px 0;font-size:14px;color:var(--body);border-top:1px solid var(--line)}
+.rail a:first-of-type{border-top:0}
+.rail a:hover{color:var(--accent)}
+section.tight{background:var(--tint)}
+@media (max-width:900px){.doc-split{grid-template-columns:1fr;gap:0}.rail{display:none}}
+
 /* 폼 */
 .form{display:grid;gap:14px;max-width:620px;margin-top:24px}
 .form label{display:block;font-size:13.5px;font-weight:700;margin-bottom:7px;color:var(--navy-3)}

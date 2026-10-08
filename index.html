@@ -216,6 +216,28 @@
 
 <script>
 (function(){
+  var doc = document.querySelector('.wrap.doc');
+  if (!doc) return;
+  var heads = doc.querySelectorAll('h2, h3');
+  var named = [];
+  heads.forEach(function(h){ if (h.id) named.push(h); });
+  if (named.length < 2) return;
+  var split = document.createElement('div'); split.className = 'doc-split';
+  var main = document.createElement('div'); main.className = 'doc-main';
+  while (doc.firstChild) main.appendChild(doc.firstChild);
+  var rail = document.createElement('aside'); rail.className = 'rail';
+  var label = document.createElement('b'); label.textContent = '이 페이지'; rail.appendChild(label);
+  named.forEach(function(h){
+    var a = document.createElement('a'); a.href = '#' + h.id;
+    a.textContent = h.textContent.replace(/^\d+\.\s*/, '');
+    rail.appendChild(a);
+  });
+  split.appendChild(main); split.appendChild(rail); doc.appendChild(split);
+})();
+</script>
+
+<script>
+(function(){
   document.querySelectorAll('nav.main > div').forEach(function(d){
     var sub = d.querySelector('.sub');
     if (!sub) return;
