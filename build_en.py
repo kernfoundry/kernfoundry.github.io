@@ -368,7 +368,7 @@ INDEX = """
       <p>Nothing is uploaded to a cloud service. It runs on the academy computer.</p>
     </div>
     <div class="cards">
-      <div class="card"><div class="k">1</div><h3>No upload</h2><p>Attendance and payment files are processed locally and are not sent to a server.</p></div>
+      <div class="card"><div class="k">1</div><h3>No upload</h3><p>Attendance and payment files are processed locally and are not sent to a server.</p></div>
       <div class="card t2"><div class="k">2</div><h3>Contact details blocked</h2><p>Phone numbers, resident registration numbers and card numbers stop a draft from being written.</p></div>
       <div class="card t3"><div class="k">3</div><h3>Record and undo</h2><p>Every run leaves a record, and only that run's output can be reverted.</p></div>
     </div>
@@ -518,7 +518,7 @@ WORK = """
       <h2>The result stays as numbers</h2>
       <p>This is the screen from running example data. No real student information is used. Only confirmed values are shown.</p>
     </div>
-    <table class="result">
+    <div class="tbl"><table class="result">
       <caption>Attendance and parent note drafts (example)</caption>
       <thead><tr><th>Student</th><th>Attended</th><th>Total</th><th>Rate</th><th>Note</th></tr></thead>
       <tbody>
@@ -527,7 +527,7 @@ WORK = """
         <tr><td>Student 3</td><td class="num">5</td><td class="num">20</td><td class="num warn">25.0%</td><td><span class="tag warn">Absence note</span></td></tr>
         <tr><td>Student 4</td><td class="num dim">&mdash;</td><td class="num">20</td><td class="num dim">&mdash;</td><td><span class="tag dim">Needs input</span></td></tr>
       </tbody>
-    </table>
+    </table></div>
     <p>A low rate like Student 3 becomes an absence note draft. A missing value like Student 4 is not filled in with a guess; it is kept aside as &ldquo;needs input&rdquo;.</p>
   </div>
 </section>
@@ -539,7 +539,7 @@ WORK = """
       <h2>It checks 76 items on every run</h2>
       <p>Each time a file is processed the groups below are run. Unusual values are taken out of the calculation and left as warnings.</p>
     </div>
-    <table class="result">
+    <div class="tbl"><table class="result">
       <caption>Self-checks that run before a file is processed (76 in total)</caption>
       <thead><tr><th>Check group</th><th>Items</th><th>What it checks</th><th>Result</th></tr></thead>
       <tbody>
@@ -551,7 +551,7 @@ WORK = """
         <tr><td>Review and undo</td><td class="num">8</td><td>No review record, no sendable draft; one run can be reverted</td><td><span class="tag ok">Pass</span></td></tr>
         <tr><td>Total</td><td class="num">76</td><td>All six groups run every time</td><td><span class="tag ok">Pass</span></td></tr>
       </tbody>
-    </table>
+    </table></div>
   </div>
 </section>
 
@@ -562,7 +562,7 @@ WORK = """
       <h2>What was done, with the time</h2>
       <p>Every run adds to the record. If a run was wrong, that run alone is reverted.</p>
     </div>
-    <table class="result">
+    <div class="tbl"><table class="result">
       <caption>Example record from one run</caption>
       <thead><tr><th>Time</th><th>Step</th><th>Result</th><th>Undo</th></tr></thead>
       <tbody>
@@ -571,7 +571,7 @@ WORK = """
         <tr><td>10:03</td><td>Create note drafts</td><td class="num">5 awaiting review</td><td><span class="tag dim">after review</span></td></tr>
         <tr><td>10:05</td><td>Owner review</td><td class="num">3 approved &middot; 2 held</td><td><span class="tag dim">after review</span></td></tr>
       </tbody>
-    </table>
+    </table></div>
     <p>Example record. The actual sending is done by the academy. A note with no review record does not become sendable.</p>
   </div>
 </section>
@@ -916,6 +916,8 @@ def main() -> None:
         enurl = BASE + "en/" + name
         kourl = BASE + kofile
         html = ensure_main(first_h1(align_numbers(HEAD.format(title=title, desc=desc, kofile=kofile, self=name, enurl=enurl, kourl=kourl) + body))) + FOOT.replace("{biz}", business_line()).replace("</body>", LDJSON + "\n</body>")
+        if name == "404.html":
+            html = re.sub(r'<div class="promo">.*?</div>\s*</div>', '', html, count=1, flags=re.S)
         (EN / name).write_text(html, encoding="utf-8", newline="\n")
         print("작성:", f"en/{name}", f"({len(html)} bytes)")
 

@@ -85,7 +85,7 @@
       <h2 id="result">실행한 결과가 숫자로 남습니다</h2>
       <p>예시 자료로 돌린 화면입니다. 실제 학생 정보는 쓰지 않습니다. 숫자는 확인된 값만 보여줍니다.</p>
     </div>
-    <table class="result">
+    <div class="tbl"><table class="result">
       <caption>출결 집계 · 학부모 안내문 초안 (예시)</caption>
       <thead><tr><th>학생</th><th class="num">출석</th><th class="num">총수업</th><th class="num">출석률</th><th>안내문</th></tr></thead>
       <tbody>
@@ -94,7 +94,7 @@
         <tr><td>학생 3</td><td class="num">5</td><td class="num">20</td><td class="num warn">25.0%</td><td><span class="tag warn">결석 안내</span></td></tr>
         <tr><td>학생 4</td><td class="num dim">—</td><td class="num">20</td><td class="num dim">—</td><td><span class="tag dim">입력 확인</span></td></tr>
       </tbody>
-    </table>
+    </table></div>
     <p>학생 3처럼 출석률이 낮은 경우는 결석 안내 초안으로, 학생 4처럼 값이 비어 있는 경우는 숫자를 지어내지 않고 ‘입력 확인’으로 따로 남깁니다.</p>
   </div>
 </section>
@@ -106,7 +106,7 @@
       <h2 id="tests">76개 항목을 매번 스스로 확인합니다</h2>
       <p>자료를 처리할 때마다 아래 묶음을 돌립니다. 이상한 값은 계산에서 빼고 경고로 따로 남깁니다.</p>
     </div>
-    <table class="result">
+    <div class="tbl"><table class="result">
       <caption>파일 처리에 앞서 매번 도는 자체 점검 (합계 76개)</caption>
       <thead><tr><th>점검 묶음</th><th>항목 수</th><th>무엇을 보는가</th><th>결과</th></tr></thead>
       <tbody>
@@ -118,7 +118,7 @@
         <tr><td>검토 · 되돌리기</td><td class="num">8</td><td>검토 기록이 없으면 발송 불가, 실행 하나만 되돌리기</td><td><span class="tag ok">통과</span></td></tr>
         <tr><td>합계</td><td class="num">76</td><td>여섯 묶음을 매번 모두 확인합니다</td><td><span class="tag ok">통과</span></td></tr>
       </tbody>
-    </table>
+    </table></div>
   </div>
 </section>
 
@@ -129,7 +129,7 @@
       <h2 id="record">무엇을 했는지 시각과 함께 남습니다</h2>
       <p>돌릴 때마다 기록이 쌓입니다. 잘못 돌렸으면 그 실행 하나만 되돌립니다.</p>
     </div>
-    <table class="result">
+    <div class="tbl"><table class="result">
       <caption>예시 실행 기록 (한 번 돌린 날의 기록)</caption>
       <thead><tr><th>시각</th><th>처리</th><th>결과</th><th>되돌리기</th></tr></thead>
       <tbody>
@@ -138,7 +138,7 @@
         <tr><td>10:03</td><td>안내문 초안 만들기</td><td class="num">5건 검토 대기</td><td><span class="tag dim">검토 후</span></td></tr>
         <tr><td>10:05</td><td>담당자 검토</td><td class="num">3건 승인 · 2건 보류</td><td><span class="tag dim">검토 후</span></td></tr>
       </tbody>
-    </table>
+    </table></div>
     <p>예시 기록입니다. 실제 발송은 학원이 직접 합니다. 검토 기록이 없는 안내문은 발송 가능 상태가 되지 않습니다.</p>
   </div>
 </section>

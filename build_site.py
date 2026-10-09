@@ -639,7 +639,7 @@ WORK = """
       <h2 id="result">실행한 결과가 숫자로 남습니다</h2>
       <p>예시 자료로 돌린 화면입니다. 실제 학생 정보는 쓰지 않습니다. 숫자는 확인된 값만 보여줍니다.</p>
     </div>
-    <table class="result">
+    <div class="tbl"><table class="result">
       <caption>출결 집계 · 학부모 안내문 초안 (예시)</caption>
       <thead><tr><th>학생</th><th>출석</th><th>총수업</th><th>출석률</th><th>안내문</th></tr></thead>
       <tbody>
@@ -648,7 +648,7 @@ WORK = """
         <tr><td>학생 3</td><td class="num">5</td><td class="num">20</td><td class="num warn">25.0%</td><td><span class="tag warn">결석 안내</span></td></tr>
         <tr><td>학생 4</td><td class="num dim">—</td><td class="num">20</td><td class="num dim">—</td><td><span class="tag dim">입력 확인</span></td></tr>
       </tbody>
-    </table>
+    </table></div>
     <p>학생 3처럼 출석률이 낮은 경우는 결석 안내 초안으로, 학생 4처럼 값이 비어 있는 경우는 숫자를 지어내지 않고 ‘입력 확인’으로 따로 남깁니다.</p>
   </div>
 </section>
@@ -660,7 +660,7 @@ WORK = """
       <h2 id="tests">76개 항목을 매번 스스로 확인합니다</h2>
       <p>자료를 처리할 때마다 아래 묶음을 돌립니다. 이상한 값은 계산에서 빼고 경고로 따로 남깁니다.</p>
     </div>
-    <table class="result">
+    <div class="tbl"><table class="result">
       <caption>파일 처리에 앞서 매번 도는 자체 점검 (합계 76개)</caption>
       <thead><tr><th>점검 묶음</th><th>항목 수</th><th>무엇을 보는가</th><th>결과</th></tr></thead>
       <tbody>
@@ -672,7 +672,7 @@ WORK = """
         <tr><td>검토 · 되돌리기</td><td class="num">8</td><td>검토 기록이 없으면 발송 불가, 실행 하나만 되돌리기</td><td><span class="tag ok">통과</span></td></tr>
         <tr><td>합계</td><td class="num">76</td><td>여섯 묶음을 매번 모두 확인합니다</td><td><span class="tag ok">통과</span></td></tr>
       </tbody>
-    </table>
+    </table></div>
   </div>
 </section>
 
@@ -683,7 +683,7 @@ WORK = """
       <h2 id="record">무엇을 했는지 시각과 함께 남습니다</h2>
       <p>돌릴 때마다 기록이 쌓입니다. 잘못 돌렸으면 그 실행 하나만 되돌립니다.</p>
     </div>
-    <table class="result">
+    <div class="tbl"><table class="result">
       <caption>예시 실행 기록 (한 번 돌린 날의 기록)</caption>
       <thead><tr><th>시각</th><th>처리</th><th>결과</th><th>되돌리기</th></tr></thead>
       <tbody>
@@ -692,7 +692,7 @@ WORK = """
         <tr><td>10:03</td><td>안내문 초안 만들기</td><td class="num">5건 검토 대기</td><td><span class="tag dim">검토 후</span></td></tr>
         <tr><td>10:05</td><td>담당자 검토</td><td class="num">3건 승인 · 2건 보류</td><td><span class="tag dim">검토 후</span></td></tr>
       </tbody>
-    </table>
+    </table></div>
     <p>예시 기록입니다. 실제 발송은 학원이 직접 합니다. 검토 기록이 없는 안내문은 발송 가능 상태가 되지 않습니다.</p>
   </div>
 </section>
@@ -906,7 +906,7 @@ SUBS = {
     "about.html": (dict(self="about.html", enpage="en/about.html", title="회사 | Kernfoundry", crumb="Company", h1="회사",
                         sub="교육 사업을 운영하며 만든 자동화를 제품으로 정리하고 있습니다.",
                         desc="Kernfoundry 회사 소개 — 인사말, 지금 하는 일, 연락."), ABOUT),
-    "business.html": (dict(self="business.html", enpage="en/business.html", title="제품 | Kernfoundry", crumb="What we do", h1="하는 일",
+    "business.html": (dict(self="business.html", enpage="en/business.html", title="하는 일 | Kernfoundry", crumb="What we do", h1="하는 일",
                            sub="출결 관리, 학부모 안내 초안, 수강료 정산.",
                            desc="Kernfoundry 하는 일 — 출결 관리, 학부모 안내, 수강료 정산, 운영 원칙."), BUSINESS),
     "work.html": (dict(self="work.html", enpage="en/work.html", title="결과 화면 | Kernfoundry", crumb="Results", h1="결과 화면",
@@ -980,6 +980,8 @@ def main() -> None:
 
     for name, (meta, body) in SUBS.items():
         html = ensure_main(align_numbers(HEAD.format(**meta) + SUBHERO.format(**meta) + body)) + FOOT.replace("{biz}", business_line()).replace("</body>", LDJSON + "\n</body>")
+        if name == "404.html":
+            html = re.sub(r'<div class="promo">.*?</div>\s*</div>', '', html, count=1, flags=re.S)
         (SITE / name).write_text(html, encoding="utf-8", newline="\n")
         print(f"작성: {name} ({(SITE / name).stat().st_size} bytes)")
 
