@@ -337,7 +337,7 @@ INDEX = """
     <div>
       <div class="kicker">Academy operations</div>
       <h1>출결 파일 하나로 정산과 학부모 안내문 초안까지</h1>
-      <p class="lead">쓰던 엑셀을 그대로 넣으세요. 출석률이 계산되고, 미납자가 추려지고, 학부모 안내문 초안이 나옵니다. 발송은 원장님이 확인한 뒤 학원에서 합니다.</p>
+      <p class="lead">쓰던 엑셀을 그대로 넣으면 출석률·수강료 정산·학부모 안내문 초안까지 한 번에 나옵니다.</p>
       <div class="actions">
         <a class="btn solid" href="pricing.html">요금 보기</a>
         <a class="btn ghost" href="work.html">결과 화면 보기</a>
