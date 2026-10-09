@@ -1,0 +1,168 @@
+- generic [active] [ref=f6e1]:
+  - link "본문으로 건너뛰기" [ref=f6e2] [cursor=pointer]:
+    - /url: "#main"
+  - generic [ref=f6e4]:
+    - generic [ref=f6e5]: 새 기능 출결 파일을 넣으면 정산과 안내 초안까지
+    - link "자세히 →" [ref=f6e6] [cursor=pointer]:
+      - /url: work.html#result
+  - banner [ref=f6e7]:
+    - generic [ref=f6e8]:
+      - link [ref=f6e9] [cursor=pointer]:
+        - /url: index.html
+        - text: Kernfoundry
+        - emphasis [ref=f6e10]: .
+      - navigation [ref=f6e11]:
+        - link "하는 일▾" [ref=f6e13] [cursor=pointer]:
+          - /url: business.html
+          - text: 하는 일
+          - generic [ref=f6e14]: ▾
+        - link "결과 화면▾" [ref=f6e16] [cursor=pointer]:
+          - /url: work.html
+          - text: 결과 화면
+          - generic [ref=f6e17]: ▾
+        - link "회사▾" [ref=f6e19] [cursor=pointer]:
+          - /url: about.html
+          - text: 회사
+          - generic [ref=f6e20]: ▾
+        - link "소식" [ref=f6e22] [cursor=pointer]:
+          - /url: notice.html
+      - generic [ref=f6e23]:
+        - link "EN" [ref=f6e24] [cursor=pointer]:
+          - /url: en/pricing.html
+        - link "도입 문의" [ref=f6e25] [cursor=pointer]:
+          - /url: contact.html
+  - generic [ref=f6e27]:
+    - generic [ref=f6e28]: Pricing
+    - heading "요금" [level=1] [ref=f6e29]
+    - paragraph [ref=f6e30]: 설치비 없음. 첫 30일 무료. 월 단위로 시작하고 멈춥니다.
+  - generic [ref=f6e32]:
+    - generic [ref=f6e33]:
+      - generic [ref=f6e34]: 요금
+      - heading "설치비 없음. 첫 30일 무료." [level=2] [ref=f6e35]
+      - paragraph [ref=f6e36]: 약정 없이 월 단위로 시작하고 멈춥니다. 월 이용료 외에 저희가 붙이는 금액은 없습니다.
+    - table [ref=f6e37]:
+      - rowgroup [ref=f6e38]:
+        - row [ref=f6e39]:
+          - columnheader "구분" [ref=f6e40]
+          - columnheader "소규모" [ref=f6e41]
+          - columnheader "무제한" [ref=f6e42]
+      - rowgroup [ref=f6e43]:
+        - row [ref=f6e44]:
+          - cell "대상" [ref=f6e45]
+          - cell "학생 100명 이하" [ref=f6e46]
+          - cell "인원 제한 없음" [ref=f6e47]
+        - row [ref=f6e48]:
+          - cell "월 이용료" [ref=f6e49]
+          - cell "월 39,000원 (VAT 별도)" [ref=f6e50]
+          - cell "월 59,000원 (VAT 별도)" [ref=f6e51]
+        - row [ref=f6e52]:
+          - cell "알림톡 발송" [ref=f6e53]
+          - cell "건당 실비 10~14원. 마진 0원 — 학원이 쓰는 단가 그대로입니다." [ref=f6e54]
+        - row [ref=f6e55]:
+          - cell "첫 30일" [ref=f6e56]
+          - cell "무료" [ref=f6e57]
+          - cell "무료" [ref=f6e58]
+        - row [ref=f6e59]:
+          - cell "약정" [ref=f6e60]
+          - cell "없음" [ref=f6e61]
+          - cell "없음" [ref=f6e62]
+        - row [ref=f6e63]:
+          - cell "해지" [ref=f6e64]
+          - cell "언제든 자유" [ref=f6e65]
+          - cell "언제든 자유" [ref=f6e66]
+        - row [ref=f6e67]:
+          - cell "환불" [ref=f6e68]
+          - cell "남은 기간 일할 환불" [ref=f6e69]
+          - cell "남은 기간 일할 환불" [ref=f6e70]
+        - row [ref=f6e71]:
+          - cell "출결 집계 · 수강료 정산 · 안내문 초안" [ref=f6e72]
+          - cell "포함" [ref=f6e73]
+          - cell "포함" [ref=f6e74]
+        - row [ref=f6e75]:
+          - cell "설치 · 서버" [ref=f6e76]
+          - cell "불필요" [ref=f6e77]
+          - cell "불필요" [ref=f6e78]
+    - paragraph [ref=f6e79]:
+      - text: 월 이용료는 VAT 별도입니다. 알림톡 발송비는 통신사·대행사가 매기는 건당 실비 10~14원이며, 저희가 붙이는 금액은 0원입니다. 환불 규정은
+      - link "이용약관" [ref=f6e80] [cursor=pointer]:
+        - /url: terms.html
+      - text: 을 따릅니다.
+  - generic [ref=f6e82]:
+    - generic [ref=f6e83]:
+      - generic [ref=f6e84]: 도입 3단계
+      - heading "보통 일주일 안에 끝납니다" [level=2] [ref=f6e85]
+      - paragraph [ref=f6e86]: 학원에서 새로 준비할 것은 없습니다. 쓰던 자료를 그대로 가져옵니다.
+    - generic [ref=f6e87]:
+      - generic [ref=f6e88]:
+        - generic [ref=f6e89]: 1. 파일 확인
+        - paragraph [ref=f6e90]: 학원에서 쓰는 출결·수납 자료(엑셀·CSV)를 보내주시면 읽히는지 먼저 확인해 드립니다.
+      - generic [ref=f6e91]:
+        - generic [ref=f6e92]: 2. 학원에 맞춰 세팅
+        - paragraph [ref=f6e93]: 연체 단계와 안내 문구 톤을 학원에 맞게 잡습니다. 이 작업은 저희가 대신합니다.
+      - generic [ref=f6e94]:
+        - generic [ref=f6e95]: 3. 운영 시작
+        - paragraph [ref=f6e96]: 매달 자료를 넣고 초안을 확인한 뒤 보내면 됩니다. 회수 결과는 기록으로 쌓입니다.
+  - generic [ref=f6e98]:
+    - generic [ref=f6e99]:
+      - heading "첫 30일은 무료로 써 보세요" [level=2] [ref=f6e100]
+      - paragraph [ref=f6e101]: 약정도 위약금도 없습니다. 자료를 보내주시면 같은 결과 화면을 먼저 보여드립니다.
+    - link "도입 문의" [ref=f6e102] [cursor=pointer]:
+      - /url: contact.html
+  - contentinfo [ref=f6e103]:
+    - generic [ref=f6e104]:
+      - generic [ref=f6e105]:
+        - generic [ref=f6e106]:
+          - generic [ref=f6e107]:
+            - text: Kernfoundry
+            - emphasis [ref=f6e108]: .
+          - paragraph [ref=f6e109]: 교육 사업을 운영하며 만든 자동화를 제품으로 정리하고 있습니다. 계산은 프로그램이, 판단과 발송은 사람이 합니다.
+        - generic [ref=f6e110]:
+          - heading "하는 일" [level=4] [ref=f6e111]
+          - list [ref=f6e112]:
+            - listitem [ref=f6e113]:
+              - link "출결 관리" [ref=f6e114] [cursor=pointer]:
+                - /url: business.html#attendance
+            - listitem [ref=f6e115]:
+              - link "학부모 안내" [ref=f6e116] [cursor=pointer]:
+                - /url: business.html#notice
+            - listitem [ref=f6e117]:
+              - link "수강료 정산" [ref=f6e118] [cursor=pointer]:
+                - /url: business.html#settlement
+            - listitem [ref=f6e119]:
+              - link "운영 원칙" [ref=f6e120] [cursor=pointer]:
+                - /url: business.html#principle
+        - generic [ref=f6e121]:
+          - heading "자료" [level=4] [ref=f6e122]
+          - list [ref=f6e123]:
+            - listitem [ref=f6e124]:
+              - link "결과 화면" [ref=f6e125] [cursor=pointer]:
+                - /url: work.html
+            - listitem [ref=f6e126]:
+              - link "요금" [ref=f6e127] [cursor=pointer]:
+                - /url: pricing.html
+            - listitem [ref=f6e128]:
+              - link "소식" [ref=f6e129] [cursor=pointer]:
+                - /url: notice.html
+            - listitem [ref=f6e130]:
+              - link "소스 공개" [ref=f6e131] [cursor=pointer]:
+                - /url: https://github.com/kernfoundry
+        - generic [ref=f6e132]:
+          - heading "연락" [level=4] [ref=f6e133]
+          - list [ref=f6e134]:
+            - listitem [ref=f6e135]:
+              - link "도입 문의" [ref=f6e136] [cursor=pointer]:
+                - /url: contact.html
+            - listitem [ref=f6e137]:
+              - link "hello@kernfoundry.com" [ref=f6e138] [cursor=pointer]:
+                - /url: mailto:hello@kernfoundry.com
+            - listitem [ref=f6e139]:
+              - link "이용약관" [ref=f6e140] [cursor=pointer]:
+                - /url: terms.html
+            - listitem [ref=f6e141]:
+              - link "개인정보처리방침" [ref=f6e142] [cursor=pointer]:
+                - /url: privacy.html
+      - generic [ref=f6e143]:
+        - generic [ref=f6e144]: © 2026 Kernfoundry
+        - link "hello@kernfoundry.com" [ref=f6e146] [cursor=pointer]:
+          - /url: mailto:hello@kernfoundry.com
+      - generic [ref=f6e147]: Kernfoundry

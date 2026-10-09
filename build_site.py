@@ -238,7 +238,7 @@ LDJSON = ('<script type="application/ld+json">\n'
 
 PRICING = """
 <section class="tight">
-  <div class="wrap doc">
+  <div class="wrap">
     <div class="shead">
       <div class="eyebrow">요금</div>
       <h2>설치비 없음. 첫 30일 무료.</h2>
@@ -337,7 +337,7 @@ INDEX = """
     <div>
       <div class="kicker">Academy operations</div>
       <h1>출결 파일 하나로 정산과 학부모 안내문 초안까지</h1>
-      <p class="lead">학원에서 쓰던 엑셀(.xlsx)을 그대로 넣으면 끝납니다. 출석률을 세고, 수강료를 정산하고, 학부모께 보낼 안내문은 초안까지 만들어 둡니다. 발송과 결제는 학원이 합니다.</p>
+      <p class="lead">쓰던 엑셀을 그대로 넣으세요. 출석률이 계산되고, 미납자가 추려지고, 학부모 안내문 초안이 나옵니다. 발송은 원장님이 확인한 뒤 학원에서 합니다.</p>
       <div class="actions">
         <a class="btn solid" href="pricing.html">요금 보기</a>
         <a class="btn" href="work.html">결과 화면 보기</a>
@@ -361,7 +361,7 @@ INDEX = """
 </section>
 
 <section class="alt">
-  <div class="wrap doc">
+  <div class="wrap">
     <div class="shead">
       <div class="eyebrow">Before / after</div>
       <h2>월요일 아침에 달라지는 것</h2>
@@ -370,8 +370,8 @@ INDEX = """
     <table class="compare">
       <thead><tr><th>하던 일</th><th>도입 전</th><th>도입 후</th></tr></thead>
       <tbody>
-        <tr><td>출결 정리</td><td>파일을 열어 손으로 세기</td><td><b>파일을 그대로 넣으면 한 번에 정리</b></td></tr>
-        <tr><td>출석률 계산</td><td>표를 보며 손으로 나누기</td><td><b>프로그램이 계산, 이상값은 경고로 분리</b></td></tr>
+        <tr><td>출결 정리</td><td>명단을 들고 한 줄씩 세기</td><td><b>파일을 넣으면 한 번에 정리</b></td></tr>
+        <tr><td>출석률 계산</td><td>계산기로 나누다 틀리기</td><td><b>프로그램이 계산, 이상값은 경고로 따로</b></td></tr>
         <tr><td>학부모 안내문</td><td>학생마다 문장을 새로 쓰기</td><td><b>초안이 나오면 확인만</b></td></tr>
         <tr><td>미납자 확인</td><td>납부 기록과 하나씩 대조</td><td><b>미납자만 추려서 보여줌</b></td></tr>
       </tbody>
@@ -379,16 +379,30 @@ INDEX = """
   </div>
 </section>
 
-<div class="band-photo">
-  <img src="images/photo-classroom.jpg" alt="학원 강의실" loading="lazy">
-  <div class="band-photo-cap"><div class="wrap">
-    <div><b>학원에서 쓰던 파일 그대로 시작합니다.</b><span>설치도, 서버도, 형식 변환도 없습니다</span></div>
-    <div><a class="btn solid" href="work.html">결과 화면 보기</a></div>
-  </div></div>
-</div>
+<section class="band-navy tight">
+  <div class="wrap">
+    <div class="cards bento">
+      <div class="card">
+        <div class="k">파일</div>
+        <h3>학원에서 쓰던 파일 그대로 시작합니다</h3>
+        <p>형식 변환도, 새로 입력하는 일도 없습니다. 엑셀 파일을 그대로 넣으면 첫 시트를 읽고, 칸 이름이 조금 달라도 이름·출석·총수업을 찾아냅니다.</p>
+      </div>
+      <div class="card t2">
+        <div class="k">안전</div>
+        <h3>자료는 학원 컴퓨터 안에서만</h3>
+        <p>학생 자료를 밖으로 보내지 않습니다. 안내문에 연락처나 주민등록번호가 들어가면 자동으로 막습니다.</p>
+      </div>
+      <div class="card t3">
+        <div class="k">검토</div>
+        <h3>보내기 전에 사람이 확인</h3>
+        <p>만들어 주는 건 초안까지입니다. 발송과 결제는 학원에서 하시면 됩니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section>
-  <div class="wrap doc">
+  <div class="wrap">
     <div class="shead">
       <div class="eyebrow">What it does</div>
       <h2>여섯 가지 일을 대신합니다</h2>
@@ -398,32 +412,32 @@ INDEX = """
       <div class="card">
         <div class="k">01</div>
         <h3>출결 집계</h3>
-        <p>엑셀·CSV를 그대로 읽어 학생별 출석률과 결석·지각 횟수를 셉니다.</p>
+        <p>엑셀·CSV 그대로. 학생별 출석률과 결석·지각을 셉니다. 칸 이름이 달라도 찾아냅니다.</p>
       </div>
       <div class="card t2">
         <div class="k">02</div>
         <h3>학부모 안내문</h3>
-        <p>출석률 기준으로 결석 안내와 월간 안내 초안을 만듭니다. 발송은 하지 않습니다.</p>
+        <p>출석률에 따라 결석 안내·월간 안내 초안을 씁니다. 발송 기능은 없습니다. 확인한 뒤 학원에서 보냅니다.</p>
       </div>
       <div class="card t3">
         <div class="k">03</div>
         <h3>수강료 정산</h3>
-        <p>청구액과 납부액을 계산해 완납·일부납·미납·과납을 구분합니다.</p>
+        <p>청구액에서 납부액을 빼 미납액만 남깁니다. 완납·일부납·미납·과납으로 구분됩니다.</p>
       </div>
       <div class="card t2">
         <div class="k">04</div>
         <h3>이상값 경고</h3>
-        <p>빈칸, 숫자가 아닌 값, 총수업 0, 출석이 총수업보다 큰 경우를 계산에서 빼고 알려줍니다.</p>
+        <p>빈칸·문자·0으로 나누기·음수. 숫자를 지어내지 않고 경고 목록에 둡니다.</p>
       </div>
       <div class="card t3">
         <div class="k">05</div>
         <h3>실행 기록·되돌리기</h3>
-        <p>실행할 때마다 처리 내역을 남기고, 그 실행이 만든 파일만 골라 되돌립니다.</p>
+        <p>돌릴 때마다 무엇을 했는지 남습니다. 잘못 돌렸으면 그 실행만 되돌립니다.</p>
       </div>
       <div class="card">
         <div class="k">06</div>
         <h3>개인정보 차단</h3>
-        <p>안내문 본문에 연락처·주민등록번호·카드번호가 들어가면 자동으로 막습니다.</p>
+        <p>연락처·주민등록번호·카드번호가 초안에 들어가면 작성이 막힙니다.</p>
       </div>
     </div>
     <p>실행할 때마다 76개 항목을 스스로 점검합니다. 자세한 결과는 <a href="work.html">결과 화면</a>에서 볼 수 있습니다.</p>
@@ -431,22 +445,22 @@ INDEX = """
 </section>
 
 <section>
-  <div class="wrap doc">
+  <div class="wrap">
     <div class="shead">
       <div class="eyebrow">Getting started</div>
       <h2>시작은 파일 하나입니다</h2>
       <p>설치도, 서버도, 형식 변환도 없습니다.</p>
     </div>
     <div class="steps">
-      <div class="step"><b>1. 출결을 셉니다</b><p>쓰던 파일을 그대로 넣으면 학생별 출석률과 결석·지각 횟수가 한 번에 정리됩니다.</p></div>
-      <div class="step"><b>2. 같이 확인합니다</b><p>직접 돌려보고, 이상한 값이 나오는 경우를 함께 정리합니다.</p></div>
-      <div class="step"><b>3. 매주 반복합니다</b><p>매주 같은 순서대로 진행합니다. 계산과 초안은 프로그램이, 판단과 발송은 사람이 합니다.</p></div>
+      <div class="step"><b>1. 파일을 보내주세요</b><p>쓰던 출결 파일 한 부. 읽히는지 먼저 확인해 드립니다.</p></div>
+      <div class="step"><b>2. 기준을 맞춥니다</b><p>결석 안내 기준과 문구 톤을 학원에 맞춥니다.</p></div>
+      <div class="step"><b>3. 매주 반복합니다</b><p>같은 순서로 돌리고, 초안은 확인한 뒤 보냅니다.</p></div>
     </div>
   </div>
 </section>
 
 <section class="alt" id="faq">
-  <div class="wrap doc">
+  <div class="wrap">
     <div class="shead">
       <div class="eyebrow">FAQ</div>
       <h2>도입 전에 많이 묻는 것</h2>
@@ -787,15 +801,15 @@ NOTICE = """
 <section class="tight">
   <div class="wrap doc">
     <p class="date">2026.10.09</p>
-    <h2 id="n1">소개 페이지를 열었습니다</h3>
+    <h2 id="n1">소개 페이지를 열었습니다</h2>
     <p>학원 운영 자동화 소개 페이지를 열었습니다. 도입 문의는 이메일로 받습니다. 지금 쓰는 출결 파일을 기준으로 적용 가능 여부를 먼저 확인해 드립니다.</p>
 
     <p class="date">2026.10.08</p>
-    <h2 id="n2">엑셀 파일(.xlsx) 직접 읽기 지원</h3>
+    <h2 id="n2">엑셀 파일(.xlsx) 직접 읽기 지원</h2>
     <p>CSV로 저장하지 않고 엑셀 파일을 그대로 넣어도 읽습니다. 첫 번째 시트를 사용하며, 칸 이름이 달라도 인식합니다. 옛 형식(.xls)은 지원하지 않으므로 엑셀에서 .xlsx로 저장해 주세요.</p>
 
     <p class="date">2026.10.07</p>
-    <h2 id="n3">수강료 정산 안내문, 발송 전 확인 사항</h3>
+    <h2 id="n3">수강료 정산 안내문, 발송 전 확인 사항</h2>
     <p>정산으로 만드는 미납 안내문은 초안입니다. 보내기 전에 아래 세 가지를 확인해 주세요.</p>
     <ol>
       <li>금액이 실제 입금 내역과 맞는지 확인합니다.</li>

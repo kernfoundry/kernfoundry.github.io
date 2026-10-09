@@ -51,17 +51,6 @@ LDJSON = ('<script type="application/ld+json">' + chr(10)
 EN = SITE / "en"
 EN.mkdir(exist_ok=True)
 
-NAV = [
-    ("pricing.html", "Pricing", []),
-    ("business.html", "What we do", [("business.html#attendance", "Attendance"),
-                                  ("business.html#notice", "Parent messages"),
-                                  ("business.html#settlement", "Tuition"),
-                                  ("business.html#principle", "Operating rules")]),
-    ("work.html", "Results", [("work.html#result", "Results"), ("work.html#tests", "Automated checks"), ("work.html#record", "Record")]),
-    ("about.html", "Company", [("about.html#greeting", "Message"), ("about.html#now", "Now")]),
-    ("notice.html", "Notes", []),
-]
-
 HEAD = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -225,26 +214,6 @@ FOOT = """
 </html>
 """
 
-RESULT_TABLE = """
-<div class="hero-table">
-  <div class="wrap">
-    <div class="flow">
-      <div><b>File</b><span>Add the attendance and tuition file you already keep</span></div>
-      <div><b>Calculate</b><span>Rates and balances are computed; odd values are set aside as warnings</span></div>
-      <div><b>Draft</b><span>Parent messages stay in a review state &mdash; a person sends them</span></div>
-    </div>
-  </div>
-</div>
-"""
-
-CODE = """from pipeline.csv_input import read_table
-from pipeline.attendance_rate import attendance_rate
-from pipeline.notice_draft import generate_drafts
-
-table = read_table("attendance.xlsx")
-rates, warnings = attendance_rate(table.rows)
-drafts = generate_drafts(rates, academy="Your Academy")"""
-
 INDEX = """
 <section class="hero dark" id="main">
   <div class="wrap in">
@@ -274,13 +243,9 @@ INDEX = """
   </div>
 </section>
 
-<section class="alt">
-  <div class="wrap doc">
-    <div class="shead">
-      <div class="eyebrow">Before / after</div>
 """ + """
 <section>
-  <div class="wrap doc">
+  <div class="wrap">
     <div class="shead">
       <div class="eyebrow">Your file</div>
       <h2>Your spreadsheet, as it is</h2>
@@ -300,25 +265,25 @@ INDEX = """
 </section>
 
 <section class="alt">
-  <div class="wrap doc">
+  <div class="wrap">
     <div class="shead">
       <div class="eyebrow">What it does</div>
       <h2>Six jobs it takes over</h2>
       <p>One file starts the chain: calculation, writing, and a record of what happened.</p>
     </div>
     <div class="cards">
-      <div class="card"><div class="k">01</div><h3>Attendance</h2><p>Reads .xlsx and CSV as they are and calculates one rate per student, with absence and late counts.</p></div>
-      <div class="card t2"><div class="k">02</div><h3>Parent messages</h2><p>Drafts absence or monthly notes from the rate. Nothing is sent by the program.</p></div>
-      <div class="card t3"><div class="k">03</div><h3>Tuition settlement</h2><p>Compares charge and payment, classifies each student, and drafts reminders for unpaid balances.</p></div>
-      <div class="card t2"><div class="k">04</div><h3>Edge-case warnings</h2><p>Empty cells, text in numeric columns, a total of zero, attendance above total: set aside and reported.</p></div>
-      <div class="card t3"><div class="k">05</div><h3>Run record and undo</h2><p>Every run leaves a record, and only the files that run produced can be reverted.</p></div>
-      <div class="card"><div class="k">06</div><h3>Personal data blocked</h2><p>Phone numbers, resident registration numbers and card numbers never enter a message body.</p></div>
+      <div class="card"><div class="k">01</div><h3>Attendance</h3><p>Reads .xlsx and CSV as they are and calculates one rate per student, with absence and late counts.</p></div>
+      <div class="card t2"><div class="k">02</div><h3>Parent messages</h3><p>Drafts absence or monthly notes from the rate. Nothing is sent by the program.</p></div>
+      <div class="card t3"><div class="k">03</div><h3>Tuition settlement</h3><p>Compares charge and payment, classifies each student, and drafts reminders for unpaid balances.</p></div>
+      <div class="card t2"><div class="k">04</div><h3>Edge-case warnings</h3><p>Empty cells, text in numeric columns, a total of zero, attendance above total: set aside and reported.</p></div>
+      <div class="card t3"><div class="k">05</div><h3>Run record and undo</h3><p>Every run leaves a record, and only the files that run produced can be reverted.</p></div>
+      <div class="card"><div class="k">06</div><h3>Personal data blocked</h3><p>Phone numbers, resident registration numbers and card numbers never enter a message body.</p></div>
     </div>
   </div>
 </section>
 
 <section>
-  <div class="wrap doc">
+  <div class="wrap">
     <div class="shead">
       <div class="eyebrow">Getting started</div>
       <h2>It starts with one file</h2>
@@ -333,7 +298,7 @@ INDEX = """
 </section>
 
 <section class="alt">
-  <div class="wrap doc">
+  <div class="wrap">
     <div class="shead">
       <div class="eyebrow">Before / after</div>
       <h2>Before and after</h2>
@@ -342,26 +307,40 @@ INDEX = """
     <table class="compare">
       <thead><tr><th>Task</th><th>Before</th><th>After</th></tr></thead>
       <tbody>
-        <tr><td>Attendance tidy-up</td><td>Three hours on Monday</td><td><b>20 minutes</b></td></tr>
-        <tr><td>Rate calculation errors</td><td>A few each month</td><td><b>Zero</b> (odd values listed as warnings)</td></tr>
-        <tr><td>Parent messages</td><td>Written from scratch each time</td><td><b>Draft, then review</b></td></tr>
-        <tr><td>Finding unpaid balances</td><td>Cross-checking payment records</td><td><b>Extracted automatically</b></td></tr>
+        <tr><td>Attendance tidy-up</td><td>Counting row by row from the list</td><td><b>Sorted in one pass from the file</b></td></tr>
+        <tr><td>Rate calculation</td><td>Dividing by hand, mistakes slip in</td><td><b>Calculated by the program</b>, odd values set aside as warnings</td></tr>
+        <tr><td>Parent messages</td><td>Written from scratch each time</td><td><b>Drafted, then reviewed</b></td></tr>
+        <tr><td>Finding unpaid balances</td><td>Cross-checking payment records</td><td><b>Only the unpaid are picked out</b></td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
-<div class="band-photo">
-  <img src="../images/photo-classroom.jpg" alt="Academy classroom" loading="lazy">
-  <div class="band-photo-cap"><div class="wrap">
-    <div><b>It starts with the file you already keep.</b><span>No install, no server, no format conversion</span></div>
-    <div><a class="btn solid" href="work.html">See results</a></div>
-  </div></div>
-</div>
+<section class="band-navy tight">
+  <div class="wrap">
+    <div class="cards bento">
+      <div class="card">
+        <div class="k">File</div>
+        <h3>It starts with the file you already keep</h3>
+        <p>No format conversion, no re-typing. The first sheet is read as-is, and column names are matched even when they differ.</p>
+      </div>
+      <div class="card t2">
+        <div class="k">Safe</div>
+        <h3>Student data stays in the academy</h3>
+        <p>Nothing is uploaded. Contact details or ID numbers in a draft stop it from being written.</p>
+      </div>
+      <div class="card t3">
+        <div class="k">Review</div>
+        <h3>A person checks before anything goes out</h3>
+        <p>The software drafts. Sending and payment stay with the academy.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <section class="band-navy">
-  <div class="wrap doc">
+  <div class="wrap">
     <div class="shead">
       <div class="eyebrow">Data</div>
       <h2>Student data stays inside the academy</h2>
@@ -369,14 +348,14 @@ INDEX = """
     </div>
     <div class="cards">
       <div class="card"><div class="k">1</div><h3>No upload</h3><p>Attendance and payment files are processed locally and are not sent to a server.</p></div>
-      <div class="card t2"><div class="k">2</div><h3>Contact details blocked</h2><p>Phone numbers, resident registration numbers and card numbers stop a draft from being written.</p></div>
-      <div class="card t3"><div class="k">3</div><h3>Record and undo</h2><p>Every run leaves a record, and only that run's output can be reverted.</p></div>
+      <div class="card t2"><div class="k">2</div><h3>Contact details blocked</h3><p>Phone numbers, resident registration numbers and card numbers stop a draft from being written.</p></div>
+      <div class="card t3"><div class="k">3</div><h3>Record and undo</h3><p>Every run leaves a record, and only that run's output can be reverted.</p></div>
     </div>
   </div>
 </section>
 
 <section id="faq">
-  <div class="wrap doc">
+  <div class="wrap">
     <div class="shead">
       <div class="eyebrow">FAQ</div>
       <h2>Questions we hear before starting</h2>
@@ -482,17 +461,17 @@ BUSINESS = """
     <div class="cards">
       <div class="card">
         <div class="k">1</div>
-        <h3>Review gate</h2>
+        <h3>Review gate</h3>
         <p>A note without a review record cannot become sendable. The owner has to check it before it moves on.</p>
       </div>
       <div class="card t2">
         <div class="k">2</div>
-        <h3>No invented numbers</h2>
+        <h3>No invented numbers</h3>
         <p>When a value looks wrong it is split out as a warning, instead of being filled in with a plausible figure.</p>
       </div>
       <div class="card t3">
         <div class="k">3</div>
-        <h3>Scope of undo</h2>
+        <h3>Scope of undo</h3>
         <p>Only the files produced by one run are reverted. The records before and after are left untouched.</p>
       </div>
     </div>
@@ -676,41 +655,41 @@ PRIVACY = """
       <p>Short version: we collect as little as possible, and nothing is sent on your behalf.</p>
     </div>
 
-    <h3>1. What we collect, and how</h2>
+    <h3>1. What we collect, and how</h3>
     <table class="info">
       <tr><th>What</th><td>Your name, contact details (optional), academy name (optional), and the text of your message</td></tr>
       <tr><th>How</th><td>Only what you choose to send, by email or through this site</td></tr>
     </table>
 
-    <h3>2. Why we use it</h2>
+    <h3>2. Why we use it</h3>
     <ul>
       <li>To read your enquiry and answer it</li>
       <li>To reach you about a start-up conversation</li>
     </ul>
 
-    <h3>3. How long we keep it</h2>
+    <h3>3. How long we keep it</h3>
     <p>We keep information for one year after the enquiry has been answered, then delete it. If you ask us to delete it earlier, we do so without delay. Where a law requires longer retention, we keep it only for that period.</p>
 
-    <h3>4. Sharing with others</h2>
+    <h3>4. Sharing with others</h3>
     <p>We do not share your information with anyone else. The only exception is where a law requires it.</p>
 
-    <h3>5. Delegated processing</h2>
+    <h3>5. Delegated processing</h3>
     <p>We do not delegate processing of your information to an outside party. If that ever changes, we will say so on this site first.</p>
 
-    <h3>6. Your rights</h2>
+    <h3>6. Your rights</h3>
     <p>You can ask to see, correct, delete, or stop the use of your information at any time, and we act on the request without delay.</p>
 
-    <h3>7. How it is kept safe</h2>
+    <h3>7. How it is kept safe</h3>
     <ul>
       <li>Information collected is used only to answer the enquiry.</li>
       <li>Contact numbers, resident registration numbers and card numbers are blocked automatically from a message body.</li>
       <li>Only the people who need to answer the enquiry see the information.</li>
     </ul>
 
-    <h3>8. Contact about privacy</h2>
+    <h3>8. Contact about privacy</h3>
     <p>Email: <a href="mailto:hello@kernfoundry.com">hello@kernfoundry.com</a></p>
 
-    <h3>9. When this changes</h2>
+    <h3>9. When this changes</h3>
     <p>Any change to this notice is posted on this site, under Notes.</p>
     <p class="credit">In effect from 9 October 2026</p>
   </div>
@@ -825,21 +804,21 @@ TERMS = """
       <p>The basic conditions for using the service.</p>
     </div>
     <div class="doc-body">
-      <h3>1. What the service does</h2>
+      <h3>1. What the service does</h3>
       <p>Software that reads academy records (attendance, payments) and produces calculations and draft messages. Sending messages and the final decision remain with the academy.</p>
-      <h3>2. Fees and payment</h2>
+      <h3>2. Fees and payment</h3>
       <p>Fees follow the pricing page. The first 30 days are free, then billing is monthly. Fees follow the pricing page (KRW 39,000 / 59,000 per month).</p>
-      <h3>3. Cancellation</h2>
+      <h3>3. Cancellation</h3>
       <p>There is no fixed term. Tell us before the start of the next month and billing stops.</p>
-      <h3>4. Refunds</h2>
+      <h3>4. Refunds</h3>
       <p>Periods already used are not refunded. Unused remaining periods are refunded pro rata on request.</p>
-      <h3>5. Data handling</h2>
+      <h3>5. Data handling</h3>
       <p>Records you provide are used only to deliver the service. Output and logs stay with the academy. See the privacy policy for details.</p>
-      <h3>6. Your responsibilities</h2>
+      <h3>6. Your responsibilities</h3>
       <p>You confirm you have the right to provide the records, and you review each draft before sending.</p>
-      <h3>7. Limits of liability</h2>
+      <h3>7. Limits of liability</h3>
       <p>We provide calculations and drafts. Final decisions about sending and payments rest with the academy. Matters requiring legal advice should be checked with a professional.</p>
-      <h3>8. Changes</h2>
+      <h3>8. Changes</h3>
       <p>If these terms change, we give 7 days notice on this site.</p>
       <p class="credit">Effective: 9 October 2026</p>
     </div>
@@ -850,7 +829,7 @@ TERMS = """
 PAGES = [
     ("index.html", "Kernfoundry — academy operations automation",
      "Attendance rates, tuition settlement and parent message drafts from the file you already keep.", INDEX),
-    ("business.html", "Product — Kernfoundry",
+    ("business.html", "What we do — Kernfoundry",
      "Attendance, parent messages and tuition settlement: what is calculated and what is left to people.", BUSINESS),
     ("work.html", "In practice — Kernfoundry",
      "Settlement output, self-checks and the run record.", WORK),

@@ -1,0 +1,225 @@
+- generic [active] [ref=f1e1]:
+  - link "본문으로 건너뛰기" [ref=f1e2] [cursor=pointer]:
+    - /url: "#main"
+  - generic [ref=f1e4]:
+    - generic [ref=f1e5]: 새 기능 출결 파일을 넣으면 정산과 안내 초안까지
+    - link "자세히 →" [ref=f1e6] [cursor=pointer]:
+      - /url: work.html#result
+  - banner [ref=f1e7]:
+    - generic [ref=f1e8]:
+      - link [ref=f1e9] [cursor=pointer]:
+        - /url: index.html
+        - text: Kernfoundry
+        - emphasis [ref=f1e10]: .
+      - navigation [ref=f1e11]:
+        - link "하는 일▾" [ref=f1e13] [cursor=pointer]:
+          - /url: business.html
+          - text: 하는 일
+          - generic [ref=f1e14]: ▾
+        - link "결과 화면▾" [ref=f1e16] [cursor=pointer]:
+          - /url: work.html
+          - text: 결과 화면
+          - generic [ref=f1e17]: ▾
+        - link "회사▾" [ref=f1e19] [cursor=pointer]:
+          - /url: about.html
+          - text: 회사
+          - generic [ref=f1e20]: ▾
+        - link "소식" [ref=f1e22] [cursor=pointer]:
+          - /url: notice.html
+      - generic [ref=f1e23]:
+        - link "EN" [ref=f1e24] [cursor=pointer]:
+          - /url: en/work.html
+        - link "도입 문의" [ref=f1e25] [cursor=pointer]:
+          - /url: contact.html
+  - generic [ref=f1e27]:
+    - generic [ref=f1e28]: Results
+    - heading "결과 화면" [level=1] [ref=f1e29]
+    - paragraph [ref=f1e30]: 예시 자료로 실행한 결과와 실행 기록.
+  - generic [ref=f1e32]:
+    - generic [ref=f1e33]:
+      - generic [ref=f1e34]: 결과 화면
+      - heading "실행한 결과가 숫자로 남습니다" [level=2] [ref=f1e35]
+      - paragraph [ref=f1e36]: 예시 자료로 돌린 화면입니다. 실제 학생 정보는 쓰지 않습니다. 숫자는 확인된 값만 보여줍니다.
+    - table [ref=f1e38]:
+      - caption [ref=f1e39]: 출결 집계 · 학부모 안내문 초안 (예시)
+      - rowgroup [ref=f1e40]:
+        - row [ref=f1e41]:
+          - columnheader "학생" [ref=f1e42]
+          - columnheader "출석" [ref=f1e43]
+          - columnheader "총수업" [ref=f1e44]
+          - columnheader "출석률" [ref=f1e45]
+          - columnheader "안내문" [ref=f1e46]
+      - rowgroup [ref=f1e47]:
+        - row [ref=f1e48]:
+          - cell "학생 1" [ref=f1e49]
+          - cell "18" [ref=f1e50]
+          - cell "20" [ref=f1e51]
+          - cell "90.0%" [ref=f1e52]
+          - cell "월간 안내" [ref=f1e53]
+        - row [ref=f1e55]:
+          - cell "학생 2" [ref=f1e56]
+          - cell "19" [ref=f1e57]
+          - cell "20" [ref=f1e58]
+          - cell "95.0%" [ref=f1e59]
+          - cell "월간 안내" [ref=f1e60]
+        - row [ref=f1e62]:
+          - cell "학생 3" [ref=f1e63]
+          - cell "5" [ref=f1e64]
+          - cell "20" [ref=f1e65]
+          - cell "25.0%" [ref=f1e66]
+          - cell "결석 안내" [ref=f1e67]
+        - row [ref=f1e69]:
+          - cell "학생 4" [ref=f1e70]
+          - cell "—" [ref=f1e71]
+          - cell "20" [ref=f1e72]
+          - cell "—" [ref=f1e73]
+          - cell "입력 확인" [ref=f1e74]
+    - paragraph [ref=f1e76]: 학생 3처럼 출석률이 낮은 경우는 결석 안내 초안으로, 학생 4처럼 값이 비어 있는 경우는 숫자를 지어내지 않고 ‘입력 확인’으로 따로 남깁니다.
+  - generic [ref=f1e78]:
+    - generic [ref=f1e79]:
+      - generic [ref=f1e80]: 자체 점검
+      - heading "76개 항목을 매번 스스로 확인합니다" [level=2] [ref=f1e81]
+      - paragraph [ref=f1e82]: 자료를 처리할 때마다 아래 묶음을 돌립니다. 이상한 값은 계산에서 빼고 경고로 따로 남깁니다.
+    - table [ref=f1e84]:
+      - caption [ref=f1e85]: 파일 처리에 앞서 매번 도는 자체 점검 (합계 76개)
+      - rowgroup [ref=f1e86]:
+        - row [ref=f1e87]:
+          - columnheader "점검 묶음" [ref=f1e88]
+          - columnheader "항목 수" [ref=f1e89]
+          - columnheader "무엇을 보는가" [ref=f1e90]
+          - columnheader "결과" [ref=f1e91]
+      - rowgroup [ref=f1e92]:
+        - row [ref=f1e93]:
+          - cell "출결 자료 읽기" [ref=f1e94]
+          - cell "18" [ref=f1e95]
+          - cell "칸 이름이 달라도 찾아내고, 빈 칸은 경고로 분리" [ref=f1e96]
+          - cell "통과" [ref=f1e97]
+        - row [ref=f1e99]:
+          - cell "출석률 계산" [ref=f1e100]
+          - cell "14" [ref=f1e101]
+          - cell "총수업 0, 출석이 총수업보다 큰 값, 숫자가 아닌 값" [ref=f1e102]
+          - cell "통과" [ref=f1e103]
+        - row [ref=f1e105]:
+          - cell "수강료 정산" [ref=f1e106]
+          - cell "16" [ref=f1e107]
+          - cell "완납·일부납·미납·과납 구분, 할인이 수강료보다 큰 경우" [ref=f1e108]
+          - cell "통과" [ref=f1e109]
+        - row [ref=f1e111]:
+          - cell "안내문 초안" [ref=f1e112]
+          - cell "12" [ref=f1e113]
+          - cell "반·회차·금액이 계산 결과와 맞는지" [ref=f1e114]
+          - cell "통과" [ref=f1e115]
+        - row [ref=f1e117]:
+          - cell "개인정보 차단" [ref=f1e118]
+          - cell "8" [ref=f1e119]
+          - cell "연락처·주민등록번호·카드번호가 본문에 들어가면 막음" [ref=f1e120]
+          - cell "통과" [ref=f1e121]
+        - row [ref=f1e123]:
+          - cell "검토 · 되돌리기" [ref=f1e124]
+          - cell "8" [ref=f1e125]
+          - cell "검토 기록이 없으면 발송 불가, 실행 하나만 되돌리기" [ref=f1e126]
+          - cell "통과" [ref=f1e127]
+        - row [ref=f1e129]:
+          - cell "합계" [ref=f1e130]
+          - cell "76" [ref=f1e131]
+          - cell "여섯 묶음을 매번 모두 확인합니다" [ref=f1e132]
+          - cell "통과" [ref=f1e133]
+  - generic [ref=f1e136]:
+    - generic [ref=f1e137]:
+      - generic [ref=f1e138]: 실행 기록
+      - heading "무엇을 했는지 시각과 함께 남습니다" [level=2] [ref=f1e139]
+      - paragraph [ref=f1e140]: 돌릴 때마다 기록이 쌓입니다. 잘못 돌렸으면 그 실행 하나만 되돌립니다.
+    - table [ref=f1e142]:
+      - caption [ref=f1e143]: 예시 실행 기록 (한 번 돌린 날의 기록)
+      - rowgroup [ref=f1e144]:
+        - row [ref=f1e145]:
+          - columnheader "시각" [ref=f1e146]
+          - columnheader "처리" [ref=f1e147]
+          - columnheader "결과" [ref=f1e148]
+          - columnheader "되돌리기" [ref=f1e149]
+      - rowgroup [ref=f1e150]:
+        - row [ref=f1e151]:
+          - cell "10:02" [ref=f1e152]
+          - cell "출결 자료 읽기" [ref=f1e153]
+          - cell "학생 24명" [ref=f1e154]
+          - cell "가능" [ref=f1e155]
+        - row [ref=f1e157]:
+          - cell "10:03" [ref=f1e158]
+          - cell "출석률 계산" [ref=f1e159]
+          - cell "경고 2건 분리" [ref=f1e160]
+          - cell "가능" [ref=f1e161]
+        - row [ref=f1e163]:
+          - cell "10:03" [ref=f1e164]
+          - cell "안내문 초안 만들기" [ref=f1e165]
+          - cell "5건 검토 대기" [ref=f1e166]
+          - cell "검토 후" [ref=f1e167]
+        - row [ref=f1e169]:
+          - cell "10:05" [ref=f1e170]
+          - cell "담당자 검토" [ref=f1e171]
+          - cell "3건 승인 · 2건 보류" [ref=f1e172]
+          - cell "검토 후" [ref=f1e173]
+    - paragraph [ref=f1e175]: 예시 기록입니다. 실제 발송은 학원이 직접 합니다. 검토 기록이 없는 안내문은 발송 가능 상태가 되지 않습니다.
+  - generic [ref=f1e177]:
+    - generic [ref=f1e178]:
+      - heading "이 화면을 학원 자료로 확인해 보세요" [level=2] [ref=f1e179]
+      - paragraph [ref=f1e180]: 지금 쓰는 출결 파일을 보내주시면 같은 결과 화면을 만들어 보여드립니다.
+    - link "도입 문의" [ref=f1e181] [cursor=pointer]:
+      - /url: contact.html
+  - contentinfo [ref=f1e182]:
+    - generic [ref=f1e183]:
+      - generic [ref=f1e184]:
+        - generic [ref=f1e185]:
+          - generic [ref=f1e186]:
+            - text: Kernfoundry
+            - emphasis [ref=f1e187]: .
+          - paragraph [ref=f1e188]: 교육 사업을 운영하며 만든 자동화를 제품으로 정리하고 있습니다. 계산은 프로그램이, 판단과 발송은 사람이 합니다.
+        - generic [ref=f1e189]:
+          - heading "하는 일" [level=4] [ref=f1e190]
+          - list [ref=f1e191]:
+            - listitem [ref=f1e192]:
+              - link "출결 관리" [ref=f1e193] [cursor=pointer]:
+                - /url: business.html#attendance
+            - listitem [ref=f1e194]:
+              - link "학부모 안내" [ref=f1e195] [cursor=pointer]:
+                - /url: business.html#notice
+            - listitem [ref=f1e196]:
+              - link "수강료 정산" [ref=f1e197] [cursor=pointer]:
+                - /url: business.html#settlement
+            - listitem [ref=f1e198]:
+              - link "운영 원칙" [ref=f1e199] [cursor=pointer]:
+                - /url: business.html#principle
+        - generic [ref=f1e200]:
+          - heading "자료" [level=4] [ref=f1e201]
+          - list [ref=f1e202]:
+            - listitem [ref=f1e203]:
+              - link "결과 화면" [ref=f1e204] [cursor=pointer]:
+                - /url: work.html
+            - listitem [ref=f1e205]:
+              - link "요금" [ref=f1e206] [cursor=pointer]:
+                - /url: pricing.html
+            - listitem [ref=f1e207]:
+              - link "소식" [ref=f1e208] [cursor=pointer]:
+                - /url: notice.html
+            - listitem [ref=f1e209]:
+              - link "소스 공개" [ref=f1e210] [cursor=pointer]:
+                - /url: https://github.com/kernfoundry
+        - generic [ref=f1e211]:
+          - heading "연락" [level=4] [ref=f1e212]
+          - list [ref=f1e213]:
+            - listitem [ref=f1e214]:
+              - link "도입 문의" [ref=f1e215] [cursor=pointer]:
+                - /url: contact.html
+            - listitem [ref=f1e216]:
+              - link "hello@kernfoundry.com" [ref=f1e217] [cursor=pointer]:
+                - /url: mailto:hello@kernfoundry.com
+            - listitem [ref=f1e218]:
+              - link "이용약관" [ref=f1e219] [cursor=pointer]:
+                - /url: terms.html
+            - listitem [ref=f1e220]:
+              - link "개인정보처리방침" [ref=f1e221] [cursor=pointer]:
+                - /url: privacy.html
+      - generic [ref=f1e222]:
+        - generic [ref=f1e223]: © 2026 Kernfoundry
+        - link "hello@kernfoundry.com" [ref=f1e225] [cursor=pointer]:
+          - /url: mailto:hello@kernfoundry.com
+      - generic [ref=f1e226]: Kernfoundry

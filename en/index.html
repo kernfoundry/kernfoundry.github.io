@@ -96,13 +96,9 @@
   </div>
 </section>
 
-<section class="alt">
-  <div class="wrap doc">
-    <div class="shead">
-      <div class="eyebrow">Before / after</div>
 
 <section>
-  <div class="wrap doc">
+  <div class="wrap">
     <div class="shead">
       <div class="eyebrow">Your file</div>
       <h2>Your spreadsheet, as it is</h2>
@@ -122,25 +118,25 @@
 </section>
 
 <section class="alt">
-  <div class="wrap doc">
+  <div class="wrap">
     <div class="shead">
       <div class="eyebrow">What it does</div>
       <h2>Six jobs it takes over</h2>
       <p>One file starts the chain: calculation, writing, and a record of what happened.</p>
     </div>
     <div class="cards">
-      <div class="card"><div class="k">01</div><h3>Attendance</h2><p>Reads .xlsx and CSV as they are and calculates one rate per student, with absence and late counts.</p></div>
-      <div class="card t2"><div class="k">02</div><h3>Parent messages</h2><p>Drafts absence or monthly notes from the rate. Nothing is sent by the program.</p></div>
-      <div class="card t3"><div class="k">03</div><h3>Tuition settlement</h2><p>Compares charge and payment, classifies each student, and drafts reminders for unpaid balances.</p></div>
-      <div class="card t2"><div class="k">04</div><h3>Edge-case warnings</h2><p>Empty cells, text in numeric columns, a total of zero, attendance above total: set aside and reported.</p></div>
-      <div class="card t3"><div class="k">05</div><h3>Run record and undo</h2><p>Every run leaves a record, and only the files that run produced can be reverted.</p></div>
-      <div class="card"><div class="k">06</div><h3>Personal data blocked</h2><p>Phone numbers, resident registration numbers and card numbers never enter a message body.</p></div>
+      <div class="card"><div class="k">01</div><h3>Attendance</h3><p>Reads .xlsx and CSV as they are and calculates one rate per student, with absence and late counts.</p></div>
+      <div class="card t2"><div class="k">02</div><h3>Parent messages</h3><p>Drafts absence or monthly notes from the rate. Nothing is sent by the program.</p></div>
+      <div class="card t3"><div class="k">03</div><h3>Tuition settlement</h3><p>Compares charge and payment, classifies each student, and drafts reminders for unpaid balances.</p></div>
+      <div class="card t2"><div class="k">04</div><h3>Edge-case warnings</h3><p>Empty cells, text in numeric columns, a total of zero, attendance above total: set aside and reported.</p></div>
+      <div class="card t3"><div class="k">05</div><h3>Run record and undo</h3><p>Every run leaves a record, and only the files that run produced can be reverted.</p></div>
+      <div class="card"><div class="k">06</div><h3>Personal data blocked</h3><p>Phone numbers, resident registration numbers and card numbers never enter a message body.</p></div>
     </div>
   </div>
 </section>
 
 <section>
-  <div class="wrap doc">
+  <div class="wrap">
     <div class="shead">
       <div class="eyebrow">Getting started</div>
       <h2>It starts with one file</h2>
@@ -155,7 +151,7 @@
 </section>
 
 <section class="alt">
-  <div class="wrap doc">
+  <div class="wrap">
     <div class="shead">
       <div class="eyebrow">Before / after</div>
       <h2>Before and after</h2>
@@ -164,26 +160,40 @@
     <table class="compare">
       <thead><tr><th>Task</th><th>Before</th><th>After</th></tr></thead>
       <tbody>
-        <tr><td>Attendance tidy-up</td><td>Three hours on Monday</td><td><b>20 minutes</b></td></tr>
-        <tr><td>Rate calculation errors</td><td>A few each month</td><td><b>Zero</b> (odd values listed as warnings)</td></tr>
-        <tr><td>Parent messages</td><td>Written from scratch each time</td><td><b>Draft, then review</b></td></tr>
-        <tr><td>Finding unpaid balances</td><td>Cross-checking payment records</td><td><b>Extracted automatically</b></td></tr>
+        <tr><td>Attendance tidy-up</td><td>Counting row by row from the list</td><td><b>Sorted in one pass from the file</b></td></tr>
+        <tr><td>Rate calculation</td><td>Dividing by hand, mistakes slip in</td><td><b>Calculated by the program</b>, odd values set aside as warnings</td></tr>
+        <tr><td>Parent messages</td><td>Written from scratch each time</td><td><b>Drafted, then reviewed</b></td></tr>
+        <tr><td>Finding unpaid balances</td><td>Cross-checking payment records</td><td><b>Only the unpaid are picked out</b></td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
-<div class="band-photo">
-  <img src="../images/photo-classroom.jpg" alt="Academy classroom" loading="lazy">
-  <div class="band-photo-cap"><div class="wrap">
-    <div><b>It starts with the file you already keep.</b><span>No install, no server, no format conversion</span></div>
-    <div><a class="btn solid" href="work.html">See results</a></div>
-  </div></div>
-</div>
+<section class="band-navy tight">
+  <div class="wrap">
+    <div class="cards bento">
+      <div class="card">
+        <div class="k">File</div>
+        <h3>It starts with the file you already keep</h3>
+        <p>No format conversion, no re-typing. The first sheet is read as-is, and column names are matched even when they differ.</p>
+      </div>
+      <div class="card t2">
+        <div class="k">Safe</div>
+        <h3>Student data stays in the academy</h3>
+        <p>Nothing is uploaded. Contact details or ID numbers in a draft stop it from being written.</p>
+      </div>
+      <div class="card t3">
+        <div class="k">Review</div>
+        <h3>A person checks before anything goes out</h3>
+        <p>The software drafts. Sending and payment stay with the academy.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <section class="band-navy">
-  <div class="wrap doc">
+  <div class="wrap">
     <div class="shead">
       <div class="eyebrow">Data</div>
       <h2>Student data stays inside the academy</h2>
@@ -191,14 +201,14 @@
     </div>
     <div class="cards">
       <div class="card"><div class="k">1</div><h3>No upload</h3><p>Attendance and payment files are processed locally and are not sent to a server.</p></div>
-      <div class="card t2"><div class="k">2</div><h3>Contact details blocked</h2><p>Phone numbers, resident registration numbers and card numbers stop a draft from being written.</p></div>
-      <div class="card t3"><div class="k">3</div><h3>Record and undo</h2><p>Every run leaves a record, and only that run's output can be reverted.</p></div>
+      <div class="card t2"><div class="k">2</div><h3>Contact details blocked</h3><p>Phone numbers, resident registration numbers and card numbers stop a draft from being written.</p></div>
+      <div class="card t3"><div class="k">3</div><h3>Record and undo</h3><p>Every run leaves a record, and only that run's output can be reverted.</p></div>
     </div>
   </div>
 </section>
 
 <section id="faq">
-  <div class="wrap doc">
+  <div class="wrap">
     <div class="shead">
       <div class="eyebrow">FAQ</div>
       <h2>Questions we hear before starting</h2>

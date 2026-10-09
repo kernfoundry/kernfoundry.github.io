@@ -1,0 +1,181 @@
+- generic [active] [ref=f1e1]:
+  - link "본문으로 건너뛰기" [ref=f1e2] [cursor=pointer]:
+    - /url: "#main"
+  - generic [ref=f1e4]:
+    - generic [ref=f1e5]: 새 기능 출결 파일을 넣으면 정산과 안내 초안까지
+    - link "자세히 →" [ref=f1e6] [cursor=pointer]:
+      - /url: work.html#result
+  - banner [ref=f1e7]:
+    - generic [ref=f1e8]:
+      - link [ref=f1e9] [cursor=pointer]:
+        - /url: index.html
+        - text: Kernfoundry
+        - emphasis [ref=f1e10]: .
+      - text: ▾ ▾ ▾
+      - generic [ref=f1e11]:
+        - link "EN" [ref=f1e12] [cursor=pointer]:
+          - /url: en/business.html
+        - link "도입 문의" [ref=f1e13] [cursor=pointer]:
+          - /url: contact.html
+      - button "메뉴" [ref=f1e14]
+  - generic [ref=f1e16]:
+    - generic [ref=f1e17]: What we do
+    - heading "하는 일" [level=1] [ref=f1e18]
+    - paragraph [ref=f1e19]: 출결 관리, 학부모 안내 초안, 수강료 정산.
+  - generic [ref=f1e21]:
+    - generic [ref=f1e22]:
+      - generic [ref=f1e23]: What we do
+      - heading "매주 원장님이 하던 세 가지 일을 순서대로 끝냅니다" [level=2] [ref=f1e24]
+      - paragraph [ref=f1e25]: 출결을 세고, 학부모께 보낼 안내문 초안을 만들고, 수강료를 정산합니다. 계산과 초안까지는 프로그램이, 판단과 발송은 사람이 합니다.
+    - generic [ref=f1e26]:
+      - generic [ref=f1e27]:
+        - generic [ref=f1e28]: 1. 출결을 셉니다
+        - paragraph [ref=f1e29]: 쓰던 엑셀을 그대로 넣으면 월요일 오전에 출석률과 결석·지각이 정리됩니다.
+      - generic [ref=f1e30]:
+        - generic [ref=f1e31]: 2. 안내문 초안을 만듭니다
+        - paragraph [ref=f1e32]: 출석률 기준으로 학부모께 보낼 문장 초안을 만들어 둡니다. 발송은 원장님 확인 뒤입니다.
+      - generic [ref=f1e33]:
+        - generic [ref=f1e34]: 3. 수강료를 정산합니다
+        - paragraph [ref=f1e35]: 청구액과 납부액을 맞춰 미납자만 추려냅니다. 월말에 하나씩 대조하던 일이 없어집니다.
+  - generic [ref=f1e37]:
+    - generic [ref=f1e38]:
+      - generic [ref=f1e39]: 01 — 출결 관리
+      - heading "출결을 그대로 읽습니다" [level=2] [ref=f1e40]
+      - paragraph [ref=f1e41]: 별도 설치나 형식 변환이 필요 없습니다. 월요일 아침, 파일을 넣고 결과만 보면 됩니다.
+    - table [ref=f1e42]:
+      - rowgroup [ref=f1e43]:
+        - row [ref=f1e44]:
+          - rowheader "입력" [ref=f1e45]
+          - cell "엑셀(.xlsx) · CSV · TSV — 첫 번째 시트를 읽습니다" [ref=f1e46]
+        - row [ref=f1e47]:
+          - rowheader "칸 인식" [ref=f1e48]
+          - cell "이름·성명·학생 / 출석·출석일수 / 총수업·수업일수 / 결석 / 지각 — 이름이 달라도 인식합니다" [ref=f1e49]
+        - row [ref=f1e50]:
+          - rowheader "계산" [ref=f1e51]
+          - cell "학생별 출석률(%)과 결석·지각 횟수" [ref=f1e52]
+        - row [ref=f1e53]:
+          - rowheader "이상값" [ref=f1e54]
+          - cell "빈값, 숫자가 아닌 값, 총수업 0, 출석 > 총수업, 음수 → 계산에서 빼고 경고로 표시합니다" [ref=f1e55]
+        - row [ref=f1e56]:
+          - rowheader "기록" [ref=f1e57]
+          - cell "실행할 때마다 처리 내역과 결과 파일 위치가 남습니다" [ref=f1e58]
+  - generic [ref=f1e60]:
+    - generic [ref=f1e61]:
+      - generic [ref=f1e62]: 02 — 학부모 안내
+      - heading "초안까지만, 발송은 사람이" [level=2] [ref=f1e63]
+      - paragraph [ref=f1e64]: 학부모께 나가는 문장은 원장님이 확인한 뒤에만 나갑니다.
+    - table [ref=f1e65]:
+      - rowgroup [ref=f1e66]:
+        - row [ref=f1e67]:
+          - rowheader "생성 기준" [ref=f1e68]
+          - cell "출석률이 기준 미만이면 결석 안내, 이상이면 월간 안내 초안을 만듭니다" [ref=f1e69]
+        - row [ref=f1e70]:
+          - rowheader "발송 차단" [ref=f1e71]
+          - cell "초안은 검토 대기 상태로 생성됩니다 — 사람이 확인하기 전에는 발송 표시가 되지 않습니다" [ref=f1e72]
+        - row [ref=f1e73]:
+          - rowheader "개인정보" [ref=f1e74]
+          - cell "휴대폰 번호·주민등록번호·카드번호가 본문에 들어가면 자동으로 막습니다" [ref=f1e75]
+        - row [ref=f1e76]:
+          - rowheader "발송 방법" [ref=f1e77]
+          - cell "문자·알림톡으로 보낼 수 있는 문장으로 나옵니다. 발송은 학원에서 합니다" [ref=f1e78]
+  - generic [ref=f1e80]:
+    - generic [ref=f1e81]:
+      - generic [ref=f1e82]: 03 — 수강료 정산
+      - heading "미납자만 추려서 보여줍니다" [level=2] [ref=f1e83]
+      - paragraph [ref=f1e84]: 청구액과 납부액을 맞춰 미납자에게 보낼 안내 초안까지 만듭니다. 월말에 하나씩 대조하던 일이 없어집니다.
+    - table [ref=f1e85]:
+      - rowgroup [ref=f1e86]:
+        - row [ref=f1e87]:
+          - rowheader "계산" [ref=f1e88]
+          - cell "청구액 = 수강료 − 할인 / 미납액 = 청구액 − 납부액" [ref=f1e89]
+        - row [ref=f1e90]:
+          - rowheader "구분" [ref=f1e91]
+          - cell "완납 · 일부납 · 미납 · 과납" [ref=f1e92]
+        - row [ref=f1e93]:
+          - rowheader "이상값" [ref=f1e94]
+          - cell "할인이 수강료보다 큰 경우, 숫자가 아닌 금액, 음수 → 경고로 표시합니다" [ref=f1e95]
+        - row [ref=f1e96]:
+          - rowheader "안내 초안" [ref=f1e97]
+          - cell "미납자에게만 만들고, 계좌·카드번호는 본문에 넣지 않습니다" [ref=f1e98]
+  - generic [ref=f1e100]:
+    - generic [ref=f1e101]:
+      - generic [ref=f1e102]: 운영 원칙
+      - heading "자동화는 초안까지" [level=2] [ref=f1e103]
+      - paragraph [ref=f1e104]: 고객에게 닿는 발송과 결제는 반드시 사람이 검토한 뒤 처리합니다. 이 규칙은 약속이 아니라 프로그램이 지킵니다.
+    - generic [ref=f1e105]:
+      - generic [ref=f1e106]:
+        - generic [ref=f1e107]: "1"
+        - heading "검토 게이트" [level=3] [ref=f1e108]
+        - paragraph [ref=f1e109]: 안내문은 검토 기록이 없으면 발송 가능 상태가 되지 않습니다. 원장님이 확인해야 다음으로 넘어갑니다.
+      - generic [ref=f1e110]:
+        - generic [ref=f1e111]: "2"
+        - heading "숫자를 지어내지 않음" [level=3] [ref=f1e112]
+        - paragraph [ref=f1e113]: 값이 이상하면 그럴듯한 숫자로 채우지 않고, 경고로 분리해 원장님께 알립니다.
+      - generic [ref=f1e114]:
+        - generic [ref=f1e115]: "3"
+        - heading "되돌리기 범위" [level=3] [ref=f1e116]
+        - paragraph [ref=f1e117]: 한 번의 실행이 만든 파일만 골라 되돌립니다. 그 전후 기록은 건드리지 않습니다.
+  - generic [ref=f1e119]:
+    - generic [ref=f1e120]:
+      - heading "지금 쓰는 파일로 확인해 보세요" [level=2] [ref=f1e121]
+      - paragraph [ref=f1e122]: 출결 파일 형식을 알려주시면 되는지 먼저 확인해 드립니다.
+    - link "도입 문의" [ref=f1e123] [cursor=pointer]:
+      - /url: contact.html
+  - contentinfo [ref=f1e124]:
+    - generic [ref=f1e125]:
+      - generic [ref=f1e126]:
+        - generic [ref=f1e127]:
+          - generic [ref=f1e128]:
+            - text: Kernfoundry
+            - emphasis [ref=f1e129]: .
+          - paragraph [ref=f1e130]: 교육 사업을 운영하며 만든 자동화를 제품으로 정리하고 있습니다. 계산은 프로그램이, 판단과 발송은 사람이 합니다.
+        - generic [ref=f1e131]:
+          - heading "하는 일" [level=4] [ref=f1e132]
+          - list [ref=f1e133]:
+            - listitem [ref=f1e134]:
+              - link "출결 관리" [ref=f1e135] [cursor=pointer]:
+                - /url: business.html#attendance
+            - listitem [ref=f1e136]:
+              - link "학부모 안내" [ref=f1e137] [cursor=pointer]:
+                - /url: business.html#notice
+            - listitem [ref=f1e138]:
+              - link "수강료 정산" [ref=f1e139] [cursor=pointer]:
+                - /url: business.html#settlement
+            - listitem [ref=f1e140]:
+              - link "운영 원칙" [ref=f1e141] [cursor=pointer]:
+                - /url: business.html#principle
+        - generic [ref=f1e142]:
+          - heading "자료" [level=4] [ref=f1e143]
+          - list [ref=f1e144]:
+            - listitem [ref=f1e145]:
+              - link "결과 화면" [ref=f1e146] [cursor=pointer]:
+                - /url: work.html
+            - listitem [ref=f1e147]:
+              - link "요금" [ref=f1e148] [cursor=pointer]:
+                - /url: pricing.html
+            - listitem [ref=f1e149]:
+              - link "소식" [ref=f1e150] [cursor=pointer]:
+                - /url: notice.html
+            - listitem [ref=f1e151]:
+              - link "소스 공개" [ref=f1e152] [cursor=pointer]:
+                - /url: https://github.com/kernfoundry
+        - generic [ref=f1e153]:
+          - heading "연락" [level=4] [ref=f1e154]
+          - list [ref=f1e155]:
+            - listitem [ref=f1e156]:
+              - link "도입 문의" [ref=f1e157] [cursor=pointer]:
+                - /url: contact.html
+            - listitem [ref=f1e158]:
+              - link "hello@kernfoundry.com" [ref=f1e159] [cursor=pointer]:
+                - /url: mailto:hello@kernfoundry.com
+            - listitem [ref=f1e160]:
+              - link "이용약관" [ref=f1e161] [cursor=pointer]:
+                - /url: terms.html
+            - listitem [ref=f1e162]:
+              - link "개인정보처리방침" [ref=f1e163] [cursor=pointer]:
+                - /url: privacy.html
+      - generic [ref=f1e164]:
+        - generic [ref=f1e165]: © 2026 Kernfoundry
+        - link "hello@kernfoundry.com" [ref=f1e167] [cursor=pointer]:
+          - /url: mailto:hello@kernfoundry.com
+      - generic [ref=f1e168]: Kernfoundry

@@ -371,3 +371,27 @@ html,body{overflow-x:hidden}
 .bizline{margin-top:10px;padding-top:14px;border-top:1px solid #22314c;color:#7c8fa9;font-size:13px}
 .doc-body h3{margin-top:34px}
 .doc-body p{color:var(--body)}
+
+/* v15: 디자인 개편 — 벤토 카드, 색 절제, 제목 강화, 제품 프레임 */
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:#7c8ba2}
+.hero.dark .kicker,.hero.dark .eyebrow,section.band-navy .eyebrow,.crumb{color:#ef8b5a}
+.card .k{background:#eef3fa;color:#25406b}
+.card.t2 .k{background:var(--teal-soft);color:var(--teal)}
+.card.t3 .k{background:var(--green-soft);color:var(--green)}
+.hero h1{font-size:clamp(34px,4.6vw,58px);line-height:1.16;letter-spacing:-.032em}
+.hero p.lead{font-size:17.5px;max-width:600px}
+.shead h2{font-size:clamp(26px,2.9vw,38px)}
+/* 벤토: 첫 카드가 2칸 */
+.cards.bento{grid-template-columns:repeat(3,1fr);gap:18px}
+.cards.bento .card:first-child{grid-column:span 2}
+.cards.bento .card:first-child h3{font-size:22px}
+.cards.bento .card:first-child p{font-size:16px}
+section.band-navy .cards.bento .card{background:rgba(255,255,255,.06);border-color:#24314b}
+section.band-navy .cards.bento .card .k{background:rgba(255,255,255,.10);color:#dbe6f5}
+/* 제품 목업 프레임 */
+.hero-side .hero-mini{border:1px solid rgba(255,255,255,.16);border-radius:14px;overflow:hidden;
+  box-shadow:0 40px 80px -28px rgba(0,0,0,.65),0 10px 24px -12px rgba(0,0,0,.5)}
+@media (max-width:900px){
+  .cards.bento{grid-template-columns:1fr}
+  .cards.bento .card:first-child{grid-column:span 1}
+}
