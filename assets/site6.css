@@ -425,3 +425,13 @@ section.band-navy .cards.bento .card .k{background:rgba(255,255,255,.10);color:#
   .cards.bento{grid-template-columns:1fr}
   .cards.bento .card:first-child{grid-column:span 1}
 }
+
+/* v16: 히어로 제품 창 + 버튼 위계 */
+.hero-side .window{background:#fff;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 40px 80px -28px rgba(0,0,0,.65),0 10px 24px -12px rgba(0,0,0,.5)}
+.hero-side .window .bar{display:flex;align-items:center;gap:6px;padding:11px 14px;background:#f1f5fb;border-bottom:1px solid #e2e9f2}
+.hero-side .window .bar i{display:block;width:9px;height:9px;border-radius:50%;background:#cbd6e6}
+.hero-side .window .bar span{margin-left:8px;font-size:12.5px;color:#7b88a3;font-weight:700}
+.hero-side .window table.result{margin:0;border:0;border-radius:0;box-shadow:none}
+.btn.ghost{background:transparent;border:0;color:#c7d4e8;padding-left:4px}
+.btn.ghost:hover{background:transparent;color:#fff;text-decoration:underline}

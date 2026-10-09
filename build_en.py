@@ -223,11 +223,13 @@ INDEX = """
       <p class="lead">Put in the spreadsheet (.xlsx) you already keep and it is done. It counts the rates, settles the tuition, and prepares parent note drafts. Sending and payment stay with the academy.</p>
       <div class="actions">
         <a class="btn solid" href="pricing.html">See pricing</a>
-        <a class="btn" href="work.html">See results</a>
+        <a class="btn ghost" href="work.html">See results</a>
       </div>
       <p class="hero-price">From KRW 39,000 a month (up to 100 students) &middot; first 30 days free &middot; <a href="pricing.html">full pricing</a></p>
     </div>
     <div class="hero-side">
+      <div class="window">
+      <div class="bar"><i></i><i></i><i></i><span>Attendance result</span></div>
       <table class="result hero-mini">
         <caption>Example data only. No real student information is used.</caption>
         <thead><tr><th>Student</th><th>Attended</th><th>Total</th><th>Rate</th><th>Note</th></tr></thead>
@@ -238,6 +240,7 @@ INDEX = """
           <tr><td>Student 4</td><td class="num dim">&mdash;</td><td class="num">20</td><td class="num dim">&mdash;</td><td><span class="tag dim">Needs input</span></td></tr>
         </tbody>
       </table>
+      </div>
       <p class="cap">Example data only. No real student information is used.</p>
     </div>
   </div>
