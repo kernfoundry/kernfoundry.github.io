@@ -229,7 +229,7 @@ RESULT_TABLE = """
 <div class="hero-table">
   <div class="wrap">
     <div class="flow">
-      <div><b>File</b><span>Upload the attendance and tuition file you already keep</span></div>
+      <div><b>File</b><span>Add the attendance and tuition file you already keep</span></div>
       <div><b>Calculate</b><span>Rates and balances are computed; odd values are set aside as warnings</span></div>
       <div><b>Draft</b><span>Parent messages stay in a review state &mdash; a person sends them</span></div>
     </div>
@@ -246,24 +246,31 @@ rates, warnings = attendance_rate(table.rows)
 drafts = generate_drafts(rates, academy="Your Academy")"""
 
 INDEX = """
-<section id="main">
-  <div class="wrap doc">
-    <div class="shead">
-      <div class="eyebrow">Academy operations</div>
+<section class="hero dark" id="main">
+  <div class="wrap in">
+    <div>
+      <div class="kicker">Academy operations</div>
       <h1>Attendance, settlement and parent note drafts, from one file</h1>
-      <p>Put in the spreadsheet (.xlsx) you already keep and it is done. It counts the rates, settles the tuition, and prepares parent note drafts. Sending and payment stay with the academy.</p>
+      <p class="lead">Put in the spreadsheet (.xlsx) you already keep and it is done. It counts the rates, settles the tuition, and prepares parent note drafts. Sending and payment stay with the academy.</p>
+      <div class="actions">
+        <a class="btn solid" href="pricing.html">See pricing</a>
+        <a class="btn" href="work.html">See results</a>
+      </div>
+      <p class="hero-price">From KRW 39,000 a month (up to 100 students) &middot; first 30 days free &middot; <a href="pricing.html">full pricing</a></p>
     </div>
-    <table class="result">
-      <caption>Example data only. No real student information is used.</caption>
-      <thead><tr><th>Student</th><th>Attended</th><th>Total</th><th>Rate</th><th>Note</th></tr></thead>
-      <tbody>
-        <tr><td>Student 1</td><td class="num">18</td><td class="num">20</td><td class="num ok">90.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
-        <tr><td>Student 2</td><td class="num">19</td><td class="num">20</td><td class="num ok">95.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
-        <tr><td>Student 3</td><td class="num">5</td><td class="num">20</td><td class="num warn">25.0%</td><td><span class="tag warn">Absence note</span></td></tr>
-        <tr><td>Student 4</td><td class="num dim">&mdash;</td><td class="num">20</td><td class="num dim">&mdash;</td><td><span class="tag dim">Needs input</span></td></tr>
-      </tbody>
-    </table>
-    <p>From KRW 39,000 a month (up to 100 students) &middot; first 30 days free &middot; messages metered at KRW 10&ndash;14 each with no markup from us. The full list is on the <a href="pricing.html">pricing</a> page.</p>
+    <div class="hero-side">
+      <table class="result hero-mini">
+        <caption>Example data only. No real student information is used.</caption>
+        <thead><tr><th>Student</th><th>Attended</th><th>Total</th><th>Rate</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Student 1</td><td class="num">18</td><td class="num">20</td><td class="num ok">90.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
+          <tr><td>Student 2</td><td class="num">19</td><td class="num">20</td><td class="num ok">95.0%</td><td><span class="tag ok">Monthly note</span></td></tr>
+          <tr><td>Student 3</td><td class="num">5</td><td class="num">20</td><td class="num warn">25.0%</td><td><span class="tag warn">Absence note</span></td></tr>
+          <tr><td>Student 4</td><td class="num dim">&mdash;</td><td class="num">20</td><td class="num dim">&mdash;</td><td><span class="tag dim">Needs input</span></td></tr>
+        </tbody>
+      </table>
+      <p class="cap">Example data only. No real student information is used.</p>
+    </div>
   </div>
 </section>
 
@@ -343,6 +350,14 @@ INDEX = """
     </table>
   </div>
 </section>
+
+<div class="band-photo">
+  <img src="../images/photo-classroom.jpg" alt="Academy classroom" loading="lazy">
+  <div class="band-photo-cap"><div class="wrap">
+    <div><b>It starts with the file you already keep.</b><span>No install, no server, no format conversion</span></div>
+    <div><a class="btn solid" href="work.html">See results</a></div>
+  </div></div>
+</div>
 
 
 <section class="band-navy">
@@ -876,7 +891,12 @@ def align_numbers(html: str) -> str:
             if re.fullmatch(r"[\d,\.%——\-]+", inner.strip()):
                 return f'<td class="num">{inner}</td>'
             return c.group(0)
-        return re.sub(r"<td>(.*?)</td>", fix_cell, block)
+        block = re.sub(r"<td>(.*?)</td>", fix_cell, block)
+        def fix_th(t):
+            if t.group(1).strip() in ("Attended", "Total", "Rate", "Charged", "Paid", "Unpaid"):
+                return '<th class="num">' + t.group(1) + "</th>"
+            return t.group(0)
+        return re.sub(r"<th>(.*?)</th>", fix_th, block)
     return re.sub(r'<table class="result[^"]*">.*?</table>', fix_block, html, flags=re.S)
 
 
